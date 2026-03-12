@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  --font-inter:     'Inter', system-ui, sans-serif;
+  --font-playfair:  'Playfair Display', Georgia, serif;
+
+  /* Palette 2 tokens exposed as CSS vars for easy inline access */
+  --accent:        #6D94C5;
+  --accent-light:  #CBDCEB;
+  --accent-dark:   #4A78B5;
+  --warm:          #F5EFE6;
+  --warm-2:        #E8DFCA;
+  --text:          #F0E9DE;
+  --text-muted:    #A8BECC;
+  --border:        #1E2E44;
+  --surface:       #121B28;
+  --bg:            #0C1118;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #0C1118;
+  color: #F0E9DE;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #0C1118; }
+::-webkit-scrollbar-thumb { background: #1E2E44; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6D94C5; }
+
+/* ── Display text gradient ────────────────────────────────────────────────── */
+/* warm cream → powder blue → steel blue */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F0E9DE 0%, #CBDCEB 55%, #6D94C5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section divider ──────────────────────────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(109,148,197,0.25), transparent);
+}
+
+/* ── Shimmer badge (pricing "Coming Soon") ────────────────────────────────── */
+.shimmer-badge {
+  background: linear-gradient(
+    90deg,
+    rgba(109,148,197,0.12) 0%,
+    rgba(203,220,235,0.35) 50%,
+    rgba(109,148,197,0.12) 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ── Paper menu card ──────────────────────────────────────────────────────── */
+/* Warm paper look — intentionally warm/organic against the cool dark UI */
+.menu-card {
+  background: linear-gradient(160deg, #FFF8F0 0%, #FFF0DC 100%);
+  border: 3px solid #D4AF37;
+  font-family: var(--font-playfair);
+  color: #2A1A00;
+}
+.menu-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212,175,55,0.4);
+  pointer-events: none;
+}
+
+/* ── NFC rings ────────────────────────────────────────────────────────────── */
+.nfc-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(109,148,197,0.55);
+  animation: nfcRing 2s ease-out infinite;
+}
+@keyframes nfcRing {
+  0%   { transform: scale(0.8); opacity: 0.85; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* ── Blog / prose styles ──────────────────────────────────────────────────── */
+.prose-naira        { color: #A8BECC; line-height: 1.8; }
+.prose-naira h2     { color: #F0E9DE; font-family: var(--font-playfair); font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+.prose-naira h3     { color: #F0E9DE; font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.prose-naira p      { margin-bottom: 1.25rem; }
+.prose-naira a      { color: #6D94C5; text-decoration: underline; }
+.prose-naira a:hover { color: #CBDCEB; }
+.prose-naira blockquote { border-left: 3px solid #6D94C5; padding-left: 1rem; font-style: italic; color: #5A7090; }
+.prose-naira strong { color: #F0E9DE; }
