@@ -96,7 +96,7 @@ function EmptyBlog() {
   return (
     <div className="col-span-full text-center py-16">
       <div className="w-16 h-16 rounded-2xl bg-naira-gold/10 border border-naira-gold/20 flex items-center justify-center mx-auto mb-4">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6D94C5" strokeWidth="1.5">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C13584" strokeWidth="1.5">
           <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z" />
           <polyline points="17 2 17 8 23 8" />
           <line x1="12" y1="18" x2="12" y2="12" />

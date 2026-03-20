@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Lock, Bell } from 'lucide-react'
 import { useState } from 'react'
+import posthog from 'posthog-js'
 
 const plans = [
   {
@@ -33,7 +34,7 @@ const plans = [
       'Zomato / Swiggy integration',
       'Includes Naira Tap',
     ],
-    accent: '#6D94C5',
+    accent: '#C13584',
     featured: true,
     order: 2,
   },
@@ -54,16 +55,29 @@ const plans = [
   },
 ]
 
-function NotifyForm() {
+function NotifyForm({ planName }: { planName: string }) {
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) setSubmitted(true)
+    if (!email) return
+    setStatus('submitting')
+    try {
+      const res = await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, plan: planName }),
+      })
+      if (!res.ok) throw new Error()
+      posthog.capture('pricing_notify_submitted', { plan: planName })
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
   }
 
-  if (submitted) {
+  if (status === 'success') {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -88,10 +102,14 @@ function NotifyForm() {
       />
       <button
         type="submit"
-        className="px-4 py-2 rounded-lg bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors flex-shrink-0"
+        disabled={status === 'submitting'}
+        className="px-4 py-2 rounded-lg bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors flex-shrink-0 disabled:opacity-60"
       >
-        Notify me
+        {status === 'submitting' ? '...' : 'Notify me'}
       </button>
+      {status === 'error' && (
+        <span className="text-red-400 text-xs self-center">Failed</span>
+      )}
     </form>
   )
 }
@@ -105,7 +123,7 @@ export default function Pricing() {
       {/* Center glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full opacity-[0.04] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #6D94C5 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #C13584 0%, transparent 70%)' }}
       />
 
       <div ref={ref} className="max-w-6xl mx-auto relative">
@@ -147,7 +165,7 @@ export default function Pricing() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               style={{
-                boxShadow: plan.featured ? '0 0 40px rgba(109,148,197,0.08)' : 'none',
+                boxShadow: plan.featured ? '0 0 40px rgba(193,53,132,0.08)' : 'none',
               }}
             >
               {/* Featured highlight */}
@@ -202,7 +220,7 @@ export default function Pricing() {
                   <Bell size={12} />
                   <span>Get notified when pricing launches</span>
                 </div>
-                <NotifyForm />
+                <NotifyForm planName={plan.name} />
               </div>
             </motion.div>
           ))}

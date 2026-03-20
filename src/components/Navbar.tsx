@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
-  { label: 'Products',     href: '#products' },
-  { label: 'Naira Tap',    href: '#tap-demo',    nfc: true },   // ← NFC highlight
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing',      href: '#pricing' },
-  { label: 'Blog',         href: '#blog' },
+  { label: 'Products',     href: '/#products' },
+  { label: 'Naira Tap',    href: '/#tap-demo',    nfc: true },   // ← NFC highlight
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Pricing',      href: '/#pricing' },
+  { label: 'Blog',         href: '/#blog' },
 ]
 
 export default function Navbar() {
@@ -34,25 +35,15 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* ── Logo ── */}
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #4A78B5 0%, #6D94C5 100%)' }}
-          >
-            <span
-              className="font-bold text-sm"
-              style={{ color: '#F0E9DE', fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              N
-            </span>
-          </div>
-          <span
-            className="font-semibold text-lg tracking-tight"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Naira{' '}
-            <span className="text-naira-gold">Menus</span>
-          </span>
+        <Link href="/" className="flex items-center flex-shrink-0">
+          <Image
+            src="/brand_logo.png"
+            alt="Naira Menus"
+            width={160}
+            height={40}
+            className="h-14 w-auto"
+            priority
+          />
         </Link>
 
         {/* ── Desktop nav links ── */}
@@ -72,12 +63,12 @@ export default function Navbar() {
                   {/* Ping ring */}
                   <span
                     className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-                    style={{ background: '#6D94C5' }}
+                    style={{ background: '#C13584' }}
                   />
                   {/* Solid dot */}
                   <span
                     className="relative inline-flex rounded-full h-2 w-2"
-                    style={{ background: '#CBDCEB' }}
+                    style={{ background: '#E8A0C9' }}
                   />
                 </span>
               )}
@@ -121,7 +112,7 @@ export default function Navbar() {
                   </Link>
                   {link.nfc && (
                     <span className="px-1.5 py-0.5 rounded text-[9px] font-bold tracking-widest uppercase"
-                      style={{ background: 'rgba(109,148,197,0.15)', color: '#CBDCEB' }}>
+                      style={{ background: 'rgba(193,53,132,0.15)', color: '#E8A0C9' }}>
                       NFC
                     </span>
                   )}
@@ -129,9 +120,9 @@ export default function Navbar() {
               ))}
               <li>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="inline-block px-5 py-2 rounded-full text-sm font-semibold"
-                  style={{ background: 'linear-gradient(135deg, #4A78B5 0%, #6D94C5 100%)', color: '#F0E9DE' }}
+                  style={{ background: 'linear-gradient(135deg, #9B2A6A 0%, #C13584 100%)', color: '#F0E9DE' }}
                   onClick={() => setMobileOpen(false)}
                 >
                   Get Early Access
@@ -152,26 +143,26 @@ function EarlyAccessButton() {
       {/* Outer soft glow ring — always pulsing, subtly */}
       <div
         className="absolute inset-0 rounded-full animate-glow-pulse pointer-events-none"
-        style={{ boxShadow: '0 0 0 0 rgba(109,148,197,0)' }}
+        style={{ boxShadow: '0 0 0 0 rgba(193,53,132,0)' }}
       />
 
       <a
-        href="#contact"
+        href="/#contact"
         className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
         style={{
-          background: 'linear-gradient(135deg, #3D6BA8 0%, #6D94C5 60%, #8CAED6 100%)',
+          background: 'linear-gradient(135deg, #8A2266 0%, #C13584 60%, #D65BA8 100%)',
           color: '#F0E9DE',
-          boxShadow: '0 0 0 1px rgba(109,148,197,0.35), 0 4px 24px rgba(109,148,197,0.22)',
+          boxShadow: '0 0 0 1px rgba(193,53,132,0.35), 0 4px 24px rgba(193,53,132,0.22)',
           transition: 'box-shadow 0.3s ease, transform 0.2s ease',
         }}
         onMouseEnter={(e) => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
-            '0 0 0 1px rgba(109,148,197,0.55), 0 6px 32px rgba(109,148,197,0.38)'
+            '0 0 0 1px rgba(193,53,132,0.55), 0 6px 32px rgba(193,53,132,0.38)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
         }}
         onMouseLeave={(e) => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
-            '0 0 0 1px rgba(109,148,197,0.35), 0 4px 24px rgba(109,148,197,0.22)'
+            '0 0 0 1px rgba(193,53,132,0.35), 0 4px 24px rgba(193,53,132,0.22)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
         }}
       >

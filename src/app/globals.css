@@ -8,16 +8,16 @@
   --font-inter:     'Inter', system-ui, sans-serif;
   --font-playfair:  'Playfair Display', Georgia, serif;
 
-  /* Palette 2 tokens exposed as CSS vars for easy inline access */
-  --accent:        #6D94C5;
-  --accent-light:  #CBDCEB;
-  --accent-dark:   #4A78B5;
+  /* Brand magenta tokens exposed as CSS vars */
+  --accent:        #C13584;
+  --accent-light:  #E8A0C9;
+  --accent-dark:   #9B2A6A;
   --warm:          #F5EFE6;
   --warm-2:        #E8DFCA;
   --text:          #F0E9DE;
-  --text-muted:    #A8BECC;
-  --border:        #1E2E44;
-  --surface:       #121B28;
+  --text-muted:    #C4A0B5;
+  --border:        #2E1E2A;
+  --surface:       #151018;
   --bg:            #0C1118;
 }
 
@@ -36,13 +36,13 @@ body {
 /* ── Scrollbar ────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 5px; }
 ::-webkit-scrollbar-track { background: #0C1118; }
-::-webkit-scrollbar-thumb { background: #1E2E44; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #6D94C5; }
+::-webkit-scrollbar-thumb { background: #2E1E2A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C13584; }
 
 /* ── Display text gradient ────────────────────────────────────────────────── */
-/* warm cream → powder blue → steel blue */
+/* warm cream → light pink → brand magenta */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #F0E9DE 0%, #CBDCEB 55%, #6D94C5 100%);
+  background: linear-gradient(135deg, #F0E9DE 0%, #E8A0C9 55%, #C13584 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -51,16 +51,16 @@ body {
 /* ── Section divider ──────────────────────────────────────────────────────── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(109,148,197,0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(193,53,132,0.25), transparent);
 }
 
 /* ── Shimmer badge (pricing "Coming Soon") ────────────────────────────────── */
 .shimmer-badge {
   background: linear-gradient(
     90deg,
-    rgba(109,148,197,0.12) 0%,
-    rgba(203,220,235,0.35) 50%,
-    rgba(109,148,197,0.12) 100%
+    rgba(193,53,132,0.12) 0%,
+    rgba(232,160,201,0.35) 50%,
+    rgba(193,53,132,0.12) 100%
   );
   background-size: 200% auto;
   animation: shimmer 2.5s linear infinite;
@@ -91,7 +91,7 @@ body {
 .nfc-ring {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(109,148,197,0.55);
+  border: 2px solid rgba(193,53,132,0.55);
   animation: nfcRing 2s ease-out infinite;
 }
 @keyframes nfcRing {
@@ -100,11 +100,11 @@ body {
 }
 
 /* ── Blog / prose styles ──────────────────────────────────────────────────── */
-.prose-naira        { color: #A8BECC; line-height: 1.8; }
+.prose-naira        { color: #C4A0B5; line-height: 1.8; }
 .prose-naira h2     { color: #F0E9DE; font-family: var(--font-playfair); font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
 .prose-naira h3     { color: #F0E9DE; font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 .prose-naira p      { margin-bottom: 1.25rem; }
-.prose-naira a      { color: #6D94C5; text-decoration: underline; }
-.prose-naira a:hover { color: #CBDCEB; }
-.prose-naira blockquote { border-left: 3px solid #6D94C5; padding-left: 1rem; font-style: italic; color: #5A7090; }
+.prose-naira a      { color: #C13584; text-decoration: underline; }
+.prose-naira a:hover { color: #E8A0C9; }
+.prose-naira blockquote { border-left: 3px solid #C13584; padding-left: 1rem; font-style: italic; color: #7A5068; }
 .prose-naira strong { color: #F0E9DE; }

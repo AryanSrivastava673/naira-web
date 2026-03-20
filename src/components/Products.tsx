@@ -21,7 +21,7 @@ const products = [
     ],
     cta: 'Request POS Demo',
     ctaHref: '#contact',
-    accent: '#C4A882',         // warm sand — bridges palette warm + cool
+    accent: '#D4A07A',         // warm sand accent
     gradient: 'from-amber-500/10 to-transparent',
   },
   {
@@ -41,7 +41,7 @@ const products = [
     ],
     cta: 'See Tap in Action',
     ctaHref: '#tap-demo',
-    accent: '#6D94C5',         // primary steel blue — palette 2 accent
+    accent: '#C13584',         // primary brand magenta
     gradient: 'from-blue-500/10 to-transparent',
     featured: true,
   },
@@ -62,7 +62,7 @@ const products = [
     ],
     cta: 'Explore Growth Tools',
     ctaHref: '#contact',
-    accent: '#8BA8D4',         // lighter periwinkle blue — harmonises with palette
+    accent: '#D465A8',         // lighter pink — harmonises with palette
     gradient: 'from-blue-400/10 to-transparent',
   },
 ]
@@ -78,8 +78,8 @@ export default function Products() {
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(109,148,197,0.4) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(109,148,197,0.4) 1px, transparent 1px)
+            linear-gradient(rgba(193,53,132,0.4) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(193,53,132,0.4) 1px, transparent 1px)
           `,
           backgroundSize: '80px 80px',
         }}
@@ -125,7 +125,7 @@ export default function Products() {
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
                   boxShadow: product.featured
-                    ? '0 0 40px rgba(109,148,197,0.08)'
+                    ? '0 0 40px rgba(193,53,132,0.08)'
                     : 'none',
                 }}
               >

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
+import PostHogProvider from '@/components/PostHogProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -28,7 +30,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-naira-black text-naira-text antialiased">{children}</body>
+      <body className="bg-naira-black text-naira-text antialiased">
+        <Suspense fallback={null}>
+          <PostHogProvider>{children}</PostHogProvider>
+        </Suspense>
+      </body>
     </html>
   )
 }

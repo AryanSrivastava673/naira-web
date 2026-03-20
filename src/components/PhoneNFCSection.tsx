@@ -23,17 +23,17 @@ function PhoneMockup({
           height: 520,
           background: '#0C1118',
           borderRadius: 42,
-          border: '2px solid #1E2E44',
+          border: '2px solid #2E1E2A',
           boxShadow: screenActive
-            ? '0 0 55px rgba(109,148,197,0.28), 0 30px 80px rgba(0,0,0,0.8)'
+            ? '0 0 55px rgba(193,53,132,0.28), 0 30px 80px rgba(0,0,0,0.8)'
             : '0 30px 80px rgba(0,0,0,0.8)',
           transition: 'box-shadow 0.6s ease',
         }}
       >
         {/* Side buttons */}
-        <div className="absolute -right-[3px] top-24 w-[3px] h-10 bg-[#1E2E44] rounded-r-sm" />
-        <div className="absolute -left-[3px] top-20 w-[3px] h-7 bg-[#1E2E44] rounded-l-sm" />
-        <div className="absolute -left-[3px] top-32 w-[3px] h-7 bg-[#1E2E44] rounded-l-sm" />
+        <div className="absolute -right-[3px] top-24 w-[3px] h-10 bg-[#2E1E2A] rounded-r-sm" />
+        <div className="absolute -left-[3px] top-20 w-[3px] h-7 bg-[#2E1E2A] rounded-l-sm" />
+        <div className="absolute -left-[3px] top-32 w-[3px] h-7 bg-[#2E1E2A] rounded-l-sm" />
 
         {/* Dynamic island */}
         <div
@@ -48,7 +48,7 @@ function PhoneMockup({
             inset: 6,
             borderRadius: 36,
             background: screenActive
-              ? 'linear-gradient(180deg, #0C1118 0%, #121B28 100%)'
+              ? 'linear-gradient(180deg, #0C1118 0%, #151018 100%)'
               : '#060A10',
           }}
         >
@@ -67,7 +67,7 @@ function PhoneMockup({
             {/* Restaurant header */}
             <div className="px-4 pt-2 pb-3 flex items-center justify-between">
               <div>
-                <div className="text-[9px] text-[#5A7090] tracking-widest uppercase">The Grand Spice</div>
+                <div className="text-[9px] text-[#7A5068] tracking-widest uppercase">The Grand Spice</div>
                 <div
                   className="font-semibold text-sm mt-0.5"
                   style={{ fontFamily: 'Playfair Display, Georgia, serif', color: '#F0E9DE' }}
@@ -75,8 +75,8 @@ function PhoneMockup({
                   Digital Menu
                 </div>
               </div>
-              <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: 'rgba(109,148,197,0.15)' }}>
-                <div className="w-5 h-5 rounded-full" style={{ background: 'rgba(109,148,197,0.55)' }} />
+              <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: 'rgba(193,53,132,0.15)' }}>
+                <div className="w-5 h-5 rounded-full" style={{ background: 'rgba(193,53,132,0.55)' }} />
               </div>
             </div>
 
@@ -87,8 +87,8 @@ function PhoneMockup({
                   key={tab}
                   className="px-2 py-1 rounded-full text-[9px] font-medium"
                   style={{
-                    background: i === 0 ? '#6D94C5' : 'rgba(109,148,197,0.08)',
-                    color: i === 0 ? '#F0E9DE' : '#5A7090',
+                    background: i === 0 ? '#C13584' : 'rgba(193,53,132,0.08)',
+                    color: i === 0 ? '#F0E9DE' : '#7A5068',
                   }}
                 >
                   {tab}
@@ -106,22 +106,22 @@ function PhoneMockup({
                 <div
                   key={item.name}
                   className="flex items-center gap-2 p-2 rounded-xl"
-                  style={{ background: 'rgba(109,148,197,0.05)' }}
+                  style={{ background: 'rgba(193,53,132,0.05)' }}
                 >
                   <div
                     className="w-10 h-10 rounded-xl flex-shrink-0"
-                    style={{ background: 'rgba(109,148,197,0.12)' }}
+                    style={{ background: 'rgba(193,53,132,0.12)' }}
                   />
                   <div className="flex-1 min-w-0">
                     <div className="text-[10px] font-medium truncate" style={{ color: '#F0E9DE' }}>{item.name}</div>
-                    <div className="text-[8px] text-[#5A7090] truncate">{item.desc}</div>
+                    <div className="text-[8px] text-[#7A5068] truncate">{item.desc}</div>
                     {item.tag && (
-                      <span className="inline-block text-[7px] px-1.5 py-0.5 rounded-full mt-0.5" style={{ background: 'rgba(203,220,235,0.15)', color: '#CBDCEB' }}>
+                      <span className="inline-block text-[7px] px-1.5 py-0.5 rounded-full mt-0.5" style={{ background: 'rgba(232,160,201,0.15)', color: '#E8A0C9' }}>
                         {item.tag}
                       </span>
                     )}
                   </div>
-                  <div className="text-[10px] font-semibold flex-shrink-0" style={{ color: '#CBDCEB' }}>{item.price}</div>
+                  <div className="text-[10px] font-semibold flex-shrink-0" style={{ color: '#E8A0C9' }}>{item.price}</div>
                 </div>
               ))}
             </div>
@@ -130,7 +130,7 @@ function PhoneMockup({
             <div className="px-4 pb-4 pt-2">
               <div
                 className="w-full py-2.5 rounded-full text-center text-[10px] font-semibold"
-                style={{ background: '#6D94C5', color: '#F0E9DE' }}
+                style={{ background: '#C13584', color: '#F0E9DE' }}
               >
                 View Full Menu
               </div>
@@ -145,14 +145,14 @@ function PhoneMockup({
             transition={{ duration: 0.3 }}
           >
             <div className="text-center space-y-2">
-              <div className="w-10 h-10 rounded-full border border-[#1E2E44] mx-auto flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full border border-[#2E1E2A] mx-auto flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="6" stroke="#2A3E5A" strokeWidth="1.2" />
-                  <circle cx="8" cy="8" r="3" stroke="#1E2E44" strokeWidth="1.2" />
-                  <circle cx="8" cy="8" r="1" fill="#1E2E44" />
+                  <circle cx="8" cy="8" r="6" stroke="#3A1E30" strokeWidth="1.2" />
+                  <circle cx="8" cy="8" r="3" stroke="#2E1E2A" strokeWidth="1.2" />
+                  <circle cx="8" cy="8" r="1" fill="#2E1E2A" />
                 </svg>
               </div>
-              <p className="text-[9px] text-[#2A3E5A]">Tap NFC to activate</p>
+              <p className="text-[9px] text-[#3A1E30]">Tap NFC to activate</p>
             </div>
           </motion.div>
         </div>
@@ -198,10 +198,10 @@ function NFCTag({
         disabled={pulsing}
         className="relative w-[70px] h-[70px] rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 disabled:cursor-not-allowed"
         style={{
-          background: 'linear-gradient(135deg, #121B28 0%, #0C1118 100%)',
-          border: `2px solid ${tapped ? '#6D94C5' : '#1E2E44'}`,
+          background: 'linear-gradient(135deg, #151018 0%, #0C1118 100%)',
+          border: `2px solid ${tapped ? '#C13584' : '#2E1E2A'}`,
           boxShadow: tapped
-            ? '0 0 24px rgba(109,148,197,0.45)'
+            ? '0 0 24px rgba(193,53,132,0.45)'
             : '0 4px 20px rgba(0,0,0,0.5)',
           transition: 'border-color 0.3s, box-shadow 0.3s',
         }}
@@ -210,17 +210,17 @@ function NFCTag({
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
           <path
             d="M15 3C8.373 3 3 8.373 3 15s5.373 12 12 12 12-5.373 12-12S21.627 3 15 3z"
-            stroke={tapped ? '#6D94C5' : '#2A3E5A'}
+            stroke={tapped ? '#C13584' : '#3A1E30'}
             strokeWidth="1.5"
             fill="none"
           />
           <path
             d="M15 8c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z"
-            stroke={tapped ? '#CBDCEB' : '#1E2E44'}
+            stroke={tapped ? '#E8A0C9' : '#2E1E2A'}
             strokeWidth="1.5"
             fill="none"
           />
-          <circle cx="15" cy="15" r="2.5" fill={tapped ? '#6D94C5' : '#2A3E5A'} />
+          <circle cx="15" cy="15" r="2.5" fill={tapped ? '#C13584' : '#3A1E30'} />
         </svg>
       </button>
 
@@ -315,14 +315,14 @@ export default function PhoneNFCSection() {
       <div
         aria-hidden
         className="absolute top-0 left-0 right-0 h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, #6D94C5 30%, #CBDCEB 50%, #6D94C5 70%, transparent 100%)' }}
+        style={{ background: 'linear-gradient(90deg, transparent 0%, #C13584 30%, #E8A0C9 50%, #C13584 70%, transparent 100%)' }}
       />
 
       {/* Centered ambient glow */}
       <div
         aria-hidden
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full opacity-[0.06] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #6D94C5 0%, #4A78B5 40%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #C13584 0%, #9B2A6A 40%, transparent 70%)' }}
       />
 
       <div className="max-w-6xl mx-auto">

@@ -111,8 +111,8 @@ export default function HeroShredder() {
 
   // ── TEXT TRANSITIONS ────────────────────────────────────────────────────────
   // Hero text fades in early, holds, then fades OUT before the menu appears
-  const heroTextOpacity = useTransform(scrollYProgress, [0, 0.07, 0.22, 0.30], [0, 1, 1, 0])
-  const heroTextY = useTransform(scrollYProgress, [0, 0.07], [24, 0])
+  const heroTextOpacity = useTransform(scrollYProgress, [0, 0.22, 0.30], [1, 1, 0])
+  const heroTextY = useTransform(scrollYProgress, [0, 0.07], [0, 0])
 
   // Menu card fades in after hero text is gone
   const menuOpacity = useTransform(scrollYProgress, [0.26, 0.36], [0, 1])
@@ -192,8 +192,8 @@ export default function HeroShredder() {
           className="absolute inset-0 pointer-events-none opacity-[0.028]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(109,148,197,0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(109,148,197,0.5) 1px, transparent 1px)
+              linear-gradient(rgba(193,53,132,0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(193,53,132,0.5) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
           }}
@@ -409,8 +409,8 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
         style={{
           display: 'block',
           filter: isActive
-            ? 'drop-shadow(0 -5px 14px rgba(109,148,197,0.6))'
-            : 'drop-shadow(0 -2px 8px rgba(109,148,197,0.22))',
+            ? 'drop-shadow(0 -5px 14px rgba(193,53,132,0.6))'
+            : 'drop-shadow(0 -2px 8px rgba(193,53,132,0.22))',
           transition: 'filter 0.3s ease',
         }}
       >
@@ -419,21 +419,21 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
             const x = i * 12.5
             return `M${x},30 L${x + 6.25},5 L${x + 12.5},30`
           }).join(' ')}
-          fill="#0E1622"
-          stroke={isActive ? '#6D94C5' : '#1E2E44'}
+          fill="#120E14"
+          stroke={isActive ? '#C13584' : '#2E1E2A'}
           strokeWidth={isActive ? '0.9' : '0.4'}
         />
-        <line x1="0" y1="5" x2="300" y2="5" stroke="#6D94C5" strokeWidth="0.7" strokeOpacity={isActive ? 0.8 : 0.3} />
+        <line x1="0" y1="5" x2="300" y2="5" stroke="#C13584" strokeWidth="0.7" strokeOpacity={isActive ? 0.8 : 0.3} />
       </svg>
 
       {/* Body */}
       <div
         style={{
           height: 68,
-          background: 'linear-gradient(180deg, #0E1622 0%, #090F18 100%)',
-          borderLeft: '1px solid #1E2E44',
-          borderRight: '1px solid #1E2E44',
-          borderBottom: '1px solid #1E2E44',
+          background: 'linear-gradient(180deg, #120E14 0%, #090F18 100%)',
+          borderLeft: '1px solid #2E1E2A',
+          borderRight: '1px solid #2E1E2A',
+          borderBottom: '1px solid #2E1E2A',
           borderRadius: '0 0 10px 10px',
           position: 'relative',
           display: 'flex',
@@ -450,7 +450,7 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
         {/* Brand */}
         <span
           className="relative text-[11px] tracking-[0.4em] font-semibold uppercase transition-colors duration-300"
-          style={{ color: isActive ? 'rgba(203,220,235,0.9)' : 'rgba(109,148,197,0.38)' }}
+          style={{ color: isActive ? 'rgba(232,160,201,0.9)' : 'rgba(193,53,132,0.38)' }}
         >
           Naira Tap
         </span>
@@ -460,8 +460,8 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
           <div
             className="w-2 h-2 rounded-full transition-all duration-300"
             style={{
-              background: isActive ? '#6D94C5' : '#1E2E44',
-              boxShadow: isActive ? '0 0 8px rgba(109,148,197,0.8)' : 'none',
+              background: isActive ? '#C13584' : '#2E1E2A',
+              boxShadow: isActive ? '0 0 8px rgba(193,53,132,0.8)' : 'none',
             }}
           />
         </div>
@@ -479,7 +479,7 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
           <div
             key={k}
             className="w-4 h-[22px] rounded-b-sm"
-            style={{ background: '#0A1020', border: '1px solid #1E2E44', borderTop: 'none' }}
+            style={{ background: '#0D0810', border: '1px solid #2E1E2A', borderTop: 'none' }}
           />
         ))}
       </div>

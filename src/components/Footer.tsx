@@ -1,4 +1,24 @@
+'use client'
+
+import { useState } from 'react'
+import posthog from 'posthog-js'
 import Link from 'next/link'
+import Image from 'next/image'
+import { Instagram, Linkedin } from 'lucide-react'
+
+function XIcon({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
+
+const socialLinks = [
+  { label: 'Instagram', href: 'https://www.instagram.com/naira.menus/', icon: Instagram },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/naira-menus-8973633b7/', icon: Linkedin },
+  { label: 'X', href: 'https://x.com/NairaMenus', icon: XIcon },
+]
 
 const footerLinks = {
   Products: [
@@ -19,11 +39,35 @@ const footerLinks = {
 }
 
 function ContactSection() {
+  const [form, setForm] = useState({ businessName: '', city: '', pincode: '', phone: '' })
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('submitting')
+    try {
+      const res = await fetch('/api/demo-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error()
+      posthog.capture('demo_request_submitted', { city: form.city, pincode: form.pincode })
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <div
       id="contact"
       className="rounded-2xl border border-naira-gold/20 p-8 mb-16"
-      style={{ background: 'linear-gradient(135deg, rgba(109,148,197,0.06) 0%, rgba(0,0,0,0) 100%)' }}
+      style={{ background: 'linear-gradient(135deg, rgba(193,53,132,0.06) 0%, rgba(0,0,0,0) 100%)' }}
     >
       <div className="max-w-xl mx-auto text-center">
         <h3
@@ -34,22 +78,67 @@ function ContactSection() {
         </h3>
         <p className="text-naira-text-muted text-base mb-6">
           Get early access to Naira Menus. We&apos;re onboarding a limited number
-          of restaurants for our pilot — let&apos;s talk.
+          of restaurants for our pilot — request a demo call.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href="mailto:hello@nairamenus.in"
-            className="px-6 py-3 rounded-full bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors"
-          >
-            hello@nairamenus.in
-          </a>
-          <a
-            href="tel:+91XXXXXXXXXX"
-            className="px-6 py-3 rounded-full border border-naira-border text-naira-text text-sm font-medium hover:border-naira-gold/40 transition-colors"
-          >
-            Request a Demo Call
-          </a>
-        </div>
+
+        {status === 'success' ? (
+          <div className="py-4">
+            <div className="text-naira-gold font-medium">Demo request submitted!</div>
+            <div className="text-naira-muted text-sm mt-1">We&apos;ll call you shortly to schedule your demo.</div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-3 text-left">
+            <input
+              name="businessName"
+              value={form.businessName}
+              onChange={handleChange}
+              placeholder="Business Name"
+              required
+              className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+            />
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                name="city"
+                value={form.city}
+                onChange={handleChange}
+                placeholder="City"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+              />
+              <input
+                name="pincode"
+                value={form.pincode}
+                onChange={handleChange}
+                placeholder="Pincode"
+                required
+                pattern="[0-9]{6}"
+                title="Enter a 6-digit pincode"
+                className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+              />
+            </div>
+            <input
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="Contact Number"
+              required
+              type="tel"
+              pattern="[0-9]{10}"
+              title="Enter a 10-digit phone number"
+              className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+            />
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className="w-full px-6 py-3 rounded-full bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors disabled:opacity-60"
+            >
+              {status === 'submitting' ? 'Submitting...' : 'Request a Demo Call'}
+            </button>
+            {status === 'error' && (
+              <p className="text-red-400 text-sm text-center">Something went wrong. Please try again.</p>
+            )}
+          </form>
+        )}
       </div>
     </div>
   )
@@ -65,18 +154,34 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-12 border-b border-naira-border">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-naira-gold flex items-center justify-center">
-                <span className="text-naira-black font-bold text-sm" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>N</span>
-              </div>
-              <span className="font-display font-semibold text-lg" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                Naira <span className="text-naira-gold">Menus</span>
-              </span>
+            <div className="mb-4">
+              <Image
+                src="/brand_logo.png"
+                alt="Naira Menus"
+                width={160}
+                height={40}
+                className="h-14 w-auto"
+              />
             </div>
-            <p className="text-naira-text-muted text-sm leading-relaxed max-w-xs">
+            <p className="text-naira-text-muted text-sm leading-relaxed max-w-xs mb-4">
               The future of restaurant operations. NFC-powered menus, smart POS,
               and growth tools — all in one platform.
             </p>
+            <p className="text-naira-gold text-xs font-semibold tracking-widest uppercase mb-2">Follow us</p>
+            <div className="flex items-center gap-2">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-9 h-9 rounded-lg border border-naira-border bg-naira-card flex items-center justify-center text-naira-text-muted hover:text-naira-gold hover:border-naira-gold/50 hover:bg-naira-gold/10 transition-all duration-200"
+                >
+                  <social.icon size={17} />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Links */}
