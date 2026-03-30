@@ -40,7 +40,7 @@ export default function HowItWorks() {
       {/* Background decorative element */}
       <div
         className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-5 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #C13584 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)' }}
       />
 
       <div ref={ref} className="max-w-6xl mx-auto">

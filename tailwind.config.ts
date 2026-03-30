@@ -1,5 +1,20 @@
 import type { Config } from 'tailwindcss'
 
+// ── Brand accent (single source of truth) ──────────────────────────
+const BRAND = {
+  accent:      '#ff2ba3',  // primary magenta
+  accentLight: '#ff80c8',  // light pink
+  accentDark:  '#cc2282',  // deeper magenta for hover states
+  text:        '#F0E9DE',  // warm cream (primary text)
+}
+
+// helper: hex → r,g,b string for use in rgba()
+const rgb = (hex: string) => {
+  const n = parseInt(hex.slice(1), 16)
+  return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`
+}
+const accentRgb = rgb(BRAND.accent)
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,26 +25,26 @@ const config: Config = {
     extend: {
       colors: {
         // ── Dark base (deep warm black with magenta undertone)
-        'naira-black':   '#0C1118',  // primary page background
-        'naira-surface': '#151018',  // alternate section / sidebar bg
-        'naira-card':    '#1E1520',  // card backgrounds
+        'naira-black':   '#0C1118',
+        'naira-surface': '#151018',
+        'naira-card':    '#1E1520',
 
-        // ── Primary accent — Brand magenta #C13584
-        'naira-gold':       '#C13584',  // primary accent (brand magenta)
-        'naira-gold-light': '#E8A0C9',  // light pink
-        'naira-gold-dark':  '#9B2A6A',  // deeper magenta for hover states
+        // ── Primary accent
+        'naira-gold':       BRAND.accent,
+        'naira-gold-light': BRAND.accentLight,
+        'naira-gold-dark':  BRAND.accentDark,
 
-        // ── Warm palette tones — appear on paper / highlight elements
-        'naira-warm':   '#F5EFE6',  // warm beige
-        'naira-warm-2': '#E8DFCA',  // warm sand
+        // ── Warm palette tones
+        'naira-warm':   '#F5EFE6',
+        'naira-warm-2': '#E8DFCA',
 
-        // ── Text — warm cream instead of clinical white
-        'naira-text':       '#F0E9DE',  // primary text (warm cream)
-        'naira-text-muted': '#C4A0B5',  // secondary text (muted pink-gray)
+        // ── Text
+        'naira-text':       BRAND.text,
+        'naira-text-muted': '#C4A0B5',
 
         // ── Supporting
-        'naira-border': '#2E1E2A',   // dark magenta border
-        'naira-muted':  '#7A5068',   // tertiary / placeholder text
+        'naira-border': '#2E1E2A',
+        'naira-muted':  '#7A5068',
       },
 
       fontFamily: {
@@ -58,18 +73,15 @@ const config: Config = {
           '100%': { backgroundPosition: '200% center' },
         },
         glowPulse: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(193,53,132,0.3)' },
-          '50%':      { boxShadow: '0 0 40px rgba(193,53,132,0.6)' },
+          '0%, 100%': { boxShadow: `0 0 20px rgba(${accentRgb},0.3)` },
+          '50%':      { boxShadow: `0 0 40px rgba(${accentRgb},0.6)` },
         },
       },
 
       backgroundImage: {
-        // Magenta radial glow behind the hero headline
-        'hero-gradient': 'radial-gradient(ellipse at 50% 0%, rgba(193,53,132,0.13) 0%, transparent 68%)',
-        // Display-text gradient: warm cream → light pink → magenta
-        'gold-gradient': 'linear-gradient(135deg, #F0E9DE 0%, #E8A0C9 55%, #C13584 100%)',
-        // Card hover tint
-        'card-gradient': 'linear-gradient(135deg, rgba(193,53,132,0.08) 0%, transparent 100%)',
+        'hero-gradient': `radial-gradient(ellipse at 50% 0%, rgba(${accentRgb},0.13) 0%, transparent 68%)`,
+        'gold-gradient': `linear-gradient(135deg, ${BRAND.text} 0%, ${BRAND.accentLight} 55%, ${BRAND.accent} 100%)`,
+        'card-gradient': `linear-gradient(135deg, rgba(${accentRgb},0.08) 0%, transparent 100%)`,
         'dark-gradient': 'linear-gradient(180deg, #0C1118 0%, #111111 100%)',
       },
     },

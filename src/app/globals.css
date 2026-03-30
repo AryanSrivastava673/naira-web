@@ -9,9 +9,12 @@
   --font-playfair:  'Playfair Display', Georgia, serif;
 
   /* Brand magenta tokens exposed as CSS vars */
-  --accent:        #C13584;
-  --accent-light:  #E8A0C9;
-  --accent-dark:   #9B2A6A;
+  --accent:        #ff2ba3;
+  --accent-light:  #ff80c8;
+  --accent-dark:   #cc2282;
+  --accent-rgb:    255,43,163;
+  --accent-light-rgb: 255,128,200;
+  --accent-dark-rgb:  204,34,130;
   --warm:          #F5EFE6;
   --warm-2:        #E8DFCA;
   --text:          #F0E9DE;
@@ -37,12 +40,12 @@ body {
 ::-webkit-scrollbar       { width: 5px; }
 ::-webkit-scrollbar-track { background: #0C1118; }
 ::-webkit-scrollbar-thumb { background: #2E1E2A; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #C13584; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 /* ── Display text gradient ────────────────────────────────────────────────── */
 /* warm cream → light pink → brand magenta */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #F0E9DE 0%, #E8A0C9 55%, #C13584 100%);
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 55%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -51,16 +54,16 @@ body {
 /* ── Section divider ──────────────────────────────────────────────────────── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(193,53,132,0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb),0.25), transparent);
 }
 
 /* ── Shimmer badge (pricing "Coming Soon") ────────────────────────────────── */
 .shimmer-badge {
   background: linear-gradient(
     90deg,
-    rgba(193,53,132,0.12) 0%,
-    rgba(232,160,201,0.35) 50%,
-    rgba(193,53,132,0.12) 100%
+    rgba(var(--accent-rgb),0.12) 0%,
+    rgba(var(--accent-light-rgb),0.35) 50%,
+    rgba(var(--accent-rgb),0.12) 100%
   );
   background-size: 200% auto;
   animation: shimmer 2.5s linear infinite;
@@ -91,7 +94,7 @@ body {
 .nfc-ring {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(193,53,132,0.55);
+  border: 2px solid rgba(var(--accent-rgb),0.55);
   animation: nfcRing 2s ease-out infinite;
 }
 @keyframes nfcRing {
@@ -104,7 +107,7 @@ body {
 .prose-naira h2     { color: #F0E9DE; font-family: var(--font-playfair); font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
 .prose-naira h3     { color: #F0E9DE; font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 .prose-naira p      { margin-bottom: 1.25rem; }
-.prose-naira a      { color: #C13584; text-decoration: underline; }
-.prose-naira a:hover { color: #E8A0C9; }
-.prose-naira blockquote { border-left: 3px solid #C13584; padding-left: 1rem; font-style: italic; color: #7A5068; }
+.prose-naira a      { color: var(--accent); text-decoration: underline; }
+.prose-naira a:hover { color: var(--accent-light); }
+.prose-naira blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; font-style: italic; color: #7A5068; }
 .prose-naira strong { color: #F0E9DE; }

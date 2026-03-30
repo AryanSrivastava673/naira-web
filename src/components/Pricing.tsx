@@ -34,7 +34,7 @@ const plans = [
       'Zomato / Swiggy integration',
       'Includes Naira Tap',
     ],
-    accent: '#C13584',
+    accent: 'var(--accent)',
     featured: true,
     order: 2,
   },
@@ -123,7 +123,7 @@ export default function Pricing() {
       {/* Center glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full opacity-[0.04] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #C13584 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)' }}
       />
 
       <div ref={ref} className="max-w-6xl mx-auto relative">
@@ -165,7 +165,7 @@ export default function Pricing() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               style={{
-                boxShadow: plan.featured ? '0 0 40px rgba(193,53,132,0.08)' : 'none',
+                boxShadow: plan.featured ? '0 0 40px rgba(var(--accent-rgb),0.08)' : 'none',
               }}
             >
               {/* Featured highlight */}

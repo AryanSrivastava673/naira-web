@@ -63,12 +63,12 @@ export default function Navbar() {
                   {/* Ping ring */}
                   <span
                     className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-                    style={{ background: '#C13584' }}
+                    style={{ background: 'var(--accent)' }}
                   />
                   {/* Solid dot */}
                   <span
                     className="relative inline-flex rounded-full h-2 w-2"
-                    style={{ background: '#E8A0C9' }}
+                    style={{ background: 'var(--accent-light)' }}
                   />
                 </span>
               )}
@@ -112,7 +112,7 @@ export default function Navbar() {
                   </Link>
                   {link.nfc && (
                     <span className="px-1.5 py-0.5 rounded text-[9px] font-bold tracking-widest uppercase"
-                      style={{ background: 'rgba(193,53,132,0.15)', color: '#E8A0C9' }}>
+                      style={{ background: 'rgba(var(--accent-rgb),0.15)', color: 'var(--accent-light)' }}>
                       NFC
                     </span>
                   )}
@@ -122,7 +122,7 @@ export default function Navbar() {
                 <a
                   href="/#contact"
                   className="inline-block px-5 py-2 rounded-full text-sm font-semibold"
-                  style={{ background: 'linear-gradient(135deg, #9B2A6A 0%, #C13584 100%)', color: '#F0E9DE' }}
+                  style={{ background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)', color: 'var(--text)' }}
                   onClick={() => setMobileOpen(false)}
                 >
                   Get Early Access
@@ -143,26 +143,26 @@ function EarlyAccessButton() {
       {/* Outer soft glow ring — always pulsing, subtly */}
       <div
         className="absolute inset-0 rounded-full animate-glow-pulse pointer-events-none"
-        style={{ boxShadow: '0 0 0 0 rgba(193,53,132,0)' }}
+        style={{ boxShadow: '0 0 0 0 rgba(var(--accent-rgb),0)' }}
       />
 
       <a
         href="/#contact"
         className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
         style={{
-          background: 'linear-gradient(135deg, #8A2266 0%, #C13584 60%, #D65BA8 100%)',
-          color: '#F0E9DE',
-          boxShadow: '0 0 0 1px rgba(193,53,132,0.35), 0 4px 24px rgba(193,53,132,0.22)',
+          background: `linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)`,
+          color: 'var(--text)',
+          boxShadow: '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)',
           transition: 'box-shadow 0.3s ease, transform 0.2s ease',
         }}
         onMouseEnter={(e) => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
-            '0 0 0 1px rgba(193,53,132,0.55), 0 6px 32px rgba(193,53,132,0.38)'
+            '0 0 0 1px rgba(var(--accent-rgb),0.55), 0 6px 32px rgba(var(--accent-rgb),0.38)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
         }}
         onMouseLeave={(e) => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
-            '0 0 0 1px rgba(193,53,132,0.35), 0 4px 24px rgba(193,53,132,0.22)'
+            '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
         }}
       >

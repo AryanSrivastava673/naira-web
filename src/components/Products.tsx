@@ -41,7 +41,7 @@ const products = [
     ],
     cta: 'See Tap in Action',
     ctaHref: '#tap-demo',
-    accent: '#C13584',         // primary brand magenta
+    accent: 'var(--accent)',    // primary brand magenta
     gradient: 'from-blue-500/10 to-transparent',
     featured: true,
   },
@@ -78,8 +78,8 @@ export default function Products() {
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(193,53,132,0.4) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(193,53,132,0.4) 1px, transparent 1px)
+            linear-gradient(rgba(var(--accent-rgb),0.4) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(var(--accent-rgb),0.4) 1px, transparent 1px)
           `,
           backgroundSize: '80px 80px',
         }}
@@ -125,7 +125,7 @@ export default function Products() {
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
                   boxShadow: product.featured
-                    ? '0 0 40px rgba(193,53,132,0.08)'
+                    ? '0 0 40px rgba(var(--accent-rgb),0.08)'
                     : 'none',
                 }}
               >

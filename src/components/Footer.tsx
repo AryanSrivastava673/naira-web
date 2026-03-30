@@ -67,7 +67,7 @@ function ContactSection() {
     <div
       id="contact"
       className="rounded-2xl border border-naira-gold/20 p-8 mb-16"
-      style={{ background: 'linear-gradient(135deg, rgba(193,53,132,0.06) 0%, rgba(0,0,0,0) 100%)' }}
+      style={{ background: 'linear-gradient(135deg, rgba(var(--accent-rgb),0.06) 0%, rgba(0,0,0,0) 100%)' }}
     >
       <div className="max-w-xl mx-auto text-center">
         <h3

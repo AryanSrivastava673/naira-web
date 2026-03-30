@@ -192,8 +192,8 @@ export default function HeroShredder() {
           className="absolute inset-0 pointer-events-none opacity-[0.028]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(193,53,132,0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(193,53,132,0.5) 1px, transparent 1px)
+              linear-gradient(rgba(var(--accent-rgb),0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(var(--accent-rgb),0.5) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
           }}
@@ -409,8 +409,8 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
         style={{
           display: 'block',
           filter: isActive
-            ? 'drop-shadow(0 -5px 14px rgba(193,53,132,0.6))'
-            : 'drop-shadow(0 -2px 8px rgba(193,53,132,0.22))',
+            ? 'drop-shadow(0 -5px 14px rgba(var(--accent-rgb),0.6))'
+            : 'drop-shadow(0 -2px 8px rgba(var(--accent-rgb),0.22))',
           transition: 'filter 0.3s ease',
         }}
       >
@@ -420,10 +420,10 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
             return `M${x},30 L${x + 6.25},5 L${x + 12.5},30`
           }).join(' ')}
           fill="#120E14"
-          stroke={isActive ? '#C13584' : '#2E1E2A'}
+          stroke={isActive ? 'var(--accent)' : '#2E1E2A'}
           strokeWidth={isActive ? '0.9' : '0.4'}
         />
-        <line x1="0" y1="5" x2="300" y2="5" stroke="#C13584" strokeWidth="0.7" strokeOpacity={isActive ? 0.8 : 0.3} />
+        <line x1="0" y1="5" x2="300" y2="5" stroke="var(--accent)" strokeWidth="0.7" strokeOpacity={isActive ? 0.8 : 0.3} />
       </svg>
 
       {/* Body */}
@@ -450,7 +450,7 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
         {/* Brand */}
         <span
           className="relative text-[11px] tracking-[0.4em] font-semibold uppercase transition-colors duration-300"
-          style={{ color: isActive ? 'rgba(232,160,201,0.9)' : 'rgba(193,53,132,0.38)' }}
+          style={{ color: isActive ? 'rgba(var(--accent-light-rgb),0.9)' : 'rgba(var(--accent-rgb),0.38)' }}
         >
           Naira Tap
         </span>
@@ -460,8 +460,8 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
           <div
             className="w-2 h-2 rounded-full transition-all duration-300"
             style={{
-              background: isActive ? '#C13584' : '#2E1E2A',
-              boxShadow: isActive ? '0 0 8px rgba(193,53,132,0.8)' : 'none',
+              background: isActive ? 'var(--accent)' : '#2E1E2A',
+              boxShadow: isActive ? '0 0 8px rgba(var(--accent-rgb),0.8)' : 'none',
             }}
           />
         </div>
