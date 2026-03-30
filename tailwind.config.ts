@@ -15,9 +15,9 @@ const config: Config = {
         'naira-card':    '#1E1520',  // card backgrounds
 
         // ── Primary accent — Brand magenta #C13584
-        'naira-gold':       '#C13584',  // primary accent (brand magenta)
-        'naira-gold-light': '#E8A0C9',  // light pink
-        'naira-gold-dark':  '#9B2A6A',  // deeper magenta for hover states
+        'naira-gold':       '#ff2ba3',  // primary accent (brand magenta)
+        'naira-gold-light': '#ff80c8',  // light pink
+        'naira-gold-dark':  '#cc2282',  // deeper magenta for hover states
 
         // ── Warm palette tones — appear on paper / highlight elements
         'naira-warm':   '#F5EFE6',  // warm beige
