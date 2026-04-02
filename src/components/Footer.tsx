@@ -39,7 +39,7 @@ const footerLinks = {
 }
 
 function ContactSection() {
-  const [form, setForm] = useState({ businessName: '', city: '', pincode: '', phone: '' })
+  const [form, setForm] = useState({ name: '', phone: '' })
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +56,7 @@ function ContactSection() {
         body: JSON.stringify(form),
       })
       if (!res.ok) throw new Error()
-      posthog.capture('demo_request_submitted', { city: form.city, pincode: form.pincode })
+      posthog.capture('demo_request_submitted', { name: form.name })
       setStatus('success')
     } catch {
       setStatus('error')
@@ -89,33 +89,13 @@ function ContactSection() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3 text-left">
             <input
-              name="businessName"
-              value={form.businessName}
+              name="name"
+              value={form.name}
               onChange={handleChange}
-              placeholder="Business Name"
+              placeholder="Your Name"
               required
               className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
             />
-            <div className="grid grid-cols-2 gap-3">
-              <input
-                name="city"
-                value={form.city}
-                onChange={handleChange}
-                placeholder="City"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
-              />
-              <input
-                name="pincode"
-                value={form.pincode}
-                onChange={handleChange}
-                placeholder="Pincode"
-                required
-                pattern="[0-9]{6}"
-                title="Enter a 6-digit pincode"
-                className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
-              />
-            </div>
             <input
               name="phone"
               value={form.phone}

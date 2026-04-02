@@ -21,8 +21,9 @@ const products = [
     ],
     cta: 'Request POS Demo',
     ctaHref: '#contact',
-    accent: '#D4A07A',         // warm sand accent
-    gradient: 'from-amber-500/10 to-transparent',
+    accent: '#10B981',                        // green — matches Pricing
+    borderColor: 'rgba(16,185,129,0.35)',
+    glowColor: 'rgba(16,185,129,0.07)',
   },
   {
     id: 'tap',
@@ -41,8 +42,9 @@ const products = [
     ],
     cta: 'See Tap in Action',
     ctaHref: '#tap-demo',
-    accent: 'var(--accent)',    // primary brand magenta
-    gradient: 'from-blue-500/10 to-transparent',
+    accent: 'var(--accent)',                  // pink — matches Pricing
+    borderColor: 'rgba(255,43,163,0.45)',
+    glowColor: 'rgba(255,43,163,0.08)',
     featured: true,
   },
   {
@@ -62,8 +64,9 @@ const products = [
     ],
     cta: 'Explore Growth Tools',
     ctaHref: '#contact',
-    accent: '#D465A8',         // lighter pink — harmonises with palette
-    gradient: 'from-blue-400/10 to-transparent',
+    accent: '#8B5CF6',                        // purple — matches Pricing
+    borderColor: 'rgba(139,92,246,0.35)',
+    glowColor: 'rgba(139,92,246,0.07)',
   },
 ]
 
@@ -115,20 +118,21 @@ export default function Products() {
             return (
               <motion.div
                 key={product.id}
-                className={`relative rounded-2xl border overflow-hidden group ${
-                  product.featured
-                    ? 'border-naira-gold/40 bg-gradient-to-b from-naira-gold/8 to-naira-surface'
-                    : 'border-naira-border bg-naira-surface hover:border-naira-border/80'
-                }`}
+                className="relative rounded-2xl overflow-hidden group bg-naira-surface"
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
-                  boxShadow: product.featured
-                    ? '0 0 40px rgba(var(--accent-rgb),0.08)'
-                    : 'none',
+                  border: `1px solid ${product.borderColor}`,
+                  boxShadow: `0 0 40px ${product.glowColor}`,
                 }}
               >
+                {/* Top accent gradient line */}
+                <div
+                  className="h-0.5 w-full"
+                  style={{ background: `linear-gradient(90deg, transparent, ${product.accent}, transparent)` }}
+                />
+
                 {/* Featured badge */}
                 {product.featured && (
                   <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-naira-gold text-naira-black text-[10px] font-bold tracking-wider uppercase">
