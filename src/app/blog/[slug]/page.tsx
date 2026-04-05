@@ -61,7 +61,8 @@ const portableTextComponents = {
     ),
   },
   types: {
-    image: ({ value }: { value: { asset: { _ref: string }; alt?: string; caption?: string } }) => {
+    image: ({ value }: { value: { asset?: { _ref: string }; alt?: string; caption?: string } }) => {
+      if (!value?.asset?._ref) return null
       const src = urlFor(value as Parameters<typeof urlFor>[0]).width(1200).url()
       return (
         <figure className="my-8">
