@@ -168,6 +168,42 @@ export default async function BlogPostPage({ params }: Props) {
             />
           </article>
 
+          {/* FAQs */}
+          {post.faqs && post.faqs.length > 0 && (
+            <section className="mt-14">
+              <h2
+                className="text-2xl font-bold text-naira-text mb-6"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-3">
+                {post.faqs.map((faq) => (
+                  <details
+                    key={faq._key}
+                    className="group rounded-xl border border-naira-border bg-naira-surface overflow-hidden"
+                  >
+                    <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none text-naira-text font-medium hover:text-naira-gold transition-colors select-none">
+                      <span>{faq.question}</span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        className="shrink-0 transition-transform duration-200 group-open:rotate-180"
+                      >
+                        <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </summary>
+                    <div className="px-5 pb-4 text-naira-text-muted text-sm leading-relaxed border-t border-naira-border pt-3">
+                      {faq.answer}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Back link */}
           <div className="mt-12 pt-8 border-t border-naira-border">
             <Link

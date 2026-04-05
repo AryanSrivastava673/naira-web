@@ -32,6 +32,12 @@ export type PortableTextBlock = {
   [key: string]: unknown
 }
 
+export interface FAQ {
+  _key: string
+  question: string
+  answer: string
+}
+
 export interface Post {
   _id: string
   headline: string
@@ -42,4 +48,5 @@ export interface Post {
   publishedAt: string
   categories?: string[]
   body: PortableTextBlock[]
+  faqs?: FAQ[]
 }

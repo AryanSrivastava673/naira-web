@@ -50,7 +50,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       author-> { _id, name, slug, photo { ..., asset-> }, role },
       publishedAt,
       categories,
-      body
+      body,
+      faqs[] { _key, question, answer }
     }`,
     { slug },
   )
