@@ -12,7 +12,7 @@ function formatDate(dateStr: string) {
 }
 
 function BlogCard({ post }: { post: Post }) {
-  const imageUrl = urlFor(post.headerImage).width(800).height(450).url()
+  const imageUrl = post.headerImage ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
     <Link
@@ -22,12 +22,14 @@ function BlogCard({ post }: { post: Post }) {
     >
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-naira-card">
-        <Image
-          src={imageUrl}
-          alt={post.headerImage.alt ?? post.headline}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={post.headerImage?.alt ?? post.headline}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-naira-surface/60 to-transparent" />
       </div>

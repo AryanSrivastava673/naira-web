@@ -19,7 +19,7 @@ function formatDate(dateStr: string) {
 }
 
 function PostCard({ post }: { post: Post }) {
-  const imageUrl = urlFor(post.headerImage).width(800).height(450).url()
+  const imageUrl = post.headerImage ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
     <Link
@@ -27,12 +27,14 @@ function PostCard({ post }: { post: Post }) {
       className="group flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
     >
       <div className="relative h-52 bg-naira-card">
-        <Image
-          src={imageUrl}
-          alt={post.headerImage.alt ?? post.headline}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={post.headerImage?.alt ?? post.headline}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-naira-surface/60 to-transparent" />
       </div>
       <div className="flex flex-col flex-1 p-6">

@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getPostBySlug(params.slug)
   if (!post) notFound()
 
-  const headerImageUrl = urlFor(post.headerImage).width(1600).height(900).url()
+  const headerImageUrl = post.headerImage ? urlFor(post.headerImage).width(1600).height(900).url() : null
 
   return (
     <>
@@ -96,13 +96,15 @@ export default async function BlogPostPage({ params }: Props) {
       <main className="min-h-screen bg-naira-black">
         {/* Header image */}
         <div className="relative h-[55vh] min-h-[380px] bg-naira-card">
-          <Image
-            src={headerImageUrl}
-            alt={post.headerImage.alt ?? post.headline}
-            fill
-            priority
-            className="object-cover"
-          />
+          {headerImageUrl ? (
+            <Image
+              src={headerImageUrl}
+              alt={post.headerImage?.alt ?? post.headline}
+              fill
+              priority
+              className="object-cover"
+            />
+          ) : null}
           <div className="absolute inset-0 bg-gradient-to-t from-naira-black via-naira-black/40 to-transparent" />
         </div>
 
