@@ -60,7 +60,6 @@ function PostCard({ post }: { post: Post }) {
           {post.author?.slug?.current ? (
             <Link
               href={`/author/${post.author.slug.current}`}
-              onClick={(e) => e.stopPropagation()}
               className="hover:text-naira-gold transition-colors"
             >
               {post.author.name ?? 'Naira Team'}
