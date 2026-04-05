@@ -37,7 +37,7 @@ function formatDate(dateStr: string) {
 }
 
 function PostCard({ post }: { post: Post }) {
-  const imageUrl = post.headerImage ? urlFor(post.headerImage).width(800).height(450).url() : null
+  const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
   return (
     <Link
       href={`/blog/${post.slug.current}`}
@@ -126,7 +126,7 @@ export default async function AuthorPage({ params }: Props) {
                   className="w-36 h-36 rounded-full overflow-hidden border-2 border-naira-gold/40"
                   style={{ boxShadow: '0 0 32px rgba(245,158,11,0.15)' }}
                 >
-                  {author.photo ? (
+                  {author.photo?.asset ? (
                     <Image
                       src={urlFor(author.photo).width(288).height(288).url()}
                       alt={author.name}

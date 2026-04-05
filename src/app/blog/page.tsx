@@ -19,7 +19,7 @@ function formatDate(dateStr: string) {
 }
 
 function PostCard({ post }: { post: Post }) {
-  const imageUrl = post.headerImage ? urlFor(post.headerImage).width(800).height(450).url() : null
+  const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
     <Link

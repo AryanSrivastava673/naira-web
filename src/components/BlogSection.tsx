@@ -12,7 +12,7 @@ function formatDate(dateStr: string) {
 }
 
 function BlogCard({ post }: { post: Post }) {
-  const imageUrl = post.headerImage ? urlFor(post.headerImage).width(800).height(450).url() : null
+  const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
     <Link
@@ -69,7 +69,7 @@ function BlogCard({ post }: { post: Post }) {
         <div className="flex items-center justify-between pt-3 border-t border-naira-border">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-full bg-naira-card border border-naira-border overflow-hidden shrink-0">
-              {post.author?.photo ? (
+              {post.author?.photo?.asset ? (
                 <Image
                   src={urlFor(post.author.photo).width(48).height(48).url()}
                   alt={post.author.name}

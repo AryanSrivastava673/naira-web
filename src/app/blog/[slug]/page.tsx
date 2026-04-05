@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getPostBySlug(params.slug)
   if (!post) notFound()
 
-  const headerImageUrl = post.headerImage ? urlFor(post.headerImage).width(1600).height(900).url() : null
+  const headerImageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(1600).height(900).url() : null
 
   return (
     <>
@@ -134,7 +134,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="flex items-center gap-4 pb-6 mb-8 border-b border-naira-border text-sm text-naira-muted">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-naira-card border border-naira-border overflow-hidden shrink-0">
-                {post.author?.photo ? (
+                {post.author?.photo?.asset ? (
                   <Image
                     src={urlFor(post.author.photo).width(64).height(64).url()}
                     alt={post.author.name}
