@@ -18,8 +18,12 @@ export interface Author {
   _id: string
   name: string
   slug: { current: string }
-  image?: SanityImage
-  bio?: PortableTextBlock[]
+  photo?: SanityImage
+  role?: string
+  bio?: string
+  twitter?: string
+  linkedin?: string
+  website?: string
 }
 
 export type PortableTextBlock = {

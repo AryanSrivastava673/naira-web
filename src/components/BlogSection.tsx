@@ -66,10 +66,10 @@ function BlogCard({ post }: { post: Post }) {
         {/* Meta */}
         <div className="flex items-center justify-between pt-3 border-t border-naira-border">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-naira-card border border-naira-border overflow-hidden">
-              {post.author?.image ? (
+            <div className="w-6 h-6 rounded-full bg-naira-card border border-naira-border overflow-hidden shrink-0">
+              {post.author?.photo ? (
                 <Image
-                  src={urlFor(post.author.image).width(48).height(48).url()}
+                  src={urlFor(post.author.photo).width(48).height(48).url()}
                   alt={post.author.name}
                   width={24}
                   height={24}
@@ -83,7 +83,17 @@ function BlogCard({ post }: { post: Post }) {
                 </div>
               )}
             </div>
-            <span className="text-naira-muted text-xs">{post.author?.name ?? 'Naira Team'}</span>
+            {post.author?.slug?.current ? (
+              <Link
+                href={`/author/${post.author.slug.current}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-naira-muted text-xs hover:text-naira-gold transition-colors"
+              >
+                {post.author.name ?? 'Naira Team'}
+              </Link>
+            ) : (
+              <span className="text-naira-muted text-xs">{post.author?.name ?? 'Naira Team'}</span>
+            )}
           </div>
           <span className="text-naira-muted text-xs">{formatDate(post.publishedAt)}</span>
         </div>

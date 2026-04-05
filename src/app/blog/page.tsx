@@ -57,7 +57,17 @@ function PostCard({ post }: { post: Post }) {
           </p>
         )}
         <div className="flex items-center justify-between pt-3 border-t border-naira-border text-xs text-naira-muted">
-          <span>{post.author?.name ?? 'Naira Team'}</span>
+          {post.author?.slug?.current ? (
+            <Link
+              href={`/author/${post.author.slug.current}`}
+              onClick={(e) => e.stopPropagation()}
+              className="hover:text-naira-gold transition-colors"
+            >
+              {post.author.name ?? 'Naira Team'}
+            </Link>
+          ) : (
+            <span>{post.author?.name ?? 'Naira Team'}</span>
+          )}
           <span>{formatDate(post.publishedAt)}</span>
         </div>
       </div>

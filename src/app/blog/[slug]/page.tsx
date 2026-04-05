@@ -65,9 +65,8 @@ const portableTextComponents = {
       const src = urlFor(value as Parameters<typeof urlFor>[0]).width(1200).url()
       return (
         <figure className="my-8">
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden">
-            <Image src={src} alt={value.alt ?? ''} fill className="object-cover" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={value.alt ?? ''} className="w-full h-auto rounded-xl" loading="lazy" />
           {value.caption && (
             <figcaption className="text-center text-xs text-naira-muted mt-2">{value.caption}</figcaption>
           )}
@@ -130,7 +129,30 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Meta */}
           <div className="flex items-center gap-4 pb-6 mb-8 border-b border-naira-border text-sm text-naira-muted">
-            <span>{post.author?.name ?? 'Naira Team'}</span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-naira-card border border-naira-border overflow-hidden shrink-0">
+                {post.author?.photo ? (
+                  <Image
+                    src={urlFor(post.author.photo).width(64).height(64).url()}
+                    alt={post.author.name}
+                    width={32}
+                    height={32}
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-naira-gold/20">
+                    <span className="text-[10px] text-naira-gold font-bold">{post.author?.name?.[0] ?? 'N'}</span>
+                  </div>
+                )}
+              </div>
+              {post.author?.slug?.current ? (
+                <Link href={`/author/${post.author.slug.current}`} className="hover:text-naira-gold transition-colors">
+                  {post.author.name}
+                </Link>
+              ) : (
+                <span>{post.author?.name ?? 'Naira Team'}</span>
+              )}
+            </div>
             <span>·</span>
             <span>{formatDate(post.publishedAt)}</span>
           </div>
