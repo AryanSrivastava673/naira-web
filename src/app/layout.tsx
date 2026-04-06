@@ -30,7 +30,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-naira-black text-naira-text antialiased">
+      <body className="bg-naira-black text-naira-text antialiased" suppressHydrationWarning>
         <Suspense fallback={null}>
           <PostHogProvider>{children}</PostHogProvider>
         </Suspense>

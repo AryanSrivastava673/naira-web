@@ -15,11 +15,13 @@ function BlogCard({ post }: { post: Post }) {
   const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
-    <Link
-      href={`/blog/${post.slug.current}`}
-      className="group flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
+    <div
+      className="group relative flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
       style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
     >
+      {/* Stretched link covers the whole card */}
+      <Link href={`/blog/${post.slug.current}`} className="absolute inset-0 z-0" aria-label={post.headline} />
+
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-naira-card">
         {imageUrl && (
@@ -35,7 +37,7 @@ function BlogCard({ post }: { post: Post }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-5">
+      <div className="relative z-10 flex flex-col flex-1 p-5">
         {/* Categories */}
         {post.categories && post.categories.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
@@ -88,7 +90,7 @@ function BlogCard({ post }: { post: Post }) {
             {post.author?.slug?.current ? (
               <Link
                 href={`/author/${post.author.slug.current}`}
-                className="text-naira-muted text-xs hover:text-naira-gold transition-colors"
+                className="relative z-10 text-naira-muted text-xs hover:text-naira-gold transition-colors"
               >
                 {post.author.name ?? 'Naira Team'}
               </Link>
@@ -99,7 +101,7 @@ function BlogCard({ post }: { post: Post }) {
           <span className="text-naira-muted text-xs">{formatDate(post.publishedAt)}</span>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 
