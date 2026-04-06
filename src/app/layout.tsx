@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     'NFC-powered digital menus, smart POS, and growth tools for modern restaurants. Say goodbye to paper menus.',
   keywords: 'NFC menu, digital menu, restaurant POS, QR menu, restaurant management',
+  icons: {
+    icon: '/icon.png',
+  },
   openGraph: {
     title: 'Naira Menus',
     description: 'NFC-powered digital menus, smart POS, and growth tools for modern restaurants.',
