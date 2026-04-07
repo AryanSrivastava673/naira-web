@@ -20,7 +20,7 @@ function BlogCard({ post }: { post: Post }) {
       style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
     >
       {/* Stretched link covers the whole card */}
-      <Link href={`/blog/${post.slug.current}`} className="absolute inset-0 z-0" aria-label={post.headline} />
+      <Link href={`/blog/${post.slug.current}`} className="absolute inset-0 z-10" aria-label={post.headline} />
 
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-naira-card">
@@ -37,7 +37,7 @@ function BlogCard({ post }: { post: Post }) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col flex-1 p-5">
+      <div className="relative flex flex-col flex-1 p-5">
         {/* Categories */}
         {post.categories && post.categories.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
@@ -90,7 +90,7 @@ function BlogCard({ post }: { post: Post }) {
             {post.author?.slug?.current ? (
               <Link
                 href={`/author/${post.author.slug.current}`}
-                className="relative z-10 text-naira-muted text-xs hover:text-naira-gold transition-colors"
+                className="relative z-20 text-naira-muted text-xs hover:text-naira-gold transition-colors"
               >
                 {post.author.name ?? 'Naira Team'}
               </Link>
