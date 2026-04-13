@@ -14,9 +14,31 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const author = await getAuthorBySlug(params.slug)
   if (!author) return { title: 'Author Not Found — Naira Menus' }
+
+  const photoUrl = author.photo?.asset
+    ? urlFor(author.photo).width(400).height(400).url()
+    : null
+  const description = author.bio ?? `Read posts by ${author.name} on the Naira Menus blog.`
+
   return {
     title: `${author.name} — Naira Menus`,
-    description: author.bio ?? `Posts by ${author.name}`,
+    description,
+    alternates: {
+      canonical: `https://nairamenus.in/author/${author.slug.current}`,
+    },
+    openGraph: {
+      title: `${author.name} — Naira Menus`,
+      description,
+      type: 'profile',
+      url: `https://nairamenus.in/author/${author.slug.current}`,
+      images: photoUrl ? [{ url: photoUrl, width: 400, height: 400, alt: author.name }] : [],
+    },
+    twitter: {
+      card: 'summary',
+      title: `${author.name} — Naira Menus`,
+      description,
+      images: photoUrl ? [photoUrl] : [],
+    },
   }
 }
 
