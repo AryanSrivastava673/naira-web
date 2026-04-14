@@ -74,6 +74,18 @@ export async function getAuthorBySlug(slug: string): Promise<Author | null> {
   )
 }
 
+export async function getPostsForSitemap(): Promise<{ slug: string; updatedAt: string }[]> {
+  return client.fetch(
+    `*[_type == "post" && defined(slug.current)] { "slug": slug.current, "updatedAt": _updatedAt }`,
+  )
+}
+
+export async function getAuthorsForSitemap(): Promise<{ slug: string; updatedAt: string }[]> {
+  return client.fetch(
+    `*[_type == "author" && defined(slug.current)] { "slug": slug.current, "updatedAt": _updatedAt }`,
+  )
+}
+
 export async function getAuthorPosts(authorId: string): Promise<Post[]> {
   return client.fetch(
     `*[_type == "post" && author._ref == $authorId] | order(publishedAt desc) {

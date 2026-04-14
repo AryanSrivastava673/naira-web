@@ -8,6 +8,20 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'Blog — Naira Menus',
   description: 'Insights, updates, and stories from the Naira Menus team.',
+  alternates: {
+    canonical: 'https://nairamenus.in/blog',
+  },
+  openGraph: {
+    title: 'Blog — Naira Menus',
+    description: 'Insights, updates, and stories from the Naira Menus team.',
+    type: 'website',
+    url: 'https://nairamenus.in/blog',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Blog — Naira Menus',
+    description: 'Insights, updates, and stories from the Naira Menus team.',
+  },
 }
 
 function formatDate(dateStr: string) {
