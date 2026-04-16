@@ -74,6 +74,38 @@ src/
     └── types.ts        # TypeScript interfaces
 ```
 
+## Structured Data (JSON-LD)
+
+The site includes schema.org structured data for SEO rich results, injected via `<script type="application/ld+json">`.
+
+### Root Layout (`src/app/layout.tsx`)
+
+Applied site-wide on every page:
+
+| Schema | Purpose |
+|---|---|
+| `Organization` | Company name, URL, logo, description. Linked via `@id` so other schemas can reference it. |
+| `WebSite` | Site identity and publisher reference back to the Organization. |
+
+### Blog Post (`src/app/blog/[slug]/page.tsx`)
+
+Generated dynamically from Sanity post data:
+
+| Schema | Purpose |
+|---|---|
+| `Article` | Headline, author, publisher, publish date, featured image, excerpt. Enables article rich results. |
+| `FAQPage` | Conditionally included when a post has FAQs. Each Q&A is a `Question` + `AcceptedAnswer` pair. Enables FAQ rich results in Google. |
+
+### Blog Listing (`src/app/blog/page.tsx`)
+
+| Schema | Purpose |
+|---|---|
+| `CollectionPage` | Page metadata with an `ItemList` of all posts (position, URL, name). Helps search engines understand the blog index structure. |
+
+### Validation
+
+Use [Google's Rich Results Test](https://search.google.com/test/rich-results) or the [Schema Markup Validator](https://validator.schema.org/) to verify after deploying.
+
 ## Products
 
 | Product | Description |

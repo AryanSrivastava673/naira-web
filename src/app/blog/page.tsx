@@ -98,8 +98,34 @@ export default async function BlogPage() {
     // fail silently
   }
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog — Naira Menus',
+    description: 'Insights, updates, and stories from the Naira Menus team.',
+    url: 'https://nairamenus.in/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Naira Menus',
+      logo: { '@type': 'ImageObject', url: 'https://nairamenus.in/icon.png' },
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `https://nairamenus.in/blog/${post.slug.current}`,
+        name: post.headline,
+      })),
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-naira-black pt-24 pb-20 px-6">
         <div className="max-w-7xl mx-auto">

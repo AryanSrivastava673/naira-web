@@ -114,8 +114,50 @@ export default async function BlogPostPage({ params }: Props) {
 
   const headerImageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(1600).height(900).url() : null
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.headline,
+    description: post.excerpt,
+    url: `https://nairamenus.in/blog/${post.slug.current}`,
+    datePublished: post.publishedAt,
+    ...(headerImageUrl && { image: headerImageUrl }),
+    author: {
+      '@type': 'Person',
+      name: post.author?.name ?? 'Naira Team',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Naira Menus',
+      logo: { '@type': 'ImageObject', url: 'https://nairamenus.in/icon.png' },
+    },
+  }
+
+  const faqSchema =
+    post.faqs && post.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        }
+      : null
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Navbar />
       <main className="min-h-screen bg-naira-black">
         {/* Header image */}

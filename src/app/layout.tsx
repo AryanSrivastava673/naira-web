@@ -27,6 +27,33 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  '@id': 'https://nairamenus.in/#organization',
+                  name: 'Naira Menus',
+                  url: 'https://nairamenus.in',
+                  logo: 'https://nairamenus.in/icon.png',
+                  description:
+                    'NFC-powered digital menus for Indian restaurants. Replace paper menus with smart QR/NFC menus, manage orders, and grow your business.',
+                  sameAs: [],
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://nairamenus.in/#website',
+                  url: 'https://nairamenus.in',
+                  name: 'Naira Menus',
+                  publisher: { '@id': 'https://nairamenus.in/#organization' },
+                },
+              ],
+            }),
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
