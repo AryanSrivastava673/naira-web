@@ -7,14 +7,14 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Naira Menus — The Future of Restaurant Operations',
   description:
-    'NFC-powered digital menus, smart POS, and growth tools for modern restaurants. Say goodbye to paper menus.',
+    'NFC-powered digital menus for Indian restaurants. Replace paper menus with smart QR/NFC menus, manage orders, and grow your business with Naira.',
   keywords: 'NFC menu, digital menu, restaurant POS, QR menu, restaurant management',
   icons: {
     icon: '/icon.png',
   },
   openGraph: {
     title: 'Naira Menus',
-    description: 'NFC-powered digital menus, smart POS, and growth tools for modern restaurants.',
+    description: 'NFC-powered digital menus for Indian restaurants. Replace paper menus with smart QR/NFC menus, manage orders, and grow your business with Naira.',
     type: 'website',
   },
 }
