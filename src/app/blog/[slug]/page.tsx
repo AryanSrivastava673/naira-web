@@ -5,6 +5,7 @@ import { PortableText } from '@portabletext/react'
 import { getPostBySlug, getPosts, urlFor } from '@/lib/sanity'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import BlogInteractions from '@/components/BlogInteractions'
 import type { Metadata } from 'next'
 import type { PortableTextBlock } from '@/lib/types'
 
@@ -268,6 +269,9 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             </section>
           )}
+
+          {/* Likes & comments */}
+          <BlogInteractions slug={post.slug.current} />
 
           {/* Back link */}
           <div className="mt-12 pt-8 border-t border-naira-border">
