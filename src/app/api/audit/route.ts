@@ -2,6 +2,22 @@ import { NextResponse } from 'next/server'
 
 export const maxDuration = 30
 
+async function fetchPageSpeed(apiUrl: string): Promise<number | null> {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 22000)
+  try {
+    const res = await fetch(apiUrl, { signal: controller.signal })
+    clearTimeout(timeout)
+    if (!res.ok) return null
+    const data = await res.json()
+    const raw = data?.lighthouseResult?.categories?.performance?.score
+    return raw !== undefined && raw !== null ? Math.round((raw as number) * 100) : null
+  } catch {
+    clearTimeout(timeout)
+    return null
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json()
@@ -26,26 +42,10 @@ export async function POST(req: Request) {
     const keyParam = key ? `&key=${key}` : ''
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile${keyParam}`
 
-    async function fetchPageSpeed(): Promise<number | null> {
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 22000)
-      try {
-        const res = await fetch(apiUrl, { signal: controller.signal })
-        clearTimeout(timeout)
-        if (!res.ok) return null
-        const data = await res.json()
-        const raw = data?.lighthouseResult?.categories?.performance?.score
-        return raw !== undefined && raw !== null ? Math.round((raw as number) * 100) : null
-      } catch {
-        clearTimeout(timeout)
-        return null
-      }
-    }
-
-    let pageSpeedScore = await fetchPageSpeed()
+    let pageSpeedScore = await fetchPageSpeed(apiUrl)
     if (pageSpeedScore === null) {
       await new Promise(r => setTimeout(r, 2000))
-      pageSpeedScore = await fetchPageSpeed()
+      pageSpeedScore = await fetchPageSpeed(apiUrl)
     }
 
     return NextResponse.json({ pageSpeedScore, url })
