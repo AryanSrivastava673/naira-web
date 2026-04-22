@@ -12,28 +12,32 @@ function formatDate(dateStr: string) {
 }
 
 function BlogCard({ post }: { post: Post }) {
-  const imageUrl = urlFor(post.headerImage).width(800).height(450).url()
+  const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
-    <Link
-      href={`/blog/${post.slug.current}`}
-      className="group flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
+    <div
+      className="group relative flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
       style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
     >
+      {/* Stretched link covers the whole card */}
+      <Link href={`/blog/${post.slug.current}`} className="absolute inset-0 z-10" aria-label={post.headline} />
+
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-naira-card">
-        <Image
-          src={imageUrl}
-          alt={post.headerImage.alt ?? post.headline}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={post.headerImage?.alt ?? post.headline}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-naira-surface/60 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-5">
+      <div className="relative flex flex-col flex-1 p-5">
         {/* Categories */}
         {post.categories && post.categories.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
@@ -66,10 +70,10 @@ function BlogCard({ post }: { post: Post }) {
         {/* Meta */}
         <div className="flex items-center justify-between pt-3 border-t border-naira-border">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-naira-card border border-naira-border overflow-hidden">
-              {post.author?.image ? (
+            <div className="w-6 h-6 rounded-full bg-naira-card border border-naira-border overflow-hidden shrink-0">
+              {post.author?.photo?.asset ? (
                 <Image
-                  src={urlFor(post.author.image).width(48).height(48).url()}
+                  src={urlFor(post.author.photo).width(48).height(48).url()}
                   alt={post.author.name}
                   width={24}
                   height={24}
@@ -83,12 +87,21 @@ function BlogCard({ post }: { post: Post }) {
                 </div>
               )}
             </div>
-            <span className="text-naira-muted text-xs">{post.author?.name ?? 'Naira Team'}</span>
+            {post.author?.slug?.current ? (
+              <Link
+                href={`/author/${post.author.slug.current}`}
+                className="relative z-20 text-naira-muted text-xs hover:text-naira-gold transition-colors"
+              >
+                {post.author.name ?? 'Naira Team'}
+              </Link>
+            ) : (
+              <span className="text-naira-muted text-xs">{post.author?.name ?? 'Naira Team'}</span>
+            )}
           </div>
           <span className="text-naira-muted text-xs">{formatDate(post.publishedAt)}</span>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

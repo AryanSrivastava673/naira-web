@@ -20,6 +20,8 @@ const plans = [
       'NFC hardware included',
     ],
     accent: '#10B981',
+    borderColor: 'rgba(16,185,129,0.35)',
+    glowColor: 'rgba(16,185,129,0.07)',
     order: 1,
   },
   {
@@ -35,6 +37,8 @@ const plans = [
       'Includes Naira Tap',
     ],
     accent: 'var(--accent)',
+    borderColor: 'rgba(255,43,163,0.45)',
+    glowColor: 'rgba(255,43,163,0.08)',
     featured: true,
     order: 2,
   },
@@ -51,6 +55,8 @@ const plans = [
       'Monthly reports',
     ],
     accent: '#8B5CF6',
+    borderColor: 'rgba(139,92,246,0.35)',
+    glowColor: 'rgba(139,92,246,0.07)',
     order: 3,
   },
 ]
@@ -156,22 +162,17 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
-              className={`relative rounded-2xl border overflow-hidden ${
-                plan.featured
-                  ? 'border-naira-gold/50'
-                  : 'border-naira-border'
-              } bg-naira-surface`}
+              className="relative rounded-2xl overflow-hidden bg-naira-surface"
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               style={{
-                boxShadow: plan.featured ? '0 0 40px rgba(var(--accent-rgb),0.08)' : 'none',
+                border: `1px solid ${plan.borderColor}`,
+                boxShadow: `0 0 40px ${plan.glowColor}`,
               }}
             >
-              {/* Featured highlight */}
-              {plan.featured && (
-                <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, transparent, ${plan.accent}, transparent)` }} />
-              )}
+              {/* Top accent gradient line */}
+              <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, transparent, ${plan.accent}, transparent)` }} />
 
               <div className="p-7">
                 {/* Plan name */}

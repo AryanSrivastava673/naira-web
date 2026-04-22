@@ -8,6 +8,20 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'Blog — Naira Menus',
   description: 'Insights, updates, and stories from the Naira Menus team.',
+  alternates: {
+    canonical: 'https://nairamenus.in/blog',
+  },
+  openGraph: {
+    title: 'Blog — Naira Menus',
+    description: 'Insights, updates, and stories from the Naira Menus team.',
+    type: 'website',
+    url: 'https://nairamenus.in/blog',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Blog — Naira Menus',
+    description: 'Insights, updates, and stories from the Naira Menus team.',
+  },
 }
 
 function formatDate(dateStr: string) {
@@ -19,7 +33,7 @@ function formatDate(dateStr: string) {
 }
 
 function PostCard({ post }: { post: Post }) {
-  const imageUrl = urlFor(post.headerImage).width(800).height(450).url()
+  const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
     <Link
@@ -27,12 +41,14 @@ function PostCard({ post }: { post: Post }) {
       className="group flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
     >
       <div className="relative h-52 bg-naira-card">
-        <Image
-          src={imageUrl}
-          alt={post.headerImage.alt ?? post.headline}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={post.headerImage?.alt ?? post.headline}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-naira-surface/60 to-transparent" />
       </div>
       <div className="flex flex-col flex-1 p-6">
@@ -57,7 +73,16 @@ function PostCard({ post }: { post: Post }) {
           </p>
         )}
         <div className="flex items-center justify-between pt-3 border-t border-naira-border text-xs text-naira-muted">
-          <span>{post.author?.name ?? 'Naira Team'}</span>
+          {post.author?.slug?.current ? (
+            <Link
+              href={`/author/${post.author.slug.current}`}
+              className="hover:text-naira-gold transition-colors"
+            >
+              {post.author.name ?? 'Naira Team'}
+            </Link>
+          ) : (
+            <span>{post.author?.name ?? 'Naira Team'}</span>
+          )}
           <span>{formatDate(post.publishedAt)}</span>
         </div>
       </div>
@@ -73,8 +98,34 @@ export default async function BlogPage() {
     // fail silently
   }
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog — Naira Menus',
+    description: 'Insights, updates, and stories from the Naira Menus team.',
+    url: 'https://nairamenus.in/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Naira Menus',
+      logo: { '@type': 'ImageObject', url: 'https://nairamenus.in/icon.png' },
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `https://nairamenus.in/blog/${post.slug.current}`,
+        name: post.headline,
+      })),
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-naira-black pt-24 pb-20 px-6">
         <div className="max-w-7xl mx-auto">

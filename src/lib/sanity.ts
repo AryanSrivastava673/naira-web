@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
-import type { SanityImage, Post } from './types'
+import type { SanityImage, Post, Author } from './types'
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -32,7 +32,7 @@ export async function getPosts(): Promise<Post[]> {
       slug,
       headerImage { ..., asset-> },
       excerpt,
-      author-> { _id, name, slug, image { ..., asset-> } },
+      author-> { _id, name, slug, photo { ..., asset-> }, role },
       publishedAt,
       categories
     }`,
@@ -47,11 +47,57 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       slug,
       headerImage { ..., asset-> },
       excerpt,
-      author-> { _id, name, slug, image { ..., asset-> } },
+      author-> { _id, name, slug, photo { ..., asset-> }, role },
       publishedAt,
       categories,
-      body
+      body,
+      faqs[] { _key, question, answer }
     }`,
     { slug },
+  )
+}
+
+export async function getAuthorBySlug(slug: string): Promise<Author | null> {
+  return client.fetch(
+    `*[_type == "author" && slug.current == $slug][0] {
+      _id,
+      name,
+      slug,
+      photo { ..., asset-> },
+      role,
+      bio,
+      twitter,
+      linkedin,
+      website
+    }`,
+    { slug },
+  )
+}
+
+export async function getPostsForSitemap(): Promise<{ slug: string; updatedAt: string }[]> {
+  return client.fetch(
+    `*[_type == "post" && defined(slug.current)] { "slug": slug.current, "updatedAt": _updatedAt }`,
+  )
+}
+
+export async function getAuthorsForSitemap(): Promise<{ slug: string; updatedAt: string }[]> {
+  return client.fetch(
+    `*[_type == "author" && defined(slug.current)] { "slug": slug.current, "updatedAt": _updatedAt }`,
+  )
+}
+
+export async function getAuthorPosts(authorId: string): Promise<Post[]> {
+  return client.fetch(
+    `*[_type == "post" && author._ref == $authorId] | order(publishedAt desc) {
+      _id,
+      headline,
+      slug,
+      headerImage { ..., asset-> },
+      excerpt,
+      author-> { _id, name, slug, photo { ..., asset-> }, role },
+      publishedAt,
+      categories
+    }`,
+    { authorId },
   )
 }
