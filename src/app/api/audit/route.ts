@@ -22,30 +22,33 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'URL must start with http:// or https://' }, { status: 400 })
     }
 
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 25000)
+    const key = process.env.GOOGLE_PAGESPEED_API_KEY
+    const keyParam = key ? `&key=${key}` : ''
+    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile${keyParam}`
 
-    try {
-      const key = process.env.GOOGLE_PAGESPEED_API_KEY
-      const keyParam = key ? `&key=${key}` : ''
-      const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile${keyParam}`
-      const res = await fetch(apiUrl, { signal: controller.signal })
-      clearTimeout(timeout)
-
-      if (!res.ok) {
-        return NextResponse.json({ pageSpeedScore: null, error: 'Could not fetch page speed' })
+    async function fetchPageSpeed(): Promise<number | null> {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 22000)
+      try {
+        const res = await fetch(apiUrl, { signal: controller.signal })
+        clearTimeout(timeout)
+        if (!res.ok) return null
+        const data = await res.json()
+        const raw = data?.lighthouseResult?.categories?.performance?.score
+        return raw !== undefined && raw !== null ? Math.round((raw as number) * 100) : null
+      } catch {
+        clearTimeout(timeout)
+        return null
       }
-
-      const data = await res.json()
-      const raw = data?.lighthouseResult?.categories?.performance?.score
-      const pageSpeedScore =
-        raw !== undefined && raw !== null ? Math.round((raw as number) * 100) : null
-
-      return NextResponse.json({ pageSpeedScore, url })
-    } catch {
-      clearTimeout(timeout)
-      return NextResponse.json({ pageSpeedScore: null, error: 'Could not fetch page speed' })
     }
+
+    let pageSpeedScore = await fetchPageSpeed()
+    if (pageSpeedScore === null) {
+      await new Promise(r => setTimeout(r, 2000))
+      pageSpeedScore = await fetchPageSpeed()
+    }
+
+    return NextResponse.json({ pageSpeedScore, url })
   } catch {
     return NextResponse.json({ pageSpeedScore: null, error: 'Could not fetch page speed' })
   }
