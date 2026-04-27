@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'Products',     href: '/#products' },
-  { label: 'Naira Tap',    href: '/#tap-demo',    nfc: true },   // ← NFC highlight
+  { label: 'Naira Tap',    href: '/tap',           nfc: true },   // ← NFC highlight
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Pricing',      href: '/#pricing' },
   { label: 'Blog',         href: '/#blog' },
