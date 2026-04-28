@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const PRODUCT_LINKS = [
   {
     label: 'Naira Tap',
-    href: '/tap',
+    href: '/#tap-demo',
     desc: 'NFC + QR digital menu for dine-in',
     nfc: true,
   },
@@ -33,10 +33,10 @@ const NAV_LINKS = [
 ]
 
 export default function Navbar() {
-  const [scrolled,             setScrolled]             = useState(false)
-  const [mobileOpen,           setMobileOpen]           = useState(false)
-  const [productsOpen,         setProductsOpen]         = useState(false)
-  const [mobileProductsOpen,   setMobileProductsOpen]   = useState(false)
+  const [scrolled,    setScrolled]    = useState(false)
+  const [mobileOpen,  setMobileOpen]  = useState(false)
+  const [productsOpen, setProductsOpen] = useState(false)
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
@@ -45,6 +45,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -110,10 +111,11 @@ export default function Navbar() {
                   style={{ boxShadow: '0 16px 48px rgba(0,0,0,0.4)' }}
                 >
                   {/* Arrow notch */}
-                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-naira-surface border-l border-t border-naira-border" />
-
+                  <div
+                    className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-naira-surface border-l border-t border-naira-border"
+                  />
                   <div className="p-2 relative">
-                    {PRODUCT_LINKS.map((p) => (
+                    {PRODUCT_LINKS.map(p => (
                       <Link
                         key={p.href}
                         href={p.href}
@@ -124,7 +126,9 @@ export default function Navbar() {
                           <div className="flex items-center gap-2">
                             <span
                               className={`text-sm font-semibold transition-colors ${
-                                p.highlight ? 'text-naira-gold' : 'text-naira-text'
+                                p.highlight
+                                  ? 'text-naira-gold'
+                                  : 'text-naira-text group-hover:text-naira-text'
                               }`}
                             >
                               {p.label}
@@ -165,7 +169,7 @@ export default function Navbar() {
           </li>
 
           {/* Regular links */}
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map(link => (
             <li key={link.href}>
               <Link
                 href={link.href}
@@ -206,7 +210,7 @@ export default function Navbar() {
               {/* Products expandable */}
               <li>
                 <button
-                  onClick={() => setMobileProductsOpen((o) => !o)}
+                  onClick={() => setMobileProductsOpen(o => !o)}
                   className="w-full flex items-center justify-between py-3 text-naira-text-muted hover:text-naira-text transition-colors"
                 >
                   <span className="text-sm">Products</span>
@@ -224,7 +228,7 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden pl-3 border-l border-naira-border ml-1 mb-1"
                     >
-                      {PRODUCT_LINKS.map((p) => (
+                      {PRODUCT_LINKS.map(p => (
                         <li key={p.href}>
                           <Link
                             href={p.href}
@@ -258,7 +262,7 @@ export default function Navbar() {
                 </AnimatePresence>
               </li>
 
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map(link => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -303,17 +307,17 @@ function EarlyAccessButton() {
         href="/#contact"
         className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
         style={{
-          background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
+          background: `linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)`,
           color: 'var(--text)',
           boxShadow: '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)',
           transition: 'box-shadow 0.3s ease, transform 0.2s ease',
         }}
-        onMouseEnter={(e) => {
+        onMouseEnter={e => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
             '0 0 0 1px rgba(var(--accent-rgb),0.55), 0 6px 32px rgba(var(--accent-rgb),0.38)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={e => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
             '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'

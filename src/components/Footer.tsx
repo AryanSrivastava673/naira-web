@@ -24,7 +24,7 @@ const footerLinks = {
   Products: [
     { label: 'Naira Billing', href: '#products' },
     { label: 'Naira Tap', href: '#products' },
-    { label: 'Naira Growth', href: '#products' },
+    { label: 'Naira Growth', href: '/growth' },
   ],
   Company: [
     { label: 'About Us', href: '#' },
