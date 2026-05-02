@@ -90,6 +90,7 @@ body {
   pointer-events: none;
 }
 
+
 /* ── NFC rings ────────────────────────────────────────────────────────────── */
 .nfc-ring {
   position: absolute;
