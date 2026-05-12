@@ -4,6 +4,8 @@ import Script from 'next/script'
 import PostHogProvider from '@/components/PostHogProvider'
 import './globals.css'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Naira Menus — The Future of Restaurant Operations',
   description:
