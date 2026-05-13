@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, Send } from 'lucide-react'
+import ShareButton from './ShareButton'
 
 interface Comment {
   _id: string
@@ -13,6 +14,8 @@ interface Comment {
 
 interface Props {
   slug: string
+  title: string
+  excerpt?: string
 }
 
 const VISITOR_KEY = 'naira-visitor-id'
@@ -44,7 +47,7 @@ function formatRelative(dateStr: string): string {
   return date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
-export default function BlogInteractions({ slug }: Props) {
+export default function BlogInteractions({ slug, title, excerpt }: Props) {
   const [visitorId, setVisitorId] = useState('')
   const [likeCount, setLikeCount] = useState(0)
   const [liked, setLiked] = useState(false)
@@ -202,9 +205,12 @@ export default function BlogInteractions({ slug }: Props) {
           </button>
         </div>
 
-        <span className="text-xs text-naira-muted hidden sm:inline">
-          {liked ? 'Thanks for the love' : 'Enjoyed this? Let us know.'}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-naira-muted hidden md:inline">
+            {liked ? 'Thanks for the love' : 'Enjoyed this? Let us know.'}
+          </span>
+          <ShareButton title={title} excerpt={excerpt} />
+        </div>
       </div>
 
       {/* Comments */}
