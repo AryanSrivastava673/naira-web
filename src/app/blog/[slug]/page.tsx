@@ -270,8 +270,8 @@ export default async function BlogPostPage({ params }: Props) {
             </section>
           )}
 
-          {/* Likes & comments */}
-          <BlogInteractions slug={post.slug.current} />
+          {/* Likes, comments & share */}
+          <BlogInteractions slug={post.slug.current} title={post.headline} excerpt={post.excerpt} />
 
           {/* Back link */}
           <div className="mt-12 pt-8 border-t border-naira-border">
