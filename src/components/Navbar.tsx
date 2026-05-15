@@ -5,11 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import LeadModal from './tap/LeadModal'
 
 const PRODUCT_LINKS = [
   {
     label: 'Naira Tap',
-    href: '/#tap-demo',
+    href: '/tap',
     desc: 'NFC + QR digital menu for dine-in',
     nfc: true,
   },
@@ -37,6 +38,7 @@ export default function Navbar() {
   const [mobileOpen,  setMobileOpen]  = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
+  const [salesModalOpen, setSalesModalOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
@@ -57,6 +59,8 @@ export default function Navbar() {
   }, [])
 
   return (
+    <>
+    <LeadModal isOpen={salesModalOpen} onClose={() => setSalesModalOpen(false)} variant="sales" />
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
@@ -183,7 +187,7 @@ export default function Navbar() {
 
         {/* ── CTA ── */}
         <div className="hidden md:flex items-center">
-          <EarlyAccessButton />
+          <ContactSalesButton onClick={() => setSalesModalOpen(true)} />
         </div>
 
         {/* ── Mobile toggle ── */}
@@ -275,36 +279,36 @@ export default function Navbar() {
               ))}
 
               <li className="pt-2">
-                <a
-                  href="/#contact"
+                <button
                   className="inline-block px-5 py-2 rounded-full text-sm font-semibold"
                   style={{
                     background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
                     color: 'var(--text)',
                   }}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => { setMobileOpen(false); setSalesModalOpen(true) }}
                 >
-                  Get Early Access
-                </a>
+                  Contact Sales
+                </button>
               </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
+    </>
   )
 }
 
-// ── Standalone CTA button with shimmer + glow ────────────────────────────────
-function EarlyAccessButton() {
+// ── Contact Sales CTA button ─────────────────────────────────────────────────
+function ContactSalesButton({ onClick }: { onClick: () => void }) {
   return (
     <div className="relative">
       <div
         className="absolute inset-0 rounded-full animate-glow-pulse pointer-events-none"
         style={{ boxShadow: '0 0 0 0 rgba(var(--accent-rgb),0)' }}
       />
-      <a
-        href="/#contact"
+      <button
+        onClick={onClick}
         className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
         style={{
           background: `linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)`,
@@ -329,7 +333,7 @@ function EarlyAccessButton() {
             background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
           }}
         />
-        <span className="relative">Get Early Access</span>
+        <span className="relative">Contact Sales</span>
         <svg
           className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200"
           viewBox="0 0 14 14"
@@ -343,7 +347,7 @@ function EarlyAccessButton() {
             strokeLinejoin="round"
           />
         </svg>
-      </a>
+      </button>
     </div>
   )
 }
