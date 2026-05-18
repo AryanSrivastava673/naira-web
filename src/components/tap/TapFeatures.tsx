@@ -1,26 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Zap, Camera, RefreshCw, Layers, WifiOff, TrendingUp,
-  BarChart2, Globe, Filter, Megaphone, Leaf, Infinity,
-  ChevronLeft, ChevronRight,
-} from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const FEATURES = [
-  { Icon: Zap,        title: 'Zero-friction tap to open',          tagline: 'Guests bring their phone close. Menu opens in under a second — no app, no QR.' },
-  { Icon: Camera,     title: '4K food photography',                tagline: 'Crisp, appetising visuals on every device. Photos outsell paper every time.' },
-  { Icon: RefreshCw,  title: 'Live updates from your phone',       tagline: 'Change a price in 4 seconds. The next tap shows the new reality.' },
-  { Icon: Layers,     title: 'Custom coaster design',              tagline: 'Metallic black, brushed gold, walnut, frosted acrylic, rose copper. Your logo laser-etched.' },
-  { Icon: WifiOff,    title: 'Works without wifi',                 tagline: 'Cached delivery means the menu opens even in a basement with spotty signal.' },
-  { Icon: TrendingUp, title: 'Smart upsells & pairings',           tagline: '"Goes great with" tags, bestsellers, add-on nudges. Lifts AOV by ₹45–₹90 per cover.' },
-  { Icon: BarChart2,  title: 'Weekly analytics',                   tagline: 'See which dish gets clicked, which section gets skipped.' },
-  { Icon: Globe,      title: 'Multi-language switching',           tagline: 'English, Hindi, Marathi, and more. One tap flips the whole menu.' },
-  { Icon: Filter,     title: 'Allergen & dietary filters',         tagline: 'Gluten-free, Jain, vegan, nut-free. Guests filter with one tap.' },
-  { Icon: Megaphone,  title: 'Event & offer banners',              tagline: 'Push a banner to every device from your phone in seconds.' },
-  { Icon: Leaf,       title: 'Zero paper, zero waste',             tagline: "India's only fully paperless NFC menu platform." },
-  { Icon: Infinity,   title: 'Lifetime hardware, lifetime software', tagline: 'One flat install. Forever updates.' },
+  { image: '/tap/tap-hero.jpg',               alt: 'Phone tapping NFC coaster, menu opens instantly',                             title: 'Zero-friction tap to open',            tagline: 'Guests bring their phone close. Menu opens in under a second — no app, no QR.' },
+  { image: '/tap/dietary-filters.jpg',         alt: 'Phone showing beautiful food photos with dietary filter pills',                title: '4K food photography',                  tagline: 'Crisp, appetising visuals on every device. Photos outsell paper every time.' },
+  { image: '/tap/menu-management-sync.jpg',    alt: 'Menu management dashboard syncing to NFC coasters instantly',                  title: 'Live updates from your phone',         tagline: 'Change a price in 4 seconds. The next tap shows the new reality.' },
+  { image: '/tap/five-coasters.jpg',           alt: 'Five Naira Tap coaster finishes — black, gold, walnut, acrylic, copper',      title: 'Custom coaster design',                tagline: 'Metallic black, brushed gold, walnut, frosted acrylic, rose copper. Your logo laser-etched.' },
+  { image: '/tap/tap-hero.jpg',                alt: 'Phone showing cached menu delivery without internet connection',                title: 'Works without wifi',                   tagline: 'Cached delivery means the menu opens even in a basement with spotty signal.' },
+  { image: '/tap/pairing-upsell.jpg',          alt: 'Butter Chicken dish page with Goes great with pairings and revenue impact',    title: 'Smart upsells & pairings',             tagline: '"Goes great with" tags, bestsellers, add-on nudges. Lifts AOV by ₹45–₹90 per cover.' },
+  { image: '/tap/analytics-dashboard.jpg',     alt: 'Naira Tap analytics dashboard showing dish popularity and tap stats',          title: 'Weekly analytics',                     tagline: 'See which dish gets clicked, which section gets skipped.' },
+  { image: '/tap/multilanguage-switching.jpg', alt: 'Two phones showing English to Hindi menu switching with language options',     title: 'Multi-language switching',             tagline: 'English, Hindi, Marathi, and more. One tap flips the whole menu.' },
+  { image: '/tap/dietary-filters.jpg',         alt: 'Dietary filter pills — Vegan, Protein, Low Carb on digital menu',             title: 'Allergen & dietary filters',           tagline: 'Gluten-free, Jain, vegan, nut-free. Guests filter with one tap.' },
+  { image: '/tap/event-banner.jpg',            alt: 'Promo banner scheduling interface with countdown timer',                       title: 'Event & offer banners',                tagline: 'Push a banner to every device from your phone in seconds.' },
+  { image: '/tap/paper-vs-nfc.jpg',            alt: 'Before and after — paper menus versus NFC digital menu',                      title: 'Zero paper, zero waste',               tagline: "India's only fully paperless NFC menu platform." },
+  { image: '/tap/infinity-timeline.jpg',       alt: 'NFC coaster with infinity symbol and product roadmap timeline',                title: 'Lifetime hardware, lifetime software', tagline: 'One flat install. Forever updates.' },
 ]
 
 const PAGE_SIZE = 6
@@ -66,28 +63,29 @@ export default function TapFeatures() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: direction * -40 }}
             transition={{ duration: 0.26, ease: 'easeInOut' }}
-            className="flex flex-wrap justify-center gap-4 mb-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8"
           >
-            {pageItems.map(({ Icon, title, tagline }, i) => (
+            {pageItems.map(({ image, alt, title, tagline }, i) => (
               <div
                 key={i}
-                className="rounded-2xl p-6 flex flex-col items-center text-center gap-3 w-[calc(50%-8px)] md:w-[calc(33.333%-11px)]"
+                className="rounded-2xl overflow-hidden flex flex-col transition-colors duration-200"
                 style={{
                   background: 'rgba(30,21,32,0.55)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07)',
+                  border: '1px solid rgba(255,255,255,0.06)',
                 }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)')}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)')}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: 'rgba(255,43,163,0.1)',
-                    border: '1px solid rgba(255,43,163,0.2)',
-                  }}
-                >
-                  <Icon size={22} color="#ff2ba3" />
+                <div className="relative w-full" style={{ aspectRatio: '16/9', background: '#0C1118' }}>
+                  <Image
+                    src={image}
+                    alt={alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                  />
                 </div>
-                <div>
+                <div className="px-5 py-4">
                   <p className="font-semibold text-naira-text text-sm mb-1">{title}</p>
                   <p className="text-xs text-naira-muted leading-snug">{tagline}</p>
                 </div>

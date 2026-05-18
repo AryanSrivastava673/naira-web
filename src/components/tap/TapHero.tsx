@@ -28,9 +28,9 @@ export default function TapHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          {/* Eyebrow pill */}
+          {/* Eyebrow pill — mobile only */}
           <span
-            className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-5"
+            className="md:hidden inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-5"
             style={{
               background: 'rgba(255,43,163,0.12)',
               color: '#ff80c8',
@@ -40,10 +40,37 @@ export default function TapHero() {
             Naira Tap
           </span>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-naira-text leading-tight mb-6">
-            Earn More From{' '}
-            <span className="text-gold-gradient">Your Menus.</span>
+          <h1
+            className="font-display mb-3"
+            style={{ fontWeight: 800, lineHeight: 0.9, letterSpacing: '-0.02em' }}
+          >
+            <span
+              className="block"
+              style={{ color: '#ff2ba3', fontSize: 'clamp(5rem, 14vw, 11rem)' }}
+            >
+              Naira
+            </span>
+            <span
+              className="block"
+              style={{ color: '#ffffff', fontSize: 'clamp(5rem, 14vw, 11rem)' }}
+            >
+              Tap<span style={{ color: '#ff2ba3' }}>.</span>
+            </span>
           </h1>
+
+          <h2
+            className="font-display mb-6"
+            style={{
+              fontSize: 'clamp(1.6rem, 3.5vw, 2.6rem)',
+              fontWeight: 700,
+              color: '#ffffff',
+              marginTop: '0.5em',
+              lineHeight: 1.15,
+            }}
+          >
+            Earn More From <span style={{ color: '#ff2ba3' }}>Your</span><br />
+            <span style={{ color: '#ff2ba3' }}>Menus.</span>
+          </h2>
 
           <p className="text-naira-text-muted text-base md:text-lg leading-relaxed mb-10 max-w-lg">
             Smart pairings, auto-combos, and bestseller nudges — right when your
