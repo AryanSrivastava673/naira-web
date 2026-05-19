@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const FEATURES = [
   { image: '/tap/tap-hero.jpg',               alt: 'Phone tapping NFC coaster, menu opens instantly',                             title: 'Zero-friction tap to open',            tagline: 'Guests bring their phone close. Menu opens in under a second — no app, no QR.' },
@@ -20,19 +18,17 @@ const FEATURES = [
   { image: '/tap/infinity-timeline.jpg',       alt: 'NFC coaster with infinity symbol and product roadmap timeline',                title: 'Lifetime hardware, lifetime software', tagline: 'One flat install. Forever updates.' },
 ]
 
-const PAGE_SIZE = 6
-
 export default function TapFeatures() {
-  const [page, setPage]           = useState(0)
-  const [direction, setDirection] = useState(1)
-  const totalPages = Math.ceil(FEATURES.length / PAGE_SIZE)
+  const [expanded, setExpanded] = useState(false)
 
-  const go = (next: number) => {
-    setDirection(next > page ? 1 : -1)
-    setPage(next)
+  const visibleFeatures = expanded ? FEATURES : FEATURES.slice(0, 6)
+
+  const handleToggle = () => {
+    if (expanded) {
+      document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+    }
+    setExpanded(!expanded)
   }
-
-  const pageItems = FEATURES.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
 
   return (
     <section
@@ -43,6 +39,13 @@ export default function TapFeatures() {
           'radial-gradient(ellipse 70% 60% at 15% 40%, rgba(255,43,163,0.07) 0%, transparent 65%), #0C1118',
       }}
     >
+      <style>{`
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+
       <div className="max-w-4xl mx-auto relative z-10">
 
         <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-2 text-center">
@@ -55,63 +58,79 @@ export default function TapFeatures() {
           Every feature built for the moment a guest decides what to order.
         </p>
 
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={page}
-            custom={direction}
-            initial={{ opacity: 0, x: direction * 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction * -40 }}
-            transition={{ duration: 0.26, ease: 'easeInOut' }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8"
-          >
-            {pageItems.map(({ image, alt, title, tagline }, i) => (
-              <div
-                key={i}
-                className="rounded-2xl overflow-hidden flex flex-col transition-colors duration-200"
-                style={{
-                  background: 'rgba(30,21,32,0.55)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)')}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)')}
-              >
-                <div className="relative w-full" style={{ aspectRatio: '16/9', background: '#0C1118' }}>
-                  <Image
-                    src={image}
-                    alt={alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="px-5 py-4">
-                  <p className="font-semibold text-naira-text text-sm mb-1">{title}</p>
-                  <p className="text-xs text-naira-muted leading-snug">{tagline}</p>
-                </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          {visibleFeatures.map(({ image, alt, title, tagline }, i) => (
+            <div
+              key={i}
+              className="rounded-2xl overflow-hidden flex flex-col transition-colors duration-200"
+              style={{
+                background: 'rgba(30,21,32,0.55)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                ...(i >= 6 ? {
+                  animation: 'fadeSlideUp 0.35s ease forwards',
+                  animationDelay: `${(i - 6) * 0.06}s`,
+                  opacity: 0,
+                } : {}),
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)')}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)')}
+            >
+              <div className="relative w-full" style={{ aspectRatio: '16/9', background: '#0C1118' }}>
+                <Image
+                  src={image}
+                  alt={alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                />
               </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+              <div className="px-5 py-4">
+                <p className="font-semibold text-naira-text text-sm mb-1">{title}</p>
+                <p className="text-xs text-naira-muted leading-snug">{tagline}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-        {/* Pagination */}
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex justify-center">
           <button
-            onClick={() => go(page - 1)}
-            disabled={page === 0}
-            className="w-9 h-9 rounded-full flex items-center justify-center transition-all disabled:opacity-25 disabled:cursor-not-allowed"
-            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)' }}
+            onClick={handleToggle}
+            aria-expanded={expanded}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginTop: '0',
+              padding: '12px 28px',
+              background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.2)',
+              borderRadius: '999px',
+              color: '#ffffff',
+              fontSize: '0.95rem',
+              fontWeight: 500,
+              cursor: 'pointer',
+              transition: 'border-color 0.2s ease, color 0.2s ease',
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLButtonElement
+              el.style.borderColor = '#ff2ba3'
+              el.style.color = '#ff2ba3'
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLButtonElement
+              el.style.borderColor = 'rgba(255,255,255,0.2)'
+              el.style.color = '#ffffff'
+            }}
           >
-            <ChevronLeft size={16} className="text-naira-text-muted" />
-          </button>
-          <span className="text-xs text-naira-muted tabular-nums">{page + 1} / {totalPages}</span>
-          <button
-            onClick={() => go(page + 1)}
-            disabled={page === totalPages - 1}
-            className="w-9 h-9 rounded-full flex items-center justify-center transition-all disabled:opacity-25 disabled:cursor-not-allowed"
-            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)' }}
-          >
-            <ChevronRight size={16} className="text-naira-text-muted" />
+            {expanded ? 'Show less' : 'Show all 12 features'}
+            <svg
+              width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" strokeWidth="2.5"
+              strokeLinecap="round" strokeLinejoin="round"
+              style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
           </button>
         </div>
 
