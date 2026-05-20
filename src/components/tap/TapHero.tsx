@@ -42,35 +42,34 @@ export default function TapHero() {
 
           <h1
             className="font-display mb-3"
-            style={{ fontWeight: 800, lineHeight: 0.9, letterSpacing: '-0.02em' }}
+            style={{ fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.02em' }}
           >
             <span
               className="block"
-              style={{ color: '#ff2ba3', fontSize: 'clamp(5rem, 14vw, 11rem)' }}
+              style={{ color: '#ff2ba3', fontSize: 'clamp(5rem, 13vw, 10.5rem)' }}
             >
               Naira
             </span>
             <span
               className="block"
-              style={{ color: '#ffffff', fontSize: 'clamp(5rem, 14vw, 11rem)' }}
+              style={{ color: '#ffffff', fontSize: 'clamp(5rem, 13vw, 10.5rem)' }}
             >
               Tap<span style={{ color: '#ff2ba3' }}>.</span>
             </span>
           </h1>
 
-          <h2
+          <p
             className="font-display mb-6"
             style={{
-              fontSize: 'clamp(1.6rem, 3.5vw, 2.6rem)',
+              fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
               fontWeight: 700,
               color: '#ffffff',
-              marginTop: '0.5em',
-              lineHeight: 1.15,
+              marginTop: '1.25rem',
+              lineHeight: 1.2,
             }}
           >
-            Earn More From <span style={{ color: '#ff2ba3' }}>Your</span><br />
-            <span style={{ color: '#ff2ba3' }}>Menus.</span>
-          </h2>
+            Earn More From <span style={{ color: '#ff2ba3' }}>Your Menus.</span>
+          </p>
 
           <p className="text-naira-text-muted text-base md:text-lg leading-relaxed mb-10 max-w-lg">
             Smart pairings, auto-combos, and bestseller nudges — right when your
