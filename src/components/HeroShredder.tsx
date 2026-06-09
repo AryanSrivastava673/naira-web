@@ -317,46 +317,54 @@ function HeroShredderFull() {
   )
 }
 
-// ── MOBILE HERO (static, SSR'd, no Framer Motion) ─────────────────────────────
+// ── MOBILE HERO ───────────────────────────────────────────────────────────────
 function MobileHero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-naira-black relative overflow-hidden">
+    <section className="min-h-screen flex flex-col bg-naira-black relative overflow-hidden">
       <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
 
-      <p className="text-naira-muted text-xs tracking-[0.3em] uppercase mb-5 relative z-10">
-        The future of restaurant menus
-      </p>
+      {/* Subtle grid */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-[0.028]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(var(--accent-rgb),0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(var(--accent-rgb),0.5) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
 
-      <h1
-        className="text-5xl font-semibold tracking-tighter leading-tight mb-4 relative z-10"
-        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-      >
-        Say goodbye to
-        <br />
-        <span className="text-gold-gradient">paper menus.</span>
-      </h1>
+      {/* Main copy — centred in the upper portion */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 relative z-10">
+        <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6">
+          Introducing Naira Menus
+        </span>
 
-      <p className="text-naira-muted text-xs tracking-[0.3em] uppercase mt-6 mb-2 relative z-10">
-        And say hello to
-      </p>
-      <h2
-        className="text-4xl font-medium tracking-tighter text-gold-gradient relative z-10"
-        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-      >
-        Naira Tap.
-      </h2>
+        <h1
+          className="text-5xl font-bold tracking-tighter leading-[1.05] mb-5"
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+        >
+          Say goodbye to
+          <br />
+          <span className="text-gold-gradient">paper menus.</span>
+        </h1>
 
-      <p className="mt-6 text-naira-text-muted text-base max-w-xs leading-relaxed relative z-10">
-        NFC-powered digital menus — one tap away, zero paper needed.
-      </p>
+        <p className="text-naira-text-muted text-lg leading-relaxed max-w-xs">
+          Scroll down to witness the future.
+        </p>
 
-      <a
-        href="#products"
-        className="mt-8 px-7 py-3 rounded-full text-sm font-semibold relative z-10"
-        style={{ background: 'var(--accent)', color: '#FAF6F0' }}
-      >
-        See how it works
-      </a>
+        <div className="mt-10 flex flex-col items-center gap-2">
+          <div className="w-px h-10 bg-gradient-to-b from-naira-gold/60 to-transparent" />
+          <span className="text-[10px] tracking-widest uppercase text-naira-muted">Scroll</span>
+        </div>
+      </div>
+
+      {/* Shredder machine pinned to the bottom */}
+      <div className="relative z-10 flex justify-center pb-0">
+        <ShredderMachine isActive={false} />
+      </div>
     </section>
   )
 }
