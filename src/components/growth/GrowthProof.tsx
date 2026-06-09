@@ -79,10 +79,10 @@ export default function GrowthProof() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.15, duration: 0.5 }}
         >
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
             The difference
           </p>
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-naira-text text-center mb-10">
+          <h2 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text text-center mb-10">
             The restaurants winning the next decade get found today.
           </h2>
 

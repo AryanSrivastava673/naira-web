@@ -112,12 +112,12 @@ export default function LeadModal({ isOpen, onClose, variant }: Props) {
               <SuccessState />
             ) : (
               <>
-                <h3 className="font-display text-xl font-bold text-naira-text mb-1">{copy.h3}</h3>
+                <h3 className="font-display text-xl font-medium tracking-tighter text-naira-text mb-1">{copy.h3}</h3>
                 <p className="text-xs text-naira-muted mb-6">{copy.sub}</p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="text-[10px] font-bold tracking-widest uppercase text-naira-muted block mb-1.5">
+                    <label className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-1.5">
                       Your name
                     </label>
                     <input
@@ -163,7 +163,7 @@ function SuccessState() {
       <svg viewBox="0 0 24 24" width="48" height="48" fill="#25D366" className="mx-auto mb-4">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5l-3.5-3.5 1.41-1.41L11 13.67l5.09-5.08 1.41 1.41L11 16.5z" />
       </svg>
-      <h3 className="font-display text-xl font-bold text-naira-text mb-2">Opening WhatsApp...</h3>
+      <h3 className="font-display text-xl font-medium tracking-tighter text-naira-text mb-2">Opening WhatsApp...</h3>
       <p className="text-sm text-naira-muted">
         If it doesn&apos;t open automatically,{' '}
         <a

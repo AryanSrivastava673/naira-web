@@ -79,12 +79,12 @@ export default function TapEmailModal({ open, onClose, ctaSource = 'tap-page' }:
                 >
                   <Check size={24} color="#ff2ba3" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-naira-text mb-2">Report on the way</h3>
+                <h3 className="font-display text-xl font-medium tracking-tighter text-naira-text mb-2">Report on the way</h3>
                 <p className="text-sm text-naira-text-muted">Check your inbox in the next two minutes.</p>
               </div>
             ) : (
               <>
-                <h3 className="font-display text-xl font-bold text-naira-text mb-1">Get your free sample</h3>
+                <h3 className="font-display text-xl font-medium tracking-tighter text-naira-text mb-1">Get your free sample</h3>
                 <p className="text-xs text-naira-muted mb-6">
                   {ctaSource === 'health-score'
                     ? 'Your personalised menu audit + 3 custom coaster renders. Free.'
@@ -93,7 +93,7 @@ export default function TapEmailModal({ open, onClose, ctaSource = 'tap-page' }:
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="text-[10px] font-bold tracking-widest uppercase text-naira-muted block mb-1.5">
+                    <label className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-1.5">
                       Your name
                     </label>
                     <input
@@ -112,7 +112,7 @@ export default function TapEmailModal({ open, onClose, ctaSource = 'tap-page' }:
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-bold tracking-widest uppercase text-naira-muted block mb-1.5">
+                    <label className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-1.5">
                       Work email
                     </label>
                     <input
@@ -131,7 +131,7 @@ export default function TapEmailModal({ open, onClose, ctaSource = 'tap-page' }:
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-bold tracking-widest uppercase text-naira-muted block mb-1.5">
+                    <label className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-1.5">
                       Restaurant name
                     </label>
                     <input

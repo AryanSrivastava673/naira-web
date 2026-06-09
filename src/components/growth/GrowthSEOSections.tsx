@@ -79,10 +79,10 @@ export default function GrowthSEOSections() {
 
               {/* Content */}
               <div>
-                <p className="text-xs font-bold tracking-widest uppercase text-naira-gold mb-2">
+                <p className="text-xs font-medium tracking-widest uppercase text-naira-gold mb-2">
                   {s.eyebrow}
                 </p>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-naira-text mb-4">
+                <h2 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text mb-4">
                   {s.heading}
                 </h2>
                 <div className="space-y-3 mb-6">

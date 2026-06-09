@@ -89,7 +89,7 @@ export default function TapStats() {
               className="text-center"
             >
               <div
-                className="font-display font-bold text-naira-gold mb-3"
+                className="font-display font-medium tracking-tighter text-naira-gold mb-3"
                 style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 1 }}
               >
                 {s.value}

@@ -37,10 +37,10 @@ export default function TapHardware() {
     >
       <div className="max-w-5xl mx-auto relative z-10">
 
-        <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
           Deep dive 03 · Hardware built to last
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text text-center mb-4">
+        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-4">
           One install. No wires. Forever updates.
         </h2>
         <p className="text-naira-text-muted text-sm text-center mb-12 max-w-xl mx-auto">

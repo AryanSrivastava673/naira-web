@@ -41,10 +41,10 @@ export default function TapHowItWorksCTA() {
         <div className="max-w-5xl mx-auto relative z-10">
 
           {/* Steps header */}
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
             Three steps to switch
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text text-center mb-3">
+          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-3">
             Your upgrade happens in a week.
           </h2>
           <p className="text-naira-text-muted text-sm text-center mb-12 max-w-xl mx-auto">
@@ -68,7 +68,7 @@ export default function TapHowItWorksCTA() {
                   }}
                 >
                   <div
-                    className="text-3xl font-bold font-display mb-3"
+                    className="text-3xl font-medium font-display mb-3"
                     style={{ color: 'rgba(255,43,163,0.3)' }}
                   >
                     {s.n}
@@ -131,10 +131,10 @@ export default function TapHowItWorksCTA() {
               }}
             />
 
-            <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 relative">
+            <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 relative">
               Two free samples. Zero risk.
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text mb-4 relative">
+            <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-4 relative">
               Stop making guests scan.{' '}
               <span className="text-gold-gradient">Start making them tap.</span>
             </h2>

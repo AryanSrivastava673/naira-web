@@ -30,7 +30,7 @@ export default function TapHero() {
         >
           {/* Eyebrow pill — mobile only */}
           <span
-            className="md:hidden inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-5"
+            className="md:hidden inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium tracking-widest uppercase mb-5"
             style={{
               background: 'rgba(255,43,163,0.12)',
               color: '#ff80c8',
@@ -42,7 +42,7 @@ export default function TapHero() {
 
           <h1
             className="font-display mb-3"
-            style={{ fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.02em' }}
+            style={{ fontWeight: 600, lineHeight: 0.92, letterSpacing: '-0.02em' }}
           >
             <span
               className="block"
@@ -62,7 +62,7 @@ export default function TapHero() {
             className="font-display mb-6"
             style={{
               fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
-              fontWeight: 700,
+              fontWeight: 500,
               color: '#ffffff',
               marginTop: '1.25rem',
               lineHeight: 1.2,

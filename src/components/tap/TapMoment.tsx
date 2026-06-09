@@ -26,11 +26,11 @@ export default function TapMoment() {
     >
       <div className="max-w-4xl mx-auto relative z-10 text-center">
 
-        <p className="text-[10px] font-bold tracking-widest uppercase mb-3" style={{ color: '#ff2ba3' }}>
+        <p className="text-[10px] font-medium tracking-widest uppercase mb-3" style={{ color: '#ff2ba3' }}>
           The Moment
         </p>
 
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text mb-6">
+        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-6">
           Guest taps. Menu appears.{' '}
           <em
             className="not-italic"
@@ -63,7 +63,7 @@ export default function TapMoment() {
               }}
             >
               <div
-                className="text-2xl font-bold font-display mb-2"
+                className="text-2xl font-medium font-display mb-2"
                 style={{ color: 'rgba(255,43,163,0.35)' }}
               >
                 {s.n}

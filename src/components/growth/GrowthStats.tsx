@@ -65,7 +65,7 @@ export default function GrowthStats() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="text-center"
             >
-              <div className="font-display text-4xl md:text-5xl font-bold text-naira-gold mb-2">
+              <div className="font-display text-4xl md:text-5xl font-medium tracking-tighter text-naira-gold mb-2">
                 {s.value}
               </div>
               <p className="text-naira-text-muted text-sm leading-snug mb-2">{s.label}</p>
@@ -83,10 +83,10 @@ export default function GrowthStats() {
 
         {/* ROI bar chart */}
         <div className="max-w-2xl mx-auto">
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-1 text-center">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-1 text-center">
             Return per ₹100 spent
           </p>
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-naira-text text-center mb-2">
+          <h2 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text text-center mb-2">
             Not all rupees are equal.
           </h2>
           <p className="text-naira-text-muted text-sm text-center mb-8">

@@ -13,7 +13,7 @@ export default function TapProofBar() {
         borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}
     >
-      <p className="text-[10px] font-bold tracking-widest uppercase text-naira-muted text-center mb-3">
+      <p className="text-[10px] font-medium tracking-widest uppercase text-naira-muted text-center mb-3">
         Live on tables across India
       </p>
 

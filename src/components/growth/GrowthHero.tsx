@@ -266,7 +266,7 @@ export default function GrowthHero() {
         {/* Left: Copy */}
         <div>
           <div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium tracking-widest uppercase mb-6"
             style={{
               background: 'rgba(255,43,163,0.1)',
               border: '1px solid rgba(255,43,163,0.25)',
@@ -276,7 +276,7 @@ export default function GrowthHero() {
             Naira Growth
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-naira-text leading-[1.1] mb-5">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter text-naira-text leading-[1.1] mb-5">
             Stop hoping<br />
             <span className="text-naira-gold">Google</span> finds you.
           </h1>
