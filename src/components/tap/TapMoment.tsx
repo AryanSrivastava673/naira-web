@@ -2,27 +2,11 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Smartphone, Wifi, BookOpen } from 'lucide-react'
 
-const steps = [
-  {
-    number: '01',
-    icon: Smartphone,
-    headline: 'Guest brings phone close',
-    body: 'No camera, no app, no QR hunt. Just their phone 3 cm above the coaster.',
-  },
-  {
-    number: '02',
-    icon: Wifi,
-    headline: 'NFC activates instantly',
-    body: 'The chip sends the menu URL directly to the browser. No internet needed to initiate.',
-  },
-  {
-    number: '03',
-    icon: BookOpen,
-    headline: 'Full menu in under a second',
-    body: "A branded, always-current menu opens. They're browsing before you take the water order.",
-  },
+const STEPS = [
+  { n: '01', label: 'Guest brings phone close' },
+  { n: '02', label: 'NFC activates instantly' },
+  { n: '03', label: 'Full menu, ~1 second' },
 ]
 
 export default function TapMoment() {
@@ -30,73 +14,87 @@ export default function TapMoment() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-28 px-6 bg-naira-black" ref={ref}>
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-5">
-            The Moment
-          </span>
-          <h2
-            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+    <section
+      ref={ref}
+      className="px-6 relative overflow-hidden"
+      style={{
+        paddingTop: 56,
+        paddingBottom: 56,
+        background:
+          'radial-gradient(ellipse 70% 60% at 15% 40%, rgba(255,43,163,0.07) 0%, transparent 65%), #0C1118',
+      }}
+    >
+      <div className="max-w-4xl mx-auto relative z-10 text-center">
+
+        <p className="text-[10px] font-bold tracking-widest uppercase mb-3" style={{ color: '#ff2ba3' }}>
+          The Moment
+        </p>
+
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text mb-6">
+          Guest taps. Menu appears.{' '}
+          <em
+            className="not-italic"
+            style={{
+              background: 'linear-gradient(135deg, #ff80c8 0%, #ff2ba3 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              borderBottom: '2px solid rgba(255,43,163,0.4)',
+            }}
           >
-            Three seconds that change{' '}
-            <span className="text-gold-gradient">everything</span>
-          </h2>
-        </motion.div>
+            Jaws drop.
+          </em>
+        </h2>
 
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-[52px] left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px bg-gradient-to-r from-transparent via-naira-gold/30 to-transparent" />
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {steps.map((step, i) => {
-              const Icon = step.icon
-              return (
-                <motion.div
-                  key={step.number}
-                  className="relative text-center"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.2 }}
-                >
-                  {/* Icon box */}
-                  <div className="relative flex justify-center mb-6">
-                    <div
-                      className="w-[104px] h-[104px] rounded-2xl flex items-center justify-center"
-                      style={{
-                        background: 'rgba(var(--accent-rgb),0.08)',
-                        border: '1px solid rgba(var(--accent-rgb),0.25)',
-                      }}
-                    >
-                      <Icon size={36} style={{ color: 'var(--accent)' }} />
-                    </div>
-                    {/* Step badge */}
-                    <div
-                      className="absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold border border-naira-black"
-                      style={{ background: 'var(--accent)', color: '#F0E9DE' }}
-                    >
-                      {i + 1}
-                    </div>
-                  </div>
-
-                  <h3
-                    className="text-lg font-bold text-naira-text mb-2"
-                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                  >
-                    {step.headline}
-                  </h3>
-                  <p className="text-naira-text-muted text-sm leading-relaxed">{step.body}</p>
-                </motion.div>
-              )
-            })}
-          </div>
+        {/* Steps */}
+        <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
+          {STEPS.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
+              className="flex-1 rounded-xl text-center"
+              style={{
+                padding: '20px 24px',
+                background: 'rgba(30,21,32,0.55)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07)',
+              }}
+            >
+              <div
+                className="text-2xl font-bold font-display mb-2"
+                style={{ color: 'rgba(255,43,163,0.35)' }}
+              >
+                {s.n}
+              </div>
+              <p className="text-naira-text font-semibold text-sm">{s.label}</p>
+            </motion.div>
+          ))}
         </div>
+
+        <p className="text-naira-text-muted text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
+          A beautiful coaster on the table. Your logo, your finish. They bring their
+          phone close — tap — and the full menu blooms open in under a second.{' '}
+          <strong className="text-naira-text">No app. No scanning. No QR codes.</strong>
+        </p>
+
+        <blockquote
+          className="rounded-xl px-6 py-5 text-left max-w-lg mx-auto"
+          style={{
+            background: 'rgba(255,43,163,0.05)',
+            border: '1px solid rgba(255,43,163,0.12)',
+            borderLeft: '3px solid rgba(255,43,163,0.55)',
+          }}
+        >
+          <p className="text-naira-text font-display italic text-base leading-relaxed">
+            &ldquo;Bro, did you see that?&rdquo;
+          </p>
+          <p className="text-naira-muted text-xs mt-1.5">
+            — that&apos;s the word of mouth you cannot buy.
+          </p>
+        </blockquote>
+
       </div>
     </section>
   )

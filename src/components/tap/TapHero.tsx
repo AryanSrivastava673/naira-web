@@ -1,228 +1,132 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-function CoasterVisual() {
-  return (
-    <div className="relative flex items-center justify-center w-full h-[420px]">
-      {/* Ambient glow behind coaster */}
-      <div
-        className="absolute w-72 h-72 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(var(--accent-rgb),0.18) 0%, transparent 70%)' }}
-      />
-
-      {/* Pulse rings */}
-      {[0, 1, 2].map((i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full border"
-          style={{
-            width: `${200 + i * 70}px`,
-            height: `${200 + i * 70}px`,
-            borderColor: `rgba(var(--accent-rgb), ${0.22 - i * 0.06})`,
-          }}
-          animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.15, 0.5] }}
-          transition={{ duration: 2.8, delay: i * 0.7, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      ))}
-
-      {/* Coaster */}
-      <div
-        className="relative w-48 h-48 rounded-full flex flex-col items-center justify-center gap-2 z-10"
-        style={{
-          background: 'radial-gradient(circle at 38% 32%, #221020, #0C1118)',
-          border: '1px solid rgba(var(--accent-rgb),0.35)',
-          boxShadow: '0 0 60px rgba(var(--accent-rgb),0.18), inset 0 0 40px rgba(0,0,0,0.6)',
-        }}
-      >
-        {/* Inner ring */}
-        <div
-          className="absolute w-36 h-36 rounded-full"
-          style={{ border: '1px solid rgba(var(--accent-rgb),0.12)' }}
-        />
-        {/* NFC symbol */}
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <path d="M10 7 L10 37" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" />
-          <path d="M10 13 Q30 13 30 22 Q30 31 10 31" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" fill="none" />
-          <path d="M10 19 Q22 19 22 22 Q22 25 10 25" stroke="var(--accent-light)" strokeWidth="3" strokeLinecap="round" fill="none" />
-        </svg>
-        <span
-          className="text-[9px] tracking-[0.2em] uppercase font-semibold"
-          style={{ color: 'var(--accent-light)' }}
-        >
-          Tap Here
-        </span>
-      </div>
-
-      {/* Floating phone */}
-      <motion.div
-        className="absolute -top-4 right-8 z-20"
-        animate={{ y: [-5, 5, -5] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <div
-          className="relative overflow-hidden"
-          style={{
-            width: 72,
-            height: 132,
-            borderRadius: 18,
-            background: 'linear-gradient(160deg, #1E1520, #0C1118)',
-            border: '1.5px solid rgba(var(--accent-rgb),0.3)',
-            boxShadow: '0 12px 40px rgba(0,0,0,0.7), 0 0 20px rgba(var(--accent-rgb),0.12)',
-          }}
-        >
-          {/* Dynamic island */}
-          <div
-            className="absolute top-2 left-1/2 -translate-x-1/2 rounded-full bg-black"
-            style={{ width: 28, height: 7 }}
-          />
-          {/* Screen content */}
-          <div
-            className="absolute rounded-xl overflow-hidden"
-            style={{ inset: 5, top: 14, background: '#F5EEE6' }}
-          >
-            <div className="h-full p-1.5 space-y-1.5">
-              <div
-                className="h-4 rounded-md"
-                style={{ background: 'var(--accent)', opacity: 0.85 }}
-              />
-              {['75%', '60%', '85%', '50%', '70%', '65%'].map((w, i) => (
-                <div
-                  key={i}
-                  className="h-1.5 rounded"
-                  style={{ width: w, background: i % 2 === 0 ? '#D4C8BA' : '#E8DDD5' }}
-                />
-              ))}
-              <div className="h-4 rounded-md mt-1" style={{ background: 'rgba(var(--accent-rgb),0.15)' }} />
-            </div>
-          </div>
-        </div>
-
-        {/* "Under 1s" pop */}
-        <motion.div
-          className="absolute -bottom-3 -left-16 px-2.5 py-1 rounded-full text-[10px] font-semibold whitespace-nowrap"
-          style={{
-            background: 'rgba(var(--accent-rgb),0.15)',
-            border: '1px solid rgba(var(--accent-rgb),0.35)',
-            color: 'var(--accent-light)',
-          }}
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2, duration: 0.4, type: 'spring' }}
-        >
-          ⚡ Under 1 second
-        </motion.div>
-      </motion.div>
-
-      {/* Brand label below coaster */}
-      <div
-        className="absolute bottom-6 text-xs tracking-widest uppercase font-medium"
-        style={{ color: 'var(--text-muted)' }}
-      >
-        Naira Tap Coaster
-      </div>
-    </div>
-  )
-}
+import TapToolCard from './TapToolCard'
 
 export default function TapHero() {
   return (
-    <section className="relative min-h-screen flex items-center px-6 py-28 bg-naira-black overflow-hidden">
-      {/* Ambient glow */}
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center px-6 py-32 overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(ellipse at 60% 0%, rgba(255,43,163,0.15) 0%, transparent 65%), #0C1118',
+      }}
+    >
       <div
-        aria-hidden
-        className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full opacity-[0.06] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, var(--accent) 0%, var(--accent-dark) 40%, transparent 70%)' }}
-      />
-
-      {/* Grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.022] pointer-events-none"
+        className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(rgba(var(--accent-rgb),0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--accent-rgb),0.4) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
+          background: 'radial-gradient(circle, rgba(255,43,163,0.06) 0%, transparent 70%)',
         }}
       />
 
-      <div className="max-w-6xl mx-auto w-full relative">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
 
-          {/* Left — copy */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-10">
-                Naira Tap — NFC Digital Menu
-              </span>
-            </motion.div>
-
-            <motion.h1
-              className="font-display font-medium tracking-tighter leading-tight mb-7"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              <span className="text-4xl md:text-6xl block">It is 2026.</span>
-              <span className="text-xl md:text-2xl font-normal italic text-naira-text-muted block mt-3 mb-3">
-                Is there still a peeling QR sticker on your table?
-              </span>
-              <span className="text-3xl md:text-5xl block text-gold-gradient">
-                It&apos;s time to upgrade.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              className="text-naira-text text-lg leading-relaxed mb-10 max-w-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-            >
-              Guests tap their phone.{' '}
-              <span style={{ color: 'var(--accent)' }}>Menu appears instantly.</span>
-              {' '}No app. No scan. No paper. Ever.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row items-start gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
-              <a
-                href="#roi"
-                className="px-8 py-4 rounded-full text-sm font-semibold"
-                style={{
-                  background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
-                  color: '#F0E9DE',
-                  boxShadow: '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.25)',
-                }}
-              >
-                Show me what I&apos;m missing
-              </a>
-              <a
-                href="#contact"
-                className="px-8 py-4 rounded-full border border-naira-border text-sm font-semibold text-naira-text-muted hover:text-naira-text hover:border-naira-gold/40 transition-colors"
-              >
-                Book a free sample
-              </a>
-            </motion.div>
-          </div>
-
-          {/* Right — coaster visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-            className="hidden md:block"
+        {/* Left — copy */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          {/* Eyebrow pill — mobile only */}
+          <span
+            className="md:hidden inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-5"
+            style={{
+              background: 'rgba(255,43,163,0.12)',
+              color: '#ff80c8',
+              border: '1px solid rgba(255,43,163,0.25)',
+            }}
           >
-            <CoasterVisual />
-          </motion.div>
-        </div>
+            Naira Tap
+          </span>
+
+          <h1
+            className="font-display mb-3"
+            style={{ fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.02em' }}
+          >
+            <span
+              className="block"
+              style={{ color: '#ff2ba3', fontSize: 'clamp(5rem, 13vw, 10.5rem)' }}
+            >
+              Naira
+            </span>
+            <span
+              className="block"
+              style={{ color: '#ffffff', fontSize: 'clamp(5rem, 13vw, 10.5rem)' }}
+            >
+              Tap<span style={{ color: '#ff2ba3' }}>.</span>
+            </span>
+          </h1>
+
+          <p
+            className="font-display mb-6"
+            style={{
+              fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
+              fontWeight: 700,
+              color: '#ffffff',
+              marginTop: '1.25rem',
+              lineHeight: 1.2,
+            }}
+          >
+            Earn More From <span style={{ color: '#ff2ba3' }}>Your Menus.</span>
+          </p>
+
+          <p className="text-naira-text-muted text-base md:text-lg leading-relaxed mb-10 max-w-lg">
+            Smart pairings, auto-combos, and bestseller nudges — right when your
+            guest is deciding. The only contactless dining solution that turns
+            every table into a silent upsell machine.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#features"
+              className="relative overflow-hidden flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold group"
+              style={{
+                background:
+                  'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
+                color: 'var(--text)',
+                boxShadow:
+                  '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.25)',
+              }}
+            >
+              <span
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
+                }}
+              />
+              <span className="relative">See how it works</span>
+              <svg className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+
+            <a
+              href="#features"
+              className="flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-naira-text transition-all duration-200 hover:text-naira-gold"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
+            >
+              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Scroll to explore
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Right — interactive tool */}
+        <motion.div
+          initial={{ opacity: 0, y: 36 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+        >
+          <TapToolCard />
+        </motion.div>
+
       </div>
     </section>
   )

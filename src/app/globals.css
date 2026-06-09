@@ -87,25 +87,6 @@ body {
   pointer-events: none;
 }
 
-/* ── ROI calculator range slider thumb ───────────────────────────────────── */
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid #F0E9DE;
-  box-shadow: 0 0 8px rgba(255,43,163,0.5);
-  cursor: pointer;
-}
-input[type='range']::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid #F0E9DE;
-  cursor: pointer;
-}
 
 /* ── NFC rings ────────────────────────────────────────────────────────────── */
 .nfc-ring {
