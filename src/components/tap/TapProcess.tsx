@@ -45,8 +45,8 @@ export default function TapProcess() {
             Getting Started
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Live in{' '}
             <span className="text-gold-gradient">under a week</span>
@@ -94,7 +94,7 @@ export default function TapProcess() {
 
                   <h3
                     className="text-xl font-semibold text-naira-text mb-3"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {step.title}
                   </h3>

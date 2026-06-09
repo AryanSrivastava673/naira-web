@@ -82,8 +82,8 @@ export default function TapROI() {
             ROI Calculator
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold mb-4"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter mb-4"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             See what your QR menu{' '}
             <span className="text-gold-gradient">is costing you</span>
@@ -176,7 +176,7 @@ export default function TapROI() {
               <div className="text-naira-text-muted text-sm mb-1">Estimated net annual savings</div>
               <div
                 className="text-5xl font-bold tabular-nums"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--accent-light)' }}
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: 'var(--accent-light)' }}
               >
                 {netSavings > 0 ? formatINR(netSavings) : '₹0'}
               </div>

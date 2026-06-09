@@ -47,6 +47,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       <button
         className="w-full flex items-center justify-between py-5 text-left gap-4 group"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
         <span className="text-naira-text text-sm font-medium group-hover:text-naira-text transition-colors">
           {q}
@@ -56,7 +57,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           className="flex-shrink-0 transition-transform duration-300"
           style={{
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-            color: open ? 'var(--accent)' : '#7A5068',
+            color: open ? 'var(--accent)' : '#A07A8E',
           }}
         />
       </button>
@@ -94,8 +95,8 @@ export default function TapFAQ() {
             FAQ
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Questions? We&apos;ve got{' '}
             <span className="text-gold-gradient">answers</span>

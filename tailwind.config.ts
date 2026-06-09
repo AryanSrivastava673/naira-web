@@ -2,10 +2,10 @@ import type { Config } from 'tailwindcss'
 
 // ── Brand accent (single source of truth) ──────────────────────────
 const BRAND = {
-  accent:      '#ff2ba3',  // primary magenta
-  accentLight: '#ff80c8',  // light pink
-  accentDark:  '#cc2282',  // deeper magenta for hover states
-  text:        '#F0E9DE',  // warm cream (primary text)
+  accent:      '#ff1fa0',  // primary magenta
+  accentLight: '#ff8fd3',  // light pink
+  accentDark:  '#d42890',  // deeper magenta for hover states
+  text:        '#FAF6F0',  // warm cream (primary text)
 }
 
 // helper: hex → r,g,b string for use in rgba()
@@ -25,9 +25,9 @@ const config: Config = {
     extend: {
       colors: {
         // ── Dark base (deep warm black with magenta undertone)
-        'naira-black':   '#0C1118',
-        'naira-surface': '#151018',
-        'naira-card':    '#1E1520',
+        'naira-black':   '#100D1C',
+        'naira-surface': '#1B1528',
+        'naira-card':    '#241C34',
 
         // ── Primary accent
         'naira-gold':       BRAND.accent,
@@ -40,11 +40,11 @@ const config: Config = {
 
         // ── Text
         'naira-text':       BRAND.text,
-        'naira-text-muted': '#C4A0B5',
+        'naira-text-muted': '#D4AECA',
 
         // ── Supporting
-        'naira-border': '#2E1E2A',
-        'naira-muted':  '#7A5068',
+        'naira-border': '#3D2845',
+        'naira-muted':  '#B890A8',
       },
 
       fontFamily: {

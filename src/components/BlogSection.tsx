@@ -55,7 +55,7 @@ function BlogCard({ post }: { post: Post }) {
         {/* Headline */}
         <h3
           className="text-naira-text font-semibold text-lg leading-snug mb-2 group-hover:text-naira-gold transition-colors"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           {post.headline}
         </h3>
@@ -143,8 +143,8 @@ export default async function BlogSection() {
               From the Naira Team
             </span>
             <h2
-              className="font-display text-4xl md:text-5xl font-bold"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               Insights & Updates
             </h2>

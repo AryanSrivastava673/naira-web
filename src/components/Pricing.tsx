@@ -104,12 +104,12 @@ function NotifyForm({ planName }: { planName: string }) {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
         required
-        className="flex-1 px-3 py-2 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+        className="flex-1 px-3 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
       />
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="px-4 py-2 rounded-lg bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors flex-shrink-0 disabled:opacity-60"
+        className="px-4 py-3 rounded-lg bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors flex-shrink-0 disabled:opacity-60"
       >
         {status === 'submitting' ? '...' : 'Notify me'}
       </button>
@@ -144,8 +144,8 @@ export default function Pricing() {
             Pricing
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold mb-5"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter mb-5"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Pricing that works
             <br />

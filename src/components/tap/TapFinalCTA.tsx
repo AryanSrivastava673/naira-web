@@ -34,8 +34,8 @@ export default function TapFinalCTA() {
           </span>
 
           <h2
-            className="font-display text-5xl md:text-6xl font-bold leading-tight mb-6"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-5xl md:text-6xl font-medium tracking-tighter leading-tight mb-6"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Your guests deserve{' '}
             <span className="text-gold-gradient">better than a sticker</span>

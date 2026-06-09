@@ -87,7 +87,7 @@ function PaperStrip({ index, isShredding }: { index: number; isShredding: boolea
 }
 
 // ── HERO SHREDDER ─────────────────────────────────────────────────────────────
-export default function HeroShredder() {
+function HeroShredderFull() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isShredding, setIsShredding] = useState(false)
   const [shredderVibrate, setShredderVibrate] = useState(false)
@@ -215,8 +215,8 @@ export default function HeroShredder() {
           </motion.span>
 
           <h1
-            className="text-5xl md:text-7xl font-bold leading-tight mb-5"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="text-5xl md:text-7xl font-semibold tracking-tighter leading-tight mb-5"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Say goodbye to
             <br />
@@ -303,8 +303,8 @@ export default function HeroShredder() {
             And say hello to
           </p>
           <h2
-            className="text-5xl md:text-7xl font-bold text-gold-gradient"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="text-5xl md:text-7xl font-medium text-gold-gradient tracking-tighter"
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             Naira Tap.
           </h2>
@@ -314,6 +314,64 @@ export default function HeroShredder() {
         </motion.div>
       </div>
     </div>
+  )
+}
+
+// ── MOBILE HERO (static, SSR'd, no Framer Motion) ─────────────────────────────
+function MobileHero() {
+  return (
+    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-naira-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+
+      <p className="text-naira-muted text-xs tracking-[0.3em] uppercase mb-5 relative z-10">
+        The future of restaurant menus
+      </p>
+
+      <h1
+        className="text-5xl font-semibold tracking-tighter leading-tight mb-4 relative z-10"
+        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      >
+        Say goodbye to
+        <br />
+        <span className="text-gold-gradient">paper menus.</span>
+      </h1>
+
+      <p className="text-naira-muted text-xs tracking-[0.3em] uppercase mt-6 mb-2 relative z-10">
+        And say hello to
+      </p>
+      <h2
+        className="text-4xl font-medium tracking-tighter text-gold-gradient relative z-10"
+        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      >
+        Naira Tap.
+      </h2>
+
+      <p className="mt-6 text-naira-text-muted text-base max-w-xs leading-relaxed relative z-10">
+        NFC-powered digital menus — one tap away, zero paper needed.
+      </p>
+
+      <a
+        href="#products"
+        className="mt-8 px-7 py-3 rounded-full text-sm font-semibold relative z-10"
+        style={{ background: 'var(--accent)', color: '#FAF6F0' }}
+      >
+        See how it works
+      </a>
+    </section>
+  )
+}
+
+// ── HERO WRAPPER — CSS controls which version renders ─────────────────────────
+export default function HeroShredder() {
+  return (
+    <>
+      <div className="md:hidden">
+        <MobileHero />
+      </div>
+      <div className="hidden md:block">
+        <HeroShredderFull />
+      </div>
+    </>
   )
 }
 
@@ -346,7 +404,7 @@ function ClippedMenuCard({
         style={{
           background: 'linear-gradient(160deg, #FFF8F0 0%, #FFF0DC 100%)',
           border: '3px solid #D4AF37',
-          fontFamily: "'Playfair Display', Georgia, serif",
+          fontFamily: 'var(--font-playfair), Georgia, serif',
           color: '#2A1A00',
         }}
       >

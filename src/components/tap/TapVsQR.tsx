@@ -30,8 +30,8 @@ export default function TapVsQR() {
             QR vs Tap
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Why QR is{' '}
             <span className="text-gold-gradient">holding you back</span>

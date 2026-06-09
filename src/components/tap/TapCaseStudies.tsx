@@ -47,8 +47,8 @@ export default function TapCaseStudies() {
             Case Studies
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Restaurants already{' '}
             <span className="text-gold-gradient">running on Tap</span>
@@ -78,7 +78,7 @@ export default function TapCaseStudies() {
                 {/* Metric */}
                 <div
                   className="text-5xl font-bold mb-0.5"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--accent-light)' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: 'var(--accent-light)' }}
                 >
                   {c.metric}
                 </div>

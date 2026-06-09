@@ -161,8 +161,8 @@ export default function TapHero() {
             </motion.div>
 
             <motion.h1
-              className="font-display font-bold leading-tight mb-7"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="font-display font-medium tracking-tighter leading-tight mb-7"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}

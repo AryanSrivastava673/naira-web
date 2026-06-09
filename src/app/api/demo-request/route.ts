@@ -3,18 +3,19 @@ import { writeClient } from '@/lib/sanity'
 
 export async function POST(req: Request) {
   try {
-    const { name, phone } = await req.json()
+    const { name, phone, restaurantName, message } = await req.json()
 
     if (!name || !phone) {
-      return NextResponse.json({ error: 'All fields are required' }, { status: 400 })
+      return NextResponse.json({ error: 'Name and phone are required' }, { status: 400 })
     }
 
     await writeClient.create({
       _type: 'demoRequest',
-      businessName: name,
+      businessName: restaurantName || name,
       city: '',
       pincode: '',
       phone,
+      note: message || '',
       submittedAt: new Date().toISOString(),
     })
 

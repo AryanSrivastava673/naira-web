@@ -57,8 +57,8 @@ export default function TapDeepDive() {
             Deep Dive
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Every detail,{' '}
             <span className="text-gold-gradient">engineered</span>
@@ -85,7 +85,7 @@ export default function TapDeepDive() {
               <div className="flex items-end gap-5 mb-8">
                 <div
                   className="text-7xl font-bold leading-none select-none flex-shrink-0"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'rgba(var(--accent-rgb),0.12)' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: 'rgba(var(--accent-rgb),0.12)' }}
                 >
                   {mod.id}
                 </div>
@@ -93,7 +93,7 @@ export default function TapDeepDive() {
                   <div className="text-naira-muted text-xs tracking-widest uppercase mb-1">{mod.subtitle}</div>
                   <h3
                     className="text-2xl font-bold text-naira-text"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {mod.title}
                   </h3>

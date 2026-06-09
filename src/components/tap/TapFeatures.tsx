@@ -36,8 +36,8 @@ export default function TapFeatures() {
             Features
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Twelve ways Naira Tap{' '}
             <span className="text-gold-gradient">elevates your restaurant</span>

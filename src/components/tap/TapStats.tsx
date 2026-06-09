@@ -37,7 +37,7 @@ export default function TapStats() {
               <Icon size={16} className="mb-4 opacity-60" style={{ color: 'var(--accent)' }} />
               <div
                 className="text-3xl md:text-4xl font-bold mb-1.5"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--accent-light)' }}
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: 'var(--accent-light)' }}
               >
                 {stat.value}
               </div>

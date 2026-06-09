@@ -15,7 +15,7 @@ const PRODUCT_LINKS = [
   },
   {
     label: 'Naira Billing',
-    href: '/#products',
+    href: '/billing',
     desc: 'Cloud POS & order management',
   },
   {
@@ -27,7 +27,7 @@ const PRODUCT_LINKS = [
 ]
 
 const NAV_LINKS = [
-  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'How It Works', href: '/how-it-works' },
   { label: 'Pricing',      href: '/#pricing' },
   { label: 'Blog',         href: '/blog' },
 ]
@@ -74,6 +74,7 @@ export default function Navbar() {
             height={40}
             className="h-14 w-auto"
             priority
+            sizes="160px"
           />
         </Link>
 
@@ -272,7 +273,7 @@ export default function Navbar() {
 
               <li className="pt-2">
                 <a
-                  href="/#contact"
+                  href="/contact"
                   className="inline-block px-5 py-2 rounded-full text-sm font-semibold"
                   style={{
                     background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
@@ -280,7 +281,7 @@ export default function Navbar() {
                   }}
                   onClick={() => setMobileOpen(false)}
                 >
-                  Get Early Access
+                  Contact Sales
                 </a>
               </li>
             </ul>
@@ -300,7 +301,7 @@ function EarlyAccessButton() {
         style={{ boxShadow: '0 0 0 0 rgba(var(--accent-rgb),0)' }}
       />
       <a
-        href="/#contact"
+        href="/contact"
         className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
         style={{
           background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
@@ -325,7 +326,7 @@ function EarlyAccessButton() {
             background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
           }}
         />
-        <span className="relative">Get Early Access</span>
+        <span className="relative">Contact Sales</span>
         <svg
           className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200"
           viewBox="0 0 14 14"

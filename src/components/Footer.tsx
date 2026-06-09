@@ -29,7 +29,7 @@ const footerLinks = {
   Company: [
     { label: 'About Us', href: '#' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '/contact' },
   ],
   Legal: [
     { label: 'Privacy Policy', href: '#' },
@@ -71,8 +71,8 @@ function ContactSection() {
     >
       <div className="max-w-xl mx-auto text-center">
         <h3
-          className="font-display text-3xl md:text-4xl font-bold mb-3"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          className="font-display text-3xl md:text-4xl font-medium tracking-tighter mb-3"
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           Ready to modernise your restaurant?
         </h3>
@@ -148,15 +148,15 @@ export default function Footer() {
               and growth tools — all in one platform.
             </p>
             <p className="text-naira-gold text-xs font-semibold tracking-widest uppercase mb-2">Follow us</p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="w-9 h-9 rounded-lg border border-naira-border bg-naira-card flex items-center justify-center text-naira-text-muted hover:text-naira-gold hover:border-naira-gold/50 hover:bg-naira-gold/10 transition-all duration-200"
+                  aria-label={`Naira Menus on ${social.label}`}
+                  className="w-11 h-11 rounded-lg border border-naira-border bg-naira-card flex items-center justify-center text-naira-text-muted hover:text-naira-gold hover:border-naira-gold/50 hover:bg-naira-gold/10 transition-all duration-200"
                 >
                   <social.icon size={17} />
                 </a>

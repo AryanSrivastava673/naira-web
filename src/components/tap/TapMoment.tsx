@@ -42,8 +42,8 @@ export default function TapMoment() {
             The Moment
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Three seconds that change{' '}
             <span className="text-gold-gradient">everything</span>
@@ -87,7 +87,7 @@ export default function TapMoment() {
 
                   <h3
                     className="text-lg font-bold text-naira-text mb-2"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {step.headline}
                   </h3>
