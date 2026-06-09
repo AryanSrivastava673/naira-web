@@ -41,18 +41,18 @@ export default function TapHero() {
           </span>
 
           <h1
-            className="font-display mb-3"
-            style={{ fontWeight: 600, lineHeight: 0.92, letterSpacing: '-0.02em' }}
+            className="font-display mb-8"
+            style={{ fontWeight: 400, lineHeight: 0.82, letterSpacing: '-0.07em', marginTop: '-2px' }}
           >
             <span
               className="block"
-              style={{ color: '#ff2ba3', fontSize: 'clamp(5rem, 13vw, 10.5rem)' }}
+              style={{ color: '#ff2ba3', fontSize: 'clamp(4.5rem, 11.5vw, 9.5rem)' }}
             >
               Naira
             </span>
             <span
               className="block"
-              style={{ color: '#ffffff', fontSize: 'clamp(5rem, 13vw, 10.5rem)' }}
+              style={{ color: '#ffffff', fontSize: 'clamp(4.5rem, 11.5vw, 9.5rem)' }}
             >
               Tap<span style={{ color: '#ff2ba3' }}>.</span>
             </span>
