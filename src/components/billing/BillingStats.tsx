@@ -3,25 +3,25 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-const B_LIGHT = '#34D399'
-const B_RGB = '16,185,129'
+const PINK = '#ff2ba3'
+const PINK_RGB = '255,43,163'
 
 const pillars = [
   {
-    title: 'Setup in under a week',
-    desc: 'We configure your dashboard, menu, and integrations. You just show up on day one.',
+    title: 'Easy navigation',
+    desc: 'Best POS for a bar or cafe — role-based views for owners and staff. Learn in five minutes.',
   },
   {
-    title: 'No lock-in, ever',
-    desc: 'Month-to-month. No contracts, no exit fees. Stay because it works, not because you\'re stuck.',
+    title: 'All payment modes',
+    desc: 'UPI, card, cash, split billing. Your customers pay however they want.',
   },
   {
-    title: 'Real humans on support',
-    desc: 'WhatsApp, phone, or email during service hours. Under 10 minutes average response at peak.',
+    title: 'Built to your needs',
+    desc: 'Bar restaurant software, cafeteria POS systems, or custom workflows. We build it for you.',
   },
   {
-    title: 'Built for Indian restaurants',
-    desc: 'GST-native, aggregator-ready, multi-cuisine — not a foreign POS retrofitted for India.',
+    title: 'Customer support',
+    desc: 'Real humans on call, WhatsApp, or email. Especially during service hours.',
   },
 ]
 
@@ -30,29 +30,50 @@ export default function BillingStats() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section className="py-20 px-6 bg-naira-black" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section className="py-24 px-6 relative" style={{ background: '#ffffff' }} ref={ref}>
+      <div className="max-w-[1200px] mx-auto">
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden"
-          style={{ background: `rgba(${B_RGB},0.12)` }}
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
+          <p className="font-mono text-[12px] tracking-[0.12em] uppercase font-medium mb-3" style={{ color: PINK }}>
+            Why Naira Billing
+          </p>
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em]" style={{ color: '#1a1a1a' }}>
+            Your restaurant <span style={{ color: PINK }}>deserves</span> this
+          </h2>
+        </motion.div>
+
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
-              className="bg-naira-black px-6 py-7"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              className="p-6 transition-all"
+              style={{
+                background: '#ffffff',
+                border: '1px solid rgba(0,0,0,0.06)',
+                borderRadius: 16,
+              }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
+              whileHover={{
+                y: -4,
+                boxShadow: `0 8px 24px rgba(${PINK_RGB},0.10), 0 16px 48px rgba(${PINK_RGB},0.06)`,
+              }}
             >
-              <div
-                className="w-7 h-0.5 mb-4 rounded-full"
-                style={{ background: `rgba(${B_RGB},0.5)` }}
-              />
-              <h3 className="text-base font-semibold text-naira-text mb-2">{p.title}</h3>
-              <p className="text-xs text-naira-text-muted leading-relaxed">{p.desc}</p>
+              <div className="font-mono text-[12px] tracking-[0.12em] uppercase font-medium mb-4" style={{ color: PINK }}>
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <h3 className="text-base font-semibold mb-2" style={{ color: '#1a1a1a' }}>{p.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{p.desc}</p>
             </motion.div>
           ))}
         </motion.div>

@@ -4,56 +4,64 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import type { ReactNode } from 'react'
 
-const B = '#10B981'
-const B_LIGHT = '#34D399'
-const B_RGB = '16,185,129'
+const PINK = '#ff2ba3'
+const PINK_RGB = '255,43,163'
 
 function IntegrationVisual() {
   const orders = [
-    { id: '#1042', src: 'Dine-in', desc: 'Table 5 — 3 items', color: B_LIGHT, bg: `rgba(${B_RGB},0.12)` },
-    { id: '#1041', src: 'Swiggy', desc: 'Biryani × 2, Raita × 2', color: '#FF9944', bg: 'rgba(255,102,0,0.12)' },
-    { id: '#1040', src: 'Zomato', desc: 'Dal Makhani, Naan × 3', color: '#FF6666', bg: 'rgba(220,50,50,0.12)' },
-    { id: '#1039', src: 'Dine-in', desc: 'Table 12 — 2 items', color: B_LIGHT, bg: `rgba(${B_RGB},0.12)` },
+    { id: '#1042', src: 'Dine-in', desc: 'Table 5 — 3 items' },
+    { id: '#1041', src: 'Swiggy', desc: 'Biryani × 2, Raita × 2' },
+    { id: '#1040', src: 'Zomato', desc: 'Dal Makhani, Naan × 3' },
+    { id: '#1039', src: 'Dine-in', desc: 'Table 12 — 2 items' },
   ]
+
+  const srcStyle = (s: string) =>
+    s === 'Dine-in'
+      ? { bg: `rgba(${PINK_RGB},0.15)`, fg: PINK }
+      : s === 'Swiggy'
+        ? { bg: 'rgba(255,255,255,0.10)', fg: 'rgba(255,255,255,0.85)' }
+        : { bg: 'rgba(255,255,255,0.06)', fg: 'rgba(255,255,255,0.65)' }
 
   return (
     <div className="w-full max-w-sm">
       <div
-        className="rounded-2xl p-5"
+        className="glass-dark p-5"
         style={{
-          background: '#1B1528',
-          border: `1px solid rgba(${B_RGB},0.2)`,
-          boxShadow: `0 0 40px rgba(${B_RGB},0.08)`,
+          borderRadius: 20,
+          boxShadow: `0 8px 24px rgba(${PINK_RGB},0.10), 0 16px 48px rgba(${PINK_RGB},0.06)`,
         }}
       >
-        <div className="text-xs font-semibold text-naira-text-muted mb-4">Unified Order Queue</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-white/70 mb-4">Unified Order Queue</div>
         <div className="space-y-2">
-          {orders.map((o) => (
-            <div
-              key={o.id}
-              className="flex items-center gap-3 rounded-xl px-3 py-2.5"
-              style={{ background: 'rgba(0,0,0,0.3)' }}
-            >
-              <span
-                className="text-[9px] font-bold px-2 py-0.5 rounded-full flex-shrink-0"
-                style={{ background: o.bg, color: o.color }}
+          {orders.map((o) => {
+            const c = srcStyle(o.src)
+            return (
+              <div
+                key={o.id}
+                className="flex items-center gap-3 px-3 py-2.5"
+                style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}
               >
-                {o.src}
-              </span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[10px] font-mono text-naira-muted">{o.id}</div>
-                <div className="text-[11px] text-naira-text-muted truncate">{o.desc}</div>
+                <span
+                  className="font-mono text-[9px] font-medium px-2 py-0.5 uppercase tracking-[0.08em] flex-shrink-0"
+                  style={{ background: c.bg, color: c.fg, borderRadius: 8 }}
+                >
+                  {o.src}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="font-mono text-[10px] text-white/55">{o.id}</div>
+                  <div className="text-[11px] text-white/75 truncate">{o.desc}</div>
+                </div>
+                <div className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: PINK }} />
               </div>
-              <div className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: B }} />
-            </div>
-          ))}
+            )
+          })}
         </div>
         <div
-          className="mt-4 rounded-xl px-3 py-2 text-[11px]"
-          style={{ background: `rgba(${B_RGB},0.07)`, border: `1px solid rgba(${B_RGB},0.15)` }}
+          className="mt-4 px-3 py-2 text-[11px]"
+          style={{ background: `rgba(${PINK_RGB},0.08)`, border: `1px solid rgba(${PINK_RGB},0.20)`, borderRadius: 12 }}
         >
-          <span style={{ color: B_LIGHT }}>Menu sync active</span>
-          <span className="text-naira-muted ml-2">· Zomato & Swiggy prices updated</span>
+          <span className="font-mono uppercase tracking-[0.08em] text-[10px] font-medium" style={{ color: PINK }}>Menu sync active</span>
+          <span className="text-white/55 ml-2 text-[10px]">· Zomato &amp; Swiggy prices updated</span>
         </div>
       </div>
     </div>
@@ -64,18 +72,17 @@ function GrowthVisual() {
   return (
     <div className="w-full max-w-sm">
       <div
-        className="rounded-2xl p-5"
+        className="glass-dark p-5"
         style={{
-          background: '#1B1528',
-          border: `1px solid rgba(${B_RGB},0.2)`,
-          boxShadow: `0 0 40px rgba(${B_RGB},0.08)`,
+          borderRadius: 20,
+          boxShadow: `0 8px 24px rgba(${PINK_RGB},0.10), 0 16px 48px rgba(${PINK_RGB},0.06)`,
         }}
       >
         <div className="flex items-center justify-between mb-4">
-          <div className="text-xs font-semibold text-naira-text-muted">May 2026 Growth Report</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-white/70">May 2026 Growth Report</div>
           <span
-            className="text-[9px] px-2 py-0.5 rounded-full font-semibold"
-            style={{ background: `rgba(${B_RGB},0.12)`, color: B_LIGHT }}
+            className="font-mono text-[9px] px-2 py-0.5 font-medium uppercase tracking-[0.08em]"
+            style={{ background: `rgba(${PINK_RGB},0.14)`, color: PINK, borderRadius: 8 }}
           >
             Monthly
           </span>
@@ -87,19 +94,19 @@ function GrowthVisual() {
             { label: 'Monthly Revenue', val: '₹30L', delta: '+11%' },
             { label: 'Table Utilisation', val: '92%', delta: '+5%' },
           ].map((m) => (
-            <div key={m.label} className="rounded-xl p-2.5" style={{ background: 'rgba(0,0,0,0.3)' }}>
-              <div className="text-base font-bold text-naira-text">{m.val}</div>
-              <div className="text-[9px] text-naira-text-muted mt-0.5">{m.label}</div>
-              <div className="text-[9px] font-semibold mt-1" style={{ color: B_LIGHT }}>{m.delta} vs last month</div>
+            <div key={m.label} className="p-2.5" style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div className="font-mono text-base font-medium" style={{ color: PINK, fontVariantNumeric: 'tabular-nums' }}>{m.val}</div>
+              <div className="text-[10px] text-white/60 mt-0.5">{m.label}</div>
+              <div className="font-mono text-[9px] font-medium mt-1 text-white/75" style={{ fontVariantNumeric: 'tabular-nums' }}>{m.delta} vs last month</div>
             </div>
           ))}
         </div>
         <div
-          className="rounded-xl p-3"
-          style={{ background: `rgba(${B_RGB},0.07)`, border: `1px solid rgba(${B_RGB},0.15)` }}
+          className="p-3"
+          style={{ background: `rgba(${PINK_RGB},0.08)`, border: `1px solid rgba(${PINK_RGB},0.20)`, borderRadius: 12 }}
         >
-          <div className="text-[10px] font-semibold mb-1" style={{ color: B_LIGHT }}>Smart Insight</div>
-          <div className="text-[10px] text-naira-text-muted leading-relaxed">
+          <div className="font-mono text-[10px] uppercase tracking-[0.12em] font-medium mb-1" style={{ color: PINK }}>Smart Insight</div>
+          <div className="text-[11px] text-white/75 leading-relaxed">
             Your Biryani is your 4th most ordered item but has only 32% margin. Consider a bundle offer to drive AOV.
           </div>
         </div>
@@ -119,35 +126,34 @@ function CustomisationVisual() {
   return (
     <div className="w-full max-w-sm">
       <div
-        className="rounded-2xl p-5"
+        className="glass-dark p-5"
         style={{
-          background: '#1B1528',
-          border: `1px solid rgba(${B_RGB},0.2)`,
-          boxShadow: `0 0 40px rgba(${B_RGB},0.08)`,
+          borderRadius: 20,
+          boxShadow: `0 8px 24px rgba(${PINK_RGB},0.10), 0 16px 48px rgba(${PINK_RGB},0.06)`,
         }}
       >
-        <div className="text-xs font-semibold text-naira-text-muted mb-4">Customisation Options</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-white/70 mb-4">Customisation Options</div>
         <div className="space-y-3">
           {items.map((c, i) => (
             <div key={i} className="flex gap-3">
               <div
-                className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"
-                style={{ background: `rgba(${B_RGB},0.12)`, color: B_LIGHT }}
+                className="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"
+                style={{ background: `rgba(${PINK_RGB},0.14)`, color: PINK, borderRadius: 8 }}
               >
                 ✓
               </div>
               <div>
-                <div className="text-[11px] font-semibold text-naira-text">{c.title}</div>
-                <div className="text-[10px] text-naira-text-muted mt-0.5">{c.desc}</div>
+                <div className="text-[12px] font-semibold text-white">{c.title}</div>
+                <div className="text-[11px] text-white/65 mt-0.5">{c.desc}</div>
               </div>
             </div>
           ))}
         </div>
         <div
-          className="mt-4 rounded-xl px-3 py-2 text-[11px]"
-          style={{ background: `rgba(${B_RGB},0.07)`, border: `1px solid rgba(${B_RGB},0.15)` }}
+          className="mt-4 px-3 py-2 text-[11px]"
+          style={{ background: `rgba(${PINK_RGB},0.08)`, border: `1px solid rgba(${PINK_RGB},0.20)`, borderRadius: 12 }}
         >
-          <span style={{ color: B_LIGHT }}>Most custom features ship within two weeks.</span>
+          <span style={{ color: PINK }}>Most custom features ship within two weeks.</span>
         </div>
       </div>
     </div>
@@ -158,21 +164,21 @@ interface SectionProps {
   num: string
   tag: string
   headline: string
+  accent: string
   body: string
   bullets: string[]
   visual: ReactNode
   reverse?: boolean
 }
 
-function DeepDiveSection({ num, tag, headline, body, bullets, visual, reverse }: SectionProps) {
+function DeepDiveSection({ num, tag, headline, accent, body, bullets, visual, reverse }: SectionProps) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <div ref={ref} className="max-w-6xl mx-auto px-6">
+    <div ref={ref} className="max-w-[1200px] mx-auto px-6">
       <div className={`grid md:grid-cols-2 gap-12 md:gap-20 items-center ${reverse ? 'md:[&>div:first-child]:order-2' : ''}`}>
 
-        {/* Text */}
         <motion.div
           initial={{ opacity: 0, x: reverse ? 30 : -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -180,34 +186,32 @@ function DeepDiveSection({ num, tag, headline, body, bullets, visual, reverse }:
         >
           <div className="flex items-center gap-3 mb-6">
             <span
-              className="text-xs font-mono font-semibold px-2.5 py-1 rounded"
-              style={{ background: `rgba(${B_RGB},0.1)`, color: B_LIGHT }}
+              className="font-mono text-[11px] font-medium px-2.5 py-1 uppercase tracking-[0.08em]"
+              style={{ background: `rgba(${PINK_RGB},0.12)`, color: PINK, borderRadius: 8 }}
             >
               {num}
             </span>
             <span
-              className="text-xs font-semibold tracking-widest uppercase"
-              style={{ color: B_LIGHT }}
+              className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase"
+              style={{ color: PINK }}
             >
               {tag}
             </span>
           </div>
 
-          <h2
-            className="font-display text-3xl md:text-4xl font-medium tracking-tighter leading-snug mb-5 text-naira-text"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-          >
-            {headline}
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] leading-[1.1] mb-5 text-white">
+            {headline}{' '}
+            <span style={{ color: PINK }}>{accent}</span>
           </h2>
 
-          <p className="text-naira-text-muted leading-relaxed mb-7">{body}</p>
+          <p className="text-white/75 leading-relaxed mb-7 text-lg">{body}</p>
 
           <ul className="space-y-3">
             {bullets.map((b) => (
-              <li key={b} className="flex items-start gap-3 text-sm text-naira-text-muted">
+              <li key={b} className="flex items-start gap-3 text-sm text-white/75">
                 <span
                   className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px] font-bold"
-                  style={{ background: `rgba(${B_RGB},0.15)`, color: B_LIGHT }}
+                  style={{ background: `rgba(${PINK_RGB},0.15)`, color: PINK }}
                 >
                   ✓
                 </span>
@@ -217,7 +221,6 @@ function DeepDiveSection({ num, tag, headline, body, bullets, visual, reverse }:
           </ul>
         </motion.div>
 
-        {/* Visual */}
         <motion.div
           initial={{ opacity: 0, x: reverse ? -30 : 30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -234,41 +237,50 @@ function DeepDiveSection({ num, tag, headline, body, bullets, visual, reverse }:
 
 export default function BillingDeepDive() {
   return (
-    <section className="py-28 bg-naira-black space-y-28">
+    <section className="py-28 space-y-28 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+      <div
+        aria-hidden
+        className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: `radial-gradient(circle, rgba(${PINK_RGB},0.08) 0%, transparent 70%)` }}
+      />
+
       <DeepDiveSection
         num="01"
         tag="Third-Party Integrations"
-        headline="Zomato order at Table 3. Swiggy at the pass. Dine-in at the bar. One screen."
-        body="Every order from every channel lands in the same dashboard. Auto-accepted, colour-coded by source. One unified queue — no missed orders, no double entries, no switching between apps."
+        headline="Zomato order at Table 3. Swiggy at the pass. Dine-in at the bar."
+        accent="One screen."
+        body="Every order from every channel lands in the same dashboard — the restaurant POS integration that bars, cafes, and cafeterias have been waiting for. No switching apps. No missed tickets. Your staff see one unified queue, colour-coded by source."
         bullets={[
-          'Auto-accept delivery orders from Zomato and Swiggy',
-          'Channel-wise revenue split — see exactly where money comes from',
-          'Menu sync across platforms — update once, reflect everywhere',
+          'Auto-accept delivery orders — Zomato and Swiggy KOTs print the moment an order is confirmed',
+          'Channel-wise revenue split — see exactly how much comes from dine-in, Zomato, and Swiggy',
+          'Menu sync across platforms — update a price in Naira Billing and it reflects everywhere',
         ]}
         visual={<IntegrationVisual />}
       />
       <DeepDiveSection
         num="02"
         tag="Monthly Growth Reports"
-        headline="Every month, a report that tells you exactly where your money went and why."
-        body="Most POS systems give you raw data. Naira Billing turns it into restaurant business analytics you can act on — AOV trends, channel splits, and 3–5 specific suggestions every month."
+        headline="Every month, a report that tells you exactly where your money went and"
+        accent="why."
+        body="Most POS systems give you raw data. Naira Billing turns it into restaurant business analytics you can act on. What sold more this month. What fell behind. Where the opportunity is. Delivered to your inbox every 30 days."
         bullets={[
-          'Average Order Value trends tracked week over week',
-          'Revenue & order velocity — daily, weekly, monthly comparisons',
-          '3 to 5 actionable suggestions specific to your restaurant',
+          'Average Order Value trends tracked week over week — see if combos and upsells are moving the needle',
+          'Revenue & order velocity — daily, weekly, monthly comparisons to spot your best days and slowest hours',
+          '3 to 5 actionable suggestions specific to your restaurant, not just raw POS analytics',
         ]}
         visual={<GrowthVisual />}
         reverse
       />
       <DeepDiveSection
         num="03"
-        tag="Customisation"
-        headline="Your restaurant is unique. Your billing should be too."
-        body="Every restaurant has its own flow — a bar needs split billing, a cafeteria needs a queue system, a cloud kitchen needs delivery-first KOTs. We do not force you into a template."
+        tag="Customised For Your Restaurant"
+        headline="Your restaurant is unique. Your billing should be"
+        accent="too."
+        body="Every restaurant has its own flow. Whether you need the best bar POS system, the most reliable POS software for cafes, or a full cafeteria POS system — we do not force you into a template. Tell us how your kitchen works and we shape the system around you."
         bullets={[
-          'Your logo and brand colours on every bill',
-          'Multi-language interface for staff (Hindi, Marathi, Tamil & more)',
-          'Waiting queue system with SMS alerts for guests',
+          'Waiting queue management — a digital queue that texts guests when their table is ready',
+          'Multi-language interface — switch the billing language to Hindi, Marathi, or Tamil in one tap',
+          'Custom branding & layout — your logo on every bill, your brand colours on the dashboard',
         ]}
         visual={<CustomisationVisual />}
       />

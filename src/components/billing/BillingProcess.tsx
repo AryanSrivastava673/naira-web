@@ -3,25 +3,24 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-const B = '#10B981'
-const B_LIGHT = '#34D399'
-const B_RGB = '16,185,129'
+const PINK = '#ff2ba3'
+const PINK_RGB = '255,43,163'
 
 const steps = [
   {
     num: '01',
     title: 'We set up your menu & config',
-    desc: 'Share your menu, outlet details, and GST info. We configure your dashboard, KOT flow, Zomato/Swiggy integration, and floor plan. You do nothing but send us a WhatsApp.',
+    desc: 'Share your menu, outlet details, and GST info. We configure your dashboard, KOT flow, Zomato/Swiggy integration, and cafeteria point of sale system settings — tailored to your format.',
   },
   {
     num: '02',
     title: 'Staff training in one session',
-    desc: 'A 30-minute walkthrough for your team covering order entry, bill printing, and KOT management. Most staff are comfortable by the end of the session.',
+    desc: 'A 30-minute walkthrough for your team. Order entry, bill printing, KOT management. Most staff are confident by the end of day one.',
   },
   {
     num: '03',
     title: 'Go live & grow',
-    desc: 'Start billing from day one. Your first monthly growth report lands in 30 days with actionable insights on what to change, cut, or double down on.',
+    desc: 'Start billing. Your first monthly growth report lands in 30 days with restaurant data analytics — AOV trends, peak-hour insights, and actionable optimisation suggestions.',
   },
 ]
 
@@ -30,40 +29,31 @@ export default function BillingProcess() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-28 px-6 bg-naira-black" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+    <section className="py-28 px-6" style={{ background: '#ffffff' }} ref={ref}>
+      <div className="max-w-[1200px] mx-auto">
 
-        {/* Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span
-            className="inline-block px-3 py-1 rounded-full border text-xs font-medium tracking-widest uppercase mb-5"
-            style={{ borderColor: `rgba(${B_RGB},0.3)`, color: B_LIGHT }}
-          >
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-3" style={{ color: PINK }}>
             Getting Started
-          </span>
-          <h2
-            className="font-display text-4xl md:text-5xl font-medium tracking-tighter mb-5 text-naira-text"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-          >
-            Three steps to switch
+          </p>
+          <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-5" style={{ color: '#1a1a1a' }}>
+            Three steps to <span style={{ color: PINK }}>switch</span>
           </h2>
-          <p className="text-naira-text-muted text-lg max-w-xl mx-auto">
-            You&apos;re live in under a week. No server racks, no IT team, no downtime.
+          <p className="text-lg max-w-xl mx-auto" style={{ color: '#6b7280' }}>
+            You&apos;re live in under a week. No server racks, no IT team, no downtime. We set up everything and train your staff on-site.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connecting line */}
+        <div className="relative max-w-3xl mx-auto">
           <div
             className="absolute left-8 top-10 bottom-10 w-px hidden md:block"
             style={{
-              background: `linear-gradient(to bottom, transparent, rgba(${B_RGB},0.3) 20%, rgba(${B_RGB},0.3) 80%, transparent)`,
+              background: `linear-gradient(to bottom, transparent, rgba(${PINK_RGB},0.25) 20%, rgba(${PINK_RGB},0.25) 80%, transparent)`,
             }}
           />
 
@@ -76,32 +66,31 @@ export default function BillingProcess() {
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
               >
-                {/* Step number */}
                 <div
-                  className="relative flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center font-display text-xl font-semibold z-10"
+                  className="relative flex-shrink-0 w-16 h-16 flex items-center justify-center font-mono text-xl font-medium z-10"
                   style={{
-                    fontFamily: 'var(--font-playfair), Georgia, serif',
-                    background: `rgba(${B_RGB},0.08)`,
-                    border: `1px solid rgba(${B_RGB},0.25)`,
-                    color: B_LIGHT,
-                    boxShadow: `0 0 24px rgba(${B_RGB},0.1)`,
+                    background: '#ffffff',
+                    border: `1px solid rgba(${PINK_RGB},0.30)`,
+                    color: PINK,
+                    borderRadius: 16,
+                    boxShadow: `0 2px 8px rgba(${PINK_RGB},0.06), 0 4px 16px rgba(${PINK_RGB},0.04)`,
                   }}
                 >
                   {step.num}
                 </div>
 
-                {/* Content */}
                 <div
-                  className="flex-1 rounded-2xl p-6 bg-naira-surface"
-                  style={{ border: `1px solid rgba(${B_RGB},0.12)` }}
+                  className="flex-1 p-6 transition-all"
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid rgba(0,0,0,0.06)',
+                    borderRadius: 16,
+                  }}
                 >
-                  <h3
-                    className="text-xl font-semibold text-naira-text mb-3"
-                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                  >
+                  <h3 className="font-sans text-xl font-semibold mb-3" style={{ color: '#1a1a1a' }}>
                     {step.title}
                   </h3>
-                  <p className="text-naira-text-muted leading-relaxed">{step.desc}</p>
+                  <p className="leading-relaxed" style={{ color: '#6b7280' }}>{step.desc}</p>
                 </div>
               </motion.div>
             ))}

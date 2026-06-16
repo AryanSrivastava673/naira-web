@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
 import PostHogProvider from '@/components/PostHogProvider'
-import { Inter, Lora } from 'next/font/google'
+import { Inter, Lora, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 export const revalidate = 60
@@ -22,8 +22,15 @@ const lora = Lora({
   display: 'swap',
 })
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Naira Menus — The Future of Restaurant Operations',
+  title: 'Naira Menus: All-in-One Restaurant Platform',
   description:
     'NFC-powered digital menus for Indian restaurants. Replace paper menus with smart QR/NFC menus, manage orders, and grow your business with Naira.',
   keywords: 'NFC menu, digital menu, restaurant POS, QR menu, restaurant management',
@@ -43,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${lora.variable}`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${lora.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -80,7 +87,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-MXN7T65Q');`}
         </Script>
       </head>
-      <body className="bg-naira-black text-naira-text antialiased" suppressHydrationWarning>
+      <body className="antialiased" style={{ background: '#0a0a0a', color: '#ffffff' }} suppressHydrationWarning>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MXN7T65Q"
