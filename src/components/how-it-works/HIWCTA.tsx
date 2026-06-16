@@ -27,7 +27,7 @@ export default function HIWCTA() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-28 px-6 bg-naira-black relative overflow-hidden" ref={ref}>
+    <section className="py-28 px-6 relative overflow-hidden" style={{ background: '#0a0a0a' }} ref={ref}>
       {/* Ambient glow */}
       <div
         aria-hidden
@@ -44,12 +44,12 @@ export default function HIWCTA() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.65 }}
           >
-            <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6">
+            <span className="font-mono inline-block px-3 py-1 rounded-[8px] bg-[rgba(255,43,163,0.12)] text-[#ff2ba3] text-[12px] font-medium tracking-[0.12em] uppercase mb-6">
               Quick Answers
             </span>
             <h2
-              className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-10"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text mb-10"
+              
             >
               Questions you&apos;re probably asking
             </h2>
@@ -103,8 +103,8 @@ export default function HIWCTA() {
               style={{ border: '1px solid rgba(var(--accent-rgb),0.2)' }}
             >
               <h3
-                className="font-display text-3xl font-medium tracking-tighter text-naira-text mb-3"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                className="font-sans text-3xl font-bold tracking-[-0.02em] text-naira-text mb-3"
+                
               >
                 Ready to get started?
               </h3>
@@ -116,13 +116,11 @@ export default function HIWCTA() {
               <div className="space-y-3">
                 <a
                   href="/contact"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full text-sm font-semibold transition-all"
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl text-sm font-semibold transition-all"
                   style={{
-                    background:
-                      'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
-                    color: '#F0E9DE',
-                    boxShadow:
-                      '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.25)',
+                    background: '#ff2ba3',
+                    color: '#ffffff',
+                    boxShadow: '0 0 40px rgba(255,43,163,0.25)',
                   }}
                 >
                   Book a free demo
@@ -131,7 +129,8 @@ export default function HIWCTA() {
                   href="https://wa.me/919021044699"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full border border-naira-border text-sm font-semibold text-naira-text-muted hover:text-naira-text hover:border-naira-gold/30 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl text-sm font-semibold text-white/80 hover:text-white transition-colors"
+                  style={{ border: '1px solid rgba(255,255,255,0.15)' }}
                 >
                   WhatsApp us instead
                 </a>

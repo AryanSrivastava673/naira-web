@@ -69,30 +69,33 @@ export default function GrowthFAQ() {
 
   return (
     <section
-      className="py-20 px-6 relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse 70% 50% at 30% 80%, rgba(255,43,163,0.07) 0%, transparent 65%), #0C1118',
-      }}
+      className="py-24 px-6 relative overflow-hidden"
+      style={{ background: '#ffffff' }}
     >
+      <div
+        aria-hidden
+        className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,43,163,0.05) 0%, transparent 70%)' }}
+      />
       <div className="max-w-3xl mx-auto relative z-10">
 
-        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-3 text-center" style={{ color: '#ff2ba3' }}>
           FAQ
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-10">
-          Every question you&apos;re afraid to ask.
+        <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-center mb-10" style={{ color: '#1a1a1a' }}>
+          Every question you&apos;re <span style={{ color: '#ff2ba3' }}>afraid to ask.</span>
         </h2>
 
         <div className="space-y-3 mb-3">
           {visible.map((faq, i) => (
             <div
               key={i}
-              className="rounded-xl overflow-hidden"
+              className="overflow-hidden"
               style={{
-                background: 'rgba(30,21,32,0.6)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
+                background: open === i ? 'rgba(255,43,163,0.04)' : '#ffffff',
+                border: `1px solid ${open === i ? 'rgba(255,43,163,0.30)' : 'rgba(0,0,0,0.06)'}`,
+                borderRadius: 16,
+                transition: 'border-color 0.3s, background 0.3s',
               }}
             >
               <button
@@ -100,17 +103,15 @@ export default function GrowthFAQ() {
                 className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
               >
                 <span
-                  className={`text-sm font-semibold transition-colors ${
-                    open === i ? 'text-naira-gold' : 'text-naira-text'
-                  }`}
+                  className="text-sm font-semibold transition-colors"
+                  style={{ color: open === i ? '#ff2ba3' : '#1a1a1a' }}
                 >
                   {faq.q}
                 </span>
                 <ChevronDown
                   size={17}
-                  className={`shrink-0 text-naira-muted transition-transform duration-200 ${
-                    open === i ? 'rotate-180' : ''
-                  }`}
+                  className={`shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
+                  style={{ color: open === i ? '#ff2ba3' : '#9ca3af' }}
                 />
               </button>
 
@@ -124,8 +125,8 @@ export default function GrowthFAQ() {
                     className="overflow-hidden"
                   >
                     <p
-                      className="px-6 pb-5 text-sm text-naira-text-muted leading-relaxed pt-4"
-                      style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+                      className="px-6 pb-5 text-sm leading-relaxed pt-4"
+                      style={{ color: '#6b7280', borderTop: '1px solid rgba(0,0,0,0.06)' }}
                     >
                       {faq.a}
                     </p>
@@ -138,7 +139,8 @@ export default function GrowthFAQ() {
 
         <button
           onClick={() => setShowAll(s => !s)}
-          className="w-full flex items-center justify-center gap-2 py-3 mb-10 text-xs text-naira-muted hover:text-naira-text-muted transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-3 mb-10 text-xs transition-colors"
+          style={{ color: '#9ca3af' }}
         >
           <ChevronDown
             size={15}
@@ -149,12 +151,11 @@ export default function GrowthFAQ() {
 
         {/* CTA */}
         <div
-          className="rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
+          className="text-center relative overflow-hidden p-8 md:p-10"
           style={{
-            background: 'rgba(255,43,163,0.08)',
-            border: '1px solid rgba(255,128,200,0.2)',
-            boxShadow:
-              'inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 40px rgba(255,43,163,0.12)',
+            background: 'rgba(255,43,163,0.05)',
+            border: '1px solid rgba(255,43,163,0.18)',
+            borderRadius: 20,
           }}
         >
           {/* inner glow */}
@@ -165,23 +166,22 @@ export default function GrowthFAQ() {
                 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,43,163,0.15) 0%, transparent 70%)',
             }}
           />
-          <h3 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text mb-3 relative">
-            Ready to own your growth?
+          <h3 className="font-sans text-2xl md:text-3xl font-bold tracking-[-0.02em] mb-3 relative" style={{ color: '#1a1a1a' }}>
+            Ready to own your <span style={{ color: '#ff2ba3' }}>growth?</span>
           </h3>
-          <p className="text-naira-text-muted text-sm mb-7 max-w-sm mx-auto relative">
+          <p className="text-sm mb-7 max-w-sm mx-auto relative" style={{ color: '#6b7280' }}>
             Start with a free visibility audit. Know exactly where you stand in
             30 seconds.
           </p>
           <a
             href="#audit"
-            className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
+            className="relative inline-flex items-center gap-2 text-sm font-semibold transition-all"
             style={{
-              background:
-                'linear-gradient(135deg, rgba(204,34,130,0.9) 0%, rgba(255,43,163,0.9) 60%, rgba(255,128,200,0.85) 100%)',
-              color: '#F0E9DE',
-              border: '1px solid rgba(255,128,200,0.35)',
-              boxShadow:
-                'inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.15), 0 8px 32px rgba(255,43,163,0.35), 0 2px 8px rgba(0,0,0,0.3)',
+              background: '#ff2ba3',
+              color: '#ffffff',
+              padding: '14px 28px',
+              borderRadius: 12,
+              boxShadow: '0 0 40px rgba(255,43,163,0.25)',
             }}
           >
             Get your free audit

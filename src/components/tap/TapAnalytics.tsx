@@ -20,7 +20,7 @@ export default function TapAnalytics() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 80% 60% at 50% 80%, rgba(255,43,163,0.07) 0%, transparent 65%), #151018',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-5xl mx-auto relative z-10">
@@ -31,10 +31,10 @@ export default function TapAnalytics() {
           transition={{ duration: 0.55 }}
           className="text-center mb-10"
         >
-          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3">
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-3">
             Analytics
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text">
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text">
             Weekly analytics — see what&apos;s earning and what&apos;s not.
           </h2>
         </motion.div>
@@ -74,7 +74,7 @@ export default function TapAnalytics() {
                 border: '1px solid rgba(255,43,163,0.15)',
               }}
             >
-              <p className="font-display text-2xl font-medium tracking-tighter text-naira-gold">{c.label}</p>
+              <p className="font-mono text-2xl font-medium tracking-[-0.01em] text-naira-gold">{c.label}</p>
               <p className="text-xs text-naira-muted mt-1">{c.sub}</p>
             </div>
           ))}

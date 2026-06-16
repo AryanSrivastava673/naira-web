@@ -111,19 +111,19 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
   return (
     <div className="relative select-none" style={{ width: 300 }}>
       <svg width="300" height="30" viewBox="0 0 300 30" style={{ display: 'block', filter: isActive ? 'drop-shadow(0 -5px 14px rgba(var(--accent-rgb),0.6))' : 'drop-shadow(0 -2px 8px rgba(var(--accent-rgb),0.22))', transition: 'filter 0.3s ease' }}>
-        <path d={Array.from({ length: 24 }, (_, i) => { const x = i * 12.5; return `M${x},30 L${x + 6.25},5 L${x + 12.5},30` }).join(' ')} fill="#120E14" stroke={isActive ? 'var(--accent)' : '#2E1E2A'} strokeWidth={isActive ? '0.9' : '0.4'} />
+        <path d={Array.from({ length: 24 }, (_, i) => { const x = i * 12.5; return `M${x},30 L${x + 6.25},5 L${x + 12.5},30` }).join(' ')} fill="#0a0a0a" stroke={isActive ? 'var(--accent)' : '#2a2a2a'} strokeWidth={isActive ? '0.9' : '0.4'} />
         <line x1="0" y1="5" x2="300" y2="5" stroke="var(--accent)" strokeWidth="0.7" strokeOpacity={isActive ? 0.8 : 0.3} />
       </svg>
-      <div style={{ height: 68, background: 'linear-gradient(180deg, #120E14 0%, #090F18 100%)', borderLeft: '1px solid #2E1E2A', borderRight: '1px solid #2E1E2A', borderBottom: '1px solid #2E1E2A', borderRadius: '0 0 10px 10px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ height: 68, background: 'linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 100%)', borderLeft: '1px solid #2a2a2a', borderRight: '1px solid #2a2a2a', borderBottom: '1px solid #2a2a2a', borderRadius: '0 0 10px 10px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="absolute inset-0 rounded-b-[10px] opacity-[0.06]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.08) 3px, rgba(255,255,255,0.08) 4px)' }} />
         <span className="relative text-[11px] tracking-[0.4em] font-semibold uppercase transition-colors duration-300" style={{ color: isActive ? 'rgba(var(--accent-light-rgb),0.9)' : 'rgba(var(--accent-rgb),0.38)' }}>Naira Tap</span>
         <div className="absolute right-5 top-1/2 -translate-y-1/2">
-          <div className="w-2 h-2 rounded-full transition-all duration-300" style={{ background: isActive ? 'var(--accent)' : '#2E1E2A', boxShadow: isActive ? '0 0 8px rgba(var(--accent-rgb),0.8)' : 'none' }} />
+          <div className="w-2 h-2 rounded-full transition-all duration-300" style={{ background: isActive ? 'var(--accent)' : '#2a2a2a', boxShadow: isActive ? '0 0 8px rgba(var(--accent-rgb),0.8)' : 'none' }} />
         </div>
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-sm" style={{ width: 210, height: 5, background: 'rgba(0,0,0,0.75)', boxShadow: 'inset 0 1px 4px rgba(0,0,0,1)' }} />
       </div>
       <div className="flex justify-between px-8">
-        {[0, 1].map((k) => <div key={k} className="w-4 h-[22px] rounded-b-sm" style={{ background: '#0D0810', border: '1px solid #2E1E2A', borderTop: 'none' }} />)}
+        {[0, 1].map((k) => <div key={k} className="w-4 h-[22px] rounded-b-sm" style={{ background: '#0a0a0a', border: '1px solid #2a2a2a', borderTop: 'none' }} />)}
       </div>
     </div>
   )
@@ -165,8 +165,8 @@ export default function HeroShredderDesktop() {
 
   return (
     <div ref={containerRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen overflow-hidden bg-naira-black">
-        <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+      <div className="sticky top-0 h-screen overflow-hidden" style={{ background: '#0a0a0a' }}>
+        <div aria-hidden className="absolute inset-x-0 top-0 h-[28%] pointer-events-none" style={{ background: 'radial-gradient(ellipse 45% 100% at 50% 0%, rgba(255,43,163,0.045) 0%, transparent 72%)' }} />
         <div aria-hidden className="absolute inset-0 pointer-events-none opacity-[0.028]" style={{ backgroundImage: `linear-gradient(rgba(var(--accent-rgb),0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--accent-rgb),0.5) 1px, transparent 1px)`, backgroundSize: '60px 60px' }} />
 
         <motion.div aria-label="Naira Menus hero headline" className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none" style={{ opacity: heroTextOpacity, y: heroTextY, zIndex: 30 }}>

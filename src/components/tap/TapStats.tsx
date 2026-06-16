@@ -72,7 +72,7 @@ export default function TapStats() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 80% 60% at 80% 50%, rgba(255,43,163,0.07) 0%, transparent 65%), #151018',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-6xl mx-auto">
@@ -89,8 +89,8 @@ export default function TapStats() {
               className="text-center"
             >
               <div
-                className="font-display font-medium tracking-tighter text-naira-gold mb-3"
-                style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 1 }}
+                className="font-mono font-medium text-naira-gold mb-3"
+                style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 1, fontVariantNumeric: 'tabular-nums', letterSpacing: '-0.02em' }}
               >
                 {s.value}
               </div>

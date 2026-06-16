@@ -65,7 +65,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-naira-black relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden" style={{ background: '#0a0a0a' }}>
       {/* Ambient glow */}
       <div
         aria-hidden
@@ -97,15 +97,14 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6">
+          <span className="font-mono inline-block px-3 py-1 rounded-[8px] bg-[rgba(255,43,163,0.12)] text-[#ff2ba3] text-[12px] font-medium tracking-[0.12em] uppercase mb-6">
             Contact Sales
           </span>
           <h1
-            className="font-display text-5xl md:text-6xl font-medium tracking-tighter leading-tight text-naira-text mb-5"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            className="font-sans text-5xl md:text-6xl font-bold tracking-[-0.03em] leading-tight text-naira-text mb-5"
           >
             Let&apos;s find the right fit{' '}
-            <span className="text-gold-gradient">for your restaurant.</span>
+            <span style={{ color: '#ff2ba3' }}>for your restaurant.</span>
           </h1>
           <p className="text-naira-text-muted text-lg leading-relaxed">
             Whether you&apos;re curious about our products, ready to get started, or just want to talk
@@ -134,7 +133,7 @@ export default function ContactPage() {
               >
                 <Phone size={18} style={{ color: 'var(--accent-light)' }} />
               </div>
-              <div className="text-[10px] font-semibold tracking-widest uppercase text-naira-gold mb-1">
+              <div className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-gold mb-1">
                 Talk to us
               </div>
               <div className="text-xl font-semibold text-naira-text mb-1">+91 90210 44699</div>
@@ -142,10 +141,10 @@ export default function ContactPage() {
               <div className="flex gap-2">
                 <a
                   href="tel:+919021044699"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all"
                   style={{
-                    background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
-                    color: '#F0E9DE',
+                    background: '#ff2ba3',
+                    color: '#ffffff',
                     boxShadow: '0 0 0 1px rgba(var(--accent-rgb),0.3)',
                   }}
                 >
@@ -155,7 +154,7 @@ export default function ContactPage() {
                   href="https://wa.me/919021044699"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-naira-border text-xs font-semibold text-naira-text-muted hover:text-naira-text hover:border-naira-gold/30 transition-colors"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-naira-border text-xs font-semibold text-naira-text-muted hover:text-naira-text hover:border-naira-gold/30 transition-colors"
                 >
                   <MessageCircle size={11} /> WhatsApp
                 </a>
@@ -173,7 +172,7 @@ export default function ContactPage() {
               >
                 <Mail size={18} style={{ color: 'var(--accent-light)' }} />
               </div>
-              <div className="text-[10px] font-semibold tracking-widest uppercase text-naira-gold mb-1">
+              <div className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-gold mb-1">
                 Email
               </div>
               <a
@@ -189,7 +188,7 @@ export default function ContactPage() {
 
             {/* Social links */}
             <div className="px-1">
-              <div className="text-[10px] font-semibold tracking-widest uppercase text-naira-text-muted mb-3">
+              <div className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-text-muted mb-3">
                 Follow along
               </div>
               <div className="flex gap-2.5">
@@ -230,8 +229,8 @@ export default function ContactPage() {
               />
 
               <h2
-                className="font-display text-2xl font-medium tracking-tighter text-naira-text mb-1"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                className="font-sans text-2xl font-bold tracking-[-0.02em] text-naira-text mb-1"
+                
               >
                 Drop us a message
               </h2>
@@ -299,11 +298,11 @@ export default function ContactPage() {
                     className={`${inputClass} appearance-none cursor-pointer`}
                     style={{ color: form.interest ? 'var(--text)' : 'var(--text-muted)' }}
                   >
-                    <option value="" disabled style={{ background: '#1B1528', color: '#D4AECA' }}>
+                    <option value="" disabled style={{ background: '#141414', color: '#D4AECA' }}>
                       How can we help?
                     </option>
                     {INTEREST_OPTIONS.map((o) => (
-                      <option key={o} value={o} style={{ background: '#1B1528', color: '#FAF6F0' }}>
+                      <option key={o} value={o} style={{ background: '#141414', color: '#FAF6F0' }}>
                         {o}
                       </option>
                     ))}
@@ -321,11 +320,11 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full px-6 py-3.5 rounded-full text-sm font-semibold transition-all disabled:opacity-60"
+                    className="w-full px-6 py-3.5 rounded-xl text-sm font-semibold transition-all disabled:opacity-60"
                     style={{
                       background:
-                        'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
-                      color: '#F0E9DE',
+                        '#ff2ba3',
+                      color: '#ffffff',
                       boxShadow:
                         '0 0 0 1px rgba(var(--accent-rgb),0.3), 0 4px 20px rgba(var(--accent-rgb),0.2)',
                     }}

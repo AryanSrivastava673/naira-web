@@ -26,21 +26,19 @@ export default function GrowthFeatures() {
 
   return (
     <section
-      className="py-20 px-6 relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse 70% 60% at 15% 40%, rgba(255,43,163,0.07) 0%, transparent 65%), #0C1118',
-      }}
+      className="py-24 px-6 relative overflow-hidden"
+      style={{ background: '#0a0a0a' }}
     >
+      <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
       <div ref={ref} className="max-w-4xl mx-auto relative z-10">
 
-        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-2 text-center">
+        <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-2 text-center" style={{ color: '#ff2ba3' }}>
           What&apos;s inside
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-3">
-          10 tools. One growth engine.
+        <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-white text-center mb-3">
+          10 tools. One growth <span style={{ color: '#ff2ba3' }}>engine.</span>
         </h2>
-        <p className="text-naira-text-muted text-sm text-center mb-10 max-w-lg mx-auto">
+        <p className="text-white/70 text-sm text-center mb-10 max-w-lg mx-auto">
           Everything handled for you — SEO, content, reviews, socials, and more.
         </p>
 
@@ -51,25 +49,23 @@ export default function GrowthFeatures() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="rounded-2xl p-5 flex flex-col items-center text-center gap-3"
-              style={{
-                background: 'rgba(30,21,32,0.55)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07)',
-              }}
+              whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(255,43,163,0.10), 0 16px 48px rgba(255,43,163,0.06)' }}
+              className="glass-dark p-5 flex flex-col items-center text-center gap-3"
+              style={{ borderRadius: 16 }}
             >
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                className="w-11 h-11 flex items-center justify-center shrink-0"
                 style={{
-                  background: 'rgba(255,43,163,0.1)',
-                  border: '1px solid rgba(255,43,163,0.2)',
+                  background: 'rgba(255,43,163,0.12)',
+                  border: '1px solid rgba(255,43,163,0.22)',
+                  borderRadius: 12,
                 }}
               >
                 <Icon size={20} color="#ff2ba3" />
               </div>
               <div>
-                <p className="font-semibold text-naira-text text-sm mb-1">{title}</p>
-                <p className="text-xs text-naira-muted leading-snug">{tagline}</p>
+                <p className="font-semibold text-white text-sm mb-1">{title}</p>
+                <p className="text-xs text-white/60 leading-snug">{tagline}</p>
               </div>
             </motion.div>
           ))}

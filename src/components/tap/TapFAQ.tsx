@@ -10,10 +10,6 @@ const FAQS = [
     a: 'Nearly all modern smartphones in India, both Android and iPhone, support NFC. For the tiny minority that don\'t, every Naira Tap coaster also has a small QR code printed on the underside as a fallback. Nobody gets locked out.',
   },
   {
-    q: 'What happens if our wifi goes down at service?',
-    a: 'Your Naira Tap menu is cached on the device from the last tap, so guests still see your contactless digital menu with images even with bad signal. Only updates sync when wifi is back.',
-  },
-  {
     q: 'How does my guest "tap" exactly?',
     a: 'They bring the top of their phone within about 1cm of the coaster. A notification pops up. They tap it. Menu opens. The whole thing takes about a second. No app install. No sign-up.',
   },
@@ -68,15 +64,15 @@ export default function TapFAQ() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 70% 50% at 30% 80%, rgba(255,43,163,0.07) 0%, transparent 65%), #0C1118',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-3xl mx-auto relative z-10">
 
-        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-3 text-center">
           FAQ
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-10">
+        <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text text-center mb-10">
           Every question you&apos;re afraid to ask.
         </h2>
 

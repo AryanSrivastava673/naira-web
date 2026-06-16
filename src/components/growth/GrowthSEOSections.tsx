@@ -44,12 +44,10 @@ export default function GrowthSEOSections() {
   return (
     <section
       ref={ref}
-      className="py-20 px-6 relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse 80% 60% at 90% 30%, rgba(255,43,163,0.06) 0%, transparent 65%), #0C1118',
-      }}
+      className="py-24 px-6 relative overflow-hidden"
+      style={{ background: '#0a0a0a' }}
     >
+      <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
       <div className="max-w-6xl mx-auto space-y-6 relative z-10">
         {SECTIONS.map((s, i) => {
           const { Icon } = s
@@ -59,19 +57,16 @@ export default function GrowthSEOSections() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="rounded-2xl p-8 md:p-10 grid md:grid-cols-[auto_1fr] gap-8"
-              style={{
-                background: 'rgba(30,21,32,0.55)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07), 0 8px 40px rgba(0,0,0,0.35)',
-              }}
+              className="glass-dark p-8 md:p-10 grid md:grid-cols-[auto_1fr] gap-8"
+              style={{ borderRadius: 20 }}
             >
               {/* Icon */}
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                className="w-12 h-12 flex items-center justify-center shrink-0"
                 style={{
-                  background: 'rgba(255,43,163,0.1)',
-                  border: '1px solid rgba(255,43,163,0.2)',
+                  background: 'rgba(255,43,163,0.12)',
+                  border: '1px solid rgba(255,43,163,0.22)',
+                  borderRadius: 12,
                 }}
               >
                 <Icon size={22} color="#ff2ba3" />
@@ -79,15 +74,15 @@ export default function GrowthSEOSections() {
 
               {/* Content */}
               <div>
-                <p className="text-xs font-medium tracking-widest uppercase text-naira-gold mb-2">
+                <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-2" style={{ color: '#ff2ba3' }}>
                   {s.eyebrow}
                 </p>
-                <h2 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text mb-4">
+                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-[-0.02em] text-white mb-4">
                   {s.heading}
                 </h2>
                 <div className="space-y-3 mb-6">
                   {s.body.map((para, j) => (
-                    <p key={j} className="text-naira-text-muted text-sm leading-relaxed">
+                    <p key={j} className="text-white/70 text-sm leading-relaxed">
                       {para}
                     </p>
                   ))}
@@ -97,7 +92,8 @@ export default function GrowthSEOSections() {
                   {s.tags.map((tag, j) => (
                     <span
                       key={j}
-                      className="text-xs px-3 py-1 rounded-full border border-naira-border text-naira-muted"
+                      className="font-mono text-[11px] px-3 py-1 uppercase tracking-[0.08em]"
+                      style={{ background: 'rgba(255,43,163,0.10)', color: '#ff2ba3', borderRadius: 8 }}
                     >
                       {tag}
                     </span>

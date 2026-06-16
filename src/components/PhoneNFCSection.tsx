@@ -21,9 +21,9 @@ function PhoneMockup({
         style={{
           width: 260,
           height: 520,
-          background: '#0C1118',
+          background: '#0a0a0a',
           borderRadius: 42,
-          border: '2px solid #2E1E2A',
+          border: '2px solid #2a2a2a',
           boxShadow: screenActive
             ? '0 0 55px rgba(var(--accent-rgb),0.28), 0 30px 80px rgba(0,0,0,0.8)'
             : '0 30px 80px rgba(0,0,0,0.8)',
@@ -31,9 +31,9 @@ function PhoneMockup({
         }}
       >
         {/* Side buttons */}
-        <div className="absolute -right-[3px] top-24 w-[3px] h-10 bg-[#2E1E2A] rounded-r-sm" />
-        <div className="absolute -left-[3px] top-20 w-[3px] h-7 bg-[#2E1E2A] rounded-l-sm" />
-        <div className="absolute -left-[3px] top-32 w-[3px] h-7 bg-[#2E1E2A] rounded-l-sm" />
+        <div className="absolute -right-[3px] top-24 w-[3px] h-10 bg-[#2a2a2a] rounded-r-sm" />
+        <div className="absolute -left-[3px] top-20 w-[3px] h-7 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute -left-[3px] top-32 w-[3px] h-7 bg-[#2a2a2a] rounded-l-sm" />
 
         {/* Dynamic island */}
         <div
@@ -48,8 +48,8 @@ function PhoneMockup({
             inset: 6,
             borderRadius: 36,
             background: screenActive
-              ? 'linear-gradient(180deg, #0C1118 0%, #151018 100%)'
-              : '#060A10',
+              ? 'linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 100%)'
+              : '#0a0a0a',
           }}
         >
           {/* ── SCREEN CONTENT (visible when active) ── */}
@@ -67,10 +67,10 @@ function PhoneMockup({
             {/* Restaurant header */}
             <div className="px-4 pt-2 pb-3 flex items-center justify-between">
               <div>
-                <div className="text-[9px] text-[#7A5068] tracking-widest uppercase">The Grand Spice</div>
+                <div className="text-[9px] text-[rgba(255,255,255,0.55)] tracking-widest uppercase">The Grand Spice</div>
                 <div
                   className="font-semibold text-sm mt-0.5"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#F0E9DE' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#ffffff' }}
                 >
                   Digital Menu
                 </div>
@@ -88,7 +88,7 @@ function PhoneMockup({
                   className="px-2 py-1 rounded-full text-[9px] font-medium"
                   style={{
                     background: i === 0 ? 'var(--accent)' : 'rgba(var(--accent-rgb),0.08)',
-                    color: i === 0 ? '#F0E9DE' : '#7A5068',
+                    color: i === 0 ? '#ffffff' : 'rgba(255,255,255,0.55)',
                   }}
                 >
                   {tab}
@@ -113,8 +113,8 @@ function PhoneMockup({
                     style={{ background: 'rgba(var(--accent-rgb),0.12)' }}
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="text-[10px] font-medium truncate" style={{ color: '#F0E9DE' }}>{item.name}</div>
-                    <div className="text-[8px] text-[#7A5068] truncate">{item.desc}</div>
+                    <div className="text-[10px] font-medium truncate" style={{ color: '#ffffff' }}>{item.name}</div>
+                    <div className="text-[8px] text-[rgba(255,255,255,0.55)] truncate">{item.desc}</div>
                     {item.tag && (
                       <span className="inline-block text-[7px] px-1.5 py-0.5 rounded-full mt-0.5" style={{ background: 'rgba(var(--accent-light-rgb),0.15)', color: 'var(--accent-light)' }}>
                         {item.tag}
@@ -130,7 +130,7 @@ function PhoneMockup({
             <div className="px-4 pb-4 pt-2">
               <div
                 className="w-full py-2.5 rounded-full text-center text-[10px] font-semibold"
-                style={{ background: 'var(--accent)', color: '#F0E9DE' }}
+                style={{ background: 'var(--accent)', color: '#ffffff' }}
               >
                 View Full Menu
               </div>
@@ -140,19 +140,19 @@ function PhoneMockup({
           {/* ── IDLE SCREEN (visible when inactive) ── */}
           <motion.div
             className="absolute inset-0 flex items-center justify-center"
-            style={{ background: '#060A10', pointerEvents: screenActive ? 'none' : 'auto' }}
+            style={{ background: '#0a0a0a', pointerEvents: screenActive ? 'none' : 'auto' }}
             animate={{ opacity: screenActive ? 0 : 1 }}
             transition={{ duration: 0.3 }}
           >
             <div className="text-center space-y-2">
-              <div className="w-10 h-10 rounded-full border border-[#2E1E2A] mx-auto flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full border border-[#2a2a2a] mx-auto flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="6" stroke="#3A1E30" strokeWidth="1.2" />
-                  <circle cx="8" cy="8" r="3" stroke="#2E1E2A" strokeWidth="1.2" />
-                  <circle cx="8" cy="8" r="1" fill="#2E1E2A" />
+                  <circle cx="8" cy="8" r="6" stroke="#3a3a3a" strokeWidth="1.2" />
+                  <circle cx="8" cy="8" r="3" stroke="#2a2a2a" strokeWidth="1.2" />
+                  <circle cx="8" cy="8" r="1" fill="#2a2a2a" />
                 </svg>
               </div>
-              <p className="text-[9px] text-[#3A1E30]">Tap NFC to activate</p>
+              <p className="text-[9px] text-[#3a3a3a]">Tap NFC to activate</p>
             </div>
           </motion.div>
         </div>
@@ -199,8 +199,8 @@ function NFCTag({
         aria-label="Tap the NFC coaster to load the demo menu"
         className="relative w-[70px] h-[70px] rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 disabled:cursor-not-allowed"
         style={{
-          background: 'linear-gradient(135deg, #151018 0%, #0C1118 100%)',
-          border: `2px solid ${tapped ? 'var(--accent)' : '#2E1E2A'}`,
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #0a0a0a 100%)',
+          border: `2px solid ${tapped ? 'var(--accent)' : '#2a2a2a'}`,
           boxShadow: tapped
             ? '0 0 24px rgba(var(--accent-rgb),0.45)'
             : '0 4px 20px rgba(0,0,0,0.5)',
@@ -211,17 +211,17 @@ function NFCTag({
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
           <path
             d="M15 3C8.373 3 3 8.373 3 15s5.373 12 12 12 12-5.373 12-12S21.627 3 15 3z"
-            stroke={tapped ? 'var(--accent)' : '#3A1E30'}
+            stroke={tapped ? 'var(--accent)' : '#3a3a3a'}
             strokeWidth="1.5"
             fill="none"
           />
           <path
             d="M15 8c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z"
-            stroke={tapped ? 'var(--accent-light)' : '#2E1E2A'}
+            stroke={tapped ? 'var(--accent-light)' : '#2a2a2a'}
             strokeWidth="1.5"
             fill="none"
           />
-          <circle cx="15" cy="15" r="2.5" fill={tapped ? 'var(--accent)' : '#3A1E30'} />
+          <circle cx="15" cy="15" r="2.5" fill={tapped ? 'var(--accent)' : '#3a3a3a'} />
         </svg>
       </button>
 
@@ -310,7 +310,8 @@ export default function PhoneNFCSection() {
     <section
       ref={sectionRef}
       id="tap-demo"
-      className="relative bg-naira-black py-24 px-6 overflow-hidden"
+      className="relative py-24 px-6 overflow-hidden"
+      style={{ background: '#0a0a0a' }}
     >
       {/* Top accent border */}
       <div
@@ -319,11 +320,11 @@ export default function PhoneNFCSection() {
         style={{ background: 'linear-gradient(90deg, transparent 0%, var(--accent) 30%, var(--accent-light) 50%, var(--accent) 70%, transparent 100%)' }}
       />
 
-      {/* Centered ambient glow */}
+      {/* Centered ambient glow — kept very subtle to match the rest of the dark sections */}
       <div
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full opacity-[0.06] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, var(--accent) 0%, var(--accent-dark) 40%, transparent 70%)' }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-[0.03] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)' }}
       />
 
       <div className="max-w-6xl mx-auto">
@@ -335,18 +336,17 @@ export default function PhoneNFCSection() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6">
-              Naira Tap
-            </span>
-            <h2
-              className="font-display text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            <p className="font-mono inline-block px-3 py-1 text-[12px] font-medium tracking-[0.12em] uppercase mb-6"
+              style={{ background: 'rgba(255,43,163,0.12)', color: 'var(--accent)', borderRadius: 8 }}
             >
+              Naira Tap
+            </p>
+            <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-[-0.02em] leading-tight mb-6 text-white">
               One tap.
               <br />
-              <span className="text-gold-gradient">Instant menu.</span>
+              <span style={{ color: 'var(--accent)' }}>Instant menu.</span>
             </h2>
-            <p className="text-naira-text-muted text-lg leading-relaxed mb-8">
+            <p className="text-white/70 text-lg leading-relaxed mb-8">
               Your guests bring their phone near the NFC coaster on the table —
               your full digital menu appears instantly. No app download,
               no QR scanning hassle, no waiting.
@@ -360,22 +360,22 @@ export default function PhoneNFCSection() {
                 'Beautiful, fully customisable menu design',
                 'Analytics to see what your guests love',
               ].map((feat) => (
-                <li key={feat} className="flex items-start gap-3 text-naira-text-muted text-sm">
-                  <span className="w-5 h-5 rounded-full bg-naira-gold/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-                    <span className="w-2 h-2 rounded-full bg-naira-gold" />
+                <li key={feat} className="flex items-start gap-3 text-white/70 text-sm">
+                  <span
+                    className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                    style={{ background: 'rgba(255,43,163,0.15)' }}
+                  >
+                    <span className="w-2 h-2 rounded-full" style={{ background: 'var(--accent)' }} />
                   </span>
                   {feat}
                 </li>
               ))}
             </ul>
 
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors"
-            >
+            <a href="#contact" className="btn-primary">
               See Tap in Action
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </motion.div>

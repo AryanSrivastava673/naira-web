@@ -58,6 +58,13 @@ const LOADING_MESSAGES = [
   'Calculating your score...',
 ]
 
+const QUIZ_LOADING_MESSAGES = [
+  'Analysing your answers...',
+  'Checking your online presence...',
+  'Comparing to local benchmarks...',
+  'Calculating your score...',
+]
+
 const QUIZ_KEYS = ['q1', 'q2', 'q3', 'q4'] as const
 
 type Step = 'quiz' | 'url-input' | 'loading' | 'result'
@@ -77,7 +84,7 @@ function ScoreCircle({ score, color }: { score: number; color: string }) {
 
   return (
     <svg viewBox="0 0 100 100" className="w-28 h-28 shrink-0">
-      <circle cx="50" cy="50" r={RADIUS} fill="none" stroke="#2E1E2A" strokeWidth="8" />
+      <circle cx="50" cy="50" r={RADIUS} fill="none" stroke="#2a2a2a" strokeWidth="8" />
       <circle
         cx="50"
         cy="50"
@@ -91,7 +98,7 @@ function ScoreCircle({ score, color }: { score: number; color: string }) {
         transform="rotate(-90 50 50)"
         style={{ transition: 'stroke-dashoffset 1.2s ease-out' }}
       />
-      <text x="50" y="46" textAnchor="middle" fill="#F0E9DE" fontSize="18" fontWeight="700">
+      <text x="50" y="46" textAnchor="middle" fill="#ffffff" fontSize="18" fontWeight="700">
         {score}
       </text>
       <text x="50" y="60" textAnchor="middle" fill="#C4A0B5" fontSize="9">
@@ -105,7 +112,7 @@ function rowLabelColor(label: string): string {
   if (label === 'Critical') return '#EF4444'
   if (label === 'Needs Work') return '#C8A54D'
   if (label === 'Strong') return '#ff2ba3'
-  return '#7A5068'
+  return 'rgba(255,255,255,0.55)'
 }
 
 export default function GrowthHero() {
@@ -118,8 +125,10 @@ export default function GrowthHero() {
   const [urlError, setUrlError] = useState('')
 
   const [loadingMsgIdx, setLoadingMsgIdx] = useState(0)
+  const [activeMessages, setActiveMessages] = useState<string[]>(LOADING_MESSAGES)
   const [auditResult, setAuditResult] = useState<AuditResult | null>(null)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const [form, setForm] = useState({ restaurantName: '', name: '', phone: '', email: '' })
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
@@ -131,6 +140,8 @@ export default function GrowthHero() {
 
   const reset = () => {
     if (intervalRef.current) clearInterval(intervalRef.current)
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setActiveMessages(LOADING_MESSAGES)
     setStep('quiz')
     setQuizStep(0)
     setAnswers({})
@@ -149,7 +160,21 @@ export default function GrowthHero() {
     setStep('result')
   }
 
+  const runLoadingThenShowResults = (finalAnswers: QuizAnswers, psScore: number | null) => {
+    setActiveMessages(QUIZ_LOADING_MESSAGES)
+    setStep('loading')
+    setLoadingMsgIdx(0)
+    intervalRef.current = setInterval(() => {
+      setLoadingMsgIdx(i => (i + 1) % QUIZ_LOADING_MESSAGES.length)
+    }, 700)
+    timeoutRef.current = setTimeout(() => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      showResults(finalAnswers, psScore)
+    }, 2400)
+  }
+
   const runPageSpeedAndShowResults = async (finalAnswers: QuizAnswers, targetUrl: string) => {
+    setActiveMessages(LOADING_MESSAGES)
     setStep('loading')
     setLoadingMsgIdx(0)
 
@@ -188,7 +213,7 @@ export default function GrowthHero() {
       if (selectedValue === 'website_yes') {
         setStep('url-input')
       } else {
-        showResults(newAnswers, null)
+        runLoadingThenShowResults(newAnswers, null)
       }
     }
   }
@@ -219,7 +244,7 @@ export default function GrowthHero() {
   }
 
   const skipUrl = () => {
-    showResults(answers as QuizAnswers, null)
+    runLoadingThenShowResults(answers as QuizAnswers, null)
   }
 
   const submitForm = async (e: React.FormEvent) => {
@@ -244,42 +269,77 @@ export default function GrowthHero() {
     }
   }
 
-  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current) }, [])
+  useEffect(() => () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+  }, [])
 
   const currentQuestion = QUIZ_QUESTIONS[quizStep]
 
   return (
     <section
       id="audit"
-      className="relative min-h-screen flex items-center pt-20 pb-16 px-6 overflow-hidden bg-naira-black"
+      className="relative min-h-screen flex items-center pt-20 pb-16 px-6 overflow-hidden"
+      style={{ background: '#0a0a0a' }}
     >
+      <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 65% 55% at 25% 35%, rgba(255,43,163,0.08) 0%, transparent 60%)',
-        }}
+        aria-hidden
+        className="absolute top-0 left-0 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,43,163,0.10) 0%, transparent 70%)' }}
       />
 
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
 
         {/* Left: Copy */}
-        <div>
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium tracking-widest uppercase mb-6"
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          {/* Eyebrow pill — mobile only (the big heading carries the brand on desktop) */}
+          <span
+            className="md:hidden inline-flex items-center px-3 py-1 rounded-full font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-5"
             style={{
-              background: 'rgba(255,43,163,0.1)',
-              border: '1px solid rgba(255,43,163,0.25)',
+              background: 'rgba(255,43,163,0.12)',
               color: '#ff80c8',
+              border: '1px solid rgba(255,43,163,0.25)',
             }}
           >
             Naira Growth
-          </div>
+          </span>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter text-naira-text leading-[1.1] mb-5">
-            Stop hoping<br />
-            <span className="text-naira-gold">Google</span> finds you.
+          <h1
+            className="font-sans mb-6"
+            style={{ fontWeight: 700, lineHeight: 0.92, letterSpacing: '-0.04em', marginTop: '-2px' }}
+          >
+            <span
+              className="block"
+              style={{ color: '#ff2ba3', fontSize: 'clamp(3.5rem, 7vw, 6.5rem)' }}
+            >
+              Naira
+            </span>
+            <span
+              className="block"
+              style={{ color: '#ffffff', fontSize: 'clamp(3.5rem, 7vw, 6.5rem)' }}
+            >
+              Growth<span style={{ color: '#ff2ba3' }}>.</span>
+            </span>
           </h1>
+
+          <h2
+            className="font-sans mb-6"
+            style={{
+              fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
+              fontWeight: 600,
+              letterSpacing: '-0.02em',
+              color: '#ffffff',
+              lineHeight: 1.2,
+            }}
+          >
+            Get your restaurant found on{' '}
+            <span style={{ color: '#ff2ba3' }}>Google &amp; AI search.</span>
+          </h2>
 
           <p className="text-naira-text-muted text-base md:text-lg leading-relaxed mb-8 max-w-md">
             Your food is brilliant. Your service is excellent. But 76% of diners
@@ -305,16 +365,19 @@ export default function GrowthHero() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Right: Audit tool */}
-        <div
+        <motion.div
           className="rounded-2xl p-6 md:p-8"
+          initial={{ opacity: 0, scale: 0.96, y: 16 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
           style={{
-            background: 'linear-gradient(160deg, #1a0f1e 0%, #110c14 100%)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: '#141414',
+            border: '1px solid rgba(255,255,255,0.10)',
             boxShadow:
-              'inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.4), 0 24px 64px rgba(0,0,0,0.6)',
+              '0 8px 24px rgba(255,43,163,0.10), 0 16px 48px rgba(255,43,163,0.06), 0 24px 64px rgba(0,0,0,0.6)',
           }}
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -343,7 +406,7 @@ export default function GrowthHero() {
                               ? '#ff2ba3'
                               : i === quizStep
                               ? 'rgba(255,43,163,0.5)'
-                              : '#2E1E2A',
+                              : '#2a2a2a',
                         }}
                       />
                     ))}
@@ -389,8 +452,8 @@ export default function GrowthHero() {
                     disabled={!selectedValue}
                     className="flex-1 flex items-center justify-center gap-1 py-2.5 rounded-xl text-sm font-semibold transition-all disabled:opacity-40 hover:scale-[1.02] active:scale-[0.98]"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(204,34,130,0.9) 0%, rgba(255,43,163,0.9) 100%)',
-                      color: '#F0E9DE',
+                      background: '#ff2ba3',
+                      color: '#ffffff',
                       border: '1px solid rgba(255,128,200,0.3)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.15), 0 6px 24px rgba(255,43,163,0.3)',
                     }}
@@ -439,8 +502,8 @@ export default function GrowthHero() {
                   onClick={submitUrl}
                   className="w-full py-3.5 rounded-xl text-sm font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(204,34,130,0.9) 0%, rgba(255,43,163,0.9) 100%)',
-                    color: '#F0E9DE',
+                    background: '#ff2ba3',
+                    color: '#ffffff',
                     border: '1px solid rgba(255,128,200,0.3)',
                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.15), 0 6px 24px rgba(255,43,163,0.3)',
                   }}
@@ -467,7 +530,7 @@ export default function GrowthHero() {
               >
                 <div
                   className="w-11 h-11 rounded-full animate-spin"
-                  style={{ border: '3px solid #2E1E2A', borderTopColor: '#ff2ba3' }}
+                  style={{ border: '3px solid #2a2a2a', borderTopColor: '#ff2ba3' }}
                 />
                 <AnimatePresence mode="wait">
                   <motion.p
@@ -477,7 +540,7 @@ export default function GrowthHero() {
                     exit={{ opacity: 0, y: -6 }}
                     className="text-naira-text-muted text-sm"
                   >
-                    {LOADING_MESSAGES[loadingMsgIdx]}
+                    {activeMessages[loadingMsgIdx]}
                   </motion.p>
                 </AnimatePresence>
               </motion.div>
@@ -597,8 +660,8 @@ export default function GrowthHero() {
                       disabled={formStatus === 'submitting'}
                       className="w-full py-3 rounded-xl text-sm font-semibold disabled:opacity-60 transition-all hover:scale-[1.02] active:scale-[0.98]"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(204,34,130,0.9) 0%, rgba(255,43,163,0.9) 100%)',
-                        color: '#F0E9DE',
+                        background: '#ff2ba3',
+                        color: '#ffffff',
                         border: '1px solid rgba(255,128,200,0.3)',
                         boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.15), 0 6px 24px rgba(255,43,163,0.3)',
                       }}
@@ -618,7 +681,7 @@ export default function GrowthHero() {
             )}
 
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -4,13 +4,13 @@ import { motion } from 'framer-motion'
 
 const products = [
   { name: 'Naira Tap', desc: 'NFC digital menus', color: 'var(--accent)', rgb: 'var(--accent-rgb)' },
-  { name: 'Naira Billing', desc: 'Cloud POS', color: '#10B981', rgb: '16,185,129' },
-  { name: 'Naira Growth', desc: 'Online presence', color: '#8B5CF6', rgb: '139,92,246' },
+  { name: 'Naira Billing', desc: 'Cloud POS', color: '#ff2ba3', rgb: '255,43,163' },
+  { name: 'Naira Growth', desc: 'Online presence', color: '#ff2ba3', rgb: '255,43,163' },
 ]
 
 export default function HIWHero() {
   return (
-    <section className="relative min-h-[75vh] flex items-center px-6 py-32 bg-naira-black overflow-hidden">
+    <section className="relative min-h-[75vh] flex items-center px-6 py-32 overflow-hidden" style={{ background: '#0a0a0a' }}>
       {/* Ambient glow */}
       <div
         aria-hidden
@@ -34,14 +34,13 @@ export default function HIWHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-8">
+          <span className="font-mono inline-block px-3 py-1 rounded-[8px] bg-[rgba(255,43,163,0.12)] text-[#ff2ba3] text-[12px] font-medium tracking-[0.12em] uppercase mb-8">
             How It Works
           </span>
         </motion.div>
 
         <motion.h1
-          className="font-display font-medium tracking-tighter leading-tight mb-7"
-          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+          className="font-sans font-bold tracking-[-0.02em] leading-tight mb-7"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
@@ -75,8 +74,8 @@ export default function HIWHero() {
               key={p.name}
               className="flex items-center gap-3 px-5 py-3 rounded-2xl"
               style={{
-                background: `rgba(${typeof p.rgb === 'string' && p.rgb.startsWith('var') ? '255,31,160' : p.rgb},0.07)`,
-                border: `1px solid rgba(${typeof p.rgb === 'string' && p.rgb.startsWith('var') ? '255,31,160' : p.rgb},0.2)`,
+                background: `rgba(${typeof p.rgb === 'string' && p.rgb.startsWith('var') ? '255,43,163' : p.rgb},0.07)`,
+                border: `1px solid rgba(${typeof p.rgb === 'string' && p.rgb.startsWith('var') ? '255,43,163' : p.rgb},0.2)`,
               }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}

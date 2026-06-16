@@ -117,7 +117,7 @@ export default async function AuthorPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-naira-black">
+      <main className="min-h-screen" style={{ background: '#0a0a0a' }}>
         {/* Hero */}
         <div className="pt-32 pb-16 px-6 relative">
           {/* Subtle background glow */}

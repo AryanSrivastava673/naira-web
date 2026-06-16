@@ -15,9 +15,9 @@ const PRODUCTS = [
     name: 'Naira Tap',
     tag: 'NFC Digital Menu',
     tagline: 'Replace paper menus with a premium tap-to-view experience.',
-    color: '#ff1fa0',
-    colorLight: '#ff8fd3',
-    rgb: '255,31,160',
+    color: '#ff2ba3',
+    colorLight: '#ff80c8',
+    rgb: '255,43,163',
     href: '/tap',
     steps: [
       {
@@ -45,9 +45,9 @@ const PRODUCTS = [
     name: 'Naira Billing',
     tag: 'Cloud POS',
     tagline: 'A smart POS that keeps up with the pace of your kitchen.',
-    color: '#10B981',
-    colorLight: '#34D399',
-    rgb: '16,185,129',
+    color: '#ff2ba3',
+    colorLight: '#ff80c8',
+    rgb: '255,43,163',
     href: '/billing',
     steps: [
       {
@@ -75,9 +75,9 @@ const PRODUCTS = [
     name: 'Naira Growth',
     tag: 'Online Presence',
     tagline: 'Be found, be chosen, be remembered by hungry customers.',
-    color: '#8B5CF6',
-    colorLight: '#A78BFA',
-    rgb: '139,92,246',
+    color: '#ff2ba3',
+    colorLight: '#ff80c8',
+    rgb: '255,43,163',
     href: '/#products',
     steps: [
       {
@@ -122,14 +122,13 @@ function ProductSection({ product, index }: { product: typeof PRODUCTS[0]; index
             style={{ background: product.color }}
           />
           <div
-            className="text-[10px] font-semibold tracking-widest uppercase mb-2"
+            className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-2"
             style={{ color: product.colorLight }}
           >
             {product.tag}
           </div>
           <h2
-            className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text"
           >
             {product.name}
           </h2>
@@ -178,7 +177,7 @@ function ProductSection({ product, index }: { product: typeof PRODUCTS[0]; index
                   </div>
                   <div
                     className="absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold border-2 border-naira-black"
-                    style={{ background: product.color, color: '#F0E9DE' }}
+                    style={{ background: product.color, color: '#ffffff' }}
                   >
                     {i + 1}
                   </div>
@@ -186,7 +185,6 @@ function ProductSection({ product, index }: { product: typeof PRODUCTS[0]; index
 
                 <h3
                   className="text-lg font-semibold text-naira-text mb-2"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                 >
                   {step.title}
                 </h3>
@@ -208,11 +206,11 @@ function ProductSection({ product, index }: { product: typeof PRODUCTS[0]; index
 
 export default function HIWProducts() {
   return (
-    <section className="px-6 bg-naira-black">
+    <section className="px-6" style={{ background: '#0a0a0a' }}>
       <div className="max-w-6xl mx-auto">
 
         <div className="pt-16 pb-4 text-center">
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase">
+          <span className="font-mono inline-block px-3 py-1 rounded-[8px] bg-[rgba(255,43,163,0.12)] text-[#ff2ba3] text-[12px] font-medium tracking-[0.12em] uppercase">
             The Products
           </span>
         </div>

@@ -20,7 +20,7 @@ export default function TapUpsells() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 70% 60% at 15% 50%, rgba(255,43,163,0.07) 0%, transparent 65%), #0C1118',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -29,16 +29,64 @@ export default function TapUpsells() {
           initial={{ opacity: 0, x: -24 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.55 }}
-          className="order-2 lg:order-1"
+          className="order-2 lg:order-1 relative"
         >
-          <Image
-            src="/tap/pairing-upsell.jpg"
-            alt="Butter Chicken item detail with Goes great with panel and Revenue Impact card"
-            width={640}
-            height={480}
-            className="w-full rounded-2xl object-cover"
-            style={{ boxShadow: '0 24px 64px rgba(0,0,0,0.5)' }}
+          {/* Pink ambient glow behind */}
+          <div
+            aria-hidden
+            className="absolute -inset-10 pointer-events-none"
+            style={{
+              background:
+                'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(255,43,163,0.18) 0%, transparent 65%)',
+              filter: 'blur(20px)',
+              zIndex: 0,
+            }}
           />
+
+          {/* Offset accent panel — gives the image something to sit on, not float against the surface */}
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              transform: 'translate(14px, 16px) rotate(-1.4deg)',
+              background:
+                'linear-gradient(135deg, rgba(255,43,163,0.10) 0%, rgba(255,255,255,0.02) 100%)',
+              border: '1px solid rgba(255,43,163,0.18)',
+              borderRadius: 20,
+              zIndex: 1,
+            }}
+          />
+
+          {/* Image frame — inset highlight + pink-tinted elevation */}
+          <motion.div
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+            className="relative overflow-hidden"
+            style={{
+              borderRadius: 20,
+              border: '1px solid rgba(255,255,255,0.10)',
+              boxShadow:
+                '0 0 0 1px rgba(255,43,163,0.10), 0 8px 24px rgba(255,43,163,0.18), 0 24px 64px rgba(255,43,163,0.10), 0 40px 80px rgba(0,0,0,0.5)',
+              zIndex: 2,
+            }}
+          >
+            <Image
+              src="/tap/pairing-upsell.jpg"
+              alt="Butter Chicken item detail with Goes great with panel and Revenue Impact card"
+              width={640}
+              height={480}
+              className="w-full block object-cover"
+            />
+            {/* Inset top highlight (iOS 26 glass feel) */}
+            <div
+              aria-hidden
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.14)',
+                borderRadius: 20,
+              }}
+            />
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -47,10 +95,10 @@ export default function TapUpsells() {
           transition={{ duration: 0.55, delay: 0.1 }}
           className="order-1 lg:order-2"
         >
-          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3">
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-3">
             Deep dive 01 · Revenue at the moment of decision
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-4 leading-tight">
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text mb-4 leading-tight">
             Every dish card is a silent salesperson.
           </h2>
 

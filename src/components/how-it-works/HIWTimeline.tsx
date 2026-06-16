@@ -8,36 +8,36 @@ const milestones = [
     when: 'Day 0',
     title: 'Onboarding call',
     desc: 'A quick 20-minute intake call where we understand your restaurant, products needed, and go-live timeline. We collect your menu, GST details, and branding.',
-    color: '#ff1fa0',
-    rgb: '255,31,160',
+    color: '#ff2ba3',
+    rgb: '255,43,163',
   },
   {
     when: 'Day 1–3',
     title: 'We set everything up',
     desc: 'Dashboard configured, menu built, Zomato/Swiggy integrated, coaster design approved. You do nothing — we handle the full setup.',
-    color: '#ff8fd3',
-    rgb: '255,143,211',
+    color: '#ff2ba3',
+    rgb: '255,43,163',
   },
   {
     when: 'Day 5–7',
     title: 'Go live',
     desc: 'Coasters on your tables, POS on your counter, staff trained in one 30-minute session. Your first guest taps. Your first bill prints. You\'re live.',
-    color: '#10B981',
-    rgb: '16,185,129',
+    color: '#ff2ba3',
+    rgb: '255,43,163',
   },
   {
     when: 'Day 30',
     title: 'First monthly report',
     desc: 'Your first growth report lands — average order value, revenue by channel, best-selling items, peak hours, and 3–5 specific suggestions for next month.',
-    color: '#8B5CF6',
-    rgb: '139,92,246',
+    color: '#ff2ba3',
+    rgb: '255,43,163',
   },
   {
     when: 'Ongoing',
     title: 'Continuous improvement',
     desc: 'Monthly reports, live support during service hours, menu updates as needed, and ongoing SEO and review optimisation. We grow with you.',
-    color: 'var(--accent)',
-    rgb: '255,31,160',
+    color: '#ff2ba3',
+    rgb: '255,43,163',
   },
 ]
 
@@ -46,8 +46,14 @@ export default function HIWTimeline() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-28 px-6 bg-naira-surface" ref={ref}>
-      <div className="max-w-4xl mx-auto">
+    <section className="py-28 px-6 relative overflow-hidden" style={{ background: '#ffffff' }} ref={ref}>
+      {/* Subtle pink glow — billing white-section treatment */}
+      <div
+        aria-hidden
+        className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,43,163,0.05) 0%, transparent 70%)' }}
+      />
+      <div className="max-w-4xl mx-auto relative">
 
         {/* Header */}
         <motion.div
@@ -56,17 +62,14 @@ export default function HIWTimeline() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-5">
+          <span className="font-mono inline-block px-3 py-1 rounded-[8px] bg-[rgba(255,43,163,0.12)] text-[#ff2ba3] text-[12px] font-medium tracking-[0.12em] uppercase mb-5">
             Your Journey
           </span>
-          <h2
-            className="font-display text-4xl md:text-5xl font-medium tracking-tighter text-naira-text"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-          >
+          <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-[-0.02em]" style={{ color: '#1a1a1a' }}>
             Signed up today.{' '}
-            <span className="text-gold-gradient">Live this week.</span>
+            <span style={{ color: '#ff2ba3' }}>Live this week.</span>
           </h2>
-          <p className="text-naira-text-muted text-lg mt-4 max-w-xl mx-auto">
+          <p className="text-lg mt-4 max-w-xl mx-auto" style={{ color: '#6b7280' }}>
             Everything is handled for you. Here&apos;s the full timeline from first call to first report.
           </p>
         </motion.div>
@@ -108,27 +111,25 @@ export default function HIWTimeline() {
 
                   {/* Content — alternating sides on desktop */}
                   <div
-                    className={`flex-1 md:w-[calc(50%-3.5rem)] md:flex-none rounded-2xl p-5 bg-naira-card ${
+                    className={`flex-1 md:w-[calc(50%-3.5rem)] md:flex-none rounded-2xl p-5 ${
                       isRight
                         ? 'md:ml-[calc(50%+3.5rem)]'
                         : 'md:mr-[calc(50%+3.5rem)]'
                     }`}
                     style={{
-                      border: `1px solid rgba(${m.rgb},0.18)`,
+                      background: '#ffffff',
+                      border: '1px solid rgba(0,0,0,0.06)',
                     }}
                   >
                     {/* Accent line */}
                     <div
                       className="w-8 h-0.5 rounded-full mb-3"
-                      style={{ background: m.color }}
+                      style={{ background: '#ff2ba3' }}
                     />
-                    <h3
-                      className="text-base font-semibold text-naira-text mb-2"
-                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                    >
+                    <h3 className="text-base font-semibold mb-2" style={{ color: '#1a1a1a' }}>
                       {m.title}
                     </h3>
-                    <p className="text-sm text-naira-text-muted leading-relaxed">{m.desc}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{m.desc}</p>
                   </div>
                 </motion.div>
               )

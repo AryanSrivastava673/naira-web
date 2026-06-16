@@ -78,7 +78,7 @@ export default function GlobalShredBackground() {
                 left: s.left,
                 width: s.width,
                 height: s.height,
-                background: 'linear-gradient(to bottom, #F5EFE6, #E8DFCA 55%, rgba(232,223,202,0))',
+                background: 'linear-gradient(to bottom, #ffffff, rgba(255,255,255,0.4) 55%, rgba(255,255,255,0))',
                 opacity: s.opacity,
                 '--sr': s.rotation,
                 animation: `globalStripFall ${s.duration} linear ${s.delay} infinite`,
