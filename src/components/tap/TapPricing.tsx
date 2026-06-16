@@ -39,10 +39,10 @@ export default function TapPricing() {
       >
         <div className="max-w-5xl mx-auto relative z-10">
 
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
             Pricing
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text text-center mb-3">
+          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-3">
             What you&apos;re spending now vs. what you could be.
           </h2>
           <p className="text-naira-text-muted text-sm text-center mb-12 max-w-xl mx-auto">
@@ -67,7 +67,7 @@ export default function TapPricing() {
                 <div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center">
                   <X size={11} className="text-red-400" />
                 </div>
-                <p className="text-xs font-bold tracking-widest uppercase text-red-400">What you pay today</p>
+                <p className="text-xs font-medium tracking-widest uppercase text-red-400">What you pay today</p>
               </div>
               <p className="text-naira-text-muted text-sm mb-6">Paper menus + QR codes</p>
               <ul className="space-y-3 mb-6">
@@ -84,7 +84,7 @@ export default function TapPricing() {
               >
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-sm font-semibold text-naira-text">Yearly recurring cost</span>
-                  <span className="font-display text-xl font-bold text-red-400">₹34,000</span>
+                  <span className="font-display text-xl font-medium tracking-tighter text-red-400">₹34,000</span>
                 </div>
                 <p className="text-[10px] text-red-400/60">and it repeats every single year</p>
               </div>
@@ -103,7 +103,7 @@ export default function TapPricing() {
                 <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: 'rgba(255,43,163,0.15)' }}>
                   <Check size={11} color="#ff2ba3" />
                 </div>
-                <p className="text-xs font-bold tracking-widest uppercase text-naira-gold">With Naira Tap</p>
+                <p className="text-xs font-medium tracking-widest uppercase text-naira-gold">With Naira Tap</p>
               </div>
               <p className="text-naira-text-muted text-sm mb-6">One-time setup. Forever updates.</p>
               <ul className="space-y-3 mb-6">
@@ -120,7 +120,7 @@ export default function TapPricing() {
               >
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-sm font-semibold text-naira-text">Total from year 2 onwards</span>
-                  <span className="font-display text-xl font-bold text-naira-gold">₹0</span>
+                  <span className="font-display text-xl font-medium tracking-tighter text-naira-gold">₹0</span>
                 </div>
                 <p className="text-[10px] text-naira-gold/60">no subscriptions, no renewals</p>
               </div>

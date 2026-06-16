@@ -63,7 +63,7 @@ function PostCard({ post }: { post: Post }) {
         )}
         <h2
           className="text-naira-text font-semibold text-xl leading-snug mb-2 group-hover:text-naira-gold transition-colors"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           {post.headline}
         </h2>
@@ -135,8 +135,8 @@ export default async function BlogPage() {
               Blog
             </span>
             <h1
-              className="font-display text-5xl md:text-6xl font-bold mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="font-display text-5xl md:text-6xl font-medium tracking-tighter mb-4"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               Insights & Stories
             </h1>

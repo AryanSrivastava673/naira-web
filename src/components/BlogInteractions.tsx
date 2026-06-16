@@ -198,6 +198,7 @@ export default function BlogInteractions({ slug, title, excerpt }: Props) {
           <button
             type="button"
             onClick={() => formRef.current?.querySelector('textarea')?.focus()}
+            aria-label={`Jump to comments (${comments.length})`}
             className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-naira-border bg-naira-surface hover:border-naira-gold/40 text-naira-text-muted hover:text-naira-gold transition-colors"
           >
             <MessageCircle size={18} />
@@ -217,7 +218,7 @@ export default function BlogInteractions({ slug, title, excerpt }: Props) {
       <div>
         <h2
           className="text-2xl font-bold text-naira-text mb-6"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           Comments
           <span className="text-naira-muted text-base font-normal ml-2">({comments.length})</span>

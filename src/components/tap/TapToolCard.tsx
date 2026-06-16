@@ -26,10 +26,10 @@ const FORMS = [
 ]
 
 const FORM_STYLES: Record<string, { borderRadius: string; width: number; height: number }> = {
-  'round-coaster': { borderRadius: '50%',  width: 160, height: 160 },
-  'square-tile':   { borderRadius: '16px', width: 160, height: 160 },
-  'elegant-stand': { borderRadius: '12px', width: 120, height: 180 },
-  'discrete-disc': { borderRadius: '50%',  width: 90,  height: 90  },
+  'round-coaster': { borderRadius: '50%',  width: 128, height: 128 },
+  'square-tile':   { borderRadius: '16px', width: 128, height: 128 },
+  'elegant-stand': { borderRadius: '12px', width: 96,  height: 144 },
+  'discrete-disc': { borderRadius: '50%',  width: 72,  height: 72  },
 }
 
 export default function TapToolCard() {
@@ -84,13 +84,13 @@ export default function TapToolCard() {
         }}
       >
         {/* Eyebrow */}
-        <div className="px-6 pt-5" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <p className="text-xs font-bold tracking-widest uppercase pb-4" style={{ color: '#ff2ba3' }}>
+        <div className="px-5 pt-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <p className="text-xs font-medium tracking-widest uppercase pb-3" style={{ color: '#ff2ba3' }}>
             Design my Tap
           </p>
         </div>
 
-        <div className="p-6">
+        <div className="p-5">
           <DesignPanel
             barRef={barRef}
             finishIdx={finishIdx}
@@ -138,12 +138,12 @@ function DesignPanel({
   const nfcColor      = isLight ? '#000' : '#fff'
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
 
       {/* Finish spectrum */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <span className="text-[10px] font-bold tracking-widest uppercase text-naira-muted">Finish</span>
+          <span className="text-[10px] font-medium tracking-widest uppercase text-naira-muted">Finish</span>
           <span className="text-xs text-naira-gold font-semibold">{finish.label}</span>
         </div>
         <div
@@ -183,7 +183,7 @@ function DesignPanel({
 
       {/* Form factor */}
       <div>
-        <span className="text-[10px] font-bold tracking-widest uppercase text-naira-muted block mb-3">Form factor</span>
+        <span className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-3">Form factor</span>
         <div className="grid grid-cols-2 gap-2">
           {FORMS.map((f, i) => (
             <button
@@ -205,7 +205,7 @@ function DesignPanel({
 
       {/* Logo text */}
       <div>
-        <label className="text-[10px] font-bold tracking-widest uppercase text-naira-muted block mb-1.5">
+        <label className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-1.5">
           Restaurant name or logo text
         </label>
         <input
@@ -222,27 +222,27 @@ function DesignPanel({
 
       {/* Live preview */}
       <div
-        className="rounded-2xl p-5 relative overflow-hidden"
+        className="rounded-2xl p-4 relative overflow-hidden"
         style={{ background: 'rgba(12,17,24,0.8)', border: '1px solid rgba(255,255,255,0.07)' }}
       >
         <span
-          className="absolute top-3 left-3 text-[9px] font-bold tracking-widest uppercase px-2 py-1 rounded-full"
+          className="absolute top-3 left-3 text-[9px] font-medium tracking-widest uppercase px-2 py-1 rounded-full"
           style={{ background: 'rgba(255,43,163,0.15)', color: '#ff80c8', border: '1px solid rgba(255,43,163,0.25)' }}
         >
           Live Preview
         </span>
 
-        <div className="flex flex-col items-center justify-center pt-6 pb-2 relative">
+        <div className="flex flex-col items-center justify-center pt-5 pb-1 relative">
           {/* Rings + coaster container */}
-          <div className="relative flex items-center justify-center" style={{ width: 200, height: 200 }}>
+          <div className="relative flex items-center justify-center" style={{ width: 160, height: 160 }}>
             {/* NFC pulse rings */}
             {[0, 0.6, 1.2].map(delay => (
               <div
                 key={delay}
                 className="absolute rounded-full pointer-events-none"
                 style={{
-                  width: 160,
-                  height: 160,
+                  width: 128,
+                  height: 128,
                   border: '1px solid rgba(255,43,163,0.35)',
                   animation: `nfcRing 2.2s ease-out ${delay}s infinite`,
                 }}
@@ -264,7 +264,7 @@ function DesignPanel({
               }}
             >
               <span
-                className="font-display font-bold leading-tight"
+                className="font-display font-medium tracking-tighter leading-tight"
                 style={{
                   fontSize: '0.6rem',
                   color: textColor,
@@ -318,7 +318,7 @@ function DesignPanel({
               className="absolute -right-8 -top-4 z-20"
               style={{ animation: 'phoneTap 2.4s ease-in-out infinite' }}
             >
-              <svg width="32" height="52" viewBox="0 0 32 52" fill="none">
+              <svg width="26" height="42" viewBox="0 0 32 52" fill="none">
                 <rect x="1" y="1" width="30" height="50" rx="6" fill="#1E1520" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
                 <rect x="4" y="6" width="24" height="38" rx="3" fill="#0C1118" />
                 <rect x="12" y="46" width="8" height="2" rx="1" fill="rgba(255,255,255,0.2)" />

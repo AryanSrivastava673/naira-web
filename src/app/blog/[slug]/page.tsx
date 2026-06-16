@@ -53,7 +53,7 @@ export async function generateStaticParams() {
 const portableTextComponents = {
   block: {
     h2: ({ children }: { children?: React.ReactNode }) => (
-      <h2 className="font-display text-2xl font-bold text-naira-text mt-8 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+      <h2 className="font-display text-2xl font-medium tracking-tighter text-naira-text mt-8 mb-4" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
         {children}
       </h2>
     ),
@@ -190,8 +190,8 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Title */}
           <h1
-            className="font-display text-4xl md:text-5xl font-bold text-naira-text mb-5 leading-tight"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter text-naira-text mb-5 leading-tight"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             {post.headline}
           </h1>
@@ -239,7 +239,7 @@ export default async function BlogPostPage({ params }: Props) {
             <section className="mt-14">
               <h2
                 className="text-2xl font-bold text-naira-text mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
                 Frequently Asked Questions
               </h2>

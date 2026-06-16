@@ -70,7 +70,7 @@ function PhoneMockup({
                 <div className="text-[9px] text-[#7A5068] tracking-widest uppercase">The Grand Spice</div>
                 <div
                   className="font-semibold text-sm mt-0.5"
-                  style={{ fontFamily: 'Playfair Display, Georgia, serif', color: '#F0E9DE' }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: '#F0E9DE' }}
                 >
                   Digital Menu
                 </div>
@@ -196,6 +196,7 @@ function NFCTag({
       <button
         onClick={onTap}
         disabled={pulsing}
+        aria-label="Tap the NFC coaster to load the demo menu"
         className="relative w-[70px] h-[70px] rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 disabled:cursor-not-allowed"
         style={{
           background: 'linear-gradient(135deg, #151018 0%, #0C1118 100%)',
@@ -338,8 +339,8 @@ export default function PhoneNFCSection() {
               Naira Tap
             </span>
             <h2
-              className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="font-display text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               One tap.
               <br />

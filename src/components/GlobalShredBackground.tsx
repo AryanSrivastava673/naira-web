@@ -18,22 +18,35 @@ const STRIPS = Array.from({ length: 30 }, (_, i) => {
 })
 
 export default function GlobalShredBackground() {
+  const [shouldRender, setShouldRender] = useState(false)
   const [opacity, setOpacity] = useState(0)
 
   useEffect(() => {
     const threshold = window.innerHeight * 2.8
+    const handleScrollBeforeMount = () => {
+      if (window.scrollY > threshold) {
+        setShouldRender(true)
+        window.removeEventListener('scroll', handleScrollBeforeMount)
+      }
+    }
+    window.addEventListener('scroll', handleScrollBeforeMount, { passive: true })
+    return () => window.removeEventListener('scroll', handleScrollBeforeMount)
+  }, [])
+
+  useEffect(() => {
+    if (!shouldRender) return
+    const threshold = window.innerHeight * 2.8
     const handleScroll = () => {
-      const past = window.scrollY > threshold
-      // Smooth fade-in: ramp from 0 → 1 over 300 px of scroll past the threshold
       const ramp = Math.min(1, Math.max(0, (window.scrollY - threshold) / 300))
-      setOpacity(past ? ramp : 0)
+      setOpacity(ramp)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [shouldRender])
 
-  // Keep mounted (opacity:0) so the CSS animation is already running when fade-in starts
+  if (!shouldRender) return null
+
   return (
     <>
       <style>{`

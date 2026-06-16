@@ -1,12 +1,15 @@
+import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import HeroShredder from '@/components/HeroShredder'
-import PhoneNFCSection from '@/components/PhoneNFCSection'
-import Products from '@/components/Products'
-import HowItWorks from '@/components/HowItWorks'
-import Pricing from '@/components/Pricing'
-import BlogSection from '@/components/BlogSection'
-import Footer from '@/components/Footer'
-import GlobalShredBackground from '@/components/GlobalShredBackground'
+import LazySection from '@/components/LazySection'
+
+const GlobalShredBackground = dynamic(() => import('@/components/GlobalShredBackground'), { ssr: false })
+const PhoneNFCSection      = dynamic(() => import('@/components/PhoneNFCSection'),      { ssr: false })
+const Products             = dynamic(() => import('@/components/Products'),             { ssr: false })
+const HowItWorks           = dynamic(() => import('@/components/HowItWorks'),           { ssr: false })
+const Pricing              = dynamic(() => import('@/components/Pricing'),              { ssr: false })
+const BlogSection          = dynamic(() => import('@/components/BlogSection'),          { ssr: false })
+const Footer               = dynamic(() => import('@/components/Footer'),              { ssr: false })
 
 export default function HomePage() {
   return (
@@ -15,16 +18,28 @@ export default function HomePage() {
       <GlobalShredBackground />
       <HeroShredder />
       <div className="section-divider" />
-      <PhoneNFCSection />
+      <LazySection>
+        <PhoneNFCSection />
+      </LazySection>
       <div className="section-divider" />
-      <Products />
+      <LazySection>
+        <Products />
+      </LazySection>
       <div className="section-divider" />
-      <HowItWorks />
+      <LazySection>
+        <HowItWorks />
+      </LazySection>
       <div className="section-divider" />
-      <Pricing />
+      <LazySection>
+        <Pricing />
+      </LazySection>
       <div className="section-divider" />
-      <BlogSection />
-      <Footer />
+      <LazySection>
+        <BlogSection />
+      </LazySection>
+      <LazySection minHeight="400px">
+        <Footer />
+      </LazySection>
     </main>
   )
 }

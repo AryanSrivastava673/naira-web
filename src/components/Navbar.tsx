@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import LeadModal from './tap/LeadModal'
 
 const PRODUCT_LINKS = [
   {
@@ -16,7 +15,7 @@ const PRODUCT_LINKS = [
   },
   {
     label: 'Naira Billing',
-    href: '/#products',
+    href: '/billing',
     desc: 'Cloud POS & order management',
   },
   {
@@ -28,17 +27,16 @@ const PRODUCT_LINKS = [
 ]
 
 const NAV_LINKS = [
-  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'How It Works', href: '/how-it-works' },
   { label: 'Pricing',      href: '/#pricing' },
   { label: 'Blog',         href: '/blog' },
 ]
 
 export default function Navbar() {
-  const [scrolled,    setScrolled]    = useState(false)
-  const [mobileOpen,  setMobileOpen]  = useState(false)
-  const [productsOpen, setProductsOpen] = useState(false)
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
-  const [salesModalOpen, setSalesModalOpen] = useState(false)
+  const [scrolled,             setScrolled]             = useState(false)
+  const [mobileOpen,           setMobileOpen]           = useState(false)
+  const [productsOpen,         setProductsOpen]         = useState(false)
+  const [mobileProductsOpen,   setMobileProductsOpen]   = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
@@ -47,7 +45,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -59,8 +56,6 @@ export default function Navbar() {
   }, [])
 
   return (
-    <>
-    <LeadModal isOpen={salesModalOpen} onClose={() => setSalesModalOpen(false)} variant="sales" />
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
@@ -79,6 +74,7 @@ export default function Navbar() {
             height={40}
             className="h-14 w-auto"
             priority
+            sizes="160px"
           />
         </Link>
 
@@ -115,11 +111,10 @@ export default function Navbar() {
                   style={{ boxShadow: '0 16px 48px rgba(0,0,0,0.4)' }}
                 >
                   {/* Arrow notch */}
-                  <div
-                    className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-naira-surface border-l border-t border-naira-border"
-                  />
+                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-naira-surface border-l border-t border-naira-border" />
+
                   <div className="p-2 relative">
-                    {PRODUCT_LINKS.map(p => (
+                    {PRODUCT_LINKS.map((p) => (
                       <Link
                         key={p.href}
                         href={p.href}
@@ -130,9 +125,7 @@ export default function Navbar() {
                           <div className="flex items-center gap-2">
                             <span
                               className={`text-sm font-semibold transition-colors ${
-                                p.highlight
-                                  ? 'text-naira-gold'
-                                  : 'text-naira-text group-hover:text-naira-text'
+                                p.highlight ? 'text-naira-gold' : 'text-naira-text'
                               }`}
                             >
                               {p.label}
@@ -173,7 +166,7 @@ export default function Navbar() {
           </li>
 
           {/* Regular links */}
-          {NAV_LINKS.map(link => (
+          {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
@@ -187,7 +180,7 @@ export default function Navbar() {
 
         {/* ── CTA ── */}
         <div className="hidden md:flex items-center">
-          <ContactSalesButton onClick={() => setSalesModalOpen(true)} />
+          <EarlyAccessButton />
         </div>
 
         {/* ── Mobile toggle ── */}
@@ -214,7 +207,7 @@ export default function Navbar() {
               {/* Products expandable */}
               <li>
                 <button
-                  onClick={() => setMobileProductsOpen(o => !o)}
+                  onClick={() => setMobileProductsOpen((o) => !o)}
                   className="w-full flex items-center justify-between py-3 text-naira-text-muted hover:text-naira-text transition-colors"
                 >
                   <span className="text-sm">Products</span>
@@ -232,7 +225,7 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden pl-3 border-l border-naira-border ml-1 mb-1"
                     >
-                      {PRODUCT_LINKS.map(p => (
+                      {PRODUCT_LINKS.map((p) => (
                         <li key={p.href}>
                           <Link
                             href={p.href}
@@ -266,7 +259,7 @@ export default function Navbar() {
                 </AnimatePresence>
               </li>
 
-              {NAV_LINKS.map(link => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -279,49 +272,49 @@ export default function Navbar() {
               ))}
 
               <li className="pt-2">
-                <button
+                <a
+                  href="/contact"
                   className="inline-block px-5 py-2 rounded-full text-sm font-semibold"
                   style={{
                     background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
                     color: 'var(--text)',
                   }}
-                  onClick={() => { setMobileOpen(false); setSalesModalOpen(true) }}
+                  onClick={() => setMobileOpen(false)}
                 >
                   Contact Sales
-                </button>
+                </a>
               </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
-    </>
   )
 }
 
-// ── Contact Sales CTA button ─────────────────────────────────────────────────
-function ContactSalesButton({ onClick }: { onClick: () => void }) {
+// ── Standalone CTA button with shimmer + glow ────────────────────────────────
+function EarlyAccessButton() {
   return (
     <div className="relative">
       <div
         className="absolute inset-0 rounded-full animate-glow-pulse pointer-events-none"
         style={{ boxShadow: '0 0 0 0 rgba(var(--accent-rgb),0)' }}
       />
-      <button
-        onClick={onClick}
+      <a
+        href="/contact"
         className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
         style={{
-          background: `linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)`,
+          background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
           color: 'var(--text)',
           boxShadow: '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)',
           transition: 'box-shadow 0.3s ease, transform 0.2s ease',
         }}
-        onMouseEnter={e => {
+        onMouseEnter={(e) => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
             '0 0 0 1px rgba(var(--accent-rgb),0.55), 0 6px 32px rgba(var(--accent-rgb),0.38)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
         }}
-        onMouseLeave={e => {
+        onMouseLeave={(e) => {
           ;(e.currentTarget as HTMLElement).style.boxShadow =
             '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)'
           ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
@@ -347,7 +340,7 @@ function ContactSalesButton({ onClick }: { onClick: () => void }) {
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </a>
     </div>
   )
 }

@@ -2,26 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
-
+/* ── Naira design system tokens ──────────────────────────────────────────── */
 :root {
-  --font-inter:     'Inter', system-ui, sans-serif;
-  --font-playfair:  'Playfair Display', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
 
-  /* Brand magenta tokens exposed as CSS vars */
+  /* Brand */
   --accent:        #ff2ba3;
   --accent-light:  #ff80c8;
-  --accent-dark:   #cc2282;
+  --accent-dark:   #e6258f;
   --accent-rgb:    255,43,163;
   --accent-light-rgb: 255,128,200;
-  --accent-dark-rgb:  204,34,130;
-  --warm:          #F5EFE6;
-  --warm-2:        #E8DFCA;
-  --text:          #F0E9DE;
-  --text-muted:    #C4A0B5;
-  --border:        #2E1E2A;
-  --surface:       #151018;
-  --bg:            #0C1118;
+  --accent-dark-rgb:  230,37,143;
+  --pink:          #ff2ba3;
+  --pink-hover:    #e6258f;
+  --pink-pressed:  #cc1f7d;
+
+  /* Dark world */
+  --black:          #0a0a0a;
+  --black-raised:   #141414;
+  --black-elevated: #1a1a1a;
+  --bg:             #0a0a0a;
+  --surface:        #141414;
+
+  /* Light world */
+  --white:        #ffffff;
+  --ink:          #1a1a1a;
+
+  /* Text */
+  --text:                #ffffff;
+  --text-muted:          rgba(255,255,255,0.7);
+  --text-on-dark:        #ffffff;
+  --text-on-dark-muted:  rgba(255,255,255,0.7);
+  --muted:               #6b7280;
+  --hint:                #9ca3af;
+
+  /* Borders */
+  --border:        rgba(255,255,255,0.08);
+  --border-dark:   rgba(255,255,255,0.08);
+  --border-light:  rgba(0,0,0,0.06);
+  --border-strong: rgba(255,255,255,0.15);
+
+  /* Dark layering */
+  --raise-1: rgba(255,255,255,0.04);
+  --raise-2: rgba(255,255,255,0.08);
+  --raise-3: rgba(255,255,255,0.12);
+
+  /* Radius */
+  --r-panel:   20px;
+  --r-card:    16px;
+  --r-control: 12px;
+  --r-chip:    8px;
+
+  /* Elevation (pink-tinted) */
+  --e-1:    0 2px 8px  rgba(255,43,163,0.06), 0 4px 16px rgba(255,43,163,0.04);
+  --e-2:    0 8px 24px rgba(255,43,163,0.10), 0 16px 48px rgba(255,43,163,0.06);
+  --e-glow: 0 0 40px   rgba(255,43,163,0.15);
+  --focus-ring: 0 0 0 3px rgba(255,43,163,0.30);
+
+  /* Motion */
+  --dur-micro:    150ms;
+  --dur-standard: 250ms;
+  --dur-entrance: 400ms;
+  --dur-slow:     600ms;
+  --ease:         cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-inout:   cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Legacy aliases used elsewhere in the codebase */
+  --warm:   #ffffff;
+  --warm-2: #f5f5f5;
 }
 
 * { box-sizing: border-box; }
@@ -29,26 +77,55 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0C1118;
-  color: #F0E9DE;
+  background-color: #0a0a0a;
+  color: #ffffff;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(255,43,163,0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 30% at 80% 100%, rgba(255,43,163,0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 30% at 20% 100%, rgba(255,43,163,0.04) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ── Scrollbar ────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 5px; }
-::-webkit-scrollbar-track { background: #0C1118; }
-::-webkit-scrollbar-thumb { background: #2E1E2A; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* ── Display text gradient ────────────────────────────────────────────────── */
-/* warm cream → light pink → brand magenta */
+/* ── Display gradient ─────────────────────────────────────────────────────── */
 .text-gold-gradient {
-  background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 55%, var(--accent) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 55%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.text-pink {
+  color: var(--accent);
+}
+
+/* ── Glass morphism (Naira design system) ────────────────────────────────── */
+.glass-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  box-shadow: 0 2px 8px rgba(255, 43, 163, 0.04);
 }
 
 /* ── Section divider ──────────────────────────────────────────────────────── */
@@ -56,6 +133,41 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb),0.25), transparent);
 }
+
+/* ── Buttons (Naira design system) ───────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: var(--r-control);
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background var(--dur-micro) var(--ease), box-shadow var(--dur-micro) var(--ease), transform var(--dur-micro) var(--ease);
+  box-shadow: var(--e-glow);
+}
+.btn-primary:hover     { background: var(--accent-dark); transform: scale(1.02); }
+.btn-primary:active    { background: var(--pink-pressed); transform: scale(0.99); }
+.btn-primary:focus     { outline: none; box-shadow: var(--focus-ring); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: var(--r-control);
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid var(--border-strong);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background var(--dur-micro) var(--ease), border-color var(--dur-micro) var(--ease);
+}
+.btn-secondary:hover  { background: rgba(255,43,163,0.08); border-color: rgba(255,43,163,0.30); }
 
 /* ── Shimmer badge (pricing "Coming Soon") ────────────────────────────────── */
 .shimmer-badge {
@@ -75,7 +187,6 @@ body {
 }
 
 /* ── Paper menu card ──────────────────────────────────────────────────────── */
-/* Warm paper look — intentionally warm/organic against the cool dark UI */
 .menu-card {
   background: linear-gradient(160deg, #FFF8F0 0%, #FFF0DC 100%);
   border: 3px solid #D4AF37;
@@ -104,11 +215,31 @@ body {
 }
 
 /* ── Blog / prose styles ──────────────────────────────────────────────────── */
-.prose-naira        { color: #C4A0B5; line-height: 1.8; }
-.prose-naira h2     { color: #F0E9DE; font-family: var(--font-playfair); font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
-.prose-naira h3     { color: #F0E9DE; font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.prose-naira        { color: rgba(255,255,255,0.75); line-height: 1.8; }
+.prose-naira h2     { color: #ffffff; font-family: var(--font-inter); font-weight: 700; letter-spacing: -0.02em; font-size: 1.75rem; margin-top: 2rem; margin-bottom: 1rem; }
+.prose-naira h3     { color: #ffffff; font-weight: 600; font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 .prose-naira p      { margin-bottom: 1.25rem; }
 .prose-naira a      { color: var(--accent); text-decoration: underline; }
 .prose-naira a:hover { color: var(--accent-light); }
-.prose-naira blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; font-style: italic; color: #7A5068; }
-.prose-naira strong { color: #F0E9DE; }
+.prose-naira blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; font-style: italic; color: rgba(255,255,255,0.65); }
+.prose-naira strong { color: #ffffff; }
+
+/* ── Blog card (server-component friendly hover) ─────────────────────────── */
+.blog-card {
+  transition: box-shadow var(--dur-standard) var(--ease), transform var(--dur-standard) var(--ease);
+}
+.blog-card:hover {
+  box-shadow: 0 8px 24px rgba(255, 43, 163, 0.10), 0 16px 48px rgba(255, 43, 163, 0.06);
+  transform: translateY(-4px);
+}
+
+/* ── Constellation texture utility ────────────────────────────────────────── */
+.constellation-bg {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(var(--accent-rgb),0.18) 1px, transparent 1.6px),
+    radial-gradient(circle at 80% 60%, rgba(var(--accent-rgb),0.12) 1px, transparent 1.4px),
+    radial-gradient(circle at 40% 90%, rgba(var(--accent-rgb),0.14) 1px, transparent 1.6px),
+    radial-gradient(circle at 100% 20%, rgba(var(--accent-rgb),0.10) 1px, transparent 1.2px);
+  background-size: 120px 120px;
+  opacity: 0.5;
+}

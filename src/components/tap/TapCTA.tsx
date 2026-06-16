@@ -27,7 +27,7 @@ export default function TapCTA() {
             }}
           />
 
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text mb-4 relative">
+          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-4 relative">
             Stop making guests scan.{' '}
             <span className="text-gold-gradient">Start making them tap.</span>
           </h2>

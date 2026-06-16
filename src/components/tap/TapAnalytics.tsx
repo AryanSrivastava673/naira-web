@@ -31,10 +31,10 @@ export default function TapAnalytics() {
           transition={{ duration: 0.55 }}
           className="text-center mb-10"
         >
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3">
             Analytics
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text">
+          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text">
             Weekly analytics — see what&apos;s earning and what&apos;s not.
           </h2>
         </motion.div>
@@ -74,7 +74,7 @@ export default function TapAnalytics() {
                 border: '1px solid rgba(255,43,163,0.15)',
               }}
             >
-              <p className="font-display text-2xl font-bold text-naira-gold">{c.label}</p>
+              <p className="font-display text-2xl font-medium tracking-tighter text-naira-gold">{c.label}</p>
               <p className="text-xs text-naira-muted mt-1">{c.sub}</p>
             </div>
           ))}

@@ -55,8 +55,8 @@ export default function HowItWorks() {
             How It Works
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold mb-5"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter mb-5"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Up and running in a day
           </h2>
@@ -94,7 +94,7 @@ export default function HowItWorks() {
                     </div>
                     <span
                       className="text-5xl font-bold text-naira-border/60 font-display select-none"
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                     >
                       {step.number}
                     </span>
@@ -102,7 +102,7 @@ export default function HowItWorks() {
 
                   <h3
                     className="text-xl font-semibold text-naira-text mb-3"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {step.title}
                   </h3>

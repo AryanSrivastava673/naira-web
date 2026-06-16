@@ -77,10 +77,10 @@ export default function GrowthFAQ() {
     >
       <div className="max-w-3xl mx-auto relative z-10">
 
-        <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
           FAQ
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text text-center mb-10">
+        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-10">
           Every question you&apos;re afraid to ask.
         </h2>
 
@@ -165,7 +165,7 @@ export default function GrowthFAQ() {
                 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,43,163,0.15) 0%, transparent 70%)',
             }}
           />
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-naira-text mb-3 relative">
+          <h3 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text mb-3 relative">
             Ready to own your growth?
           </h3>
           <p className="text-naira-text-muted text-sm mb-7 max-w-sm mx-auto relative">

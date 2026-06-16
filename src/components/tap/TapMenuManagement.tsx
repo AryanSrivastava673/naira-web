@@ -39,10 +39,10 @@ export default function TapMenuManagement() {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.55 }}
         >
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3">
             Deep dive 02 · Real-time control
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text mb-5 leading-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-5 leading-tight">
             Change the whole menu from your phone in four seconds.
           </h2>
 

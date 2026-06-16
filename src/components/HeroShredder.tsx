@@ -87,7 +87,7 @@ function PaperStrip({ index, isShredding }: { index: number; isShredding: boolea
 }
 
 // ── HERO SHREDDER ─────────────────────────────────────────────────────────────
-export default function HeroShredder() {
+function HeroShredderFull() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isShredding, setIsShredding] = useState(false)
   const [shredderVibrate, setShredderVibrate] = useState(false)
@@ -215,8 +215,8 @@ export default function HeroShredder() {
           </motion.span>
 
           <h1
-            className="text-5xl md:text-7xl font-bold leading-tight mb-5"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="text-5xl md:text-7xl font-semibold tracking-tighter leading-tight mb-5"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Say goodbye to
             <br />
@@ -303,8 +303,8 @@ export default function HeroShredder() {
             And say hello to
           </p>
           <h2
-            className="text-5xl md:text-7xl font-bold text-gold-gradient"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="text-5xl md:text-7xl font-medium text-gold-gradient tracking-tighter"
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             Naira Tap.
           </h2>
@@ -314,6 +314,72 @@ export default function HeroShredder() {
         </motion.div>
       </div>
     </div>
+  )
+}
+
+// ── MOBILE HERO ───────────────────────────────────────────────────────────────
+function MobileHero() {
+  return (
+    <section className="min-h-screen flex flex-col bg-naira-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+
+      {/* Subtle grid */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-[0.028]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(var(--accent-rgb),0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(var(--accent-rgb),0.5) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      {/* Main copy — centred in the upper portion */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 relative z-10">
+        <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6">
+          Introducing Naira Menus
+        </span>
+
+        <h1
+          className="text-5xl font-bold tracking-tighter leading-[1.05] mb-5"
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+        >
+          Say goodbye to
+          <br />
+          <span className="text-gold-gradient">paper menus.</span>
+        </h1>
+
+        <p className="text-naira-text-muted text-lg leading-relaxed max-w-xs">
+          Scroll down to witness the future.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center gap-2">
+          <div className="w-px h-10 bg-gradient-to-b from-naira-gold/60 to-transparent" />
+          <span className="text-[10px] tracking-widest uppercase text-naira-muted">Scroll</span>
+        </div>
+      </div>
+
+      {/* Shredder machine pinned to the bottom */}
+      <div className="relative z-10 flex justify-center pb-0">
+        <ShredderMachine isActive={false} />
+      </div>
+    </section>
+  )
+}
+
+// ── HERO WRAPPER — CSS controls which version renders ─────────────────────────
+export default function HeroShredder() {
+  return (
+    <>
+      <div className="md:hidden">
+        <MobileHero />
+      </div>
+      <div className="hidden md:block">
+        <HeroShredderFull />
+      </div>
+    </>
   )
 }
 
@@ -346,7 +412,7 @@ function ClippedMenuCard({
         style={{
           background: 'linear-gradient(160deg, #FFF8F0 0%, #FFF0DC 100%)',
           border: '3px solid #D4AF37',
-          fontFamily: "'Playfair Display', Georgia, serif",
+          fontFamily: 'var(--font-playfair), Georgia, serif',
           color: '#2A1A00',
         }}
       >

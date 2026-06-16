@@ -42,10 +42,10 @@ export default function TapTestimonials() {
     >
       <div className="max-w-6xl mx-auto relative z-10">
 
-        <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
           From the field
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text text-center mb-12">
+        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-12">
           Restaurants that made the switch.
         </h2>
 
@@ -64,7 +64,7 @@ export default function TapTestimonials() {
               }}
             >
               <div>
-                <div className="font-display text-3xl font-bold text-naira-gold">{c.metric}</div>
+                <div className="font-display text-3xl font-medium tracking-tighter text-naira-gold">{c.metric}</div>
                 <div className="text-xs text-naira-muted mt-0.5">{c.metricLabel}</div>
               </div>
 

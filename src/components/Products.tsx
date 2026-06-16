@@ -19,8 +19,8 @@ const products = [
       'Inventory tracking & alerts',
       'Third-party integrations (Zomato, Swiggy & more)',
     ],
-    cta: 'Request POS Demo',
-    ctaHref: '#contact',
+    cta: 'Explore Naira Billing',
+    ctaHref: '/billing',
     accent: '#10B981',                        // green — matches Pricing
     borderColor: 'rgba(16,185,129,0.35)',
     glowColor: 'rgba(16,185,129,0.07)',
@@ -100,8 +100,8 @@ export default function Products() {
             Our Products
           </span>
           <h2
-            className="font-display text-4xl md:text-5xl font-bold mb-5"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="font-display text-4xl md:text-5xl font-medium tracking-tighter mb-5"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Everything your restaurant needs
           </h2>
@@ -160,7 +160,7 @@ export default function Products() {
                   {/* Headline */}
                   <h3
                     className="text-xl font-bold text-naira-text mb-3 leading-snug"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {product.headline}
                   </h3>

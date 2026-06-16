@@ -36,10 +36,10 @@ export default function TapSteps() {
     >
       <div className="max-w-5xl mx-auto relative z-10">
 
-        <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
           How it works
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text text-center mb-12">
+        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-12">
           Your upgrade happens in a week.
         </h2>
 
@@ -58,7 +58,7 @@ export default function TapSteps() {
               }}
             >
               <div
-                className="text-4xl font-bold font-display mb-4"
+                className="text-4xl font-medium font-display mb-4"
                 style={{ color: 'rgba(255,43,163,0.3)' }}
               >
                 {s.n}

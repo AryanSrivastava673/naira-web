@@ -47,10 +47,10 @@ export default function TapUpsells() {
           transition={{ duration: 0.55, delay: 0.1 }}
           className="order-1 lg:order-2"
         >
-          <p className="text-xs font-bold tracking-widest uppercase text-naira-muted mb-3">
+          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3">
             Deep dive 01 · Revenue at the moment of decision
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-naira-text mb-4 leading-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-4 leading-tight">
             Every dish card is a silent salesperson.
           </h2>
 
