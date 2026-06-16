@@ -23,7 +23,7 @@ export default function TapVsQR() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,43,163,0.06) 0%, transparent 70%), #0C1118',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-5xl mx-auto">
@@ -33,10 +33,10 @@ export default function TapVsQR() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
         >
-          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-3 text-center">
             QR vs. Naira Tap
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-3">
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text text-center mb-3">
             A side-by-side no one can argue with.
           </h2>
           <p className="text-naira-text-muted text-sm text-center mb-12 max-w-xl mx-auto">

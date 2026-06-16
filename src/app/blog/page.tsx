@@ -127,7 +127,7 @@ export default async function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-naira-black pt-24 pb-20 px-6">
+      <main className="min-h-screen pt-24 pb-20 px-6" style={{ background: '#0a0a0a' }}>
         <div className="max-w-7xl mx-auto">
           {/* Hero */}
           <div className="text-center mb-16 pt-8">

@@ -112,7 +112,7 @@ const faqSchema = {
 
 export default function GrowthPage() {
   return (
-    <main className="bg-naira-black min-h-screen">
+    <main className="min-h-screen" style={{ background: '#0a0a0a' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

@@ -13,18 +13,18 @@ export default function TapProofBar() {
         borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}
     >
-      <p className="text-[10px] font-medium tracking-widest uppercase text-naira-muted text-center mb-3">
+      <p className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-muted text-center mb-3">
         Live on tables across India
       </p>
 
       {/* Fade edges */}
       <div
         className="absolute inset-y-0 left-0 w-24 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(90deg, #151018, transparent)' }}
+        style={{ background: 'linear-gradient(90deg, #0a0a0a, transparent)' }}
       />
       <div
         className="absolute inset-y-0 right-0 w-24 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(270deg, #151018, transparent)' }}
+        style={{ background: 'linear-gradient(270deg, #0a0a0a, transparent)' }}
       />
 
       <div className="flex whitespace-nowrap" style={{ animation: 'marqueeScroll 28s linear infinite' }}>

@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: Props) {
         />
       )}
       <Navbar />
-      <main className="min-h-screen bg-naira-black">
+      <main className="min-h-screen" style={{ background: '#0a0a0a' }}>
         {/* Header image */}
         <div className="relative h-[55vh] min-h-[380px] bg-naira-card">
           {headerImageUrl ? (

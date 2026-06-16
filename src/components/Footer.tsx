@@ -22,8 +22,8 @@ const socialLinks = [
 
 const footerLinks = {
   Products: [
-    { label: 'Naira Billing', href: '#products' },
-    { label: 'Naira Tap', href: '#products' },
+    { label: 'Naira Tap', href: '/tap' },
+    { label: 'Naira Billing', href: '/billing' },
     { label: 'Naira Growth', href: '/growth' },
   ],
   Company: [
@@ -31,10 +31,10 @@ const footerLinks = {
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
   ],
-  Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
-    { label: 'Refund Policy', href: '#' },
+  Connect: [
+    { label: "Let's Talk", href: '/contact' },
+    { label: 'Instagram', href: 'https://www.instagram.com/naira.menus/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/naira-menus-8973633b7/' },
   ],
 }
 
@@ -66,25 +66,32 @@ function ContactSection() {
   return (
     <div
       id="contact"
-      className="rounded-2xl border border-naira-gold/20 p-8 mb-16"
-      style={{ background: 'linear-gradient(135deg, rgba(var(--accent-rgb),0.06) 0%, rgba(0,0,0,0) 100%)' }}
+      className="glass-dark p-8 md:p-10 mb-16 relative overflow-hidden"
+      style={{ borderRadius: 20, boxShadow: '0 8px 24px rgba(255,43,163,0.10), 0 16px 48px rgba(255,43,163,0.06)' }}
     >
-      <div className="max-w-xl mx-auto text-center">
-        <h3
-          className="font-display text-3xl md:text-4xl font-medium tracking-tighter mb-3"
-          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,43,163,0.10) 0%, transparent 60%)' }}
+      />
+      <div className="max-w-xl mx-auto text-center relative">
+        <span className="font-mono inline-block px-3 py-1 text-[12px] font-medium tracking-[0.12em] uppercase mb-6"
+          style={{ background: 'rgba(255,43,163,0.12)', color: 'var(--accent)', borderRadius: 8 }}
         >
-          Ready to modernise your restaurant?
+          Let&apos;s Talk
+        </span>
+        <h3 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] mb-3 text-white">
+          Ready to modernise your <span style={{ color: 'var(--accent)' }}>restaurant?</span>
         </h3>
-        <p className="text-naira-text-muted text-base mb-6">
+        <p className="text-white/70 text-base mb-6">
           Get early access to Naira Menus. We&apos;re onboarding a limited number
           of restaurants for our pilot — request a demo call.
         </p>
 
         {status === 'success' ? (
           <div className="py-4">
-            <div className="text-naira-gold font-medium">Demo request submitted!</div>
-            <div className="text-naira-muted text-sm mt-1">We&apos;ll call you shortly to schedule your demo.</div>
+            <div className="font-medium" style={{ color: 'var(--accent)' }}>Demo request submitted!</div>
+            <div className="text-white/55 text-sm mt-1">We&apos;ll call you shortly to schedule your demo.</div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3 text-left">
@@ -94,7 +101,10 @@ function ContactSection() {
               onChange={handleChange}
               placeholder="Your Name"
               required
-              className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+              className="w-full px-4 py-3 text-white text-sm placeholder:text-white/45 focus:outline-none transition-colors"
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12 }}
+              onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(255,43,163,0.4)')}
+              onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
             />
             <input
               name="phone"
@@ -105,12 +115,15 @@ function ContactSection() {
               type="tel"
               pattern="[0-9]{10}"
               title="Enter a 10-digit phone number"
-              className="w-full px-4 py-3 rounded-lg bg-naira-black border border-naira-border text-naira-text text-sm placeholder:text-naira-muted focus:outline-none focus:border-naira-gold/50 transition-colors"
+              className="w-full px-4 py-3 text-white text-sm placeholder:text-white/45 focus:outline-none transition-colors"
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12 }}
+              onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(255,43,163,0.4)')}
+              onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
             />
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full px-6 py-3 rounded-full bg-naira-gold text-naira-black text-sm font-semibold hover:bg-naira-gold-light transition-colors disabled:opacity-60"
+              className="btn-primary w-full disabled:opacity-60"
             >
               {status === 'submitting' ? 'Submitting...' : 'Request a Demo Call'}
             </button>
@@ -126,12 +139,13 @@ function ContactSection() {
 
 export default function Footer() {
   return (
-    <footer className="bg-naira-black border-t border-naira-border px-6 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto">
+    <footer className="px-6 pt-16 pb-8 relative" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+      <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
+      <div className="max-w-[1200px] mx-auto relative">
         <ContactSection />
 
         {/* Footer grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-12 border-b border-naira-border">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-12" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="mb-4">
@@ -143,11 +157,11 @@ export default function Footer() {
                 className="h-14 w-auto"
               />
             </div>
-            <p className="text-naira-text-muted text-sm leading-relaxed max-w-xs mb-4">
+            <p className="text-white/70 text-sm leading-relaxed max-w-xs mb-4">
               The future of restaurant operations. NFC-powered menus, smart POS,
               and growth tools — all in one platform.
             </p>
-            <p className="text-naira-gold text-xs font-semibold tracking-widest uppercase mb-2">Follow us</p>
+            <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-2" style={{ color: 'var(--accent)' }}>Follow us</p>
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
@@ -156,7 +170,22 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Naira Menus on ${social.label}`}
-                  className="w-11 h-11 rounded-lg border border-naira-border bg-naira-card flex items-center justify-center text-naira-text-muted hover:text-naira-gold hover:border-naira-gold/50 hover:bg-naira-gold/10 transition-all duration-200"
+                  className="w-11 h-11 flex items-center justify-center text-white/70 transition-all"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 12,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,43,163,0.10)'
+                    e.currentTarget.style.borderColor = 'rgba(255,43,163,0.30)'
+                    e.currentTarget.style.color = 'var(--accent)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.7)'
+                  }}
                 >
                   <social.icon size={17} />
                 </a>
@@ -167,13 +196,13 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="text-naira-text text-sm font-semibold mb-4">{section}</h4>
+              <h4 className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-4 text-white">{section}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-naira-text-muted text-sm hover:text-naira-text transition-colors"
+                      className="text-white/70 text-sm hover:text-white transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -185,11 +214,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-naira-muted text-xs">
-          <p>© 2025 Naira Menus. All rights reserved.</p>
-          <p className="text-center">
-            Made with care for Indian restaurants 🇮🇳
-          </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 font-mono text-white/55 text-[12px] tracking-[0.06em]">
+          <p>Naira Menus. All rights reserved.</p>
+          <p className="text-center">Made in India.</p>
         </div>
       </div>
     </footer>

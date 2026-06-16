@@ -31,15 +31,15 @@ export default function TapSteps() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(255,43,163,0.06) 0%, transparent 65%), #151018',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-5xl mx-auto relative z-10">
 
-        <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
+        <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-3 text-center">
           How it works
         </p>
-        <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text text-center mb-12">
+        <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text text-center mb-12">
           Your upgrade happens in a week.
         </h2>
 
@@ -58,7 +58,7 @@ export default function TapSteps() {
               }}
             >
               <div
-                className="text-4xl font-medium font-display mb-4"
+                className="text-4xl font-bold font-sans tracking-[-0.02em] mb-4"
                 style={{ color: 'rgba(255,43,163,0.3)' }}
               >
                 {s.n}

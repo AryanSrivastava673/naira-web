@@ -67,7 +67,7 @@ function PaperStrip({ index, isShredding }: { index: number; isShredding: boolea
       style={{
         left: `${(index / STRIP_COUNT) * 100}%`,
         width: `${100 / STRIP_COUNT}%`,
-        background: 'linear-gradient(to bottom, #FFF8F0 0%, #FFEACC 60%, #FFE0AA 100%)',
+        background: 'linear-gradient(to bottom, #ffffff 0%, #f2f2f2 60%, #e6e6e6 100%)',
         backgroundImage:
           'repeating-linear-gradient(transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 11px)',
         transformOrigin: 'top center',
@@ -181,10 +181,10 @@ function HeroShredderFull() {
   return (
     <div ref={containerRef} className="relative h-[300vh]">
       {/* ── STICKY VIEWPORT ──────────────────────────────────────────────────── */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-naira-black">
+      <div className="sticky top-0 h-screen overflow-hidden" style={{ background: '#0a0a0a' }}>
 
         {/* Ambient glow */}
-        <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+        <div aria-hidden className="absolute inset-x-0 top-0 h-[28%] pointer-events-none" style={{ background: 'radial-gradient(ellipse 45% 100% at 50% 0%, rgba(255,43,163,0.045) 0%, transparent 72%)' }} />
 
         {/* Subtle grid */}
         <div
@@ -206,7 +206,8 @@ function HeroShredderFull() {
           style={{ opacity: heroTextOpacity, y: heroTextY, zIndex: 30 }}
         >
           <motion.span
-            className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6"
+            className="font-mono inline-block px-3 py-1 text-[12px] font-medium tracking-[0.12em] uppercase mb-6"
+            style={{ background: 'rgba(255,43,163,0.12)', color: '#ff2ba3', borderRadius: 8 }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -214,26 +215,24 @@ function HeroShredderFull() {
             Introducing Naira Menus
           </motion.span>
 
-          <h1
-            className="text-5xl md:text-7xl font-semibold tracking-tighter leading-tight mb-5"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-          >
+          <h1 className="font-sans text-5xl md:text-7xl font-bold tracking-[-0.03em] leading-[1.05] mb-5 text-white">
             Say goodbye to
             <br />
-            <span className="text-gold-gradient">paper menus.</span>
+            <span style={{ color: '#ff2ba3' }}>paper menus.</span>
           </h1>
 
-          <p className="text-naira-text-muted text-lg md:text-xl max-w-xl leading-relaxed">
+          <p className="text-white/70 text-lg md:text-xl max-w-xl leading-relaxed">
             Scroll down to witness the future.
           </p>
 
-          <div className="mt-10 flex flex-col items-center gap-2 text-naira-muted text-sm">
+          <div className="mt-10 flex flex-col items-center gap-2 text-white/55 text-sm">
             <motion.div
-              className="w-px bg-gradient-to-b from-naira-gold/60 to-transparent"
+              className="w-px"
+              style={{ background: 'linear-gradient(to bottom, rgba(255,43,163,0.6), transparent)' }}
               animate={{ height: [24, 48, 24] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             />
-            <span className="text-xs tracking-widest uppercase">Scroll</span>
+            <span className="font-mono text-[11px] tracking-[0.12em] uppercase">Scroll</span>
           </div>
         </motion.div>
 
@@ -299,16 +298,13 @@ function HeroShredderFull() {
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none"
           style={{ opacity: revealOpacity, y: revealY, zIndex: 30 }}
         >
-          <p className="text-naira-muted text-sm tracking-[0.3em] uppercase mb-4">
+          <p className="font-mono text-white/55 text-[12px] tracking-[0.12em] uppercase mb-4">
             And say hello to
           </p>
-          <h2
-            className="text-5xl md:text-7xl font-medium text-gold-gradient tracking-tighter"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
-          >
+          <h2 className="font-sans text-5xl md:text-7xl font-bold tracking-[-0.03em]" style={{ color: '#ff2ba3' }}>
             Naira Tap.
           </h2>
-          <p className="mt-5 text-naira-text-muted text-lg max-w-md leading-relaxed">
+          <p className="mt-5 text-white/70 text-lg max-w-md leading-relaxed">
             Your menu — one tap away, zero paper needed.
           </p>
         </motion.div>
@@ -317,70 +313,10 @@ function HeroShredderFull() {
   )
 }
 
-// ── MOBILE HERO ───────────────────────────────────────────────────────────────
-function MobileHero() {
-  return (
-    <section className="min-h-screen flex flex-col bg-naira-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
-
-      {/* Subtle grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.028]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(var(--accent-rgb),0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(var(--accent-rgb),0.5) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
-      />
-
-      {/* Main copy — centred in the upper portion */}
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 relative z-10">
-        <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-6">
-          Introducing Naira Menus
-        </span>
-
-        <h1
-          className="text-5xl font-bold tracking-tighter leading-[1.05] mb-5"
-          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-        >
-          Say goodbye to
-          <br />
-          <span className="text-gold-gradient">paper menus.</span>
-        </h1>
-
-        <p className="text-naira-text-muted text-lg leading-relaxed max-w-xs">
-          Scroll down to witness the future.
-        </p>
-
-        <div className="mt-10 flex flex-col items-center gap-2">
-          <div className="w-px h-10 bg-gradient-to-b from-naira-gold/60 to-transparent" />
-          <span className="text-[10px] tracking-widest uppercase text-naira-muted">Scroll</span>
-        </div>
-      </div>
-
-      {/* Shredder machine pinned to the bottom */}
-      <div className="relative z-10 flex justify-center pb-0">
-        <ShredderMachine isActive={false} />
-      </div>
-    </section>
-  )
-}
-
-// ── HERO WRAPPER — CSS controls which version renders ─────────────────────────
+// ── HERO WRAPPER ──────────────────────────────────────────────────────────────
+// Same scroll-driven shred experience on every viewport — geometry is vh-based.
 export default function HeroShredder() {
-  return (
-    <>
-      <div className="md:hidden">
-        <MobileHero />
-      </div>
-      <div className="hidden md:block">
-        <HeroShredderFull />
-      </div>
-    </>
-  )
+  return <HeroShredderFull />
 }
 
 // ── CLIPPED MENU CARD ─────────────────────────────────────────────────────────
@@ -410,14 +346,14 @@ function ClippedMenuCard({
       <div
         className="w-full h-full flex flex-col relative"
         style={{
-          background: 'linear-gradient(160deg, #FFF8F0 0%, #FFF0DC 100%)',
-          border: '3px solid #D4AF37',
+          background: 'linear-gradient(160deg, #ffffff 0%, #fff0f7 100%)',
+          border: '3px solid #ff2ba3',
           fontFamily: 'var(--font-playfair), Georgia, serif',
-          color: '#2A1A00',
+          color: '#1a1a1a',
         }}
       >
         {/* Inner border */}
-        <div className="absolute inset-[8px] border border-[rgba(212,175,55,0.35)] pointer-events-none" />
+        <div className="absolute inset-[8px] border border-[rgba(255,43,163,0.30)] pointer-events-none" />
 
         {/* Corner ornaments */}
         {[
@@ -426,22 +362,22 @@ function ClippedMenuCard({
           'bottom-3 left-3 border-b-2 border-l-2',
           'bottom-3 right-3 border-b-2 border-r-2',
         ].map((cls) => (
-          <div key={cls} className={`absolute w-4 h-4 border-[#D4AF37] ${cls}`} />
+          <div key={cls} className={`absolute w-4 h-4 border-[#ff2ba3] ${cls}`} />
         ))}
 
         {/* Header */}
         <div className="text-center pt-5 pb-2 px-5">
-          <div className="text-[9px] tracking-[0.35em] uppercase text-[#8B6914] mb-1">Est. 2019</div>
+          <div className="text-[9px] tracking-[0.35em] uppercase text-[#ff2ba3] mb-1">Est. 2019</div>
           <div className="text-xl font-bold leading-tight">The Grand Spice</div>
-          <div className="text-[8px] tracking-[0.25em] text-[#8B6914] mt-1">FINE DINING</div>
-          <div className="w-20 mx-auto mt-2 border-b border-[#D4AF37]" />
+          <div className="text-[8px] tracking-[0.25em] text-[#ff2ba3] mt-1">FINE DINING</div>
+          <div className="w-20 mx-auto mt-2 border-b border-[#ff2ba3]" />
         </div>
 
         <MenuSection title="Starters" items={[['Soup of the Day', '₹180'], ['Paneer Tikka', '₹320'], ['Mezze Platter', '₹450']]} />
         <MenuSection title="Mains" items={[['Dal Makhani', '₹380'], ['Lamb Rogan Josh', '₹680'], ['Grilled Fish', '₹720'], ['Veg Biryani', '₹420']]} />
         <MenuSection title="Desserts" items={[['Gulab Jamun', '₹180'], ['Kulfi Falooda', '₹220']]} />
 
-        <div className="mt-auto text-center text-[7px] text-[#8B6914] tracking-[0.22em] uppercase pb-3 pt-2 border-t border-[rgba(212,175,55,0.3)]">
+        <div className="mt-auto text-center text-[7px] text-[#ff2ba3] tracking-[0.22em] uppercase pb-3 pt-2 border-t border-[rgba(255,43,163,0.25)]">
           All prices inclusive of taxes
         </div>
       </div>
@@ -452,11 +388,11 @@ function ClippedMenuCard({
 function MenuSection({ title, items }: { title: string; items: [string, string][] }) {
   return (
     <div className="px-4 mb-2">
-      <div className="text-[8px] tracking-[0.28em] uppercase text-[#8B6914] mb-1.5 text-center">{title}</div>
+      <div className="text-[8px] tracking-[0.28em] uppercase text-[#ff2ba3] mb-1.5 text-center">{title}</div>
       {items.map(([name, price]) => (
         <div key={name} className="flex justify-between items-baseline text-[10px] mb-1">
           <span>{name}</span>
-          <span className="text-[#8B6914] ml-2 flex-shrink-0">{price}</span>
+          <span className="text-[#ff2ba3] ml-2 flex-shrink-0">{price}</span>
         </div>
       ))}
     </div>
@@ -485,8 +421,8 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
             const x = i * 12.5
             return `M${x},30 L${x + 6.25},5 L${x + 12.5},30`
           }).join(' ')}
-          fill="#120E14"
-          stroke={isActive ? 'var(--accent)' : '#2E1E2A'}
+          fill="#0a0a0a"
+          stroke={isActive ? 'var(--accent)' : '#2a2a2a'}
           strokeWidth={isActive ? '0.9' : '0.4'}
         />
         <line x1="0" y1="5" x2="300" y2="5" stroke="var(--accent)" strokeWidth="0.7" strokeOpacity={isActive ? 0.8 : 0.3} />
@@ -496,10 +432,10 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
       <div
         style={{
           height: 68,
-          background: 'linear-gradient(180deg, #120E14 0%, #090F18 100%)',
-          borderLeft: '1px solid #2E1E2A',
-          borderRight: '1px solid #2E1E2A',
-          borderBottom: '1px solid #2E1E2A',
+          background: 'linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 100%)',
+          borderLeft: '1px solid #2a2a2a',
+          borderRight: '1px solid #2a2a2a',
+          borderBottom: '1px solid #2a2a2a',
           borderRadius: '0 0 10px 10px',
           position: 'relative',
           display: 'flex',
@@ -526,7 +462,7 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
           <div
             className="w-2 h-2 rounded-full transition-all duration-300"
             style={{
-              background: isActive ? 'var(--accent)' : '#2E1E2A',
+              background: isActive ? 'var(--accent)' : '#2a2a2a',
               boxShadow: isActive ? '0 0 8px rgba(var(--accent-rgb),0.8)' : 'none',
             }}
           />
@@ -545,7 +481,7 @@ function ShredderMachine({ isActive }: { isActive: boolean }) {
           <div
             key={k}
             className="w-4 h-[22px] rounded-b-sm"
-            style={{ background: '#0D0810', border: '1px solid #2E1E2A', borderTop: 'none' }}
+            style={{ background: '#0a0a0a', border: '1px solid #2a2a2a', borderTop: 'none' }}
           />
         ))}
       </div>

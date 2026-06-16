@@ -6,7 +6,7 @@ export default function TapCTA() {
       className="py-20 px-6 relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,43,163,0.1) 0%, transparent 65%), #151018',
+          '#0a0a0a',
       }}
     >
       <div className="max-w-3xl mx-auto relative z-10">
@@ -27,13 +27,13 @@ export default function TapCTA() {
             }}
           />
 
-          <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-naira-text mb-4 relative">
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text mb-4 relative">
             Stop making guests scan.{' '}
             <span className="text-gold-gradient">Start making them tap.</span>
           </h2>
 
           <p className="text-naira-text-muted text-sm md:text-base leading-relaxed mb-8 max-w-xl mx-auto relative">
-            We&apos;ll design your custom coaster, ship a physical sample, and put your
+            We&apos;ll design your custom coaster, and put your
             contactless dining solution on a private preview link. Free. No card,
             no commitment.
           </p>
@@ -45,7 +45,7 @@ export default function TapCTA() {
               style={{
                 background:
                   'linear-gradient(135deg, rgba(204,34,130,0.9) 0%, rgba(255,43,163,0.9) 60%, rgba(255,128,200,0.85) 100%)',
-                color: '#F0E9DE',
+                color: '#ffffff',
                 border: '1px solid rgba(255,128,200,0.35)',
                 boxShadow:
                   'inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 32px rgba(255,43,163,0.35)',

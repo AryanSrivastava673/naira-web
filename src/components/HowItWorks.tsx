@@ -4,6 +4,9 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Package, LayoutDashboard, Zap } from 'lucide-react'
 
+const PINK = '#ff2ba3'
+const PINK_RGB = '255,43,163'
+
 const steps = [
   {
     number: '01',
@@ -36,14 +39,14 @@ export default function HowItWorks() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="how-it-works" className="py-28 px-6 bg-naira-surface relative overflow-hidden">
-      {/* Background decorative element */}
+    <section id="how-it-works" className="py-28 px-6 relative overflow-hidden" style={{ background: '#ffffff' }}>
       <div
-        className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-5 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)' }}
+        aria-hidden
+        className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: `radial-gradient(circle, rgba(${PINK_RGB},0.05) 0%, transparent 70%)` }}
       />
 
-      <div ref={ref} className="max-w-6xl mx-auto">
+      <div ref={ref} className="max-w-[1200px] mx-auto relative">
         {/* Header */}
         <motion.div
           className="text-center mb-20"
@@ -51,16 +54,13 @@ export default function HowItWorks() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-5">
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-3" style={{ color: PINK }}>
             How It Works
-          </span>
-          <h2
-            className="font-display text-4xl md:text-5xl font-medium tracking-tighter mb-5"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-          >
-            Up and running in a day
+          </p>
+          <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-5" style={{ color: '#1a1a1a' }}>
+            Up and running in a <span style={{ color: PINK }}>day</span>
           </h2>
-          <p className="text-naira-text-muted text-lg max-w-xl mx-auto">
+          <p className="text-lg max-w-xl mx-auto" style={{ color: '#6b7280' }}>
             Getting started with Naira is simpler than printing a new menu.
           </p>
         </motion.div>
@@ -68,7 +68,10 @@ export default function HowItWorks() {
         {/* Steps */}
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden md:block absolute top-14 left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px bg-gradient-to-r from-transparent via-naira-gold/30 to-transparent" />
+          <div
+            className="hidden md:block absolute top-14 left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px"
+            style={{ background: `linear-gradient(to right, transparent, rgba(${PINK_RGB},0.30), transparent)` }}
+          />
 
           <div className="grid md:grid-cols-3 gap-10 relative">
             {steps.map((step, i) => {
@@ -76,40 +79,49 @@ export default function HowItWorks() {
               return (
                 <motion.div
                   key={step.number}
-                  className="relative"
+                  className="relative p-7"
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid rgba(0,0,0,0.06)',
+                    borderRadius: 16,
+                  }}
                   initial={{ opacity: 0, y: 40 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: i * 0.2 }}
+                  whileHover={{
+                    y: -4,
+                    boxShadow: `0 8px 24px rgba(${PINK_RGB},0.10), 0 16px 48px rgba(${PINK_RGB},0.06)`,
+                  }}
                 >
                   {/* Step number + icon */}
                   <div className="flex items-center gap-4 mb-5">
                     <div className="relative flex-shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-naira-gold/15 border border-naira-gold/30 flex items-center justify-center">
-                        <Icon size={20} className="text-naira-gold" />
-                      </div>
-                      {/* Step number badge */}
-                      <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-naira-black border border-naira-gold/40 flex items-center justify-center">
-                        <span className="text-[9px] font-bold text-naira-gold">{i + 1}</span>
+                      <div
+                        className="w-12 h-12 flex items-center justify-center"
+                        style={{
+                          background: `rgba(${PINK_RGB},0.10)`,
+                          border: `1px solid rgba(${PINK_RGB},0.22)`,
+                          borderRadius: 12,
+                        }}
+                      >
+                        <Icon size={20} style={{ color: PINK }} />
                       </div>
                     </div>
                     <span
-                      className="text-5xl font-bold text-naira-border/60 font-display select-none"
-                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                      className="font-mono text-5xl font-medium select-none"
+                      style={{ color: 'rgba(255,43,163,0.12)' }}
                     >
                       {step.number}
                     </span>
                   </div>
 
-                  <h3
-                    className="text-xl font-semibold text-naira-text mb-3"
-                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                  >
+                  <h3 className="font-sans text-xl font-semibold mb-3" style={{ color: '#1a1a1a' }}>
                     {step.title}
                   </h3>
-                  <p className="text-naira-text-muted text-sm leading-relaxed mb-3">
+                  <p className="text-sm leading-relaxed mb-3" style={{ color: '#6b7280' }}>
                     {step.description}
                   </p>
-                  <p className="text-xs text-naira-muted border-l-2 border-naira-gold/30 pl-3 italic">
+                  <p className="text-xs italic pl-3" style={{ color: '#9ca3af', borderLeft: `2px solid rgba(${PINK_RGB},0.30)` }}>
                     {step.detail}
                   </p>
                 </motion.div>

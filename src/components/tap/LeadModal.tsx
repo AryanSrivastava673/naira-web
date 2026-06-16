@@ -94,7 +94,7 @@ export default function LeadModal({ isOpen, onClose, variant }: Props) {
             transition={{ duration: 0.22 }}
             className="w-full max-w-md rounded-2xl p-8 relative"
             style={{
-              background: '#151018',
+              background: '#0a0a0a',
               border: '1px solid rgba(255,255,255,0.08)',
               boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,43,163,0.1)',
             }}

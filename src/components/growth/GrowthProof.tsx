@@ -65,13 +65,17 @@ export default function GrowthProof() {
   return (
     <section
       ref={ref}
-      className="py-20 px-6 relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,43,163,0.06) 0%, transparent 70%), #151018',
-      }}
+      className="py-24 px-6 relative overflow-hidden"
+      style={{ background: '#ffffff' }}
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Subtle pink glow — billing white-section treatment */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,43,163,0.05) 0%, transparent 70%)' }}
+      />
+
+      <div className="max-w-6xl mx-auto relative">
 
         {/* VS table */}
         <motion.div
@@ -79,23 +83,23 @@ export default function GrowthProof() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.15, duration: 0.5 }}
         >
-          <p className="text-xs font-medium tracking-widest uppercase text-naira-muted mb-3 text-center">
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-3 text-center" style={{ color: '#ff2ba3' }}>
             The difference
           </p>
-          <h2 className="font-display text-2xl md:text-3xl font-medium tracking-tighter text-naira-text text-center mb-10">
-            The restaurants winning the next decade get found today.
+          <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-[-0.02em] text-center mb-10" style={{ color: '#1a1a1a' }}>
+            The restaurants winning the next decade get <span style={{ color: '#ff2ba3' }}>found today.</span>
           </h2>
 
-          <div className="rounded-2xl border border-naira-border overflow-hidden">
+          <div className="overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 16 }}>
             {/* Header */}
-            <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1.6fr)] bg-naira-card border-b border-naira-border">
+            <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1.6fr)]" style={{ background: '#f5f5f5', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
               <div className="p-4" />
-              <div className="p-4 text-xs font-bold text-red-400 uppercase tracking-wide flex items-center gap-2 border-l border-naira-border">
-                <span className="w-4 h-4 rounded-full bg-red-500/10 inline-flex items-center justify-center text-[9px]">✕</span>
+              <div className="font-mono p-4 text-[11px] font-semibold uppercase tracking-[0.08em] flex items-center gap-2" style={{ color: '#dc2626', borderLeft: '1px solid rgba(0,0,0,0.08)' }}>
+                <span className="w-4 h-4 rounded-full inline-flex items-center justify-center text-[9px]" style={{ background: 'rgba(220,38,38,0.1)' }}>✕</span>
                 Without
               </div>
-              <div className="p-4 text-xs font-bold text-naira-gold uppercase tracking-wide flex items-center gap-2 border-l border-naira-border">
-                <span className="w-4 h-4 rounded-full bg-naira-gold/10 inline-flex items-center justify-center text-[9px]">✓</span>
+              <div className="font-mono p-4 text-[11px] font-semibold uppercase tracking-[0.08em] flex items-center gap-2" style={{ color: '#ff2ba3', borderLeft: '1px solid rgba(0,0,0,0.08)' }}>
+                <span className="w-4 h-4 rounded-full inline-flex items-center justify-center text-[9px]" style={{ background: 'rgba(255,43,163,0.1)' }}>✓</span>
                 With Naira Growth
               </div>
             </div>
@@ -103,15 +107,17 @@ export default function GrowthProof() {
             {VS_ROWS.map((row, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1.6fr)] border-b border-naira-border last:border-0 ${
-                  i % 2 === 0 ? 'bg-naira-black' : 'bg-naira-surface'
-                }`}
+                className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1.6fr)]"
+                style={{
+                  borderBottom: i < VS_ROWS.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none',
+                  background: i % 2 === 0 ? '#ffffff' : '#fafafa',
+                }}
               >
-                <div className="p-4 text-sm font-semibold text-naira-text">{row.label}</div>
-                <div className="p-4 text-sm text-naira-muted border-l border-naira-border leading-snug">
+                <div className="p-4 text-sm font-semibold" style={{ color: '#1a1a1a' }}>{row.label}</div>
+                <div className="p-4 text-sm leading-snug" style={{ color: '#9ca3af', borderLeft: '1px solid rgba(0,0,0,0.06)' }}>
                   {row.without}
                 </div>
-                <div className="p-4 text-sm text-naira-text border-l border-naira-border leading-snug">
+                <div className="p-4 text-sm leading-snug" style={{ color: '#1a1a1a', borderLeft: '1px solid rgba(0,0,0,0.06)' }}>
                   {row.with}
                 </div>
               </div>

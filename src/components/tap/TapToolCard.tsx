@@ -85,7 +85,7 @@ export default function TapToolCard() {
       >
         {/* Eyebrow */}
         <div className="px-5 pt-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <p className="text-xs font-medium tracking-widest uppercase pb-3" style={{ color: '#ff2ba3' }}>
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase pb-3" style={{ color: '#ff2ba3' }}>
             Design my Tap
           </p>
         </div>
@@ -143,7 +143,7 @@ function DesignPanel({
       {/* Finish spectrum */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <span className="text-[10px] font-medium tracking-widest uppercase text-naira-muted">Finish</span>
+          <span className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-muted">Finish</span>
           <span className="text-xs text-naira-gold font-semibold">{finish.label}</span>
         </div>
         <div
@@ -183,7 +183,7 @@ function DesignPanel({
 
       {/* Form factor */}
       <div>
-        <span className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-3">Form factor</span>
+        <span className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-muted block mb-3">Form factor</span>
         <div className="grid grid-cols-2 gap-2">
           {FORMS.map((f, i) => (
             <button
@@ -193,7 +193,7 @@ function DesignPanel({
               style={{
                 background: i === formIdx ? 'rgba(255,43,163,0.1)' : 'rgba(255,255,255,0.03)',
                 border: `1px solid ${i === formIdx ? 'rgba(255,43,163,0.4)' : 'rgba(255,255,255,0.08)'}`,
-                color: i === formIdx ? '#ff2ba3' : '#7A5068',
+                color: i === formIdx ? '#ff2ba3' : 'rgba(255,255,255,0.55)',
               }}
             >
               <span className="text-base">{f.icon}</span>
@@ -205,7 +205,7 @@ function DesignPanel({
 
       {/* Logo text */}
       <div>
-        <label className="text-[10px] font-medium tracking-widest uppercase text-naira-muted block mb-1.5">
+        <label className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-muted block mb-1.5">
           Restaurant name or logo text
         </label>
         <input
@@ -226,7 +226,7 @@ function DesignPanel({
         style={{ background: 'rgba(12,17,24,0.8)', border: '1px solid rgba(255,255,255,0.07)' }}
       >
         <span
-          className="absolute top-3 left-3 text-[9px] font-medium tracking-widest uppercase px-2 py-1 rounded-full"
+          className="absolute top-3 left-3 font-mono text-[10px] font-medium tracking-[0.08em] uppercase px-2 py-1 rounded-full"
           style={{ background: 'rgba(255,43,163,0.15)', color: '#ff80c8', border: '1px solid rgba(255,43,163,0.25)' }}
         >
           Live Preview
@@ -264,7 +264,7 @@ function DesignPanel({
               }}
             >
               <span
-                className="font-display font-medium tracking-tighter leading-tight"
+                className="font-sans font-bold tracking-[-0.02em] leading-tight"
                 style={{
                   fontSize: '0.6rem',
                   color: textColor,
@@ -320,7 +320,7 @@ function DesignPanel({
             >
               <svg width="26" height="42" viewBox="0 0 32 52" fill="none">
                 <rect x="1" y="1" width="30" height="50" rx="6" fill="#1E1520" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
-                <rect x="4" y="6" width="24" height="38" rx="3" fill="#0C1118" />
+                <rect x="4" y="6" width="24" height="38" rx="3" fill="#0a0a0a" />
                 <rect x="12" y="46" width="8" height="2" rx="1" fill="rgba(255,255,255,0.2)" />
                 <rect x="11" y="2.5" width="10" height="1.5" rx="0.75" fill="rgba(255,255,255,0.15)" />
               </svg>
