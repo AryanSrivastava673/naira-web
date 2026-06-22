@@ -136,7 +136,7 @@ export default function ContactPage() {
               <div className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-gold mb-1">
                 Talk to us
               </div>
-              <div className="text-xl font-semibold text-naira-text mb-1">+91 90210 44699</div>
+              <div className="text-xl font-semibold text-naira-text mb-1">+91 90210 44469</div>
               <div className="text-xs text-naira-text-muted mb-5">Mon–Sat, 10am – 7pm IST</div>
               <div className="flex gap-2">
                 <a

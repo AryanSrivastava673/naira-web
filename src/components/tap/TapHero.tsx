@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function TapHero() {
@@ -25,18 +26,38 @@ export default function TapHero() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto w-full flex flex-col relative z-10">
+      {/* Full-bleed hero image */}
+      <div aria-hidden className="absolute inset-0 hidden md:block">
+        <Image
+          src="/tap/Naira Tap hero image.PNG"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ objectPosition: 'right center', transform: 'translateX(5%) scale(0.88)', transformOrigin: 'right center' }}
+          priority
+        />
+        {/* Left-to-right fade so text remains readable */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to right, #0a0a0a 0%, #0a0a0a 30%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.1) 75%, transparent 100%)',
+        }} />
+        {/* Top and bottom fades */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 15%, transparent 85%, #0a0a0a 100%)',
+        }} />
+      </div>
 
-        {/* Copy — fills the first viewport so only the heading shows; card sits below */}
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+
+        {/* Copy */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="flex flex-col justify-center"
+          className="flex flex-col justify-center max-w-xl"
         >
           {/* Eyebrow pill — mobile only */}
           <span
-            className="md:hidden inline-flex items-center px-3 py-1 rounded-full font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-5"
+            className="md:hidden self-start inline-flex items-center px-3 py-1 rounded-full font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-5"
             style={{
               background: 'rgba(255,43,163,0.12)',
               color: '#ff80c8',
@@ -126,6 +147,19 @@ export default function TapHero() {
         </motion.div>
 
 
+      </div>
+
+      {/* Showcase disclaimer */}
+      <div className="hidden md:flex absolute bottom-5 right-6 lg:right-10 xl:right-16 items-center gap-1.5 px-3 py-1.5 rounded-full pointer-events-none max-w-[calc(100%-3rem)]"
+        style={{
+          background: 'rgba(255,255,255,0.05)',
+          border: '1px solid rgba(255,255,255,0.1)',
+        }}
+      >
+        <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '11px' }}>ⓘ</span>
+        <span className="font-mono text-[10px] tracking-wide" style={{ color: 'rgba(255,255,255,0.38)' }}>
+          illustrative render — final product may vary
+        </span>
       </div>
     </section>
   )

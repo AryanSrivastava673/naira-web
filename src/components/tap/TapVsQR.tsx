@@ -82,6 +82,14 @@ export default function TapVsQR() {
           ))}
         </motion.div>
 
+        <p className="text-center text-xs mt-6" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          Prefer QR? We offer that too —{' '}
+          <a href="/contact" className="underline underline-offset-2 hover:opacity-60 transition-opacity">
+            get in touch
+          </a>
+          .
+        </p>
+
       </div>
     </section>
   )
