@@ -2,12 +2,60 @@
 
 import { useEffect, useRef, useState } from 'react'
 import {
+  AnimatePresence,
   motion,
   useScroll,
   useTransform,
   useMotionValueEvent,
   type MotionValue,
 } from 'framer-motion'
+
+const PRODUCT_WORDS = ['Tap', 'Billing', 'Growth'] as const
+
+function RotatingProductWord() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % PRODUCT_WORDS.length)
+    }, 3200)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <span className="relative inline-grid align-baseline" style={{ lineHeight: 1.25 }}>
+      {/* Invisible sizers — all words stacked so the container sizes to the visually widest */}
+      {PRODUCT_WORDS.map((word) => (
+        <span
+          key={`size-${word}`}
+          aria-hidden
+          className="invisible whitespace-nowrap"
+          style={{ gridColumn: 1, gridRow: 1, lineHeight: 1.25 }}
+        >
+          {word}
+        </span>
+      ))}
+      {/* Clipping mask — sits in the same grid cell so its own overflow doesn't shift the outer baseline */}
+      <span
+        className="relative overflow-hidden"
+        style={{ gridColumn: 1, gridRow: 1, lineHeight: 1.25 }}
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={PRODUCT_WORDS[index]}
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: '0%', opacity: 1 }}
+            exit={{ y: '-100%', opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute left-0 top-0 whitespace-nowrap"
+          >
+            {PRODUCT_WORDS[index]}
+          </motion.span>
+        </AnimatePresence>
+      </span>
+    </span>
+  )
+}
 
 const STRIP_COUNT = 28
 
@@ -292,7 +340,6 @@ function HeroShredderFull() {
         >
           <ShredderMachine isActive={isShredding} />
         </motion.div>
-
         {/* ── REVEAL TEXT (after full shredding) ───────────────────────────── */}
         <motion.div
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none"
@@ -302,7 +349,7 @@ function HeroShredderFull() {
             And say hello to
           </p>
           <h2 className="font-sans text-5xl md:text-7xl font-bold tracking-[-0.03em]" style={{ color: '#ff2ba3' }}>
-            Naira Tap.
+            Naira <RotatingProductWord />
           </h2>
           <p className="mt-5 text-white/70 text-lg max-w-md leading-relaxed">
             Your menu — one tap away, zero paper needed.

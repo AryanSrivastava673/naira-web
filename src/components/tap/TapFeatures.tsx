@@ -2,64 +2,23 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import {
+  Smartphone, Camera, RefreshCw, Disc, Sparkles,
+  BarChart3, Languages, Filter, Megaphone, Leaf, Infinity,
+} from 'lucide-react'
 
 const FEATURES = [
-  {
-    img: '/tap/tap-hero.jpg',
-    title: 'Zero-friction tap to open',
-    desc: 'Guests bring their phone close. Menu opens in under a second — no app, no QR.',
-  },
-  {
-    img: '/tap/promo-banner.jpg',
-    title: '4K food photography',
-    desc: 'Crisp, appetising visuals on every device. Photos outsell paper every time.',
-  },
-  {
-    img: '/tap/menu-management-sync.jpg',
-    title: 'Live updates from your phone',
-    desc: 'Change a price in 4 seconds. The next tap shows the new reality.',
-  },
-  {
-    img: '/tap/five-coasters.jpg',
-    title: 'Custom coaster design',
-    desc: 'Metallic black, brushed gold, walnut, frosted acrylic, rose copper. Your logo laser-etched.',
-  },
-  {
-    img: '/tap/pairing-upsell.jpg',
-    title: 'Smart upsells & pairings',
-    desc: '"Goes great with" tags, bestsellers, add-on nudges. Lifts AOV by ₹45–₹90 per cover.',
-  },
-  {
-    img: '/tap/analytics-dashboard.jpg',
-    title: 'Weekly analytics',
-    desc: 'See which dish gets clicked, which section gets skipped.',
-  },
-  {
-    img: '/tap/multilanguage-switching.jpg',
-    title: 'Multi-language switching',
-    desc: 'English, Hindi, Marathi, and more. One tap flips the whole menu.',
-  },
-  {
-    img: '/tap/dietary-filters.jpg',
-    title: 'Allergen & dietary filters',
-    desc: 'Gluten-free, Jain, vegan, nut-free. Guests filter with one tap.',
-  },
-  {
-    img: '/tap/event-banner.jpg',
-    title: 'Event & offer banners',
-    desc: 'Push a banner to every device from your phone in seconds.',
-  },
-  {
-    img: '/tap/paper-vs-nfc.jpg',
-    title: 'Zero paper, zero waste',
-    desc: "India's only fully paperless NFC menu platform.",
-  },
-  {
-    img: '/tap/infinity-timeline.jpg',
-    title: 'Lifetime hardware, lifetime software',
-    desc: 'One flat install. Forever updates.',
-  },
+  { Icon: Smartphone, title: 'Zero-friction tap to open', tagline: 'Phone close. Menu opens in under a second.' },
+  { Icon: Camera,     title: '4K food photography',       tagline: 'Crisp visuals that outsell paper every time.' },
+  { Icon: RefreshCw,  title: 'Live updates',              tagline: 'Change a price in 4 seconds, live instantly.' },
+  { Icon: Disc,       title: 'Custom coaster design',     tagline: 'Brushed metal, walnut, acrylic — your logo.' },
+  { Icon: Sparkles,   title: 'Smart upsells & pairings',  tagline: 'Bestseller nudges lift AOV by ₹45–₹90.' },
+  { Icon: BarChart3,  title: 'Weekly analytics',          tagline: 'Which dish gets clicked, which gets skipped.' },
+  { Icon: Languages,  title: 'Multi-language switching',  tagline: 'English, Hindi, Marathi — one tap to flip.' },
+  { Icon: Filter,     title: 'Allergen & dietary filters', tagline: 'Gluten-free, Jain, vegan — guest filtered.' },
+  { Icon: Megaphone,  title: 'Event & offer banners',     tagline: 'Push a banner to every device in seconds.' },
+  { Icon: Leaf,       title: 'Zero paper, zero waste',    tagline: "India's only fully paperless NFC platform." },
+  { Icon: Infinity,   title: 'Lifetime hardware & software', tagline: 'One flat install. Forever updates.' },
 ]
 
 export default function TapFeatures() {
@@ -69,49 +28,46 @@ export default function TapFeatures() {
   return (
     <section
       id="features"
-      className="py-20 px-6 relative overflow-hidden"
+      className="py-24 px-6 relative overflow-hidden"
       style={{ background: '#0a0a0a' }}
     >
+      <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
       <div ref={ref} className="max-w-5xl mx-auto relative z-10">
 
-        <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-2 text-center">
+        <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-2 text-center" style={{ color: '#ff2ba3' }}>
           What&apos;s inside
         </p>
-        <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text text-center mb-3">
-          Twelve ways your menu starts earning again.
+        <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-white text-center mb-3">
+          Eleven ways your menu starts <span style={{ color: '#ff2ba3' }}>earning again.</span>
         </h2>
-        <p className="text-naira-text-muted text-sm text-center mb-10 max-w-lg mx-auto">
+        <p className="text-white/70 text-sm text-center mb-10 max-w-lg mx-auto">
           Every feature built for the moment a guest decides what to order.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {FEATURES.map(({ img, title, desc }, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {FEATURES.map(({ Icon, title, tagline }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="rounded-2xl overflow-hidden flex flex-col"
-              style={{
-                background: 'rgba(20,14,22,0.8)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
+              whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(255,43,163,0.10), 0 16px 48px rgba(255,43,163,0.06)' }}
+              className="glass-dark p-5 flex flex-col items-center text-center gap-3"
+              style={{ borderRadius: 16 }}
             >
-              {/* Image */}
-              <div className="relative w-full aspect-[16/9] overflow-hidden">
-                <Image
-                  src={img}
-                  alt={title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+              <div
+                className="w-11 h-11 flex items-center justify-center shrink-0"
+                style={{
+                  background: 'rgba(255,43,163,0.12)',
+                  border: '1px solid rgba(255,43,163,0.22)',
+                  borderRadius: 12,
+                }}
+              >
+                <Icon size={20} color="#ff2ba3" />
               </div>
-
-              {/* Text */}
-              <div className="p-5 flex flex-col gap-1">
-                <p className="font-semibold text-white text-sm leading-snug">{title}</p>
-                <p className="text-xs text-white/50 leading-relaxed">{desc}</p>
+              <div>
+                <p className="font-semibold text-white text-sm mb-1">{title}</p>
+                <p className="text-xs text-white/60 leading-snug">{tagline}</p>
               </div>
             </motion.div>
           ))}
