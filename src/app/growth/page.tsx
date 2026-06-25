@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import GrowthHero from '@/components/growth/GrowthHero'
 import GrowthStats from '@/components/growth/GrowthStats'
+import GrowthWhyNaira from '@/components/growth/GrowthWhyNaira'
 import GrowthFeatures from '@/components/growth/GrowthFeatures'
 import GrowthProof from '@/components/growth/GrowthProof'
 import GrowthSEOSections from '@/components/growth/GrowthSEOSections'
@@ -124,6 +125,7 @@ export default function GrowthPage() {
       <Navbar />
       <GrowthHero />
       <GrowthStats />
+      <GrowthWhyNaira />
       <GrowthFeatures />
       <GrowthProof />
       <GrowthSEOSections />

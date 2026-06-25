@@ -82,6 +82,38 @@ export default function TapVsQR() {
           ))}
         </motion.div>
 
+        <div className="flex justify-center mt-10">
+          <div
+            className="inline-flex items-center gap-3 px-5 py-3 rounded-full"
+            style={{
+              background: 'rgba(255,43,163,0.08)',
+              border: '1px solid rgba(255,43,163,0.28)',
+              boxShadow: '0 6px 24px -8px rgba(255,43,163,0.35)',
+            }}
+          >
+            <span
+              className="font-mono text-[10px] font-semibold tracking-[0.16em] uppercase px-2 py-0.5 rounded-full"
+              style={{
+                background: 'rgba(255,43,163,0.18)',
+                color: '#ff80c8',
+              }}
+            >
+              Also Available
+            </span>
+            <span className="text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
+              Prefer QR? We offer that too —{' '}
+              <a
+                href="/contact"
+                className="font-semibold underline underline-offset-2 transition-colors"
+                style={{ color: '#ff2ba3' }}
+              >
+                get in touch
+              </a>
+              .
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
   )

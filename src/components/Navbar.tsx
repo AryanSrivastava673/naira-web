@@ -11,7 +11,6 @@ const PRODUCT_LINKS = [
     label: 'Naira Tap',
     href: '/tap',
     desc: 'NFC + QR digital menu for dine-in',
-    nfc: true,
   },
   {
     label: 'Naira Billing',
@@ -22,7 +21,6 @@ const PRODUCT_LINKS = [
     label: 'Naira Growth',
     href: '/growth',
     desc: 'SEO, reviews & online visibility',
-    highlight: true,
   },
 ]
 
@@ -130,38 +128,9 @@ export default function Navbar() {
                         onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                       >
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span
-                              className="text-sm font-semibold text-white"
-                              style={p.highlight ? { color: 'var(--accent)' } : {}}
-                            >
-                              {p.label}
-                            </span>
-                            {p.nfc && (
-                              <span className="relative flex h-1.5 w-1.5">
-                                <span
-                                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-                                  style={{ background: 'var(--accent)' }}
-                                />
-                                <span
-                                  className="relative inline-flex rounded-full h-1.5 w-1.5"
-                                  style={{ background: 'var(--accent)' }}
-                                />
-                              </span>
-                            )}
-                            {p.highlight && (
-                              <span
-                                className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] px-1.5 py-0.5"
-                                style={{
-                                  background: 'rgba(255,43,163,0.12)',
-                                  color: 'var(--accent)',
-                                  borderRadius: 8,
-                                }}
-                              >
-                                New
-                              </span>
-                            )}
-                          </div>
+                          <span className="text-sm font-semibold text-white">
+                            {p.label}
+                          </span>
                           <p className="text-xs text-white/55 mt-0.5 leading-snug">{p.desc}</p>
                         </div>
                       </Link>
@@ -245,25 +214,8 @@ export default function Navbar() {
                             href={p.href}
                             onClick={() => setMobileOpen(false)}
                             className="flex items-center gap-2 py-2.5 text-[15px] transition-colors text-white/75 hover:text-white"
-                            style={p.highlight ? { color: 'var(--accent)' } : {}}
                           >
                             {p.label}
-                            {p.nfc && (
-                              <span
-                                className="font-mono px-1.5 py-0.5 text-[10px] font-medium tracking-[0.08em] uppercase"
-                                style={{ background: 'rgba(255,43,163,0.12)', color: 'var(--accent)', borderRadius: 8 }}
-                              >
-                                NFC
-                              </span>
-                            )}
-                            {p.highlight && (
-                              <span
-                                className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] px-1.5 py-0.5"
-                                style={{ background: 'rgba(255,43,163,0.12)', color: 'var(--accent)', borderRadius: 8 }}
-                              >
-                                New
-                              </span>
-                            )}
                           </Link>
                         </li>
                       ))}

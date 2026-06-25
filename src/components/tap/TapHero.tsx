@@ -1,12 +1,13 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function TapHero() {
   return (
     <section
       id="hero"
-      className="relative px-6 py-24 pb-4 overflow-hidden"
+      className="relative px-6 pt-24 pb-20 min-h-screen flex items-center overflow-hidden"
       style={{ background: '#0a0a0a' }}
     >
       {/* Ambient pink glow — same treatment as the billing hero */}
@@ -25,107 +26,123 @@ export default function TapHero() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto w-full flex flex-col relative z-10">
+      {/* Full-bleed hero image */}
+      <div aria-hidden className="absolute inset-0 hidden md:block">
+        <Image
+          src="/tap/Naira Tap hero image.PNG"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ objectPosition: 'right center', transform: 'translateX(5%) scale(0.88)', transformOrigin: 'right center' }}
+          priority
+        />
+        {/* Left-to-right fade so text remains readable */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to right, #0a0a0a 0%, #0a0a0a 30%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.1) 75%, transparent 100%)',
+        }} />
+        {/* Top and bottom fades */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 15%, transparent 85%, #0a0a0a 100%)',
+        }} />
+      </div>
 
-        {/* Copy — fills the first viewport so only the heading shows; card sits below */}
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+
+        {/* Copy */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="flex flex-col justify-center"
+          className="flex flex-col justify-between max-w-xl min-h-[70vh] py-4"
         >
-          {/* Eyebrow pill — mobile only */}
-          <span
-            className="md:hidden inline-flex items-center px-3 py-1 rounded-full font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-5"
-            style={{
-              background: 'rgba(255,43,163,0.12)',
-              color: '#ff80c8',
-              border: '1px solid rgba(255,43,163,0.25)',
-            }}
-          >
-            Naira Tap
-          </span>
-
-          <h1
-            className="font-sans mb-8"
-            style={{ fontWeight: 700, lineHeight: 0.92, letterSpacing: '-0.04em', marginTop: '-2px' }}
-          >
+          {/* Top group — wordmark + subhead + description */}
+          <div>
+            {/* Eyebrow pill — mobile only */}
             <span
-              className="block"
-              style={{ color: '#ff2ba3', fontSize: 'clamp(4.5rem, 11.5vw, 9.5rem)' }}
-            >
-              Naira
-            </span>
-            <span
-              className="block"
-              style={{ color: '#ffffff', fontSize: 'clamp(4.5rem, 11.5vw, 9.5rem)' }}
-            >
-              Tap<span style={{ color: '#ff2ba3' }}>.</span>
-            </span>
-          </h1>
-
-          <p
-            className="font-sans mb-6"
-            style={{
-              fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
-              fontWeight: 600,
-              letterSpacing: '-0.02em',
-              color: '#ffffff',
-              marginTop: '1.25rem',
-              lineHeight: 1.2,
-            }}
-          >
-            Earn More From <span style={{ color: '#ff2ba3' }}>Your Menus.</span>
-          </p>
-
-          <p className="text-naira-text-muted text-base md:text-lg leading-relaxed mb-10 max-w-lg">
-            Smart pairings, auto-combos, and bestseller nudges — right when your
-            guest is deciding. The only contactless dining solution that turns
-            every table into a silent upsell machine.
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#features"
-              className="relative overflow-hidden flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold group"
+              className="md:hidden self-start inline-flex items-center px-3 py-1 rounded-full font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-5"
               style={{
-                background:
-                  'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
-                color: 'var(--text)',
-                boxShadow:
-                  '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.25)',
+                background: 'rgba(255,43,163,0.12)',
+                color: '#ff80c8',
+                border: '1px solid rgba(255,43,163,0.25)',
               }}
+            >
+              Naira Tap
+            </span>
+
+            <h1
+              className="font-sans mb-6"
+              style={{ fontWeight: 700, lineHeight: 0.92, letterSpacing: '-0.04em', marginTop: '-2px' }}
             >
               <span
-                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
-                }}
-              />
-              <span className="relative">See how it works</span>
-              <svg className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 14 14" fill="none">
-                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+                className="block"
+                style={{ color: '#ff2ba3', fontSize: 'clamp(3.5rem, 7vw, 6.5rem)' }}
+              >
+                Naira
+              </span>
+              <span
+                className="block"
+                style={{ color: '#ffffff', fontSize: 'clamp(3.5rem, 7vw, 6.5rem)' }}
+              >
+                Tap<span style={{ color: '#ff2ba3' }}>.</span>
+              </span>
+            </h1>
 
-            <a
-              href="#features"
-              className="flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-naira-text transition-all duration-200 hover:text-naira-gold"
+            <h2
+              className="font-sans mb-6"
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.1)',
+                fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
+                fontWeight: 600,
+                letterSpacing: '-0.02em',
+                color: '#ffffff',
+                lineHeight: 1.2,
               }}
             >
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Scroll to explore
-            </a>
+              Earn more from{' '}
+              <span style={{ color: '#ff2ba3' }}>your menus.</span>
+            </h2>
+
+            <p className="text-naira-text-muted text-base md:text-lg leading-relaxed max-w-md">
+              Smart pairings, auto-combos, and bestseller nudges — right when your
+              guest is deciding. The only contactless dining solution that turns
+              every table into a silent upsell machine.
+            </p>
+          </div>
+
+          {/* Bottom group — value-prop checklist sits at the foot of the hero column */}
+          <div className="space-y-3 mt-12">
+            {[
+              'Tap to open the menu in under a second — no app, no QR fumbling',
+              'Works on every modern smartphone, with a QR fallback built in',
+              'Smart upsells and live menu updates from your phone',
+              'Custom-branded coasters, delivered and live in about a week',
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 text-sm text-naira-text-muted">
+                <span
+                  className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px] font-bold"
+                  style={{ background: 'rgba(255,43,163,0.15)', color: '#ff2ba3' }}
+                >
+                  ✓
+                </span>
+                {item}
+              </div>
+            ))}
           </div>
         </motion.div>
 
 
+      </div>
+
+      {/* Showcase disclaimer */}
+      <div className="hidden md:flex absolute bottom-5 right-6 lg:right-10 xl:right-16 items-center gap-1.5 px-3 py-1.5 rounded-full pointer-events-none max-w-[calc(100%-3rem)]"
+        style={{
+          background: 'rgba(255,255,255,0.05)',
+          border: '1px solid rgba(255,255,255,0.1)',
+        }}
+      >
+        <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '11px' }}>ⓘ</span>
+        <span className="font-mono text-[10px] tracking-wide" style={{ color: 'rgba(255,255,255,0.38)' }}>
+          illustrative render — final product may vary
+        </span>
       </div>
     </section>
   )

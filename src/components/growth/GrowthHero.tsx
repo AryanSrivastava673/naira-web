@@ -337,7 +337,7 @@ export default function GrowthHero() {
               lineHeight: 1.2,
             }}
           >
-            Get your restaurant found on{' '}
+            Get found first on{' '}
             <span style={{ color: '#ff2ba3' }}>Google &amp; AI search.</span>
           </h2>
 

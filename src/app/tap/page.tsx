@@ -7,6 +7,7 @@ import TapStats from '@/components/tap/TapStats'
 import TapMoment from '@/components/tap/TapMoment'
 import TapFeatures from '@/components/tap/TapFeatures'
 import TapUpsells from '@/components/tap/TapUpsells'
+import TapWhyTap from '@/components/tap/TapWhyTap'
 import TapMenuManagement from '@/components/tap/TapMenuManagement'
 import TapHardware from '@/components/tap/TapHardware'
 import TapPricing from '@/components/tap/TapPricing'
@@ -182,6 +183,9 @@ export default function TapPage() {
 
       {/* 5 — Deep Dive 01: Revenue */}
       <TapUpsells />
+
+      {/* 5b — Proof: AOV / ROI stats */}
+      <TapWhyTap />
 
       {/* 6 — Deep Dive 02: Real-Time Control */}
       <TapMenuManagement />

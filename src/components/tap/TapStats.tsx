@@ -76,7 +76,7 @@ export default function TapStats() {
       }}
     >
       <div className="max-w-6xl mx-auto">
-        <p className="text-sm font-bold text-naira-text text-center mb-12 max-w-2xl mx-auto">
+        <p className="text-sm font-bold text-naira-text text-center mt-16 md:mt-24 mb-12 max-w-2xl mx-auto">
           Restaurant new technology: the standard for Indian dining in 2026.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
