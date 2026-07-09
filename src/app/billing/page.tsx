@@ -10,6 +10,7 @@ import BillingFAQ from '@/components/billing/BillingFAQ'
 import BillingFinalCTA from '@/components/billing/BillingFinalCTA'
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://nairamenus.in/billing' },
   title: 'Naira Billing — Smart POS for Indian Restaurants',
   description:
     'Cloud POS with real-time dashboards, GST invoicing, Zomato & Swiggy sync, inventory tracking, and monthly growth reports. Built for Indian food businesses.',

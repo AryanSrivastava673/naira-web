@@ -12,6 +12,16 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.nairamenus.in' }],
+        destination: 'https://nairamenus.in/:path*',
+        statusCode: 301,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

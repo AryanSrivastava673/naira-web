@@ -11,6 +11,7 @@ import GrowthFAQ from '@/components/growth/GrowthFAQ'
 import BlogSection from '@/components/BlogSection'
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://nairamenus.in/growth' },
   title: 'Restaurant SEO Agency & Online Presence Management | Naira Growth',
   description:
     'Naira Growth is a restaurant SEO agency trusted by 800+ restaurants across India. Local SEO, online reputation management, review monitoring, and digital marketing for restaurants — all in one platform.',
