@@ -1,15 +1,19 @@
-import dynamic from 'next/dynamic'
+import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import HeroShredder from '@/components/HeroShredder'
-import LazySection from '@/components/LazySection'
+import GlobalShredBackground from '@/components/GlobalShredBackground'
+import PhoneNFCSection from '@/components/PhoneNFCSection'
+import Products from '@/components/Products'
+import HowItWorks from '@/components/HowItWorks'
+import Pricing from '@/components/Pricing'
+import BlogSection from '@/components/BlogSection'
+import Footer from '@/components/Footer'
 
-const GlobalShredBackground = dynamic(() => import('@/components/GlobalShredBackground'), { ssr: false })
-const PhoneNFCSection      = dynamic(() => import('@/components/PhoneNFCSection'),      { ssr: false })
-const Products             = dynamic(() => import('@/components/Products'),             { ssr: false })
-const HowItWorks           = dynamic(() => import('@/components/HowItWorks'),           { ssr: false })
-const Pricing              = dynamic(() => import('@/components/Pricing'),              { ssr: false })
-const BlogSection          = dynamic(() => import('@/components/BlogSection'),          { ssr: false })
-const Footer               = dynamic(() => import('@/components/Footer'),              { ssr: false })
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://nairamenus.in',
+  },
+}
 
 export default function HomePage() {
   return (
@@ -18,28 +22,16 @@ export default function HomePage() {
       <GlobalShredBackground />
       <HeroShredder />
       <div className="section-divider" />
-      <LazySection>
-        <PhoneNFCSection />
-      </LazySection>
+      <PhoneNFCSection />
       <div className="section-divider" />
-      <LazySection>
-        <Products />
-      </LazySection>
+      <Products />
       <div className="section-divider" />
-      <LazySection>
-        <HowItWorks />
-      </LazySection>
+      <HowItWorks />
       <div className="section-divider" />
-      <LazySection>
-        <Pricing />
-      </LazySection>
+      <Pricing />
       <div className="section-divider" />
-      <LazySection>
-        <BlogSection />
-      </LazySection>
-      <LazySection minHeight="400px">
-        <Footer />
-      </LazySection>
+      <BlogSection />
+      <Footer />
     </main>
   )
 }

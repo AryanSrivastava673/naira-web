@@ -17,6 +17,7 @@ import TapFAQ from '@/components/tap/TapFAQ'
 import TapViewDemoTab from '@/components/tap/TapViewDemoTab'
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://nairamenus.in/tap' },
   title: 'Naira Tap — NFC Menus for Restaurants | The Tap is the New Scan',
   description:
     "India's only 100% paperless NFC menu platform. Guests tap. Menu opens instantly. Custom coasters, real-time updates, smart upsells. Design your Tap free.",

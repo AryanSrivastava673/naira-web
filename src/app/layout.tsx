@@ -30,6 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://nairamenus.in'),
   title: 'Naira Menus: All-in-One Restaurant Platform',
   description:
     'NFC-powered digital menus for Indian restaurants. Replace paper menus with smart QR/NFC menus, manage orders, and grow your business with Naira.',
