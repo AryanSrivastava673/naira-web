@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check:ssr": "node scripts/check-ssr.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.0",
