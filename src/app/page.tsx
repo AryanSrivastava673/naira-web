@@ -1,15 +1,19 @@
-import dynamic from 'next/dynamic'
+import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import LazySection from '@/components/LazySection'
+import PhoneNFCSection from '@/components/PhoneNFCSection'
+import Products from '@/components/Products'
+import Ecosystem from '@/components/Ecosystem'
+import HowItWorks from '@/components/HowItWorks'
+import Pricing from '@/components/Pricing'
+import BlogSection from '@/components/BlogSection'
+import Footer from '@/components/Footer'
 
-const PhoneNFCSection      = dynamic(() => import('@/components/PhoneNFCSection'),      { ssr: false })
-const Products             = dynamic(() => import('@/components/Products'),             { ssr: false })
-const Ecosystem            = dynamic(() => import('@/components/Ecosystem'),            { ssr: false })
-const HowItWorks           = dynamic(() => import('@/components/HowItWorks'),           { ssr: false })
-const Pricing              = dynamic(() => import('@/components/Pricing'),              { ssr: false })
-const BlogSection          = dynamic(() => import('@/components/BlogSection'),          { ssr: false })
-const Footer               = dynamic(() => import('@/components/Footer'),              { ssr: false })
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://nairamenus.in',
+  },
+}
 
 export default function HomePage() {
   return (
@@ -17,32 +21,18 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <div className="section-divider" />
-      <LazySection>
-        <PhoneNFCSection />
-      </LazySection>
+      <PhoneNFCSection />
       <div className="section-divider" />
-      <LazySection>
-        <Products />
-      </LazySection>
+      <Products />
       <div className="section-divider" />
-      <LazySection>
-        <Ecosystem />
-      </LazySection>
+      <Ecosystem />
       <div className="section-divider" />
-      <LazySection>
-        <HowItWorks />
-      </LazySection>
+      <HowItWorks />
       <div className="section-divider" />
-      <LazySection>
-        <Pricing />
-      </LazySection>
+      <Pricing />
       <div className="section-divider" />
-      <LazySection>
-        <BlogSection />
-      </LazySection>
-      <LazySection minHeight="400px">
-        <Footer />
-      </LazySection>
+      <BlogSection />
+      <Footer />
     </main>
   )
 }

@@ -7,6 +7,7 @@ import HIWTimeline from '@/components/how-it-works/HIWTimeline'
 import HIWCTA from '@/components/how-it-works/HIWCTA'
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://nairamenus.in/how-it-works' },
   title: 'How It Works — Naira Menus',
   description:
     'See exactly how Naira Tap, Naira Billing, and Naira Growth are set up and run — from signup to your first monthly report in under a week.',

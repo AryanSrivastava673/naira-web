@@ -2,7 +2,7 @@
 
 import posthog from 'posthog-js'
 import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react'
-import { useEffect, useRef } from 'react'
+import { Suspense, useEffect, useRef } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 
 function PostHogPageView() {
@@ -40,7 +40,12 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
 
   return (
     <PHProvider client={posthog}>
-      <PostHogPageView />
+      {/* useSearchParams() must be isolated in its own Suspense boundary, otherwise it
+          forces the entire page (children) to bail to client-side rendering during
+          static prerender — which empties the server HTML and breaks SEO indexing. */}
+      <Suspense fallback={null}>
+        <PostHogPageView />
+      </Suspense>
       {children}
     </PHProvider>
   )
