@@ -7,130 +7,170 @@ import { motion, useInView } from 'framer-motion'
 const PINK = '#ff2ba3'
 const PINK_RGB = '255,43,163'
 
+const menuItems = [
+  { price: '₹320', color: '#7c2d4a' },
+  { price: '₹280', color: '#2d3748' },
+  { price: '₹450', color: '#2d3748' },
+]
+
+// SVG QR pattern (simplified 5x5 approximation)
+function QRIcon() {
+  const cells = [
+    [1,1,1,0,1],[1,0,1,0,1],[1,1,1,0,0],[0,0,0,0,1],[1,0,1,1,1],
+  ]
+  return (
+    <svg width="28" height="28" viewBox="0 0 5 5" style={{ imageRendering: 'pixelated' }}>
+      {cells.map((row, y) =>
+        row.map((on, x) =>
+          on ? <rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill="white" /> : null
+        )
+      )}
+    </svg>
+  )
+}
+
 function PhoneMockup() {
   return (
-    <div className="relative flex items-center justify-center">
-      {/* Glow */}
+    /* Outer card */
+    <div
+      className="relative rounded-3xl overflow-hidden"
+      style={{
+        background: 'rgba(255,255,255,0.04)',
+        border: '1px solid rgba(255,255,255,0.09)',
+        backdropFilter: 'blur(12px)',
+        width: 420,
+        padding: '28px 28px 0 28px',
+      }}
+    >
+      {/* Background pink glow inside card */}
       <div
-        className="absolute w-72 h-72 rounded-full pointer-events-none"
-        style={{ background: `radial-gradient(circle, rgba(${PINK_RGB},0.18) 0%, transparent 70%)` }}
+        className="absolute bottom-0 right-0 w-64 h-64 pointer-events-none"
+        style={{ background: `radial-gradient(circle at 80% 80%, rgba(${PINK_RGB},0.18) 0%, transparent 65%)` }}
       />
 
-      {/* Phone shell */}
-      <div
-        className="relative w-56 rounded-[2.8rem] overflow-hidden"
-        style={{
-          background: '#111',
-          border: '2px solid rgba(255,255,255,0.12)',
-          boxShadow: '0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06)',
-          height: '27rem',
-        }}
-      >
-        {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 rounded-b-2xl z-10" style={{ background: '#111' }} />
+      {/* Content row: tilted phone + NFC zone */}
+      <div className="relative flex items-end gap-0" style={{ height: 340 }}>
 
-        {/* Status bar */}
-        <div className="flex justify-between items-center px-5 pt-3 pb-1">
-          <span className="text-white text-[10px] font-semibold">9:41</span>
-          <span className="text-white/60 text-[10px]">●●●</span>
-        </div>
-
-        {/* NFC tap notification */}
+        {/* Tilted phone */}
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.4 }}
-          className="mx-3 mb-2 px-3 py-2 rounded-xl flex items-center gap-2"
-          style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.10)' }}
-        >
-          <div className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: PINK }}>
-            <span className="text-white font-bold text-[10px]">N</span>
-          </div>
-          <div>
-            <div className="text-white text-[10px] font-semibold leading-none mb-0.5">Naira Tap</div>
-            <div className="text-white/55 text-[9px] leading-none">Tap to open menu →</div>
-          </div>
-          <div className="ml-auto">
-            <div
-              className="text-[8px] font-mono font-bold px-1.5 py-0.5 rounded-full"
-              style={{ background: `rgba(${PINK_RGB},0.2)`, color: PINK }}
-            >
-              &lt;1s
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Menu content */}
-        <div className="mx-3 rounded-xl overflow-hidden" style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="px-3 py-2.5 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-            <div>
-              <div className="text-white text-[11px] font-bold">The Grand Spice</div>
-              <div className="text-[9px] font-mono font-medium tracking-widest mt-0.5" style={{ color: PINK }}>OPENED VIA TAP</div>
-            </div>
-            <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: PINK }}>
-              <span className="text-white font-black text-[9px]">N</span>
-            </div>
-          </div>
-
-          {[
-            { name: 'Dal Makhani', desc: 'Black lentils', price: '₹380', hot: true },
-            { name: 'Paneer Tikka', desc: 'Chargrilled', price: '₹320' },
-            { name: 'Rogan Josh', desc: "Chef's pick", price: '₹680', special: true },
-          ].map((item, i) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, x: -6 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.9 + i * 0.12 }}
-              className="flex items-center justify-between px-3 py-2"
-              style={{ borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
-            >
-              <div>
-                <div className="text-white text-[10px] font-semibold">{item.name}</div>
-                <div className="text-white/45 text-[9px]">{item.desc}</div>
-              </div>
-              <div className="flex items-center gap-1.5">
-                {item.special && (
-                  <span className="text-[7px] font-mono px-1 py-0.5 rounded" style={{ background: `rgba(${PINK_RGB},0.15)`, color: PINK }}>
-                    PICK
-                  </span>
-                )}
-                <span className="text-white text-[10px] font-bold">{item.price}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom coaster label */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-          className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-1"
+          transition={{ duration: 0.6 }}
+          style={{ transform: 'rotate(-10deg) translateX(-10px)', transformOrigin: 'bottom center', flexShrink: 0 }}
         >
           <div
-            className="px-3 py-1 rounded-full text-[9px] font-mono font-semibold tracking-widest"
-            style={{ background: `rgba(${PINK_RGB},0.12)`, color: PINK, border: `1px solid rgba(${PINK_RGB},0.25)` }}
+            className="relative rounded-[2.2rem] overflow-hidden"
+            style={{
+              width: 200,
+              height: 310,
+              background: '#0f0f0f',
+              border: '2px solid rgba(255,255,255,0.14)',
+              boxShadow: '0 24px 60px rgba(0,0,0,0.8)',
+            }}
           >
-            TAP TO MENU
+            {/* Notch */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 rounded-b-xl z-10" style={{ background: '#0f0f0f' }} />
+
+            {/* Screen content */}
+            <div className="pt-7 px-3">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-3 px-1">
+                <div>
+                  <div className="text-white font-bold text-xs leading-tight">The Grand Spice</div>
+                  <div className="font-mono text-[8px] tracking-widest mt-0.5" style={{ color: PINK }}>OPENED VIA TAP</div>
+                </div>
+              </div>
+
+              {/* Menu items with image placeholders */}
+              <div className="space-y-2">
+                {menuItems.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.12 }}
+                    className="flex items-center gap-2 rounded-xl px-2 py-2"
+                    style={{ background: 'rgba(255,255,255,0.05)' }}
+                  >
+                    {/* Image placeholder */}
+                    <div className="w-9 h-9 rounded-lg flex-shrink-0" style={{ background: item.color }} />
+                    {/* Text lines */}
+                    <div className="flex-1 space-y-1">
+                      <div className="h-1.5 rounded-full w-3/4" style={{ background: 'rgba(255,255,255,0.25)' }} />
+                      <div className="h-1 rounded-full w-1/2" style={{ background: 'rgba(255,255,255,0.12)' }} />
+                    </div>
+                    <div className="text-white font-bold text-[10px] flex-shrink-0">{item.price}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
+
+        {/* NFC tap zone — coaster visualization */}
+        <div className="absolute right-0 bottom-10 flex flex-col items-center gap-2">
+          {/* Pulsing dashed ring */}
+          <div className="relative flex items-center justify-center">
+            <motion.div
+              animate={{ scale: [1, 1.18, 1], opacity: [0.35, 0.12, 0.35] }}
+              transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute rounded-full"
+              style={{
+                width: 120,
+                height: 120,
+                border: `1.5px dashed rgba(${PINK_RGB},0.55)`,
+              }}
+            />
+            <motion.div
+              animate={{ scale: [1, 1.35, 1], opacity: [0.18, 0.06, 0.18] }}
+              transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+              className="absolute rounded-full"
+              style={{
+                width: 150,
+                height: 150,
+                border: `1px dashed rgba(${PINK_RGB},0.25)`,
+              }}
+            />
+
+            {/* N button */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="relative w-14 h-14 rounded-full flex items-center justify-center z-10"
+              style={{
+                background: PINK,
+                boxShadow: `0 0 28px rgba(${PINK_RGB},0.55), 0 0 8px rgba(${PINK_RGB},0.8)`,
+              }}
+            >
+              <span className="text-white font-black text-xl">N</span>
+            </motion.div>
+          </div>
+
+          {/* TAP HERE label */}
+          <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-white/50">TAP HERE</span>
+
+          {/* QR code */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="p-1.5 rounded-lg"
+            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+          >
+            <QRIcon />
+          </motion.div>
+        </div>
       </div>
 
-      {/* Coaster below phone */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="absolute -bottom-6 w-32 h-8 rounded-full flex items-center justify-center"
-        style={{
-          background: 'linear-gradient(135deg, #1e1e1e, #2a2a2a)',
-          border: `1px solid rgba(${PINK_RGB},0.35)`,
-          boxShadow: `0 0 20px rgba(${PINK_RGB},0.15)`,
-        }}
+      {/* Bottom bar */}
+      <div
+        className="flex items-center justify-between px-2 py-4 mt-2"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
       >
-        <span className="text-[9px] font-mono font-bold tracking-widest" style={{ color: PINK }}>NAIRA TAP</span>
-      </motion.div>
+        <span className="font-mono text-[10px] font-semibold tracking-[0.14em] text-white/40">TAP TO MENU</span>
+        <span className="font-mono text-[10px] font-bold tracking-widest" style={{ color: PINK }}>&lt;1s</span>
+      </div>
     </div>
   )
 }
