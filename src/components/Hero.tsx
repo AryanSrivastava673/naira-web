@@ -40,9 +40,13 @@ export default function Hero() {
           object-position's X value does nothing on its own. Next/Image's `fill` prop
           must fill its immediate parent with no conflicting size overrides, so the
           oversized/offset box lives on a separate wrapper div — that's what actually
-          creates the pannable overflow, clipped by the outer container below. */}
+          creates the pannable overflow, clipped by the outer container below.
+          Anchoring the box's left edge at 0% (instead of shifting it left) pushes
+          the crop to trim the RIGHT side of the source away, which is what shifts
+          the visible subject toward the right of the viewport — shifting the box
+          itself left does the opposite (crops the left side, subject moves left). */}
       <div aria-hidden className="absolute inset-0 opacity-55 lg:opacity-85 overflow-hidden">
-        <div className="absolute inset-y-0" style={{ left: '-45%', width: '145%' }}>
+        <div className="absolute inset-y-0" style={{ left: '0%', width: '145%' }}>
           <Image
             src="/hero/barista.jpg"
             alt=""
