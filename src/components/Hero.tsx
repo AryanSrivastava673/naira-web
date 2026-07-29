@@ -44,7 +44,7 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover"
           style={{
-            objectPosition: '88% 22%',
+            objectPosition: '15% 22%',
             filter: 'grayscale(0.15) saturate(0.85) contrast(1.05) brightness(0.82)',
           }}
         />
