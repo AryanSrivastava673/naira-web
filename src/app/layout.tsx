@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
 import PostHogProvider from '@/components/PostHogProvider'
+import CursorDotField from '@/components/CursorDotField'
 import { Inter, Lora, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
@@ -97,6 +98,7 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
+        <CursorDotField />
         <Suspense fallback={null}>
           <PostHogProvider>{children}</PostHogProvider>
         </Suspense>
