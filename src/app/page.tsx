@@ -5,6 +5,7 @@ import PhoneNFCSection from '@/components/PhoneNFCSection'
 import Products from '@/components/Products'
 import Ecosystem from '@/components/Ecosystem'
 import HowItWorks from '@/components/HowItWorks'
+import WhyNaira from '@/components/WhyNaira'
 import Pricing from '@/components/Pricing'
 import BlogSection from '@/components/BlogSection'
 import Footer from '@/components/Footer'
@@ -28,6 +29,8 @@ export default function HomePage() {
       <Ecosystem />
       <div className="section-divider" />
       <HowItWorks />
+      <div className="section-divider" />
+      <WhyNaira />
       <div className="section-divider" />
       <Pricing />
       <div className="section-divider" />
