@@ -42,8 +42,9 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[48%_28%] lg:object-[88%_22%]"
+          className="object-cover"
           style={{
+            objectPosition: '88% 22%',
             filter: 'grayscale(0.15) saturate(0.85) contrast(1.05) brightness(0.82)',
           }}
         />
