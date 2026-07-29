@@ -2,7 +2,8 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Check, Copy, CheckCheck, Lock } from 'lucide-react'
+import { Check, Copy, CheckCheck, Lock, Bell } from 'lucide-react'
+import posthog from 'posthog-js'
 
 const PINK = '#ff2ba3'
 const PINK_RGB = '255,43,163'
@@ -59,6 +60,81 @@ const plans = [
 ]
 
 const DISCOUNT_CODE = 'NM26WEB10'
+
+function NotifyForm({ planName }: { planName: string }) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+    setStatus('submitting')
+    try {
+      const res = await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, plan: planName }),
+      })
+      if (!res.ok) throw new Error()
+      posthog.capture('pricing_notify_submitted', { plan: planName })
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center py-3"
+      >
+        <div className="font-medium text-sm" style={{ color: PINK }}>You&apos;re on the list!</div>
+        <div className="text-white/55 text-xs mt-1">We&apos;ll notify you the moment pricing goes live.</div>
+      </motion.div>
+    )
+  }
+
+  return (
+    <div>
+      <div className="flex items-center gap-2 text-xs text-white/50 mb-2">
+        <Bell size={12} />
+        <span>Get notified when pricing launches</span>
+      </div>
+      <form onSubmit={handleSubmit} className="flex gap-2">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          required
+          className="flex-1 px-3 py-3 text-white text-sm placeholder:text-white/40 focus:outline-none transition-colors"
+          style={{
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: 12,
+          }}
+          onFocus={(e) => (e.currentTarget.style.borderColor = `rgba(${PINK_RGB},0.4)`)}
+          onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
+        />
+        <button
+          type="submit"
+          disabled={status === 'submitting'}
+          className="px-4 py-3 text-sm font-semibold flex-shrink-0 disabled:opacity-60 transition-all"
+          style={{ background: PINK, color: '#ffffff', borderRadius: 12 }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--accent-dark)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = PINK)}
+        >
+          {status === 'submitting' ? '...' : 'Notify me'}
+        </button>
+        {status === 'error' && (
+          <span className="text-red-400 text-xs self-center">Failed</span>
+        )}
+      </form>
+    </div>
+  )
+}
 
 function DiscountClaim() {
   const [revealed, setRevealed] = useState(false)
@@ -271,8 +347,12 @@ export default function Pricing() {
                     ))}
                   </ul>
 
-                  {/* ── Discount CTA ── */}
-                  <DiscountClaim />
+                  {/* ── CTA ── */}
+                  {plan.id === 'growth' ? (
+                    <NotifyForm planName={plan.name} />
+                  ) : (
+                    <DiscountClaim />
+                  )}
                 </div>
               </motion.div>
             )
