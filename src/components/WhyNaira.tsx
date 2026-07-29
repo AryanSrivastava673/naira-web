@@ -1,8 +1,59 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Heart, Zap, Award } from 'lucide-react'
+
+const PINK_RGB = '255,43,163'
+
+function ParallaxBackdrop({ sectionRef }: { sectionRef: React.RefObject<HTMLElement> }) {
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+
+  // Each layer moves at a different rate — the classic depth cue of parallax
+  const yFar = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
+  const yMid = useTransform(scrollYProgress, [0, 1], ['-14%', '14%'])
+  const yNear = useTransform(scrollYProgress, [0, 1], ['-26%', '26%'])
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 8])
+
+  return (
+    <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Far layer — large, slow, faint glow */}
+      <motion.div
+        className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full"
+        style={{
+          y: yFar,
+          background: `radial-gradient(circle, rgba(${PINK_RGB},0.10) 0%, transparent 65%)`,
+        }}
+      />
+
+      {/* Mid layer — dot field drifting at a medium rate */}
+      <motion.div
+        className="absolute inset-0 constellation-bg"
+        style={{ y: yMid, opacity: 0.6 }}
+      />
+
+      {/* Near layer — two smaller, brighter glows moving fastest, with a slow rotate */}
+      <motion.div
+        className="absolute top-1/3 left-[8%] w-64 h-64 rounded-full"
+        style={{
+          y: yNear,
+          rotate,
+          background: `radial-gradient(circle, rgba(${PINK_RGB},0.16) 0%, transparent 70%)`,
+        }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-[10%] w-80 h-80 rounded-full"
+        style={{
+          y: yNear,
+          background: `radial-gradient(circle, rgba(${PINK_RGB},0.14) 0%, transparent 70%)`,
+        }}
+      />
+    </div>
+  )
+}
 
 const CARDS = [
   {
@@ -37,12 +88,19 @@ const CARDS = [
 ]
 
 export default function WhyNaira() {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const sectionRef = useRef<HTMLElement>(null)
+  const inViewRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(inViewRef, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-24 px-6" style={{ background: '#0a0a0a' }}>
-      <div ref={ref} className="max-w-6xl mx-auto">
+    <section
+      ref={sectionRef}
+      className="relative py-24 px-6 overflow-hidden"
+      style={{ background: '#0a0a0a' }}
+    >
+      <ParallaxBackdrop sectionRef={sectionRef} />
+
+      <div ref={inViewRef} className="max-w-6xl mx-auto relative z-10">
 
         <motion.div
           className="text-center mb-16"
