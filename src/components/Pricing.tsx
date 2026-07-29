@@ -273,19 +273,19 @@ export default function Pricing() {
                     : 'none',
                 }}
               >
-                {/* Stretched link covers the whole card; buttons sit above via z-10 */}
-                <Link href={plan.href} className="absolute inset-0 z-0" aria-label={`Learn more about ${plan.name}`} />
+                {/* Stretched link sits above passive content (z-1) but below interactive CTAs (z-20) */}
+                <Link href={plan.href} className="absolute inset-0 z-[1]" aria-label={`Learn more about ${plan.name}`} />
 
                 {featured && (
                   <div
-                    className="absolute top-4 right-4 font-mono px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase z-10"
+                    className="absolute top-4 right-4 font-mono px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase z-[2]"
                     style={{ background: PINK, color: '#ffffff', borderRadius: 8 }}
                   >
                     Most Popular
                   </div>
                 )}
 
-                <div className="p-7 flex flex-col flex-1 relative z-10">
+                <div className="p-7 flex flex-col flex-1 relative">
 
                   {/* ── Plan identity ── */}
                   <div className="mb-6">
@@ -354,12 +354,14 @@ export default function Pricing() {
                     ))}
                   </ul>
 
-                  {/* ── CTA ── */}
-                  {plan.id === 'growth' ? (
-                    <NotifyForm planName={plan.name} />
-                  ) : (
-                    <DiscountClaim />
-                  )}
+                  {/* ── CTA — sits above the stretched link ── */}
+                  <div className="relative z-[2]">
+                    {plan.id === 'growth' ? (
+                      <NotifyForm planName={plan.name} />
+                    ) : (
+                      <DiscountClaim />
+                    )}
+                  </div>
                 </div>
               </motion.div>
             )
