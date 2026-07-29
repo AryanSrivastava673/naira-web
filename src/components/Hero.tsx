@@ -34,20 +34,28 @@ export default function Hero() {
       className="relative min-h-screen flex items-center px-5 pt-28 pb-14 md:px-6 md:pt-24 md:pb-20 overflow-hidden"
       style={{ background: '#0a0a0a' }}
     >
-      {/* Background photo — faded into the dark canvas, strongest behind the copy */}
-      <div aria-hidden className="absolute inset-0 opacity-55 lg:opacity-85">
-        <Image
-          src="/hero/barista.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{
-            objectPosition: '15% 22%',
-            filter: 'grayscale(0.15) saturate(0.85) contrast(1.05) brightness(0.82)',
-          }}
-        />
+      {/* Background photo — faded into the dark canvas, strongest behind the copy.
+          The source photo (2400x1600, 3:2) is narrower than the hero viewport at
+          "cover" scale, so object-fit:cover has zero horizontal slack to pan with —
+          object-position's X value does nothing on its own. Next/Image's `fill` prop
+          must fill its immediate parent with no conflicting size overrides, so the
+          oversized/offset box lives on a separate wrapper div — that's what actually
+          creates the pannable overflow, clipped by the outer container below. */}
+      <div aria-hidden className="absolute inset-0 opacity-55 lg:opacity-85 overflow-hidden">
+        <div className="absolute inset-y-0" style={{ left: '-45%', width: '145%' }}>
+          <Image
+            src="/hero/barista.jpg"
+            alt=""
+            fill
+            priority
+            sizes="145vw"
+            className="object-cover"
+            style={{
+              objectPosition: '50% 22%',
+              filter: 'grayscale(0.15) saturate(0.85) contrast(1.05) brightness(0.82)',
+            }}
+          />
+        </div>
       </div>
 
       {/* Vignette — the copy column spans nearly the full height below lg, so this needs to
