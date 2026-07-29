@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { Check, Copy, CheckCheck, Lock, Bell } from 'lucide-react'
 import posthog from 'posthog-js'
@@ -11,6 +12,7 @@ const PINK_RGB = '255,43,163'
 const plans = [
   {
     id: 'tap',
+    href: '/tap',
     name: 'Naira Tap',
     tagline: 'Digital menu for dine-in',
     description: 'NFC + QR menu, table ordering, analytics, and customisation — everything to replace paper menus.',
@@ -27,6 +29,7 @@ const plans = [
   },
   {
     id: 'billing',
+    href: '/billing',
     name: 'Naira Billing',
     tagline: 'Full-stack POS',
     description: 'Cloud POS, order management, inventory, reporting, and third-party integrations.',
@@ -44,6 +47,7 @@ const plans = [
   },
   {
     id: 'growth',
+    href: '/growth',
     name: 'Naira Growth',
     tagline: 'Online presence & growth',
     description: 'Google optimisation, review funnel, SEO pages, social tools, and monthly insights.',
@@ -255,7 +259,7 @@ export default function Pricing() {
             return (
               <motion.div
                 key={plan.id}
-                className="glass-dark relative flex flex-col overflow-hidden"
+                className="glass-dark relative flex flex-col overflow-hidden cursor-pointer group/card"
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
@@ -269,16 +273,19 @@ export default function Pricing() {
                     : 'none',
                 }}
               >
+                {/* Stretched link covers the whole card; buttons sit above via z-10 */}
+                <Link href={plan.href} className="absolute inset-0 z-0" aria-label={`Learn more about ${plan.name}`} />
+
                 {featured && (
                   <div
-                    className="absolute top-4 right-4 font-mono px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase"
+                    className="absolute top-4 right-4 font-mono px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase z-10"
                     style={{ background: PINK, color: '#ffffff', borderRadius: 8 }}
                   >
                     Most Popular
                   </div>
                 )}
 
-                <div className="p-7 flex flex-col flex-1">
+                <div className="p-7 flex flex-col flex-1 relative z-10">
 
                   {/* ── Plan identity ── */}
                   <div className="mb-6">
