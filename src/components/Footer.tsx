@@ -139,7 +139,7 @@ function ContactSection() {
 
 export default function Footer() {
   return (
-    <footer className="px-6 pt-16 pb-8 relative" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <footer className="px-6 pt-16 pb-8 relative" style={{ background: 'transparent', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
       <div className="max-w-[1200px] mx-auto relative">
         <ContactSection />

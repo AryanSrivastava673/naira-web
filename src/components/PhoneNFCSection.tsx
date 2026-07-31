@@ -311,7 +311,7 @@ export default function PhoneNFCSection() {
       ref={sectionRef}
       id="tap-demo"
       className="relative py-24 px-6 overflow-hidden"
-      style={{ background: '#0a0a0a' }}
+      style={{ background: 'transparent' }}
     >
       {/* Top accent border */}
       <div

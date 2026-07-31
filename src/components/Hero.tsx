@@ -34,19 +34,32 @@ export default function Hero() {
       className="relative min-h-screen flex items-center px-5 pt-28 pb-14 md:px-6 md:pt-24 md:pb-20 overflow-hidden"
       style={{ background: '#0a0a0a' }}
     >
-      {/* Background photo — faded into the dark canvas, strongest behind the copy */}
-      <div aria-hidden className="absolute inset-0 opacity-55 lg:opacity-85">
-        <Image
-          src="/hero/barista.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[48%_28%] lg:object-[72%_22%]"
-          style={{
-            filter: 'grayscale(0.15) saturate(0.85) contrast(1.05) brightness(0.82)',
-          }}
-        />
+      {/* Background photo — faded into the dark canvas, strongest behind the copy.
+          The source photo (2400x1600, 3:2) is narrower than the hero viewport at
+          "cover" scale, so object-fit:cover has zero horizontal slack to pan with —
+          object-position's X value does nothing on its own. Next/Image's `fill` prop
+          must fill its immediate parent with no conflicting size overrides, so the
+          oversized/offset box lives on a separate wrapper div — that's what actually
+          creates the pannable overflow, clipped by the outer container below.
+          Anchoring the box's left edge at 0% (instead of shifting it left) pushes
+          the crop to trim the RIGHT side of the source away, which is what shifts
+          the visible subject toward the right of the viewport — shifting the box
+          itself left does the opposite (crops the left side, subject moves left). */}
+      <div aria-hidden className="absolute inset-0 opacity-55 lg:opacity-85 overflow-hidden">
+        <div className="absolute inset-y-0" style={{ left: '0%', width: '145%' }}>
+          <Image
+            src="/hero/barista.jpg"
+            alt=""
+            fill
+            priority
+            sizes="145vw"
+            className="object-cover"
+            style={{
+              objectPosition: '50% 22%',
+              filter: 'grayscale(0.15) saturate(0.85) contrast(1.05) brightness(0.82)',
+            }}
+          />
+        </div>
       </div>
 
       {/* Vignette — the copy column spans nearly the full height below lg, so this needs to
@@ -159,32 +172,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Bottom group — CTAs anchor at the foot of the column on mobile */}
+          {/* Bottom group — CTA anchors at the foot of the column on mobile */}
           <div className="flex flex-wrap justify-center gap-4 mt-8 md:mt-12 lg:justify-start">
-            <a
-              href="#contact"
-              className="relative overflow-hidden flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 rounded-full text-base font-bold group"
-              style={{
-                background:
-                  'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
-                color: 'var(--text)',
-                boxShadow:
-                  '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.25)',
-              }}
-            >
-              <span
-                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
-                }}
-              />
-              <span className="relative">Book a demo</span>
-              <svg className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 14 14" fill="none">
-                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-
             <a
               href="#products"
               className="flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 rounded-full text-base font-bold text-naira-text transition-all duration-200 hover:text-naira-gold"

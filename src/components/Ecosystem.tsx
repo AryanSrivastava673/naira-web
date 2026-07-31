@@ -282,7 +282,7 @@ export default function Ecosystem() {
       id="ecosystem"
       ref={ref}
       className="relative overflow-hidden px-6 py-24 lg:py-28"
-      style={{ background: '#0a0a0a' }}
+      style={{ background: 'transparent' }}
     >
       {/* Ambient glows — same three product colors as the Hero, tying the sections together */}
       <div

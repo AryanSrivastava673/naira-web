@@ -41,7 +41,7 @@ const products = [
       'Hardware included (NFC coasters/stands)',
     ],
     cta: 'See Tap in Action',
-    ctaHref: '#tap-demo',
+    ctaHref: '/tap',
     featured: true,
   },
   {
@@ -69,7 +69,7 @@ export default function Products() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="products" className="py-28 px-6 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+    <section id="products" className="py-28 px-6 relative overflow-hidden" style={{ background: 'transparent' }}>
       <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
 
       <div ref={ref} className="max-w-[1200px] mx-auto relative">
