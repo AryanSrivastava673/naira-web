@@ -224,7 +224,7 @@ export default function Pricing() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="pricing" className="py-28 px-6 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+    <section id="pricing" className="py-28 px-6 relative overflow-hidden" style={{ background: 'transparent' }}>
       <div
         aria-hidden
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full pointer-events-none"

@@ -96,7 +96,7 @@ export default function WhyNaira() {
     <section
       ref={sectionRef}
       className="relative py-24 px-6 overflow-hidden"
-      style={{ background: '#0a0a0a' }}
+      style={{ background: 'transparent' }}
     >
       <ParallaxBackdrop sectionRef={sectionRef} />
 

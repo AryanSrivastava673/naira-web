@@ -76,6 +76,11 @@
 
 html { scroll-behavior: smooth; }
 
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
 body {
   background-color: #0a0a0a;
   color: #ffffff;
@@ -242,4 +247,15 @@ body::before {
     radial-gradient(circle at 100% 20%, rgba(var(--accent-rgb),0.10) 1px, transparent 1.2px);
   background-size: 120px 120px;
   opacity: 0.5;
+  animation: constellation-drift 70s linear infinite;
+}
+
+/* One full tile of travel — the pattern repeats seamlessly with no visible jump/reset */
+@keyframes constellation-drift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 120px 120px, -120px 120px, 120px -120px, -120px -120px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .constellation-bg { animation: none; }
 }

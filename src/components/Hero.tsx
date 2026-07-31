@@ -172,32 +172,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Bottom group — CTAs anchor at the foot of the column on mobile */}
+          {/* Bottom group — CTA anchors at the foot of the column on mobile */}
           <div className="flex flex-wrap justify-center gap-4 mt-8 md:mt-12 lg:justify-start">
-            <a
-              href="#contact"
-              className="relative overflow-hidden flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 rounded-full text-base font-bold group"
-              style={{
-                background:
-                  'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
-                color: 'var(--text)',
-                boxShadow:
-                  '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.25)',
-              }}
-            >
-              <span
-                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
-                }}
-              />
-              <span className="relative">Book a demo</span>
-              <svg className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 14 14" fill="none">
-                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-
             <a
               href="#products"
               className="flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 rounded-full text-base font-bold text-naira-text transition-all duration-200 hover:text-naira-gold"
