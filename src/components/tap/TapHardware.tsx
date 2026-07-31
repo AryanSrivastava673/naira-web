@@ -50,6 +50,7 @@ function CoasterShowcase() {
             text ever going upside down, since rotation stays within a few degrees */}
         <motion.div
           className="relative w-full h-full"
+          style={{ position: 'relative' }}
           animate={{ y: [0, -10, 0], rotate: [-1.5, 1.5, -1.5] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         >
@@ -158,7 +159,7 @@ export default function TapHardware() {
             </p>
             <span className="text-white/35 text-xs">Ø 120mm coaster</span>
           </div>
-          <div className="relative w-full" style={{ aspectRatio: '1402 / 1122' }}>
+          <div className="relative w-full" style={{ position: 'relative', aspectRatio: '1402 / 1122' }}>
             <Image
               src="/tap/coaster/coaster-views.jpg"
               alt="Naira Tap coaster shown from five angles: angled, top, side, low side angle, and base with mounting points"
