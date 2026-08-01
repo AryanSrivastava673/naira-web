@@ -4,6 +4,9 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Monitor, Smartphone, TrendingUp, ArrowRight } from 'lucide-react'
 
+const PINK = '#ff2ba3'
+const PINK_RGB = '255,43,163'
+
 const products = [
   {
     id: 'billing',
@@ -19,11 +22,8 @@ const products = [
       'Inventory tracking & alerts',
       'Third-party integrations (Zomato, Swiggy & more)',
     ],
-    cta: 'Request POS Demo',
-    ctaHref: '#contact',
-    accent: '#10B981',                        // green — matches Pricing
-    borderColor: 'rgba(16,185,129,0.35)',
-    glowColor: 'rgba(16,185,129,0.07)',
+    cta: 'Explore Naira Billing',
+    ctaHref: '/billing',
   },
   {
     id: 'tap',
@@ -41,10 +41,7 @@ const products = [
       'Hardware included (NFC coasters/stands)',
     ],
     cta: 'See Tap in Action',
-    ctaHref: '#tap-demo',
-    accent: 'var(--accent)',                  // pink — matches Pricing
-    borderColor: 'rgba(255,43,163,0.45)',
-    glowColor: 'rgba(255,43,163,0.08)',
+    ctaHref: '/tap',
     featured: true,
   },
   {
@@ -63,10 +60,7 @@ const products = [
       'Monthly reports + market trend updates',
     ],
     cta: 'Explore Growth Tools',
-    ctaHref: '#contact',
-    accent: '#8B5CF6',                        // purple — matches Pricing
-    borderColor: 'rgba(139,92,246,0.35)',
-    glowColor: 'rgba(139,92,246,0.07)',
+    ctaHref: '/growth',
   },
 ]
 
@@ -75,20 +69,10 @@ export default function Products() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="products" className="py-28 px-6 bg-naira-black relative">
-      {/* Subtle grid bg */}
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(var(--accent-rgb),0.4) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(var(--accent-rgb),0.4) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-        }}
-      />
+    <section id="products" className="py-28 px-6 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <div aria-hidden className="absolute inset-0 constellation-bg pointer-events-none" />
 
-      <div ref={ref} className="max-w-7xl mx-auto relative">
+      <div ref={ref} className="max-w-[1200px] mx-auto relative">
         {/* Section header */}
         <motion.div
           className="text-center mb-16"
@@ -96,16 +80,13 @@ export default function Products() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-5">
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-3" style={{ color: PINK }}>
             Our Products
-          </span>
-          <h2
-            className="font-display text-4xl md:text-5xl font-bold mb-5"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Everything your restaurant needs
+          </p>
+          <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-5 text-white">
+            Everything your restaurant <span style={{ color: PINK }}>needs</span>
           </h2>
-          <p className="text-naira-text-muted text-lg max-w-2xl mx-auto">
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
             Three powerful tools. One cohesive platform. Built specifically for
             the modern Indian restaurant.
           </p>
@@ -115,27 +96,30 @@ export default function Products() {
         <div className="grid md:grid-cols-3 gap-6">
           {products.map((product, i) => {
             const Icon = product.icon
+            const featured = !!product.featured
             return (
               <motion.div
                 key={product.id}
-                className="relative rounded-2xl overflow-hidden group bg-naira-surface"
+                className="glass-dark relative overflow-hidden group"
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
-                  border: `1px solid ${product.borderColor}`,
-                  boxShadow: `0 0 40px ${product.glowColor}`,
+                  borderRadius: 20,
+                  border: featured ? `1px solid rgba(${PINK_RGB},0.35)` : '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: featured ? `0 8px 24px rgba(${PINK_RGB},0.10), 0 16px 48px rgba(${PINK_RGB},0.06)` : 'none',
+                }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: `0 8px 24px rgba(${PINK_RGB},0.12), 0 16px 48px rgba(${PINK_RGB},0.08)`,
                 }}
               >
-                {/* Top accent gradient line */}
-                <div
-                  className="h-0.5 w-full"
-                  style={{ background: `linear-gradient(90deg, transparent, ${product.accent}, transparent)` }}
-                />
-
                 {/* Featured badge */}
-                {product.featured && (
-                  <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-naira-gold text-naira-black text-[10px] font-bold tracking-wider uppercase">
+                {featured && (
+                  <div
+                    className="absolute top-4 right-4 font-mono px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase"
+                    style={{ background: PINK, color: '#ffffff', borderRadius: 8 }}
+                  >
                     Most Popular
                   </div>
                 )}
@@ -143,40 +127,38 @@ export default function Products() {
                 <div className="p-7">
                   {/* Icon */}
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: `${product.accent}18` }}
+                    className="w-12 h-12 flex items-center justify-center mb-5"
+                    style={{
+                      background: `rgba(${PINK_RGB},0.10)`,
+                      border: `1px solid rgba(${PINK_RGB},0.22)`,
+                      borderRadius: 12,
+                    }}
                   >
-                    <Icon size={22} style={{ color: product.accent }} />
+                    <Icon size={22} style={{ color: PINK }} />
                   </div>
 
-                  {/* Tag */}
-                  <div
-                    className="text-xs font-semibold tracking-widest uppercase mb-2"
-                    style={{ color: product.accent }}
-                  >
+                  {/* Tag (mono eyebrow) */}
+                  <div className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase mb-2" style={{ color: PINK }}>
                     {product.tag}
                   </div>
 
                   {/* Headline */}
-                  <h3
-                    className="text-xl font-bold text-naira-text mb-3 leading-snug"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  >
+                  <h3 className="font-sans text-xl font-bold text-white mb-3 leading-snug tracking-[-0.01em]">
                     {product.headline}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-naira-text-muted text-sm leading-relaxed mb-6">
+                  <p className="text-white/70 text-sm leading-relaxed mb-6">
                     {product.description}
                   </p>
 
                   {/* Features list */}
                   <ul className="space-y-2.5 mb-8">
                     {product.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-2.5 text-sm text-naira-text-muted">
+                      <li key={feat} className="flex items-start gap-2.5 text-sm text-white/70">
                         <span
                           className="w-1.5 h-1.5 rounded-full mt-[6px] flex-shrink-0"
-                          style={{ background: product.accent }}
+                          style={{ background: PINK }}
                         />
                         {feat}
                       </li>
@@ -187,20 +169,12 @@ export default function Products() {
                   <a
                     href={product.ctaHref}
                     className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
-                    style={{ color: product.accent }}
+                    style={{ color: PINK }}
                   >
                     {product.cta}
                     <ArrowRight size={15} />
                   </a>
                 </div>
-
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{
-                    boxShadow: `inset 0 0 40px ${product.accent}0A`,
-                  }}
-                />
               </motion.div>
             )
           })}

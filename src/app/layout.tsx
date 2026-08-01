@@ -2,10 +2,37 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
 import PostHogProvider from '@/components/PostHogProvider'
+import ParticleField from '@/components/ParticleField'
+import { Inter, Lora, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
+export const revalidate = 60
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Naira Menus — The Future of Restaurant Operations',
+  metadataBase: new URL('https://nairamenus.in'),
+  title: 'Naira Menus: All-in-One Restaurant Platform',
   description:
     'NFC-powered digital menus for Indian restaurants. Replace paper menus with smart QR/NFC menus, manage orders, and grow your business with Naira.',
   keywords: 'NFC menu, digital menu, restaurant POS, QR menu, restaurant management',
@@ -25,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${lora.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -54,12 +81,6 @@ export default function RootLayout({
             }),
           }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-          rel="stylesheet"
-        />
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -68,7 +89,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-MXN7T65Q');`}
         </Script>
       </head>
-      <body className="bg-naira-black text-naira-text antialiased" suppressHydrationWarning>
+      <body className="antialiased" style={{ background: '#0a0a0a', color: '#ffffff' }} suppressHydrationWarning>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MXN7T65Q"
@@ -77,6 +98,7 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
+        <ParticleField />
         <Suspense fallback={null}>
           <PostHogProvider>{children}</PostHogProvider>
         </Suspense>

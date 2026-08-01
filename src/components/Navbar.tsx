@@ -11,23 +11,22 @@ const PRODUCT_LINKS = [
     label: 'Naira Tap',
     href: '/tap',
     desc: 'NFC + QR digital menu for dine-in',
-    nfc: true,
   },
   {
     label: 'Naira Billing',
-    href: '/#products',
+    href: '/billing',
     desc: 'Cloud POS & order management',
   },
   {
     label: 'Naira Growth',
     href: '/growth',
     desc: 'SEO, reviews & online visibility',
-    highlight: true,
   },
 ]
 
 const NAV_LINKS = [
-  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'How It Works', href: '/how-it-works' },
+  { label: 'NFC Check',    href: '/nfc' },
   { label: 'Pricing',      href: '/#pricing' },
   { label: 'Blog',         href: '/blog' },
 ]
@@ -57,13 +56,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-naira-black/95 backdrop-blur-md border-b border-naira-border'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? 'rgba(10,10,10,0.72)' : 'rgba(10,10,10,0.35)',
+        backdropFilter: 'blur(20px) saturate(120%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(120%)',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
+      }}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center flex-shrink-0">
@@ -74,6 +75,7 @@ export default function Navbar() {
             height={40}
             className="h-14 w-auto"
             priority
+            sizes="160px"
           />
         </Link>
 
@@ -88,7 +90,7 @@ export default function Navbar() {
             onMouseLeave={() => setProductsOpen(false)}
           >
             <button
-              className="flex items-center gap-1 text-sm text-naira-text-muted hover:text-naira-text transition-colors duration-200"
+              className="flex items-center gap-1 text-[15px] text-white/75 hover:text-white transition-colors duration-200"
               aria-expanded={productsOpen}
               aria-haspopup="true"
             >
@@ -106,55 +108,31 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 6, scale: 0.97 }}
                   transition={{ duration: 0.18, ease: 'easeOut' }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl border border-naira-border bg-naira-surface shadow-xl overflow-hidden"
-                  style={{ boxShadow: '0 16px 48px rgba(0,0,0,0.4)' }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 overflow-hidden"
+                  style={{
+                    borderRadius: 20,
+                    // Solid raised surface so text always reads, regardless of what's behind the nav
+                    background: '#141414',
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    boxShadow: '0 16px 48px rgba(0,0,0,0.6), 0 8px 24px rgba(255,43,163,0.12), 0 0 0 1px rgba(255,43,163,0.06)',
+                  }}
                 >
-                  {/* Arrow notch */}
-                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-naira-surface border-l border-t border-naira-border" />
-
                   <div className="p-2 relative">
                     {PRODUCT_LINKS.map((p) => (
                       <Link
                         key={p.href}
                         href={p.href}
                         onClick={() => setProductsOpen(false)}
-                        className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-naira-card transition-colors group"
+                        className="flex items-start gap-3 px-3 py-3 transition-colors group"
+                        style={{ borderRadius: 12 }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,43,163,0.06)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                       >
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span
-                              className={`text-sm font-semibold transition-colors ${
-                                p.highlight ? 'text-naira-gold' : 'text-naira-text'
-                              }`}
-                            >
-                              {p.label}
-                            </span>
-                            {p.nfc && (
-                              <span className="relative flex h-1.5 w-1.5">
-                                <span
-                                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-                                  style={{ background: 'var(--accent)' }}
-                                />
-                                <span
-                                  className="relative inline-flex rounded-full h-1.5 w-1.5"
-                                  style={{ background: 'var(--accent-light)' }}
-                                />
-                              </span>
-                            )}
-                            {p.highlight && (
-                              <span
-                                className="text-[9px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-full"
-                                style={{
-                                  background: 'rgba(255,43,163,0.12)',
-                                  color: '#ff80c8',
-                                  border: '1px solid rgba(255,43,163,0.2)',
-                                }}
-                              >
-                                New
-                              </span>
-                            )}
-                          </div>
-                          <p className="text-xs text-naira-muted mt-0.5 leading-snug">{p.desc}</p>
+                          <span className="text-sm font-semibold text-white">
+                            {p.label}
+                          </span>
+                          <p className="text-xs text-white/55 mt-0.5 leading-snug">{p.desc}</p>
                         </div>
                       </Link>
                     ))}
@@ -169,7 +147,7 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm text-naira-text-muted hover:text-naira-text transition-colors duration-200"
+                className="text-[15px] text-white/75 hover:text-white transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -179,12 +157,12 @@ export default function Navbar() {
 
         {/* ── CTA ── */}
         <div className="hidden md:flex items-center">
-          <EarlyAccessButton />
+          <LetsTalkButton />
         </div>
 
         {/* ── Mobile toggle ── */}
         <button
-          className="md:hidden text-naira-text-muted hover:text-naira-text"
+          className="md:hidden text-white/75 hover:text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -199,7 +177,13 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-naira-surface border-b border-naira-border overflow-hidden"
+            className="md:hidden overflow-hidden"
+            style={{
+              background: 'rgba(10,10,10,0.92)',
+              backdropFilter: 'blur(20px) saturate(120%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(120%)',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
+            }}
           >
             <ul className="flex flex-col px-6 py-4 gap-1">
 
@@ -207,9 +191,9 @@ export default function Navbar() {
               <li>
                 <button
                   onClick={() => setMobileProductsOpen((o) => !o)}
-                  className="w-full flex items-center justify-between py-3 text-naira-text-muted hover:text-naira-text transition-colors"
+                  className="w-full flex items-center justify-between py-3 text-white/75 hover:text-white transition-colors"
                 >
-                  <span className="text-sm">Products</span>
+                  <span className="text-[15px]">Products</span>
                   <ChevronDown
                     size={15}
                     className={`transition-transform duration-200 ${mobileProductsOpen ? 'rotate-180' : ''}`}
@@ -222,34 +206,17 @@ export default function Navbar() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="overflow-hidden pl-3 border-l border-naira-border ml-1 mb-1"
+                      className="overflow-hidden pl-3 ml-1 mb-1"
+                      style={{ borderLeft: '1px solid rgba(255,255,255,0.08)' }}
                     >
                       {PRODUCT_LINKS.map((p) => (
                         <li key={p.href}>
                           <Link
                             href={p.href}
                             onClick={() => setMobileOpen(false)}
-                            className={`flex items-center gap-2 py-2.5 text-sm transition-colors ${
-                              p.highlight ? 'text-naira-gold' : 'text-naira-text-muted hover:text-naira-text'
-                            }`}
+                            className="flex items-center gap-2 py-2.5 text-[15px] transition-colors text-white/75 hover:text-white"
                           >
                             {p.label}
-                            {p.nfc && (
-                              <span
-                                className="px-1.5 py-0.5 rounded text-[9px] font-bold tracking-widest uppercase"
-                                style={{ background: 'rgba(var(--accent-rgb),0.15)', color: 'var(--accent-light)' }}
-                              >
-                                NFC
-                              </span>
-                            )}
-                            {p.highlight && (
-                              <span
-                                className="text-[9px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-full"
-                                style={{ background: 'rgba(255,43,163,0.12)', color: '#ff80c8' }}
-                              >
-                                New
-                              </span>
-                            )}
                           </Link>
                         </li>
                       ))}
@@ -262,7 +229,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-3 text-sm text-naira-text-muted hover:text-naira-text transition-colors"
+                    className="block py-3 text-[15px] text-white/75 hover:text-white transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
@@ -272,15 +239,11 @@ export default function Navbar() {
 
               <li className="pt-2">
                 <a
-                  href="/#contact"
-                  className="inline-block px-5 py-2 rounded-full text-sm font-semibold"
-                  style={{
-                    background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%)',
-                    color: 'var(--text)',
-                  }}
+                  href="/contact"
+                  className="btn-primary"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Get Early Access
+                  Let&apos;s Talk
                 </a>
               </li>
             </ul>
@@ -291,55 +254,42 @@ export default function Navbar() {
   )
 }
 
-// ── Standalone CTA button with shimmer + glow ────────────────────────────────
-function EarlyAccessButton() {
+// ── Primary nav CTA ──────────────────────────────────────────────────────────
+function LetsTalkButton() {
   return (
-    <div className="relative">
-      <div
-        className="absolute inset-0 rounded-full animate-glow-pulse pointer-events-none"
-        style={{ boxShadow: '0 0 0 0 rgba(var(--accent-rgb),0)' }}
-      />
-      <a
-        href="/#contact"
-        className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold group"
-        style={{
-          background: 'linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, var(--accent-light) 100%)',
-          color: 'var(--text)',
-          boxShadow: '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)',
-          transition: 'box-shadow 0.3s ease, transform 0.2s ease',
-        }}
-        onMouseEnter={(e) => {
-          ;(e.currentTarget as HTMLElement).style.boxShadow =
-            '0 0 0 1px rgba(var(--accent-rgb),0.55), 0 6px 32px rgba(var(--accent-rgb),0.38)'
-          ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
-        }}
-        onMouseLeave={(e) => {
-          ;(e.currentTarget as HTMLElement).style.boxShadow =
-            '0 0 0 1px rgba(var(--accent-rgb),0.35), 0 4px 24px rgba(var(--accent-rgb),0.22)'
-          ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-        }}
+    <a
+      href="/contact"
+      className="relative inline-flex items-center gap-2 text-sm font-semibold transition-all"
+      style={{
+        background: 'var(--accent)',
+        color: '#ffffff',
+        padding: '10px 18px',
+        borderRadius: 12,
+        boxShadow: '0 0 24px rgba(255,43,163,0.20)',
+      }}
+      onMouseEnter={(e) => {
+        ;(e.currentTarget as HTMLElement).style.background = 'var(--accent-dark)'
+        ;(e.currentTarget as HTMLElement).style.transform = 'scale(1.02)'
+      }}
+      onMouseLeave={(e) => {
+        ;(e.currentTarget as HTMLElement).style.background = 'var(--accent)'
+        ;(e.currentTarget as HTMLElement).style.transform = 'scale(1)'
+      }}
+    >
+      <span>Let&apos;s Talk</span>
+      <svg
+        className="w-3.5 h-3.5"
+        viewBox="0 0 14 14"
+        fill="none"
       >
-        <span
-          className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
-          style={{
-            background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)',
-          }}
+        <path
+          d="M2 7h10M8 3l4 4-4 4"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
-        <span className="relative">Get Early Access</span>
-        <svg
-          className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200"
-          viewBox="0 0 14 14"
-          fill="none"
-        >
-          <path
-            d="M2 7h10M8 3l4 4-4 4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </a>
-    </div>
+      </svg>
+    </a>
   )
 }

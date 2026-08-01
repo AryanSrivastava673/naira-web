@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check:ssr": "node scripts/check-ssr.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.0",
@@ -15,11 +16,17 @@
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.479.0",
     "next": "14.2.29",
-    "next-sanity": "^9.8.21",
     "posthog-js": "^1.360.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "styled-components": "^6.4.0"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",

@@ -2,15 +2,15 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { X, Check, QrCode, Wifi } from 'lucide-react'
+import { Wifi } from 'lucide-react'
 
-const rows = [
-  { category: 'Time to open',     qr: '3–6 seconds of hunting and scanning',    tap: 'Under 1 second' },
-  { category: 'User actions',     qr: 'Open camera → aim → wait → click link',  tap: 'Bring phone near. Done.' },
-  { category: 'Dim lighting',     qr: 'Fails on glossy / laminated surfaces',    tap: 'Works perfectly every time' },
-  { category: 'Menu currency',    qr: 'Reprint or manual QR update required',   tap: 'Live — always current' },
-  { category: 'Brand perception', qr: 'Generic, budget, dated',                  tap: 'Premium, modern, memorable' },
-  { category: 'Paper waste',      qr: 'Still reprinting twice a year',           tap: 'Zero paper, forever' },
+const ROWS = [
+  { feature: 'Time to menu open',         old: '3 to 6 seconds, sometimes more',              tap: 'Under 1 second' },
+  { feature: 'Actions the guest takes',   old: 'Unlock, camera app, aim, wait, tap link',     tap: 'Tap. Done.' },
+  { feature: 'Works in dim lighting',     old: "Struggles. Camera can't focus.",               tap: 'Perfect every time' },
+  { feature: 'Menu always current',       old: 'Depends on last reprint',                     tap: 'Live, every tap' },
+  { feature: 'Brand feel on the table',   old: 'Same as a petrol pump receipt',               tap: 'Bespoke to your restaurant' },
+  { feature: 'Paper used per year',       old: 'Hundreds of pages',                           tap: 'Zero' },
 ]
 
 export default function TapVsQR() {
@@ -18,92 +18,102 @@ export default function TapVsQR() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="compare" className="py-28 px-6 bg-naira-surface" ref={ref}>
+    <section
+      ref={ref}
+      className="py-20 px-6 relative overflow-hidden"
+      style={{
+        background:
+          '#0a0a0a',
+      }}
+    >
       <div className="max-w-5xl mx-auto">
+
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-naira-gold/30 text-naira-gold text-xs font-medium tracking-widest uppercase mb-5">
-            QR vs Tap
-          </span>
-          <h2
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Why QR is{' '}
-            <span className="text-gold-gradient">holding you back</span>
+          <p className="font-mono text-[12px] font-medium tracking-[0.12em] uppercase text-naira-muted mb-3 text-center">
+            QR vs. Naira Tap
+          </p>
+          <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.02em] text-naira-text text-center mb-3">
+            A side-by-side no one can argue with.
           </h2>
+          <p className="text-naira-text-muted text-sm text-center mb-12 max-w-xl mx-auto">
+            You already have a QR somewhere on your table. Here&apos;s how contactless ordering
+            in restaurants stacks up when you compare the old way to the new way, honestly.
+          </p>
         </motion.div>
 
         <motion.div
-          className="rounded-2xl border border-naira-border overflow-hidden"
-          style={{ boxShadow: '0 0 40px rgba(var(--accent-rgb),0.05)' }}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="rounded-2xl border border-naira-border overflow-hidden"
         >
           {/* Header */}
-          <div className="grid grid-cols-3 bg-naira-card border-b border-naira-border">
-            <div className="p-5" />
-            <div className="p-5 border-l border-naira-border flex flex-col items-center gap-2">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: 'rgba(239,68,68,0.1)' }}
-              >
-                <QrCode size={16} className="text-red-400" />
-              </div>
-              <span className="text-naira-muted text-xs font-semibold tracking-widest uppercase">QR Code</span>
+          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1.4fr)] bg-naira-card border-b border-naira-border">
+            <div className="p-4 text-xs font-bold text-naira-muted uppercase tracking-wide">
+              What guests experience
             </div>
-            <div
-              className="p-5 border-l border-naira-border flex flex-col items-center gap-2"
-              style={{ background: 'rgba(var(--accent-rgb),0.05)' }}
-            >
-              {/* Top accent line on winning column */}
-              <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, var(--accent), transparent)' }}
-              />
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center relative"
-                style={{ background: 'rgba(var(--accent-rgb),0.15)' }}
-              >
-                <Wifi size={16} style={{ color: 'var(--accent)' }} />
-              </div>
-              <span
-                className="text-xs font-semibold tracking-widest uppercase"
-                style={{ color: 'var(--accent-light)' }}
-              >
-                Naira Tap
-              </span>
+            <div className="p-4 text-xs font-bold text-red-400 uppercase tracking-wide flex items-center gap-2 border-l border-naira-border">
+              <span className="text-base">▣</span>
+              Old QR sticker
+            </div>
+            <div className="p-4 text-xs font-bold text-naira-gold uppercase tracking-wide flex items-center gap-2 border-l border-naira-border">
+              <Wifi size={14} color="#ff2ba3" />
+              Naira Tap
             </div>
           </div>
 
-          {rows.map((row, i) => (
+          {ROWS.map((row, i) => (
             <div
-              key={row.category}
-              className="grid grid-cols-3 border-b border-naira-border last:border-b-0"
-              style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)' }}
+              key={i}
+              className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1.4fr)] border-b border-naira-border last:border-0 ${
+                i % 2 === 0 ? 'bg-naira-black' : 'bg-naira-surface'
+              }`}
             >
-              <div className="p-5 text-naira-text-muted text-sm font-medium flex items-center">
-                {row.category}
-              </div>
-              <div className="p-5 border-l border-naira-border flex items-start gap-2 justify-center">
-                <X size={13} className="text-red-500 flex-shrink-0 mt-0.5" />
-                <span className="text-naira-text-muted text-xs leading-relaxed">{row.qr}</span>
-              </div>
-              <div
-                className="p-5 border-l border-naira-border flex items-start gap-2 justify-center"
-                style={{ background: 'rgba(var(--accent-rgb),0.03)' }}
-              >
-                <Check size={13} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} />
-                <span className="text-naira-text text-xs leading-relaxed">{row.tap}</span>
+              <div className="p-4 text-sm font-semibold text-naira-text">{row.feature}</div>
+              <div className="p-4 text-sm text-naira-muted border-l border-naira-border leading-snug">{row.old}</div>
+              <div className="p-4 text-sm font-semibold border-l border-naira-border leading-snug" style={{ color: '#ff2ba3' }}>
+                {row.tap}
               </div>
             </div>
           ))}
         </motion.div>
+
+        <div className="flex justify-center mt-10">
+          <div
+            className="inline-flex items-center gap-3 px-5 py-3 rounded-full"
+            style={{
+              background: 'rgba(255,43,163,0.08)',
+              border: '1px solid rgba(255,43,163,0.28)',
+              boxShadow: '0 6px 24px -8px rgba(255,43,163,0.35)',
+            }}
+          >
+            <span
+              className="font-mono text-[10px] font-semibold tracking-[0.16em] uppercase px-2 py-0.5 rounded-full"
+              style={{
+                background: 'rgba(255,43,163,0.18)',
+                color: '#ff80c8',
+              }}
+            >
+              Also Available
+            </span>
+            <span className="text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
+              Prefer QR? We offer that too —{' '}
+              <a
+                href="/contact"
+                className="font-semibold underline underline-offset-2 transition-colors"
+                style={{ color: '#ff2ba3' }}
+              >
+                get in touch
+              </a>
+              .
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
   )

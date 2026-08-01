@@ -36,10 +36,14 @@ function PostCard({ post }: { post: Post }) {
   const imageUrl = post.headerImage?.asset ? urlFor(post.headerImage).width(800).height(450).url() : null
 
   return (
-    <Link
-      href={`/blog/${post.slug.current}`}
-      className="group flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
-    >
+    <div className="group relative flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1">
+      {/* Stretched link covers the whole card; the author link below sits above it via z-20 */}
+      <Link
+        href={`/blog/${post.slug.current}`}
+        className="absolute inset-0 z-10"
+        aria-label={post.headline}
+      />
+
       <div className="relative h-52 bg-naira-card">
         {imageUrl && (
           <Image
@@ -51,7 +55,7 @@ function PostCard({ post }: { post: Post }) {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-naira-surface/60 to-transparent" />
       </div>
-      <div className="flex flex-col flex-1 p-6">
+      <div className="relative flex flex-col flex-1 p-6">
         {post.categories && post.categories.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
             {post.categories.slice(0, 3).map((cat) => (
@@ -63,7 +67,7 @@ function PostCard({ post }: { post: Post }) {
         )}
         <h2
           className="text-naira-text font-semibold text-xl leading-snug mb-2 group-hover:text-naira-gold transition-colors"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           {post.headline}
         </h2>
@@ -76,7 +80,7 @@ function PostCard({ post }: { post: Post }) {
           {post.author?.slug?.current ? (
             <Link
               href={`/author/${post.author.slug.current}`}
-              className="hover:text-naira-gold transition-colors"
+              className="relative z-20 hover:text-naira-gold transition-colors"
             >
               {post.author.name ?? 'Naira Team'}
             </Link>
@@ -86,7 +90,7 @@ function PostCard({ post }: { post: Post }) {
           <span>{formatDate(post.publishedAt)}</span>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 
@@ -127,7 +131,7 @@ export default async function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-naira-black pt-24 pb-20 px-6">
+      <main className="min-h-screen pt-24 pb-20 px-6" style={{ background: '#0a0a0a' }}>
         <div className="max-w-7xl mx-auto">
           {/* Hero */}
           <div className="text-center mb-16 pt-8">
@@ -135,8 +139,8 @@ export default async function BlogPage() {
               Blog
             </span>
             <h1
-              className="font-display text-5xl md:text-6xl font-bold mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="font-display text-5xl md:text-6xl font-medium tracking-tighter mb-4"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               Insights & Stories
             </h1>

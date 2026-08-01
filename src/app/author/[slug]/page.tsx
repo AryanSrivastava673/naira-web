@@ -91,7 +91,7 @@ function PostCard({ post }: { post: Post }) {
         )}
         <h3
           className="text-naira-text font-semibold text-lg leading-snug mb-2 group-hover:text-naira-gold transition-colors"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           {post.headline}
         </h3>
@@ -117,7 +117,7 @@ export default async function AuthorPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-naira-black">
+      <main className="min-h-screen" style={{ background: '#0a0a0a' }}>
         {/* Hero */}
         <div className="pt-32 pb-16 px-6 relative">
           {/* Subtle background glow */}
@@ -160,7 +160,7 @@ export default async function AuthorPage({ params }: Props) {
                     <div className="w-full h-full flex items-center justify-center bg-naira-surface">
                       <span
                         className="text-5xl font-bold text-naira-gold"
-                        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                       >
                         {author.name[0]}
                       </span>
@@ -173,7 +173,7 @@ export default async function AuthorPage({ params }: Props) {
               <div className="flex-1 text-center sm:text-left">
                 <h1
                   className="text-4xl font-bold text-naira-text mb-1"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                 >
                   {author.name}
                 </h1>
@@ -249,7 +249,7 @@ export default async function AuthorPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-6 py-16">
           <h2
             className="text-2xl font-bold text-naira-text mb-8"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             {posts.length > 0
               ? `Posts by ${author.name}`
