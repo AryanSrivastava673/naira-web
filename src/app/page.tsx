@@ -8,7 +8,9 @@ import Ecosystem from '@/components/Ecosystem'
 import HowItWorks from '@/components/HowItWorks'
 import DayOnNaira from '@/components/DayOnNaira'
 import WhyNaira from '@/components/WhyNaira'
-import Pricing from '@/components/Pricing'
+// Pricing is temporarily hidden — restore this import and the <Pricing /> usage
+// below, plus the Pricing entry in Navbar's NAV_LINKS, to bring it back.
+// import Pricing from '@/components/Pricing'
 import BuildTogether from '@/components/BuildTogether'
 import BlogSection from '@/components/BlogSection'
 import Footer from '@/components/Footer'
@@ -39,8 +41,7 @@ export default function HomePage() {
       <div className="section-divider" />
       <DayOnNaira />
       <div className="section-divider" />
-      <Pricing />
-      <div className="section-divider" />
+      {/* <Pricing /> — temporarily hidden */}
       <BuildTogether />
       <div className="section-divider" />
       <BlogSection />
