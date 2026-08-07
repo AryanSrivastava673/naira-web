@@ -125,7 +125,7 @@ function ContactSection() {
               disabled={status === 'submitting'}
               className="btn-primary w-full disabled:opacity-60"
             >
-              {status === 'submitting' ? 'Submitting...' : 'Request a Demo Call'}
+              {status === 'submitting' ? 'Submitting...' : 'GET A FREE DEMO!'}
             </button>
             {status === 'error' && (
               <p className="text-red-400 text-sm text-center">Something went wrong. Please try again.</p>
