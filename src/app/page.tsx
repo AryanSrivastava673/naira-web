@@ -25,6 +25,8 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <div className="section-divider" />
+      <WhyNaira />
+      <div className="section-divider" />
       <NairaIntelligence />
       <div className="section-divider" />
       <ConnectedFlow />
@@ -36,8 +38,6 @@ export default function HomePage() {
       <HowItWorks />
       <div className="section-divider" />
       <DayOnNaira />
-      <div className="section-divider" />
-      <WhyNaira />
       <div className="section-divider" />
       <Pricing />
       <div className="section-divider" />
