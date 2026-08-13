@@ -217,7 +217,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 font-mono text-white/55 text-[12px] tracking-[0.06em]">
           <p>Naira Menus. All rights reserved.</p>
           <a
-            href="/privacy-policy.html"
+            href="/privacy-policy"
             className="text-white/55 hover:text-white transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/50"
           >
             Privacy Policy
