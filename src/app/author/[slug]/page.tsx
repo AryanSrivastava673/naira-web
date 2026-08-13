@@ -65,7 +65,7 @@ function PostCard({ post }: { post: Post }) {
       href={`/blog/${post.slug.current}`}
       className="group flex flex-col rounded-2xl border border-naira-border bg-naira-surface overflow-hidden hover:border-naira-gold/30 transition-all duration-300 hover:-translate-y-1"
     >
-      <div className="relative h-48 bg-naira-card">
+      <div className="relative h-48 bg-naira-card" style={{ position: 'relative' }}>
         {imageUrl && (
           <Image
             src={imageUrl}
