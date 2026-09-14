@@ -45,8 +45,15 @@ export default function Hero() {
           the crop to trim the RIGHT side of the source away, which is what shifts
           the visible subject toward the right of the viewport — shifting the box
           itself left does the opposite (crops the left side, subject moves left). */}
-      <div aria-hidden className="absolute inset-0 opacity-55 lg:opacity-85 overflow-hidden">
-        <div className="absolute inset-y-0" style={{ left: '0%', width: '145%' }}>
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-55 lg:opacity-85 overflow-hidden"
+        style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}
+      >
+        <div
+          className="absolute inset-y-0"
+          style={{ position: 'absolute', top: 0, bottom: 0, left: '0%', width: '145%' }}
+        >
           <Image
             src="/hero/barista.jpg"
             alt=""

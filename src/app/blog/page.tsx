@@ -44,7 +44,7 @@ function PostCard({ post }: { post: Post }) {
         aria-label={post.headline}
       />
 
-      <div className="relative h-52 bg-naira-card">
+      <div className="relative h-52 bg-naira-card" style={{ position: 'relative' }}>
         {imageUrl && (
           <Image
             src={imageUrl}

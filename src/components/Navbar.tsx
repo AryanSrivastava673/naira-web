@@ -27,7 +27,7 @@ const PRODUCT_LINKS = [
 const NAV_LINKS = [
   { label: 'How It Works', href: '/how-it-works' },
   { label: 'NFC Check',    href: '/nfc' },
-  { label: 'Pricing',      href: '/#pricing' },
+  // { label: 'Pricing',   href: '/#pricing' },  // temporarily hidden — see src/app/page.tsx
   { label: 'Blog',         href: '/blog' },
 ]
 

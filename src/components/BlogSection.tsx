@@ -30,7 +30,14 @@ function BlogCard({ post }: { post: Post }) {
       <Link href={`/blog/${post.slug.current}`} className="absolute inset-0 z-10" aria-label={post.headline} />
 
       {/* Image */}
-      <div className="relative h-48 overflow-hidden" style={{ background: '#f5f5f5' }}>
+      {/* position is set inline as well as via the class: next/image `fill` is
+          positioned with an inline absolute, so if the stylesheet ever fails to
+          load the class alone would not contain it and the image would cover the
+          viewport. */}
+      <div
+        className="relative h-48 overflow-hidden"
+        style={{ position: 'relative', background: '#f5f5f5' }}
+      >
         {imageUrl && (
           <Image
             src={imageUrl}

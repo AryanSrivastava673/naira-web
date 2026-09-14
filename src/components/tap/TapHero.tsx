@@ -27,7 +27,7 @@ export default function TapHero() {
       />
 
       {/* Full-bleed hero image */}
-      <div aria-hidden className="absolute inset-0 hidden md:block">
+      <div aria-hidden className="absolute inset-0 hidden md:block" style={{ position: 'absolute', inset: 0 }}>
         <Image
           src="/tap/Naira Tap hero image.PNG"
           alt=""
