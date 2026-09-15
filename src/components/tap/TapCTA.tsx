@@ -40,7 +40,7 @@ export default function TapCTA() {
 
           <div className="flex flex-wrap justify-center gap-4 relative">
             <a
-              href="mailto:hello@nairamenus.in"
+              href="mailto:support@nairamenus.in"
               className="relative overflow-hidden flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold group"
               style={{
                 background:

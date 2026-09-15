@@ -176,10 +176,10 @@ export default function ContactPage() {
                 Email
               </div>
               <a
-                href="mailto:contact@naira.menus.in"
+                href="mailto:support@nairamenus.in"
                 className="text-base font-medium text-naira-text hover:text-naira-gold transition-colors"
               >
-                contact@naira.menus.in
+                support@nairamenus.in
               </a>
               <p className="text-xs text-naira-text-muted mt-1">
                 For proposals, partnerships, or detailed queries
