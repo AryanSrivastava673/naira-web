@@ -12,7 +12,7 @@ interface Props {
   variant: Variant
 }
 
-const WA_BASE = 'https://wa.me/919021044469'
+const WA_BASE = 'https://wa.me/919225344169'
 
 const COPY: Record<Variant, {
   h3: string
@@ -167,7 +167,7 @@ function SuccessState() {
       <p className="text-sm text-naira-muted">
         If it doesn&apos;t open automatically,{' '}
         <a
-          href="https://wa.me/919021044469"
+          href="https://wa.me/919225344169"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-naira-text transition-colors"
