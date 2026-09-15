@@ -136,11 +136,11 @@ export default function ContactPage() {
               <div className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase text-naira-gold mb-1">
                 Talk to us
               </div>
-              <div className="text-xl font-semibold text-naira-text mb-1">+91 90210 44469</div>
+              <div className="text-xl font-semibold text-naira-text mb-1">+91 92253 44169</div>
               <div className="text-xs text-naira-text-muted mb-5">Mon–Sat, 10am – 7pm IST</div>
               <div className="flex gap-2">
                 <a
-                  href="tel:+919021044699"
+                  href="tel:+919225344169"
                   className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all"
                   style={{
                     background: '#ff2ba3',
@@ -151,7 +151,7 @@ export default function ContactPage() {
                   <Phone size={11} /> Call
                 </a>
                 <a
-                  href="https://wa.me/919021044699"
+                  href="https://wa.me/919225344169"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-naira-border text-xs font-semibold text-naira-text-muted hover:text-naira-text hover:border-naira-gold/30 transition-colors"
