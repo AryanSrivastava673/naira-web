@@ -126,7 +126,7 @@ export default function HIWCTA() {
                   Book a free demo
                 </a>
                 <a
-                  href="https://wa.me/919021044699"
+                  href="https://wa.me/919225344169"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl text-sm font-semibold text-white/80 hover:text-white transition-colors"
