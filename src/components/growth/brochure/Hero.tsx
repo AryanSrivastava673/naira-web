@@ -1,5 +1,8 @@
+'use client'
+
 import { Check } from 'lucide-react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from '@/app/growth/growth.module.css'
 import TypedSearch from './TypedSearch'
 
@@ -40,7 +43,11 @@ export default function Hero() {
         </div>
 
         <div className={styles.heroGrid}>
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
             <h1 className={styles.display}>
               Someone nearby is searching for a business like yours right now. Let&rsquo;s make sure{' '}
               <span className={styles.accent}>they find you.</span>
@@ -91,9 +98,14 @@ export default function Hero() {
                 Run a free instant audit
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={styles.mockcard}>
+          <motion.div
+            className={styles.mockcard}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
+          >
             <div className={styles.gsearch}>
               <div className={styles.gsearchBar}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5f6368" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
@@ -146,7 +158,7 @@ export default function Hero() {
             <p className={styles.cap} style={{ margin: '14px 2px 2px', color: 'var(--muted)' }}>
               The top three listings on Maps take most of the calls and directions. That block is what we work on.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         <ul className={styles.heroTrust}>

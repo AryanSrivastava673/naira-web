@@ -43,7 +43,7 @@ export default function ClosingCTA() {
           </div>
           <div>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
-              <div className={styles.fieldWide}>
+              <div className={`${styles.field} ${styles.fieldWide}`}>
                 <label htmlFor="lf-name">Your name</label>
                 <input id="lf-name" name="name" type="text" autoComplete="name" placeholder="Ravi Kulkarni" required value={form.name} onChange={update('name')} />
               </div>
@@ -55,7 +55,7 @@ export default function ClosingCTA() {
                 <label htmlFor="lf-area">Area</label>
                 <input id="lf-area" name="area" type="text" placeholder="Baner, Pune" value={form.area} onChange={update('area')} />
               </div>
-              <div className={styles.fieldWide}>
+              <div className={`${styles.field} ${styles.fieldWide}`}>
                 <label htmlFor="lf-phone">Phone or WhatsApp number</label>
                 <input id="lf-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="+91 90000 00000" required value={form.phone} onChange={update('phone')} />
               </div>

@@ -133,10 +133,11 @@
 .darkRoundB{border-bottom-left-radius:var(--r-spread);border-bottom-right-radius:var(--r-spread)}
 .darkRoundT{border-top-left-radius:var(--r-spread);border-top-right-radius:var(--r-spread)}
 
-/* ---------- nav (offer bar only — the site's shared Navbar is used for nav) ---------- */
-.offerbar{background:var(--pink);color:#fff;text-align:center;
-  padding:9px var(--gutter);font-size:13.5px;font-weight:600;line-height:1.4}
-.offerbar a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+/* ---------- nav ---------- */
+/* Flat scrim sitting behind the shared, fixed Navbar so its backdrop-blur
+   samples a plain dark tone instead of the hero's animated magenta bloom
+   (which otherwise bleeds through and washes out the nav). */
+.navScrim{position:fixed;top:0;left:0;right:0;height:64px;background:var(--plum);z-index:45;pointer-events:none}
 
 .wordmark{font-family:var(--sans);font-weight:800;font-size:19px;letter-spacing:-.03em;color:#fff;text-decoration:none;white-space:nowrap}
 .wordmark .n{color:var(--pink)}

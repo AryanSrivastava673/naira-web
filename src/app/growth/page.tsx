@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import BlogSection from '@/components/BlogSection'
-import OfferBar from '@/components/growth/brochure/OfferBar'
 import Hero from '@/components/growth/brochure/Hero'
 import WhyItMatters from '@/components/growth/brochure/WhyItMatters'
 import Customers from '@/components/growth/brochure/Customers'
@@ -125,7 +124,7 @@ export default function GrowthPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <OfferBar />
+      <div className={styles.navScrim} aria-hidden="true" />
       <Navbar />
       <Hero />
       <WhyItMatters />
