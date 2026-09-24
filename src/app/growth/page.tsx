@@ -1,26 +1,36 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import GrowthHero from '@/components/growth/GrowthHero'
-import GrowthStats from '@/components/growth/GrowthStats'
-import GrowthWhyNaira from '@/components/growth/GrowthWhyNaira'
-import GrowthFeatures from '@/components/growth/GrowthFeatures'
-import GrowthProof from '@/components/growth/GrowthProof'
-import GrowthSEOSections from '@/components/growth/GrowthSEOSections'
-import GrowthFAQ from '@/components/growth/GrowthFAQ'
 import BlogSection from '@/components/BlogSection'
+import OfferBar from '@/components/growth/brochure/OfferBar'
+import Hero from '@/components/growth/brochure/Hero'
+import WhyItMatters from '@/components/growth/brochure/WhyItMatters'
+import Customers from '@/components/growth/brochure/Customers'
+import Symptoms from '@/components/growth/brochure/Symptoms'
+import WhatYouGet from '@/components/growth/brochure/WhatYouGet'
+import HowWeWork from '@/components/growth/brochure/HowWeWork'
+import BusinessTypes from '@/components/growth/brochure/BusinessTypes'
+import ProfileAnatomy from '@/components/growth/brochure/ProfileAnatomy'
+import Returns from '@/components/growth/brochure/Returns'
+import Results from '@/components/growth/brochure/Results'
+import Comparison from '@/components/growth/brochure/Comparison'
+import Pricing from '@/components/growth/brochure/Pricing'
+import FAQ from '@/components/growth/brochure/FAQ'
+import ClosingCTA from '@/components/growth/brochure/ClosingCTA'
+import WhatsAppFab from '@/components/growth/brochure/WhatsAppFab'
+import MobileActionBar from '@/components/growth/brochure/MobileActionBar'
+import { jakarta, playfairDisplay } from './fonts'
+import styles from './growth.module.css'
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://nairamenus.in/growth' },
-  title: 'Restaurant SEO Agency & Online Presence Management | Naira Growth',
+  title: 'Naira Growth — Local Online Presence, Managed For You',
   description:
-    'Naira Growth is a restaurant SEO agency trusted by 800+ restaurants across India. Local SEO, online reputation management, review monitoring, and digital marketing for restaurants — all in one platform.',
-  keywords:
-    'restaurant seo agency, restaurant seo company, best local seo services for restaurants, online reputation management for restaurants, digital marketing for restaurants, restaurant marketing plan, restaurant feedback system, restaurant review monitoring, restaurant instagram marketing, email marketing for restaurants, restaurant web design agency, internet marketing for restaurants',
+    'Local online presence, managed for you. Naira Growth gets Indian restaurants and local businesses found on Google Search and Google Maps.',
   openGraph: {
-    title: 'Restaurant SEO Agency & Online Presence Management | Naira Growth',
+    title: 'Naira Growth — Local Online Presence, Managed For You',
     description:
-      'Trusted by 800+ restaurants. Local SEO, reputation management, and digital marketing built exclusively for Indian restaurants.',
+      'Local online presence, managed for you. Naira Growth gets Indian restaurants and local businesses found on Google Search and Google Maps.',
     type: 'website',
     url: 'https://nairamenus.in/growth',
   },
@@ -33,7 +43,7 @@ const organizationSchema = {
   url: 'https://nairamenus.in',
   logo: 'https://nairamenus.in/brand_logo.png',
   description:
-    'Restaurant SEO agency and online presence management platform for Indian restaurants. Local SEO, review management, and digital marketing for restaurants.',
+    'Local online presence management for Indian restaurants and local businesses. Google Business Profile management, review management, and local SEO.',
   sameAs: [
     'https://www.instagram.com/naira.menus/',
     'https://www.linkedin.com/in/naira-menus-8973633b7/',
@@ -47,66 +57,58 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What makes Naira Growth different from a typical restaurant SEO agency?',
+      name: 'What does the free first look actually include?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Most restaurant SEO agencies hand you a report and walk away. Naira Growth is a done-for-you service — we implement the changes, publish the content, manage your reviews, and track your rankings every week. You get a dedicated growth partner, not a PDF.',
+        text: 'We go through your Google Business Profile, your Maps pin, your reviews, your Zomato and Swiggy pages and your website, and we compare you against the three closest businesses competing for the same searches. You get what we found and the one fix we would start with. No payment, and no sales call unless you ask for one.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Do you offer restaurant website design?',
+      name: 'How long before I see something change?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Our restaurant web design agency service is audit-first — we check whether your existing site needs a full rebuild or targeted fixes. If a rebuild is the right call, we design and launch a fast, SEO-ready site. If not, we fix what is broken. No unnecessary invoices.',
+        text: 'Profile fixes usually show up in four to eight weeks. Reviews and photos move quickly. Content and citations build over three to six months. Anyone promising page one in two weeks is either paying for ads or not telling you the truth.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How does your restaurant feedback system handle negative reviews?',
+      name: 'Do I have to sign a contract?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Our restaurant review monitoring system sends you a real-time alert the moment a negative review lands. We draft a professional reply in your voice within hours, and our restaurant feedback system flags patterns so you can fix root causes before they repeat.',
+        text: 'No. There is no lock-in and no minimum term. If you continue on a retainer it is month to month, and you can stop whenever you like. We would rather you stay because the numbers are moving.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Can Naira Growth handle restaurant Instagram marketing?',
+      name: 'Does this work alongside Zomato and Swiggy?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Our restaurant Instagram marketing service ties every post to a search intent — so your content does double duty on social and in Google. We handle post planning, captions, and timing tied to local events and searches in your area.',
+        text: 'Yes, and it should. Aggregators bring orders but they own the customer. Your Google profile, your reviews and your newsletter are yours. We clean up your aggregator pages too, so the details match everywhere.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What does your restaurant marketing plan include?',
+      name: 'Who writes the content and the review replies?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Your restaurant marketing plan covers local SEO, Google Business Profile optimisation, review management, monthly content, social post planning, a hyperlocal newsletter, competitor tracking, and a live dashboard — all managed for you under one monthly engagement.',
+        text: 'We do, in your voice, and you approve before anything goes live. If you would rather write them yourself, we will hand you the drafts and the calendar and stay out of the way.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How does the free audit work?',
+      name: 'What does it cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You enter your website URL or answer 5 quick questions. We run a diagnostic across common restaurant visibility issues — GBP, reviews, social activity, and technical signals. You get a score out of 100 and one specific fix to start with.',
+        text: 'Two stages. The first two months cost ₹25,000 to ₹30,000 for both months together, and your website is included in that, along with blog posts and the keyword groundwork. After that a retainer starts at ₹2,500 a month, and it is optional. What moves you inside the range is how crowded your area is, how much needs fixing at the start, and whether you already have a website we can improve instead of building one. You get the exact number after the free look, and nothing is charged until you have seen what we found.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How quickly will I see results from restaurant SEO?',
+      name: 'How do I pay, and do I get a GST invoice?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GBP improvements and review velocity show results fastest — typically 4 to 8 weeks. Content and backlinks compound over 3 to 6 months. Most clients see their first ranking changes within 30 days.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you provide digital marketing for restaurants outside Mumbai?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Everywhere in India. We provide digital marketing for restaurants across Mumbai, Bengaluru, Delhi, Hyderabad, Chennai, Ahmedabad, Kochi, and beyond.',
+        text: 'Bank transfer, UPI or card. You get a proper GST invoice from NairaMenus Pvt Ltd every month. Nothing is charged before we have shown you what we found.',
       },
     },
   ],
@@ -114,7 +116,7 @@ const faqSchema = {
 
 export default function GrowthPage() {
   return (
-    <main className="min-h-screen" style={{ background: '#0a0a0a' }}>
+    <div className={`${jakarta.variable} ${playfairDisplay.variable} ${styles.root}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -123,16 +125,26 @@ export default function GrowthPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <OfferBar />
       <Navbar />
-      <GrowthHero />
-      <GrowthStats />
-      <GrowthWhyNaira />
-      <GrowthFeatures />
-      <GrowthProof />
-      <GrowthSEOSections />
-      <GrowthFAQ />
+      <Hero />
+      <WhyItMatters />
+      <Customers />
+      <Symptoms />
+      <WhatYouGet />
+      <HowWeWork />
+      <BusinessTypes />
+      <ProfileAnatomy />
+      <Returns />
+      <Results />
+      <Comparison />
+      <Pricing />
+      <FAQ />
+      <ClosingCTA />
       <BlogSection />
       <Footer />
-    </main>
+      <WhatsAppFab />
+      <MobileActionBar />
+    </div>
   )
 }
