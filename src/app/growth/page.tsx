@@ -115,7 +115,7 @@ const faqSchema = {
 
 export default function GrowthPage() {
   return (
-    <div className={`${jakarta.variable} ${playfairDisplay.variable} ${styles.root}`}>
+    <div className={`${jakarta.variable} ${playfairDisplay.variable}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -126,24 +126,26 @@ export default function GrowthPage() {
       />
       <div className={styles.navScrim} aria-hidden="true" />
       <Navbar />
-      <Hero />
-      <WhyItMatters />
-      <Customers />
-      <Symptoms />
-      <WhatYouGet />
-      <HowWeWork />
-      <BusinessTypes />
-      <ProfileAnatomy />
-      <Returns />
-      <Results />
-      <Comparison />
-      <Pricing />
-      <FAQ />
-      <ClosingCTA />
+      <div className={styles.root}>
+        <Hero />
+        <WhyItMatters />
+        <Customers />
+        <Symptoms />
+        <WhatYouGet />
+        <HowWeWork />
+        <BusinessTypes />
+        <ProfileAnatomy />
+        <Returns />
+        <Results />
+        <Comparison />
+        <Pricing />
+        <FAQ />
+        <ClosingCTA />
+        <WhatsAppFab />
+        <MobileActionBar />
+      </div>
       <BlogSection />
       <Footer />
-      <WhatsAppFab />
-      <MobileActionBar />
     </div>
   )
 }
