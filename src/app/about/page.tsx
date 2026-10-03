@@ -150,7 +150,7 @@ export default function AboutPage() {
                 <article className="person reveal">
                   <div className="ph"><img src="/about/team/atharva.webp" alt="Portrait of Atharva" width={960} height={1280} loading="lazy" style={crop({ '--z': '1.3', '--o': '50% 85%' })} /></div>
                   <div className="person-row"><h3>Atharva</h3><span className="role">TECH &amp; CONTENT</span></div>
-                  <p>Writes the words, shoots the reels and keeps the small details from slipping.</p>
+                  <p>Builds and ships the code behind our menus and dashboards, then writes the words and shoots the reels that show them off.</p>
                 </article>
                 <Link className="growing reveal" href="/contact" aria-label="And growing. Pull up a chair, get in touch">
                   <div>
