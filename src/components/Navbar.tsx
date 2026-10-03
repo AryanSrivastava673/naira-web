@@ -29,6 +29,7 @@ const NAV_LINKS = [
   { label: 'NFC Check',    href: '/nfc' },
   // { label: 'Pricing',   href: '/#pricing' },  // temporarily hidden — see src/app/page.tsx
   { label: 'Blog',         href: '/blog' },
+  { label: 'About Us',     href: '/about' },
 ]
 
 export default function Navbar() {
