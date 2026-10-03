@@ -27,7 +27,7 @@ const footerLinks = {
     { label: 'Naira Growth', href: '/growth' },
   ],
   Company: [
-    { label: 'About Us', href: '#' },
+    { label: 'About Us', href: '/about' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
   ],
