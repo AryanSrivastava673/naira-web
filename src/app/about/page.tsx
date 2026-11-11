@@ -204,7 +204,7 @@ export default function AboutPage() {
           {/* ============ CLOSING ============ */}
           <section className="closing dark" style={{ borderTop: '1px solid var(--border-dark)' }}>
             <div className="container inner">
-              <h2 className="t-display reveal">Five people. Infinite missions.<br /><span className="accent"><span className="big-amp">&amp;</span> growing, one step at a time.</span></h2>
+              <h2 className="t-display reveal">Five people. Infinite missions.<br /><span className="accent"><span className="big-amp">&amp;</span> growing.</span></h2>
               <p className="t-lead reveal">Every restaurant that trusts us makes this team a little bigger. Come say hello, we&apos;d love to meet you in person.</p>
               <div className="btns reveal">
                 <Link href="/contact" className="btn btn-primary">Say Hello<Arrow /></Link>
