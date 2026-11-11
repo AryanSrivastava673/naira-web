@@ -150,7 +150,7 @@ export default function AboutPage() {
                 <article className="person reveal">
                   <div className="ph"><img src="/about/team/atharva.webp" alt="Portrait of Atharva" width={960} height={1280} loading="lazy" style={crop({ '--z': '1.3', '--o': '50% 85%' })} /></div>
                   <div className="person-row"><h3>Atharva</h3><span className="role">TECH &amp; CONTENT</span></div>
-                  <p>Builds and ships the code behind our menus and dashboards, then writes the words and shoots the reels that show them off.</p>
+                  <p>Ships the code behind our menus, then shoots the reels that show them off.</p>
                 </article>
                 <Link className="growing reveal" href="/contact" aria-label="And growing. Pull up a chair, get in touch">
                   <div>
@@ -204,7 +204,7 @@ export default function AboutPage() {
           {/* ============ CLOSING ============ */}
           <section className="closing dark" style={{ borderTop: '1px solid var(--border-dark)' }}>
             <div className="container inner">
-              <h2 className="t-display reveal">Five people. A lot of chai.<br /><span className="accent"><span className="big-amp">&amp;</span> growing.</span></h2>
+              <h2 className="t-display reveal">Five people. One mission.<br /><span className="accent"><span className="big-amp">&amp;</span> growing.</span></h2>
               <p className="t-lead reveal">Every restaurant that trusts us makes this team a little bigger. Come say hello, we&apos;d love to meet you in person.</p>
               <div className="btns reveal">
                 <Link href="/contact" className="btn btn-primary">Say Hello<Arrow /></Link>
