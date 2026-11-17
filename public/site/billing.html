@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://nairamenus.in/billing">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
 <style>/* Naira site. Layout: white page; sticky white header; hero = text left (H1, price, trust) + photo on soft pink blob right;
    logo marquee; alternating feature rows, each with a client review bubble; pill checklist; price card; FAQ; floating WhatsApp pill. */
 :root{
@@ -472,16 +473,105 @@ p{margin:0}
 .sc-hero{transform:scale(var(--hs,1));opacity:var(--ho,1);transform-origin:50% 30%;will-change:transform,opacity}
 .sc-head{transform:translateY(var(--hy,0));opacity:var(--ho,1);will-change:transform,opacity}
 @media (prefers-reduced-motion:reduce){.sc-hero,.sc-head{transform:none!important;opacity:1!important}}
+
+/* ===== NFC Check + About ===== */
+.pg-nfc .sec,.pg-about .sec{padding-block:88px}
+.pg-nfc .hero .wrap,.pg-about .hero .wrap{padding-block:72px 64px}
+.chk-wrap{position:relative;isolation:isolate;scroll-margin-top:90px}
+.chk-wrap::before{content:"";position:absolute;inset:-6% -5% -8% -3%;z-index:-1;background:var(--blob);border-radius:46% 54% 58% 42%/52% 44% 56% 48%}
+.chk{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 30px 60px -30px rgba(14,15,30,.4);min-height:430px;display:flex;flex-direction:column}
+.chk-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.chk-step{font-size:13px;font-weight:700;color:var(--muted)}
+.chk-bar{height:6px;border-radius:99px;background:var(--soft);margin:14px 0 22px;overflow:hidden}
+.chk-bar i{display:block;height:100%;width:33%;background:var(--pink);border-radius:99px;transition:width .4s cubic-bezier(.16,1,.3,1)}
+.chk-pane{display:flex;flex-direction:column;flex:1}
+.chk h2{font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.2}
+.chk-hint{color:var(--muted);font-size:14.5px;margin-top:6px}
+.chk-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.chk-opts.one{grid-template-columns:1fr}
+.opt{font:inherit;font-weight:700;font-size:16px;color:var(--ink);text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:15px 16px;min-height:56px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.opt:hover,.opt:focus-visible{border-color:var(--pink);background:var(--blob2);outline:none;transform:translateY(-1px)}
+.opt.guess{border-color:var(--pink)}
+.chk-back{font:inherit;font-weight:700;font-size:14.5px;color:var(--muted);background:none;border:0;padding:12px 0;cursor:pointer;align-self:flex-start;margin-top:auto}
+.chk-back:hover{color:var(--ink)}
+.chk-res{display:flex;gap:16px;align-items:flex-start}
+.chk-res p{color:var(--fg);font-size:16.5px;margin-top:8px}
+.chk-ic{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.chk-ic svg{width:28px;height:28px}
+.chk-ic.ok{background:var(--wa)}.chk-ic.qr{background:var(--pink)}
+.chk-note{margin-top:16px;padding:12px 14px;border-radius:14px;background:var(--soft);color:var(--muted);font-size:14.5px}
+.chk-acts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:auto;padding-top:20px}
+.chk-acts .chk-back{margin-top:0;align-self:center}
+.nfc-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:24px}
+.nfc-card{border:1px solid var(--line);border-radius:24px;padding:28px;background:#fff}
+.nfc-card h3{font-size:22px;font-weight:800;margin-bottom:12px}
+.nfc-card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.nfc-card li{position:relative;padding-left:22px;color:var(--muted);font-size:15.5px}
+.nfc-card li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.nfc-card li b{color:var(--ink)}
+.pg-nfc .stat b{font-size:24px}
+.ab-col{display:grid;grid-template-columns:.8fr 1fr;gap:14px;align-items:center}
+.ab-col figure{margin:0;position:relative;border-radius:22px;overflow:hidden;box-shadow:0 26px 50px -26px rgba(14,15,30,.55)}
+.ab-col figure:first-child{transform:translateY(-14px)}.ab-col figure:last-child{transform:translateY(14px)}
+.ab-col img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.ab-col figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.95);color:var(--ink);font-size:13px;font-weight:800;padding:5px 11px;border-radius:999px}
+.pg-about .hero .blobwrap{padding:9% 6%}
+.team{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.tm{border:1px solid var(--line);border-radius:24px;padding:26px 16px;text-align:center;background:#fff}
+.tm .av{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--blob);color:var(--pink-ink);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.tm h3{font-size:17px;font-weight:800}
+.tm p{color:var(--muted);font-size:14px;margin-top:2px}
+.co{max-width:980px;margin:0 auto;border:1px solid var(--line);border-radius:28px;padding:14px 34px;display:grid;grid-template-columns:1fr 1fr;gap:0 48px;background:#fff}
+.co dl{margin:0}
+.co dl>div{padding:18px 0;border-bottom:1px solid var(--line)}
+.co dl>div:last-child{border-bottom:0}
+.co dt{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.co dd{margin:4px 0 0;font-weight:700;color:var(--ink);font-size:16px;overflow-wrap:anywhere}
+.co a{color:var(--pink-ink);text-decoration:none}.co a:hover{text-decoration:underline}
+.pg-about .prod .go{margin-top:6px}
+@media (max-width:1180px){.nav a{padding:8px 9px;font-size:14.5px}.nav{gap:0}}
+@media (max-width:980px){
+  .pg-nfc .sec,.pg-about .sec{padding-block:56px}
+  .pg-nfc .hero .wrap,.pg-about .hero .wrap{padding-block:36px 48px}
+  .pg-nfc .hero .wrap>.f-media{max-width:none}
+  .pg-about .hero .wrap>.f-media{max-width:460px}
+  .chk{padding:22px;min-height:400px}
+  .nfc-cards{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr 1fr}
+  .co{grid-template-columns:1fr;padding:6px 22px}
+  .co dl:first-child>div:last-child{border-bottom:1px solid var(--line)}
+}
+.chk-ic.ask{background:var(--ink);font-weight:800;font-size:26px}
+@media (max-width:980px){.pg-nfc .hero .wrap>.f-media{order:2}}
+.ab-ph{margin:0;position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(14,15,30,.5)}
+.ab-ph img{width:100%}
+.ab-ph figcaption,.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.95);color:var(--ink);font-size:13px;font-weight:800;padding:6px 12px;border-radius:999px}
+.tm img.av{width:120px;height:120px;object-fit:cover;display:block}
+.tm .av{width:120px;height:120px;font-size:34px}
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.gal figure{margin:0;position:relative;border-radius:22px;overflow:hidden}
+.gal img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.pg-about #company{padding-bottom:96px}
+@media (max-width:980px){.gal{grid-template-columns:1fr 1fr;gap:12px}.tm .av,.tm img.av{width:96px;height:96px}}
+.nav a{white-space:nowrap}
+@media (max-width:1180px){.nav,.hdr .cta{display:none}.menu-btn{display:block}}
+.hdr .brand{flex:none}
+.hdr>.wrap{gap:20px}
+.nav a{padding:8px 10px;font-size:14.5px}
+.nav{gap:2px;margin-left:4px}
+@media (max-width:1260px){.hdr .btn.line.cta{display:none}}
+.hdr>.wrap{gap:14px}
+.hdr .btn.sm{padding:0 15px}
 </style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXN7T65Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="hdr"><div class="wrap">
-<a class="brand" href="/" aria-label="Naira Menus home"><img src="/site/img/naira-logo-light.png" alt="Naira Menus" width="730" height="238"></a>
-<nav class="nav" aria-label="Main"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing" aria-current="page">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a></nav>
+<a class="brand" href="/" aria-label="Naira Menus home"><img class="lg-l" src="/site/img/naira-logo-light.png" alt="Naira Menus" width="730" height="238"></a>
+<nav class="nav" aria-label="Main"><a href="/tap">Naira Tap</a><a href="/billing" aria-current="page">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><a href="/about">About Us</a></nav>
 <a class="btn pink sm cta" href="https://wa.me/919225344169?text=Hi%20Naira%2C%20I%20want%20a%20free%20demo." target="_blank" rel="noopener">Book free demo</a>
 <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
-</div><div class="mnav" id="mnav" hidden><div class="wrap"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing" aria-current="page">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a><a href="https://wa.me/919225344169?text=Hi%20Naira%2C%20I%20want%20a%20free%20demo." target="_blank" rel="noopener" style="color:var(--pink-ink)">Book free demo on WhatsApp</a></div></div></header>
+</div><div class="mnav" id="mnav" hidden><div class="wrap"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing" aria-current="page">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><a href="/about">About Us</a><a href="https://wa.me/919225344169?text=Hi%20Naira%2C%20I%20want%20a%20free%20demo." target="_blank" rel="noopener" style="color:var(--pink-ink)">Book free demo on WhatsApp</a></div></div></header>
 <main class="pg-billing">
 <section class="hero"><div class="wrap">
   <div>
@@ -634,7 +724,7 @@ p{margin:0}
 <p>Smart menus, billing and Google growth for Indian businesses. Made in Pune.</p></div>
 <div><h4>Products</h4><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a></div>
 <div><h4>Talk to us</h4><a href="https://wa.me/919225344169?text=Hi%20Naira%21" target="_blank" rel="noopener">WhatsApp +91 92253 44169</a><span style="user-select:all">support@nairamenus.in</span><a href="https://www.instagram.com/naira.menus/" target="_blank" rel="noopener">@naira.menus</a></div>
-<div><h4>Office</h4><p>Rajhans Residency, Aundh, Pune, Maharashtra 411067</p></div>
+<div><h4>Company</h4><a href="/about">About Us</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><p>Rajhans Residency, Aundh, Pune, Maharashtra 411067</p></div>
 <p class="legal">Naira Menus Pvt Ltd · CIN U62011PN2026PTC258171 · Google is a trademark of Google LLC. Client names and logos shown with permission.</p>
 </div></footer>
 <a class="wa-float" href="https://wa.me/919225344169?text=Hi%20Naira%2C%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat now on WhatsApp">Chat now<i><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></i></a><script>
@@ -649,14 +739,14 @@ var auto=setInterval(function(){if(!car.matches(':hover'))go(cur()+1)},5000);t.a
 })();
 (function(){var R=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(R||!('IntersectionObserver' in window))return;
 var de=document.documentElement;de.classList.add('rv-on');
-var sel='.sec-head,.prod,.feat .f-text,.feat .f-media,.pill,.why>*,.revrow>*,.rev:not(.hero-rev),.pcard,.stat-row>*,.steps>*,.faq details,.cta-box,.bw,.sg,.demo,.seo-card,.site-mock,.dash-note,.cmp,table,.hcar,.marq,.hero .wrap>div:first-child>*,.hero .f-media,.hero-rev';
+var sel='.sec-head,.prod,.feat .f-text,.feat .f-media,.pill,.why>*,.revrow>*,.rev:not(.hero-rev),.pcard,.stat-row>*,.steps>*,.faq details,.cta-box,.tm,.co,.nfc-card,.gal figure,.bc,.short,.stat-call,.author,.bw,.sg,.demo,.seo-card,.site-mock,.dash-note,.cmp,table,.hcar,.marq,.hero .wrap>div:first-child>*,.hero .f-media,.hero-rev';
 var els=[].slice.call(document.querySelectorAll(sel)).filter(function(e){return !e.parentElement.closest(sel)});
 var seen=new Map();els.forEach(function(e){var p=e.parentElement,n=seen.get(p)||0;seen.set(p,n+1);e.style.setProperty('--d',Math.min(n,6)*0.08+'s');e.classList.add('rv')});
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -18% 0px',threshold:0.15});
 els.forEach(function(e){io.observe(e)});
 setTimeout(function(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in')})},60);
 var hm=document.querySelector('.hero .f-media'),hd=document.querySelector('.hero .wrap>div:first-child');if(hm){var hb=hm.querySelector('.blobwrap');if(hb)hb.classList.add('sc-hero')}if(hd)hd.classList.add('sc-head');
-function hero(){var y=scrollY,h=innerHeight,k=Math.min(Math.max(y/(h*0.9),0),1);var hb=document.querySelector('.sc-hero'),hh=document.querySelector('.sc-head');if(hb){hb.style.setProperty('--hs',(1-k*0.12).toFixed(4));hb.style.setProperty('--ho',(1-k*0.55).toFixed(3))}if(hh){hh.style.setProperty('--hy',(-k*60).toFixed(1)+'px');hh.style.setProperty('--ho',(1-k*0.6).toFixed(3))}}
+function hero(){var y=scrollY,h=innerHeight,k=innerWidth<981?0:Math.min(Math.max(y/(h*0.9),0),1);var hb=document.querySelector('.sc-hero'),hh=document.querySelector('.sc-head');if(hb){hb.style.setProperty('--hs',(1-k*0.12).toFixed(4));hb.style.setProperty('--ho',(1-k*0.55).toFixed(3))}if(hh){hh.style.setProperty('--hy',(-k*60).toFixed(1)+'px');hh.style.setProperty('--ho',(1-k*0.6).toFixed(3))}}
 var pz=[].slice.call(document.querySelectorAll('.ph>img'));pz.forEach(function(i){i.classList.add('pz')});
 var tk=false;function upd(){tk=false;hero();var h=innerHeight;pz.forEach(function(i){var r=i.getBoundingClientRect();if(r.bottom<0||r.top>h)return;var c=(r.top+r.height/2-h/2)/h;var s=1+Math.min(Math.abs(c),1)*0.07;i.style.setProperty('--pz',s.toFixed(4))})}
 addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});upd();

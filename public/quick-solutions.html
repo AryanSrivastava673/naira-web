@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://nairamenus.in/quick-solutions">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Unbounded:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:wght@800&family=Pacifico&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@800&family=Pacifico&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -40,7 +40,7 @@
   --bg:#FFFFFF; --surface:#FFFFFF; --stage:#FFFFFF; --ink:#0E0F1E; --fg:#15131C; --muted:#6B6573; --line:#E6E6EB;
   --pink:#FF2BA3; --pink-ink:#D6127F; --pink-soft:#FFE3F2; --good:#127A4B;
   --hdr:#0E0F1E; --hdr-fg:#FFFFFF;
-  --display:"Unbounded","Arial Black",system-ui,sans-serif; --body:"DM Sans",system-ui,sans-serif; --serif:"Instrument Serif",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --display:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --serif:"Instrument Serif",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
   --r:14px; color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -51,7 +51,7 @@ button,input,select{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 .wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{text-wrap:balance;margin:0}
-em.s{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink);letter-spacing:-.005em}
+em.s{font-family:inherit;font-style:normal;font-weight:inherit;color:var(--pink);letter-spacing:inherit}
 .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink-ink)}
 .num{font-variant-numeric:tabular-nums}
 
@@ -71,6 +71,7 @@ header.top .mnav[hidden]{display:none}
 header.top .mnav .wrap{display:flex;flex-direction:column;align-items:stretch;gap:0;height:auto;padding-block:6px 14px;text-align:left}
 .mnav a{color:#0E0F1E;padding:12px 4px;font-weight:600;text-decoration:none;border-bottom:1px solid #ECEAF0}
 .mnav a[aria-current]{color:#D10F7C}
+@media (max-width:1180px){nav.links{display:none}.menu-btn{display:block}header.top .wrap{gap:12px}}
 .hdr-right{margin-left:auto;display:flex;align-items:center;gap:10px}
 .cartbtn{display:flex;align-items:center;gap:8px;background:#F7F6F9;border:1px solid #ECEAF0;color:#0E0F1E;border-radius:999px;padding:8px 14px;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit}
 .cartbtn .ct{background:#FF2BA3;color:#fff;border-radius:999px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px;padding:0 6px}
@@ -562,9 +563,9 @@ footer.foot .legal{grid-column:1/-1;font-size:12.5px;border-top:1px solid #ECEAF
 
 <header class="top"><div class="wrap">
   <a class="logo" href="/" aria-label="Naira Menus home"><img src="/site/img/naira-logo-light.png" alt="Naira Menus" width="730" height="238"></a>
-  <nav class="links" aria-label="Main"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions" aria-current="page">Quick Solutions</a></nav>
+  <nav class="links" aria-label="Main"><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions" aria-current="page">Quick Solutions</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><a href="/about">About Us</a></nav>
   <div class="hdr-right"><button class="cartbtn" id="cartOpen" type="button" aria-label="Open cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="lb">Cart</span><span class="ct num" id="cartCount">0</span></button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button></div>
-</div><div class="mnav" id="mnav" hidden><div class="wrap"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions" aria-current="page">Quick Solutions</a></div></div></header>
+</div><div class="mnav" id="mnav" hidden><div class="wrap"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions" aria-current="page">Quick Solutions</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><a href="/about">About Us</a><a href="https://wa.me/919225344169?text=Hi%20Naira%2C%20I%20want%20a%20free%20demo." target="_blank" rel="noopener" style="color:#D10F7C">Book free demo on WhatsApp</a></div></div></header>
 <div class="offer"><div class="wrap"><b>Launch offer</b><span>Up to 61% off</span><span class="dot">·</span><span>Free custom design + WhatsApp proof</span><span class="dot">·</span><span>Extra 10% off on 2+ items</span></div></div>
 
 <main>
@@ -850,7 +851,7 @@ footer.foot .legal{grid-column:1/-1;font-size:12.5px;border-top:1px solid #ECEAF
 <p>Smart menus, billing and Google growth for Indian businesses. Made in Pune.</p></div>
 <div><h4>Products</h4><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a></div>
 <div><h4>Talk to us</h4><a href="https://wa.me/919225344169?text=Hi%20Naira%21" target="_blank" rel="noopener">WhatsApp +91 92253 44169</a><span style="user-select:all">support@nairamenus.in</span><a href="https://www.instagram.com/naira.menus/" target="_blank" rel="noopener">@naira.menus</a></div>
-<div><h4>Office</h4><p>Rajhans Residency, Aundh, Pune, Maharashtra 411067</p></div>
+<div><h4>Company</h4><a href="/about">About Us</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><p>Rajhans Residency, Aundh, Pune, Maharashtra 411067</p></div>
 <p class="legal">Naira Menus Pvt Ltd · CIN U62011PN2026PTC258171 · Google is a trademark of Google LLC. Naira is not affiliated with or endorsed by Google. Product images are design previews; final print may vary slightly in colour.</p>
 </div></footer>
 
