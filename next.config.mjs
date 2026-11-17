@@ -48,6 +48,12 @@ const nextConfig = {
           source: '/quick-solutions',
           destination: '/quick-solutions.html',
         },
+        // Free QR Studio — self-contained static page (public/qr-studio/, with its
+        // images and scan-engine wasm). Linked from the Quick Solutions page.
+        {
+          source: '/qr-studio',
+          destination: '/qr-studio/index.html',
+        },
       ],
     };
   },

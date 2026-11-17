@@ -475,6 +475,28 @@ footer.foot .legal{grid-column:1/-1;font-size:12.5px;border-top:1px solid #ECEAF
 @media (max-width:520px){.sfig figcaption span:not(.p):not(.q){display:none}.free ul{grid-template-columns:minmax(0,1fr)}.show-cta a.btn{flex:1 1 100%}.sfig figcaption span{font-size:11px;padding:4px 8px}}
 
 /* ===== Standout designs ===== */
+/* Free QR Studio promo */
+.qrs{background:linear-gradient(180deg,#FFF0F7,#FFFFFF);border-block:1px solid #FFD1E8;position:relative;overflow:hidden}
+.qrs .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;padding-block:52px}
+.qrs h2{font-family:var(--display);font-size:clamp(26px,3vw,38px);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:12px 0 12px}
+.qrs h2 em{font-style:normal;color:var(--pink)}
+.qrs p{margin:0 0 22px;color:var(--muted);max-width:50ch;font-size:16.5px}
+.qrs-badge{display:inline-flex;align-items:center;gap:8px;background:#0E0F1E;color:#fff;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:7px 13px;border-radius:999px}
+.qrs-badge i{width:8px;height:8px;border-radius:50%;background:#FF2BA3;box-shadow:0 0 0 4px rgba(255,43,163,.3)}
+.qrs-cta{display:flex;flex-wrap:wrap;gap:10px}
+.qrs-cta a{display:inline-flex;align-items:center;justify-content:center;height:50px;padding:0 24px;border-radius:999px;font-weight:800;font-size:15.5px;text-decoration:none;border:2px solid transparent}
+.qrs-cta .go{background:var(--pink);color:#fff;box-shadow:0 14px 28px -14px rgba(255,43,163,.8)}
+.qrs-cta .go:hover{background:var(--pink-ink)}
+.qrs-cta .alt{background:#fff;color:var(--ink);border-color:#FFD1E8}
+.qrs-cta .alt:hover{border-color:var(--pink);color:var(--pink-ink)}
+.qrs-note{display:block;margin-top:14px;font-size:13.5px;color:var(--muted)}
+.qrs-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:430px;margin-left:auto}
+.qrs-tiles img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:22px;border:1.5px solid #FFD1E8;background:#fff;box-shadow:0 22px 40px -24px rgba(214,18,127,.55);transition:transform .3s}
+.qrs-tiles img:nth-child(odd){transform:rotate(-2deg)}
+.qrs-tiles img:nth-child(even){transform:rotate(2deg) translateY(14px)}
+.qrs-tiles a:hover img{transform:rotate(0) scale(1.03)}
+@media (max-width:860px){.qrs .wrap{grid-template-columns:minmax(0,1fr);gap:28px}.qrs-tiles{margin:0 auto;max-width:340px}}
+@media (prefers-reduced-motion:reduce){.qrs-tiles img{transition:none}}
 .so{background:linear-gradient(180deg,#FFF0F7,#FFFFFF);border-block:1px solid #FFD1E8;position:relative;overflow:hidden}
 .so .wrap{padding-block:48px 52px}
 .so-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px 32px;margin-bottom:26px}
@@ -801,6 +823,22 @@ footer.foot .legal{grid-column:1/-1;font-size:12.5px;border-top:1px solid #ECEAF
 
 
 
+<section class="qrs" id="free-qr" aria-labelledby="qrsH"><div class="wrap">
+  <div>
+    <span class="qrs-badge"><i></i>Free tool</span>
+    <h2 id="qrsH">A QR code that doesn&rsquo;t look <em>boring.</em></h2>
+    <p>Make QR codes with your logo, in fun shapes, or for Wi-Fi, UPI, WhatsApp and Google reviews. Free, no watermark, never expires. Want something we can&rsquo;t do online? Our designers will.</p>
+    <div class="qrs-cta"><a class="go" href="/qr-studio">Open the free QR Studio</a><a class="alt" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20a%20custom%20QR%20design." target="_blank" rel="noopener">Get a custom design</a></div>
+    <span class="qrs-note">Runs in your browser. Your logo and links never leave your device.</span>
+  </div>
+  <div class="qrs-tiles" aria-hidden="true">
+    <a href="/qr-studio" tabindex="-1"><img src="/qr-studio/img/rocket.webp" alt="" width="400" height="400" loading="lazy"></a>
+    <a href="/qr-studio" tabindex="-1"><img src="/qr-studio/img/burger.webp" alt="" width="400" height="400" loading="lazy"></a>
+    <a href="/qr-studio" tabindex="-1"><img src="/qr-studio/img/paw.webp" alt="" width="400" height="400" loading="lazy"></a>
+    <a href="/qr-studio" tabindex="-1"><img src="/qr-studio/img/naira-logo-qr.webp" alt="" width="400" height="400" loading="lazy"></a>
+  </div>
+</div></section>
+
 <section class="band" aria-labelledby="howH">
   <div class="wrap">
     <div>
@@ -849,7 +887,7 @@ footer.foot .legal{grid-column:1/-1;font-size:12.5px;border-top:1px solid #ECEAF
 <footer class="foot"><div class="wrap">
 <div><a class="brand" href="/" style="margin-bottom:12px"><img src="/site/img/naira-logo-light.png" alt="Naira Menus" width="730" height="238"></a>
 <p>Smart menus, billing and Google growth for Indian businesses. Made in Pune.</p></div>
-<div><h4>Products</h4><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a></div>
+<div><h4>Products</h4><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a><a href="/qr-studio">Free QR Generator</a></div>
 <div><h4>Talk to us</h4><a href="https://wa.me/919225344169?text=Hi%20Naira%21" target="_blank" rel="noopener">WhatsApp +91 92253 44169</a><span style="user-select:all">support@nairamenus.in</span><a href="https://www.instagram.com/naira.menus/" target="_blank" rel="noopener">@naira.menus</a></div>
 <div><h4>Company</h4><a href="/about">About Us</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><p>Rajhans Residency, Aundh, Pune, Maharashtra 411067</p></div>
 <p class="legal">Naira Menus Pvt Ltd · CIN U62011PN2026PTC258171 · Google is a trademark of Google LLC. Naira is not affiliated with or endorsed by Google. Product images are design previews; final print may vary slightly in colour.</p>

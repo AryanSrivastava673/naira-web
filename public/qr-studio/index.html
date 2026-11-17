@@ -1,0 +1,1291 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MXN7T65Q');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Free QR Code Generator with Logo | Naira QR Studio</title>
+<meta name="description" content="Make free QR codes with your logo, in animal shapes or hidden inside your logo. Website, Wi-Fi, WhatsApp, UPI, Google Review and more. PNG and SVG, no watermark, never expires.">
+<link rel="canonical" href="https://nairamenus.in/qr-studio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Naira QR Studio: free QR codes that don't look boring">
+<meta property="og:description" content="Logo QR codes, animal shapes, Wi-Fi, UPI, WhatsApp and Google Review QRs. Free, no watermark, never expires.">
+<meta property="og:url" content="https://nairamenus.in/qr-studio">
+<meta name="theme-color" content="#ff2ba3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Naira QR Studio",
+   "url": "https://nairamenus.in/qr-studio",
+   "applicationCategory": "DesignApplication",
+   "operatingSystem": "Any",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Naira Menus Pvt Ltd",
+    "url": "https://nairamenus.in/"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Can you make a design that isn't in the studio?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Burger, rocket, your mascot, your logo, anything. Send your idea, logo or a photo you like on WhatsApp at +91 92253 44169. We share the design and any cost in chat before we start."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do these QR codes expire?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. These are static QR codes. The link is written into the code itself, so it keeps working forever, even if you never visit this page again. Just make sure the link it opens stays live."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is it really free? What's the catch?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No watermark, no trial, no scan limits. We ask for your email once to unlock downloads, and we may send you the occasional tip for growing your business. That's the whole catch."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you store my logo or Wi-Fi password?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The studio runs entirely in your browser. Your logo, links and passwords are never uploaded to our servers. Only your email is saved when you sign up."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will an animal or Logo Art QR really scan?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, if the scan test shows green. We test every design 4 ways, including small and blurry, before you download. For Logo Art, slide towards \"Easy to scan\" or press \"Make it scan better\" if the meter is low. Always test one print with your phone before printing hundreds."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What size should I print it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "At least 2.5 cm wide for a table or card. For posters, about one tenth of the scanning distance, so 10 cm for someone scanning from 1 metre. Print animal and Logo Art designs a bit bigger, around 5 to 8 cm."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I change the link after printing?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not with a static QR, the link is fixed. Tip: point the QR to a page you control, like your own website or Naira menu link, then update that page whenever you want."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I use these commercially?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Menus, packaging, posters, cards, ads. The design and the code are yours."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+/* Layout: sticky nav, short hero, studio grid (inputs | live preview), then proof, Naira before/after section, FAQ, footer. */
+:root{
+  --pink:#ff2ba3; --pink-deep:#c3127c; --pink-soft:#ffe6f4; --pink-wash:#fff5fa;
+  --ink:#1b1420; --muted:#6c6170; --line:#efe5eb; --bg:#ffffff; --surface:#ffffff; --tint:#faf6f8;
+  --ok:#11804a; --ok-soft:#e1f6ea; --warn:#a35a00; --warn-soft:#fff1dc; --bad:#b42330; --bad-soft:#fde5e7;
+  --display:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+  --r:16px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--pink-deep)}
+img{max-width:100%}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1200px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.6vw,38px);line-height:1.1;font-weight:800}
+h3{font-size:19px;font-weight:800}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep)}
+:focus-visible{outline:2.5px solid var(--pink);outline-offset:2px}
+
+/* site header (shared with the rest of the site) */
+html{scroll-padding-top:84px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);color:#0E0F1E;border-bottom:1px solid #ECEAF0;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header.top .wrap{display:flex;align-items:center;gap:28px;height:68px}
+header.top .logo{display:flex;align-items:center;text-decoration:none}
+header.top .logo img{height:42px;width:auto;display:block}
+header.top nav.links{display:flex;gap:4px;margin-left:8px;font-size:15px}
+header.top nav.links a{color:#5E5A68;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:999px}
+header.top nav.links a:hover{color:#0E0F1E;background:#F7F6F9}
+header.top nav.links a[aria-current]{color:#0E0F1E;background:#FFE9F4}
+header.top .hdr-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid #ECEAF0;background:#fff;cursor:pointer;padding:0}
+.menu-btn span{display:block;width:18px;height:2px;background:#0E0F1E;margin:4px auto;border-radius:2px}
+header.top .mnav{border-top:1px solid #ECEAF0;background:#fff;max-height:calc(100vh - 68px);overflow:auto;box-shadow:0 18px 30px -18px rgba(14,15,30,.35)}
+header.top .mnav[hidden]{display:none}
+header.top .mnav .wrap{display:flex;flex-direction:column;align-items:stretch;gap:0;height:auto;padding-block:6px 14px}
+.mnav a{color:#0E0F1E;padding:12px 4px;font-weight:600;text-decoration:none;border-bottom:1px solid #ECEAF0}
+.mnav a[aria-current]{color:#D10F7C}
+@media (max-width:1180px){header.top nav.links{display:none}.menu-btn{display:block}header.top .wrap{gap:12px}}
+.crumbs{margin:0 0 14px;font-size:13.5px;color:var(--muted);font-weight:600}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--pink-deep)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;background:var(--pink);color:#fff;line-height:1.1}
+.btn:hover{background:var(--pink-deep)}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--pink);color:var(--pink-deep)}
+.btn.small{padding:8px 14px;font-size:14px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+@media (prefers-reduced-motion:no-preference){.btn{transition:background .15s,border-color .15s,transform .1s}.btn:active{transform:scale(.97)}}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,72px) 28px;background:radial-gradient(1200px 400px at 85% -10%,var(--pink-soft),transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:32px;align-items:center}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-size:clamp(36px,5.2vw,60px);line-height:1.02;font-weight:800}
+.hero h1 .h1-sub{display:block;margin-top:14px;font-family:var(--body);font-size:clamp(19px,2vw,24px);line-height:1.3;font-weight:700;letter-spacing:-.005em;color:var(--ink);opacity:.82}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p.lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:52ch;margin:16px 0 22px}
+.ticks{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.ticks li{font-size:14px;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.ticks li::before{content:"✓ ";color:var(--pink)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero{position:relative;overflow:hidden;padding-bottom:0}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(195,18,124,.13) 1.2px,transparent 1.2px);background-size:22px 22px;-webkit-mask-image:radial-gradient(60% 70% at 78% 40%,#000,transparent);mask-image:radial-gradient(60% 70% at 78% 40%,#000,transparent);pointer-events:none}
+.hero .wrap{position:relative;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.collage{position:relative;width:100%;max-width:580px;aspect-ratio:1/1;justify-self:center;--mx:0;--my:0}
+.collage::before{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,43,163,.35),rgba(255,43,163,.08) 60%,transparent);filter:blur(10px)}
+.fl{position:absolute;left:var(--x);top:var(--y);width:var(--w);transform:translate(calc(var(--mx)*var(--d)*1px),calc(var(--my)*var(--d)*1px));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.fl .in{display:block;transform:rotate(var(--r));animation:bob var(--t,7s) ease-in-out var(--dl,0s) infinite;will-change:transform}
+.fl img{display:block;width:100%;height:auto;border-radius:22%/22%;box-shadow:0 18px 34px -16px rgba(120,10,80,.45),0 4px 10px -4px rgba(27,20,32,.18);background:#fff}
+.fl.hero-main img{border-radius:50%;box-shadow:0 0 0 6px rgba(255,255,255,.9),0 30px 60px -18px rgba(195,18,124,.65)}
+@media (hover:hover){.fl:hover{z-index:5}.fl:hover .in{animation-play-state:paused}.fl:hover img{transform:scale(1.06)}.fl img{transition:transform .25s}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-14px) rotate(calc(var(--r) + 2.5deg))}}
+.chip-float{position:absolute;z-index:6;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(10px) saturate(1.4);-webkit-backdrop-filter:blur(10px) saturate(1.4);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px -12px rgba(27,20,32,.35);font-size:13px;font-weight:800;white-space:nowrap;animation:bob 6s ease-in-out infinite;--r:0deg}
+.chip-float i{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;color:#fff;background:var(--ok)}
+.chip-float.pink i{background:var(--pink)}
+.scan-me{position:absolute;z-index:6;white-space:nowrap;left:50%;top:69.5%;transform:translateX(-50%);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pink-deep);background:#fff;border-radius:999px;padding:5px 12px;box-shadow:0 8px 20px -10px rgba(195,18,124,.6)}
+@media (max-width:860px){.collage{max-width:440px;margin-top:4px}}
+@media (max-width:480px){.fl.opt{display:none}.chip-float{font-size:11.5px;padding:5px 10px}}
+@media (prefers-reduced-motion:reduce){.fl .in,.chip-float,.strip-track{animation:none!important}.fl{transition:none}}
+/* sample strip */
+.strip{margin-top:clamp(28px,4vw,44px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);padding-block:10px 28px}
+.strip-track{display:flex;gap:16px;width:max-content;animation:slide 48s linear infinite}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip img{width:112px;height:112px;border-radius:24px;display:block;box-shadow:0 12px 24px -14px rgba(120,10,80,.45);background:#fff}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.strip{overflow-x:auto}}
+
+/* WhatsApp-first */
+.btn.wa{background:#25d366;color:#08311a}
+.btn.wa:hover{background:#1ebe5b;color:#08311a}
+.btn.wa svg{width:20px;height:20px;fill:currentColor;flex:none}
+.btn.big{padding:15px 24px;font-size:17px;box-shadow:0 14px 30px -14px rgba(37,211,102,.8)}
+.hero-note{margin:12px 0 0;font-size:14px;color:var(--muted);max-width:46ch}
+.collage-wrap{display:grid;justify-items:center;gap:8px;min-width:0}
+.tile{position:relative;display:block;border-radius:22%;text-decoration:none;outline-offset:4px}
+.hero-main .tile{border-radius:50%}
+.bdg{position:absolute;right:-6px;top:-6px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;box-shadow:0 6px 14px -6px rgba(0,0,0,.4);border:2.5px solid #fff;z-index:2}
+.bdg.wa{background:#25d366}.bdg.on{background:var(--pink)}
+.bdg svg{width:15px;height:15px;fill:#fff}
+.tip{position:absolute;left:50%;bottom:-12px;transform:translate(-50%,6px);opacity:0;white-space:nowrap;font-size:12.5px;font-weight:800;padding:6px 11px;border-radius:999px;background:var(--ink);color:#fff;pointer-events:none;z-index:3;box-shadow:0 10px 20px -10px rgba(0,0,0,.5)}
+.tile[data-wa] .tip{background:#25d366;color:#08311a}
+@media (prefers-reduced-motion:no-preference){.tip{transition:opacity .15s,transform .15s}}
+.tile:hover .tip,.tile:focus-visible .tip{opacity:1;transform:translate(-50%,0)}
+.chip-float.wa i{background:#25d366}
+.chip-float.wa i svg{width:11px;height:11px;fill:#fff}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:4px 0 0;font-size:13px;font-weight:700;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend .bdg{position:static;width:22px;height:22px;border-width:2px;font-size:11px;box-shadow:none}
+.legend .bdg svg{width:12px;height:12px}
+.strip .st{position:relative;display:grid;justify-items:center;gap:8px;text-decoration:none;color:var(--ink);font-size:12.5px;font-weight:800;flex:none;padding-top:6px}
+.strip .st .bdg{top:0;right:-4px;width:24px;height:24px}
+.strip .st .bdg svg{width:13px;height:13px}
+.strip .st:hover img{transform:translateY(-4px)}
+.strip .st img{transition:transform .2s}
+.wa-card{display:grid;gap:12px;border-radius:14px;padding:14px;background:linear-gradient(135deg,#e9fbef,#f3fff7);border:1.5px solid #bdeccd}
+.wa-card b{display:block;font-family:var(--display);font-size:16.5px;color:#0b3d22}
+.wa-card span{display:block;font-size:13.5px;color:#2f5d43;margin-top:3px}
+.shape-btn.custom{border:1.5px dashed #25d366;background:#effcf3;color:#0b5a2d;text-decoration:none}
+.shape-btn.custom svg{width:40px;height:40px;fill:#25d366}
+.wa-fab{position:fixed;z-index:40;right:max(16px,calc(env(safe-area-inset-right,0px) + 16px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#08311a;font-weight:800;font-size:15px;text-decoration:none;padding:13px 18px 13px 14px;border-radius:999px;box-shadow:0 16px 34px -12px rgba(18,140,64,.75)}
+.wa-fab svg{width:26px;height:26px;fill:currentColor}
+.wa-fab:hover{background:#1ebe5b}
+@media (prefers-reduced-motion:no-preference){.wa-fab::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #25d366;animation:ring 2.6s ease-out infinite}}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+@media (max-width:640px){.wa-fab span{display:none}.wa-fab{padding:14px}}
+body:has(.modal:not([hidden])) .wa-fab{display:none}
+/* studio */
+#studio{padding-block:28px 56px;scroll-margin-top:70px}
+.studio-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:18px}
+.studio-head p{margin:6px 0 0;color:var(--muted)}
+.studio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);grid-template-areas:"s1 pv" "s2 pv";gap:18px;align-items:start}
+.s1{grid-area:s1}.s2{grid-area:s2}.pv{grid-area:pv}
+@media (max-width:960px){.studio{grid-template-columns:minmax(0,1fr);grid-template-areas:"s1" "pv" "s2"}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:16px;min-width:0}
+.step{display:flex;align-items:center;gap:10px}
+.step b{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+.step h3{font-size:18px}
+.types{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.type{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;cursor:pointer;font:inherit;font-size:13.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;text-align:left;line-height:1.2}
+.type svg{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.type[aria-pressed="true"]{border-color:var(--pink);background:var(--pink-wash);color:var(--pink-deep)}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.fields{grid-template-columns:minmax(0,1fr)}}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label,.lbl{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.field .hint{font-size:13px;color:var(--muted)}
+input[type=text],input[type=url],input[type=email],input[type=tel],input[type=number],input[type=datetime-local],input[type=password],select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--tint);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+input:focus,select:focus,textarea:focus{border-color:var(--pink);background:#fff;outline:none}
+textarea{min-height:90px;resize:vertical}
+.checkrow{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600}
+input[type=checkbox]{accent-color:var(--pink);width:17px;height:17px}
+input[type=range]{width:100%;accent-color:var(--pink)}
+.tabs{display:flex;gap:4px;background:var(--tint);border:1px solid var(--line);border-radius:14px;padding:4px;flex-wrap:wrap}
+.tabs button{flex:1 1 auto;border:0;background:transparent;font:inherit;font-weight:800;font-size:14.5px;padding:10px 12px;border-radius:10px;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed="true"]{background:#fff;color:var(--pink-deep);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:4px}
+.seg button{flex:1 1 auto;border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:700;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);color:var(--pink-deep)}
+.group{display:grid;gap:8px;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:560px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:8px}
+.shape-btn{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:6px 4px 5px;cursor:pointer;display:grid;justify-items:center;gap:2px;color:var(--ink);font:inherit;font-size:11.5px;font-weight:700}
+.shape-btn svg{width:40px;height:40px}
+.shape-btn[aria-pressed="true"]{border-color:var(--pink);background:var(--pink-wash)}
+.colors{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.color{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;background:var(--tint);border:1px solid var(--line);border-radius:10px;padding:6px 8px;cursor:pointer}
+.color input{width:28px;height:28px;border:0;padding:0;background:none;cursor:pointer;flex:none}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:4px 10px 4px 5px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip i{width:16px;height:16px;border-radius:50%;display:block}
+.upload{display:flex;flex-wrap:wrap;align-items:center;gap:10px;border:1.5px dashed #e3c9d8;background:var(--pink-wash);border-radius:12px;padding:12px}
+.upload .thumb{width:44px;height:44px;border-radius:10px;background:#fff center/contain no-repeat;border:1px solid var(--line);flex:none}
+.upload p{margin:0;font-size:13.5px;color:var(--muted);flex:1 1 160px;min-width:0}
+details.adv{border-top:1px solid var(--line);padding-top:12px}
+details.adv summary{cursor:pointer;font-weight:800;font-size:14.5px}
+details.adv[open] summary{margin-bottom:12px}
+.note{font-size:13.5px;color:var(--muted);margin:0}
+
+/* preview */
+.pv{position:sticky;top:76px}
+@media (max-width:960px){.pv{position:static}}
+.stage{background:#f6f1f4;border-radius:14px;padding:clamp(14px,4vw,30px);display:grid;place-items:center;min-height:260px;
+  background-image:linear-gradient(45deg,rgba(0,0,0,.035) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.035) 75%),linear-gradient(45deg,rgba(0,0,0,.035) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.035) 75%);background-size:20px 20px;background-position:0 0,10px 10px}
+.stage svg{width:100%;max-width:340px;height:auto;display:block}
+.stage .empty{color:var(--muted);font-weight:600;text-align:center;max-width:26ch}
+.strength{display:grid;gap:6px;border-radius:12px;padding:10px 12px;font-size:14px}
+.strength .row1{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:800}
+.meter{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.meter i{height:6px;border-radius:3px;background:rgba(0,0,0,.1)}
+.strength.ok{background:var(--ok-soft);color:var(--ok)} .strength.ok .meter i.on{background:var(--ok)}
+.strength.warn{background:var(--warn-soft);color:var(--warn)} .strength.warn .meter i.on{background:var(--warn)}
+.strength.bad{background:var(--bad-soft);color:var(--bad)} .strength.bad .meter i.on{background:var(--bad)}
+.strength.wait{background:var(--tint);color:var(--muted)}
+.strength small{font-weight:600;font-size:13px}
+.dlrow{display:flex;flex-wrap:wrap;gap:8px}
+.dlrow .btn{flex:1 1 auto}
+.payload{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--tint);border-radius:8px;padding:8px 10px;word-break:break-all;max-height:84px;overflow:auto;margin:0}
+.meta{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* bulk */
+.bulk{margin-top:18px}
+.bulk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.bulk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bulk-grid .field:first-child{grid-column:span 2}
+.results{display:grid;gap:4px;font-size:13.5px;max-height:220px;overflow:auto}
+.results div{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:5px 0}
+.pill{font-size:12px;font-weight:800;border-radius:999px;padding:2px 8px}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}.pill.bad{background:var(--bad-soft);color:var(--bad)}.pill.warn{background:var(--warn-soft);color:var(--warn)}
+
+/* sections */
+section.band{padding-block:clamp(44px,7vw,84px)}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+@media (max-width:760px){.how{grid-template-columns:minmax(0,1fr)}}
+.how div{border-top:3px solid var(--pink);padding-top:14px}
+.how b{font-family:var(--display);font-size:15px;color:var(--pink-deep)}
+.how p{margin:6px 0 0;color:var(--muted)}
+.compare{margin-top:26px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+.compare table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+.compare th,.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+.compare thead th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--tint)}
+.compare td:nth-child(2){font-weight:800;color:var(--ok)}
+.compare td:nth-child(3){color:var(--muted)}
+.compare tr:last-child td{border-bottom:0}
+.plug{position:relative;overflow:hidden;background:var(--ink);color:#fff;border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:36px 48px;align-items:center;isolation:isolate}
+.plug::before{content:"";position:absolute;inset:auto -10% -40% 40%;height:90%;background:radial-gradient(closest-side,rgba(255,43,163,.32),transparent);z-index:-1}
+@media (max-width:860px){.plug{grid-template-columns:minmax(0,1fr)}}
+.plug h2{color:#fff}
+.plug h2 em{font-style:normal;color:var(--pink)}
+.plug-copy>p{color:#d9cfd6;margin:14px 0 0;max-width:50ch;font-size:17px}
+.vs{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;max-width:520px}
+.vs li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.45}
+.vs li b{display:block;font-family:var(--display);font-size:16.5px;margin-bottom:2px}
+.vs li i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px}
+.vs .old{background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.18);color:#b9adb6}
+.vs .old i{background:rgba(255,255,255,.08);color:#b9adb6}
+.vs .old b{color:#e6dde3;text-decoration:line-through;text-decoration-color:rgba(255,43,163,.7);text-decoration-thickness:2px}
+.vs .new{background:rgba(255,43,163,.12);border:1px solid rgba(255,43,163,.45);color:#fbe9f3}
+.vs .new i{background:var(--pink);color:#fff}
+.vs .new b{color:#fff}
+.plug-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn.wa{background:#25d366;color:#0b2a17}
+.btn.wa:hover{background:#1fbd5a}
+.btn.wa svg{width:20px;height:20px;fill:currentColor}
+.btn.line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+.btn.line:hover{border-color:var(--pink);color:#fff;background:rgba(255,43,163,.12)}
+.plug-cta small{flex-basis:100%;color:#a99da6;font-size:13px}
+
+/* before / after visual */
+.scene{position:relative;height:360px;max-width:440px;width:100%;justify-self:center}
+.scene .tag{position:absolute;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.sticker{position:absolute;left:0;bottom:34px;width:150px;padding:12px 12px 10px;background:#efe6d6;border-radius:4px;transform:rotate(-9deg);box-shadow:0 10px 24px -10px rgba(0,0,0,.6);filter:saturate(.35) contrast(.8) brightness(.95)}
+.sticker::after{content:"";position:absolute;right:0;bottom:0;width:38px;height:38px;background:linear-gradient(135deg,#efe6d6 0 48%,#c9bda8 50%,#8e8576 100%);border-radius:0 0 4px 0;box-shadow:-3px -3px 6px rgba(0,0,0,.18)}
+.sticker::before{content:"";position:absolute;left:18px;top:30px;width:46px;height:30px;border-radius:50%;background:radial-gradient(closest-side,rgba(150,40,20,.38),transparent);z-index:1}
+.sticker span{display:block;margin-top:6px;font-family:"Courier New",monospace;font-size:11px;font-weight:700;color:#6b6152;text-align:center}
+.sticker svg{display:block;width:100%;height:auto;opacity:.75}
+.scene .tag.before{left:6px;bottom:6px;background:rgba(255,255,255,.08);color:#b9adb6}
+.standee{position:absolute;right:8px;top:6px;width:210px}
+.standee-face{position:relative;background:linear-gradient(180deg,#ffffff,#fff3f9);border-radius:20px 20px 8px 8px;padding:14px 16px 12px;box-shadow:0 30px 50px -22px rgba(255,43,163,.55),0 2px 0 rgba(255,255,255,.6) inset;overflow:hidden}
+.standee-face::after{content:"";position:absolute;inset:-40% auto auto -45%;width:40%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:rotate(18deg);pointer-events:none}
+.standee-face>*{position:relative;z-index:1}
+.standee-top{display:flex;align-items:center;justify-content:space-between;color:var(--ink);font-family:var(--display);font-weight:800;font-size:17px}
+.standee-top .nfc{width:30px;height:30px;border-radius:50%;background:var(--pink);display:grid;place-items:center;position:relative}
+.standee-top .nfc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round}
+.standee-top .nfc::before,.standee-top .nfc::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--pink);opacity:0}
+@media (prefers-reduced-motion:no-preference){.standee-top .nfc::before{animation:ping 2.4s ease-out infinite}.standee-top .nfc::after{animation:ping 2.4s ease-out 1.2s infinite}}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+.standee-qr{margin:10px 0 8px}
+.standee-qr svg{display:block;width:100%;height:auto}
+.standee-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800;color:var(--muted)}
+.standee-foot b{color:var(--pink-deep);font-family:var(--display);font-size:15px}
+.standee-base{height:16px;margin:0 -6px;background:linear-gradient(180deg,#3a3040,#241d28);border-radius:4px 4px 10px 10px;box-shadow:0 14px 24px -10px rgba(0,0,0,.7)}
+.scene .tag.after{right:62px;bottom:6px;background:var(--pink);color:#fff}
+@media (max-width:420px){.scene{height:330px}.sticker{width:124px}.standee{width:180px;right:0}.scene .tag.after{right:24px}}
+
+/* product cards */
+.plug-products{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:26px}
+@media (max-width:760px){.plug-products{grid-template-columns:minmax(0,1fr)}}
+.prod{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;text-decoration:none;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px}
+.prod:hover{border-color:rgba(255,43,163,.6);background:rgba(255,43,163,.08)}
+.prod .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,43,163,.16);display:grid;place-items:center}
+.prod .ic svg{width:22px;height:22px;stroke:var(--pink);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.prod b{display:block;font-family:var(--display);font-size:17px}
+.prod span{display:block;color:#c9bdc6;font-size:14px;line-height:1.4;margin-top:2px}
+.prod .go{color:var(--pink);font-size:20px;font-weight:800}
+@media (prefers-reduced-motion:no-preference){.prod{transition:border-color .15s,background .15s}.prod .go{transition:transform .15s}.prod:hover .go{transform:translateX(4px)}}
+.faq{display:grid;gap:10px;margin-top:24px;max-width:820px}
+.faq details{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}
+.faq summary{cursor:pointer;font-weight:800;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";color:var(--pink);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:10px 0 0;color:var(--muted);max-width:68ch}
+footer.foot{border-top:1px solid #ECEAF0;margin-top:56px;background:#fff;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14.5px;color:#5E5A68}
+footer.foot .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px;padding-block:44px 120px}
+footer.foot p{margin:0}
+footer.foot h4{margin:0 0 10px;font-size:14px;color:#0E0F1E}
+footer.foot a{color:inherit;text-decoration:none;display:block;padding:3px 0}
+footer.foot a:hover{color:#D10F7C}
+footer.foot .brand img{height:48px;width:auto;display:block}
+footer.foot .legal{grid-column:1/-1;font-size:12.5px;border-top:1px solid #ECEAF0;padding-top:18px}
+@media (max-width:980px){footer.foot .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:560px){footer.foot .wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* modal + toast */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(27,20,32,.55);display:grid;place-items:center;padding:16px}
+.modal-box{background:#fff;border-radius:22px;max-width:440px;width:100%;padding:26px;display:grid;gap:14px;box-shadow:0 30px 80px -20px rgba(0,0,0,.4)}
+.modal-box h3{font-size:24px}
+.modal-box p{margin:0;color:var(--muted)}
+.modal-box .err{color:var(--bad);font-size:14px;font-weight:600}
+.modal-box .fine{font-size:12.5px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--ink);color:#fff;padding:11px 18px;border-radius:12px;font-weight:700;font-size:14.5px;max-width:calc(100vw - 32px)}
+</style>
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXN7T65Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header class="top gut"><div class="wrap">
+  <a class="logo" href="/" aria-label="Naira Menus home"><img src="/site/img/naira-logo-light.png" alt="Naira Menus" width="730" height="238"></a>
+  <nav class="links" aria-label="Main"><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions" aria-current="page">Quick Solutions</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><a href="/about">About Us</a></nav>
+  <div class="hdr-right"><button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button></div>
+</div><div class="mnav" id="mnav" hidden><div class="wrap"><a href="/">Home</a><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions" aria-current="page">Quick Solutions</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><a href="/about">About Us</a><a href="https://wa.me/919225344169?text=Hi%20Naira%2C%20I%20want%20a%20free%20demo." target="_blank" rel="noopener" style="color:#D10F7C">Book free demo on WhatsApp</a></div></div></header>
+
+<header class="hero gut"><div class="wrap">
+  <div>
+    <p class="crumbs"><a href="/">Home</a> › <a href="/quick-solutions">Quick Solutions</a> › Free QR Generator</p>
+    <span class="eyebrow">Naira QR Studio · Made in Pune</span>
+    <h1>Free <em>Creative</em> QR Code Generator<span class="sr-only"> – </span><span class="h1-sub">Create Custom, Unique QR Codes Online</span></h1>
+    <p class="lede">Want a burger, a rocket or your own logo as a QR? Send us the idea on WhatsApp and our designers make it for you. Simple ones you can make right here, free.</p>
+    <ul class="ticks"><li>Custom designs on WhatsApp</li><li>Never expires</li><li>No watermark</li><li>Free online maker</li></ul>
+    <div class="hero-cta"><a class="btn wa big" data-wa href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20a%20custom%20QR%20design.%0AWhat%20it%20should%20look%20like%3A%20%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>Get a custom QR on WhatsApp</a><a class="btn ghost" href="#studio">Make one free online</a></div>
+    <p class="hero-note">Send your idea, logo or a photo you like. We reply with your design right there in chat.</p>
+  </div>
+  <div class="collage-wrap">
+  <div class="collage" id="collage">
+      <div class="fl " style="--x:2%;--y:3%;--w:23%;--r:-8deg;--t:6.5s;--dl:-1s;--d:0.6"><a class="in tile" href="#studio" data-online="cat" aria-label="Cat QR: Make it online"><img src="/qr-studio/img/cat.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg on" aria-hidden="true">✦</span><span class="tip">Make it online</span></a></div>
+      <div class="fl opt" style="--x:38%;--y:0%;--w:19%;--r:6deg;--t:7.5s;--dl:-3s;--d:0.9"><a class="in tile" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Burger%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Burger QR: Order on WhatsApp"><img src="/qr-studio/img/burger.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span class="tip">Order on WhatsApp</span></a></div>
+      <div class="fl " style="--x:75%;--y:5%;--w:22%;--r:9deg;--t:8s;--dl:-2s;--d:0.7"><a class="in tile" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Rocket%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Rocket QR: Order on WhatsApp"><img src="/qr-studio/img/rocket.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span class="tip">Order on WhatsApp</span></a></div>
+      <div class="fl opt" style="--x:0%;--y:39%;--w:21%;--r:5deg;--t:7s;--dl:-4s;--d:1.0"><a class="in tile" href="#studio" data-online="cup" aria-label="Coffee cup QR: Make it online"><img src="/qr-studio/img/coffee.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg on" aria-hidden="true">✦</span><span class="tip">Make it online</span></a></div>
+      <div class="fl " style="--x:77%;--y:39%;--w:22%;--r:-6deg;--t:6.8s;--dl:-1.5s;--d:0.8"><a class="in tile" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Dog%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Dog QR: Order on WhatsApp"><img src="/qr-studio/img/dog.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span class="tip">Order on WhatsApp</span></a></div>
+      <div class="fl " style="--x:5%;--y:73%;--w:22%;--r:-5deg;--t:7.8s;--dl:-2.5s;--d:0.7"><a class="in tile" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Pizza%20slice%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Pizza slice QR: Order on WhatsApp"><img src="/qr-studio/img/pizza.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span class="tip">Order on WhatsApp</span></a></div>
+      <div class="fl opt" style="--x:40%;--y:78%;--w:20%;--r:4deg;--t:6.4s;--dl:-3.5s;--d:0.9"><a class="in tile" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Gamepad%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Gamepad QR: Order on WhatsApp"><img src="/qr-studio/img/gamepad.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span class="tip">Order on WhatsApp</span></a></div>
+      <div class="fl " style="--x:74%;--y:73%;--w:23%;--r:-8deg;--t:8.4s;--dl:-.5s;--d:0.6"><a class="in tile" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Shopping%20bag%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Shopping bag QR: Order on WhatsApp"><img src="/qr-studio/img/shopping.webp" width="360" height="360" alt="" decoding="async" fetchpriority="low"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span class="tip">Order on WhatsApp</span></a></div>
+      <div class="fl hero-main" style="--x:28%;--y:25%;--w:44%;--r:0deg;--t:9s;--dl:-2s;--d:1.6"><a class="in tile" href="#studio" data-online="art" aria-label="Naira logo with a hidden QR. Make Logo Art online"><img src="/qr-studio/img/naira-logo-qr.webp" width="520" height="520" alt="Naira logo with a QR code hidden inside it" fetchpriority="high"><span class="tip">Make Logo Art online</span></a></div>
+      <span class="scan-me">Scan me, it works</span>
+      <span class="chip-float wa" style="left:36%;top:20.5%;animation-delay:-2s"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></i>Made for you on WhatsApp</span>
+      <span class="chip-float pink" style="left:2%;top:28.5%;animation-delay:-4s"><i>✦</i>Logo Art</span>
+      <span class="chip-float" style="left:64%;top:66%;animation-delay:-1s"><i>✓</i>Strong scan</span>
+  </div>
+  <p class="legend"><span><b class="bdg wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></b>We make it for you on WhatsApp</span><span><b class="bdg on">✦</b>Make it yourself online</span></p>
+  </div>
+</div>
+  <div class="strip"><div class="strip-track"><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Burger%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Burger QR: Order on WhatsApp"><img src="/qr-studio/img/burger.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Burger</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Rocket%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Rocket QR: Order on WhatsApp"><img src="/qr-studio/img/rocket.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Rocket</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Paw%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Paw QR: Order on WhatsApp"><img src="/qr-studio/img/paw.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Paw</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Astronaut%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Astronaut QR: Order on WhatsApp"><img src="/qr-studio/img/astronaut.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Astronaut</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Leaf%20arch%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Leaf arch QR: Order on WhatsApp"><img src="/qr-studio/img/leaf.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Leaf arch</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Dog%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Dog QR: Order on WhatsApp"><img src="/qr-studio/img/dog.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Dog</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Pizza%20slice%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Pizza slice QR: Order on WhatsApp"><img src="/qr-studio/img/pizza.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Pizza slice</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Gamepad%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Gamepad QR: Order on WhatsApp"><img src="/qr-studio/img/gamepad.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Gamepad</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Shopping%20bag%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Shopping bag QR: Order on WhatsApp"><img src="/qr-studio/img/shopping.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Shopping bag</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Letter%20logo%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa aria-label="Letter logo QR: Order on WhatsApp"><img src="/qr-studio/img/naira-n.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Letter logo</span></a><a class="st" href="#studio" data-online="cat" aria-label="Cat QR: Make it online"><img src="/qr-studio/img/cat.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg on" aria-hidden="true">✦</span><span>Cat</span></a><a class="st" href="#studio" data-online="cup" aria-label="Coffee cup QR: Make it online"><img src="/qr-studio/img/coffee.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg on" aria-hidden="true">✦</span><span>Coffee cup</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Burger%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Burger QR: Order on WhatsApp"><img src="/qr-studio/img/burger.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Burger</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Rocket%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Rocket QR: Order on WhatsApp"><img src="/qr-studio/img/rocket.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Rocket</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Paw%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Paw QR: Order on WhatsApp"><img src="/qr-studio/img/paw.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Paw</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Astronaut%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Astronaut QR: Order on WhatsApp"><img src="/qr-studio/img/astronaut.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Astronaut</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Leaf%20arch%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Leaf arch QR: Order on WhatsApp"><img src="/qr-studio/img/leaf.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Leaf arch</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Dog%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Dog QR: Order on WhatsApp"><img src="/qr-studio/img/dog.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Dog</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Pizza%20slice%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Pizza slice QR: Order on WhatsApp"><img src="/qr-studio/img/pizza.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Pizza slice</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Gamepad%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Gamepad QR: Order on WhatsApp"><img src="/qr-studio/img/gamepad.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Gamepad</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Shopping%20bag%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Shopping bag QR: Order on WhatsApp"><img src="/qr-studio/img/shopping.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Shopping bag</span></a><a class="st" href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20the%20Letter%20logo%20QR%20design.%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" data-wa tabindex="-1" aria-hidden="true" aria-label="Letter logo QR: Order on WhatsApp"><img src="/qr-studio/img/naira-n.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg wa" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></span><span>Letter logo</span></a><a class="st" href="#studio" data-online="cat" tabindex="-1" aria-hidden="true" aria-label="Cat QR: Make it online"><img src="/qr-studio/img/cat.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg on" aria-hidden="true">✦</span><span>Cat</span></a><a class="st" href="#studio" data-online="cup" tabindex="-1" aria-hidden="true" aria-label="Coffee cup QR: Make it online"><img src="/qr-studio/img/coffee.webp" width="112" height="112" alt="" loading="lazy" decoding="async"><span class="bdg on" aria-hidden="true">✦</span><span>Coffee cup</span></a></div></div>
+
+</header>
+
+<main>
+<section id="studio" class="gut"><div class="wrap">
+  <div class="studio-head">
+    <div><span class="eyebrow">The studio</span><h2>Make it in under a minute</h2><p>Everything runs in your browser. Your logo and details never leave your device.</p></div>
+  </div>
+
+  <div class="studio">
+    <div class="card s1">
+      <div class="step"><b>1</b><h3>What should it open?</h3></div>
+      <div class="types" id="types"></div>
+      <div class="fields" id="fields"></div>
+    </div>
+
+    <div class="card s2">
+      <div class="step"><b>2</b><h3>Make it yours</h3></div>
+      <div class="tabs" id="modes">
+        <button type="button" data-v="classic">Classic</button>
+        <button type="button" data-v="shapes">Animal &amp; shapes</button>
+        <button type="button" data-v="art">Logo Art</button>
+      </div>
+
+      <!-- classic + shapes -->
+      <div id="std-opts" class="group" style="gap:16px">
+        <div class="group" id="shape-group">
+          <span class="lbl">Shape</span>
+          <div class="shapes" id="shapes"></div>
+        </div>
+        <div class="group" id="fill-group">
+          <span class="lbl">Fill style</span>
+          <div class="seg" id="seg-style"><button type="button" data-v="solid">Solid</button><button type="button" data-v="dots">Dot pattern</button></div>
+        </div>
+        <div class="group">
+          <span class="lbl">Colours</span>
+          <div class="presets" id="presets"></div>
+          <div class="colors">
+            <label class="color"><input type="color" id="c-shape"><span id="c-shape-lbl">Shape</span></label>
+            <label class="color"><input type="color" id="c-ink">QR dots</label>
+            <label class="color"><input type="color" id="c-eye">Corners</label>
+            <label class="color"><input type="color" id="c-accent">Details</label>
+            <label class="color"><input type="color" id="c-card">Background</label>
+          </div>
+          <p class="note" id="contrast" hidden></p>
+        </div>
+        <div class="grid2">
+          <div class="group"><span class="lbl">QR dots</span><div class="seg" id="seg-module"><button type="button" data-v="square">Square</button><button type="button" data-v="rounded">Rounded</button><button type="button" data-v="dots">Dots</button></div></div>
+          <div class="group"><span class="lbl">Corners</span><div class="seg" id="seg-eye"><button type="button" data-v="square">Square</button><button type="button" data-v="rounded">Rounded</button><button type="button" data-v="circle">Circle</button></div></div>
+        </div>
+        <div class="group">
+          <span class="lbl">Logo in the centre</span>
+          <div class="upload">
+            <div class="thumb" id="logo-thumb" hidden></div>
+            <p id="logo-msg">PNG, JPG or SVG. A square logo with a plain background works best.</p>
+            <label class="btn small" for="logo-file">Upload logo</label>
+            <button class="btn small ghost" type="button" id="logo-clear" hidden>Remove</button>
+          </div>
+        </div>
+        <div class="group" id="dots-opts">
+          <label class="lbl" for="density">Pattern density</label>
+          <input id="density" type="range" min="25" max="75" value="50">
+          <label class="checkrow"><input id="outline" type="checkbox" checked>Outline the shape</label>
+        </div>
+      </div>
+
+      <!-- logo art -->
+      <div id="art-opts" class="group" style="gap:16px" hidden>
+        <div class="upload">
+          <div class="thumb" id="art-thumb" hidden></div>
+          <p id="art-msg">Upload your logo. The QR gets woven into it as a dot texture. Bold, colourful logos work best.</p>
+          <label class="btn small" for="logo-file">Upload logo</label>
+        </div>
+        <div class="grid2">
+          <div class="group"><span class="lbl">Outline</span><div class="seg" id="seg-artshape"><button type="button" data-v="circle">Circle</button><button type="button" data-v="rounded">Rounded square</button><button type="button" data-v="square">Square</button></div></div>
+          <div class="group"><span class="lbl">Logo fit</span><div class="seg" id="seg-artfit"><button type="button" data-v="cover">Fill</button><button type="button" data-v="contain">Fit whole logo</button></div></div>
+        </div>
+        <div class="group">
+          <label class="lbl" for="art-dots">Hidden ↔ Easy to scan</label>
+          <input id="art-dots" type="range" min="40" max="80" value="60">
+          <p class="note">Smaller dots hide the code better. Bigger dots scan faster in dim light.</p>
+        </div>
+        <div class="grid2">
+          <div class="group"><label class="lbl" for="art-qr">Code size</label><input id="art-qr" type="range" min="60" max="92" value="71"></div>
+          <div class="group"><label class="lbl" for="art-bg">Logo background</label><label class="color"><input type="color" id="art-bg" value="#ffffff">Fill for empty areas</label></div>
+        </div>
+        <div class="dlrow">
+          <button class="btn small ghost" type="button" id="art-rotate">Move corner squares</button>
+          <button class="btn small ghost" type="button" id="art-fix">Make it scan better</button>
+        </div>
+      </div>
+
+      <details class="adv">
+        <summary>More options</summary>
+        <div class="grid2">
+          <div class="field"><label for="caption">Caption under the QR</label><input id="caption" type="text" maxlength="32" placeholder="Scan for menu"></div>
+          <div class="field"><label for="ec">Error correction</label>
+            <select id="ec"><option value="auto">Auto (recommended)</option><option value="H">High (best with logos)</option><option value="Q">Quartile</option><option value="M">Medium (bigger dots)</option><option value="L">Low (smallest code)</option></select></div>
+          <div class="field"><label for="cap-color">Caption colour</label><label class="color"><input type="color" id="cap-color" value="#ff2ba3">Caption</label></div>
+        </div>
+      </details>
+    </div>
+
+    <aside class="card pv" aria-label="Live preview">
+      <div class="stage" id="stage"></div>
+      <div class="strength wait" id="strength"><div class="row1"><span id="st-label">Testing scan…</span><span class="meter" id="st-meter" style="width:96px"><i></i><i></i><i></i><i></i></span></div><small id="st-hint">We scan your design 4 ways: sharp, soft, small and blurry.</small></div>
+      <div class="grid2" style="gap:10px">
+        <div class="field"><label for="size">PNG size</label><select id="size"><option value="1200">1200 px · screens</option><option value="2400" selected>2400 px · print</option><option value="4000">4000 px · large print</option></select></div>
+        <div class="field" style="align-content:end"><label class="checkrow"><input id="transparent" type="checkbox">Transparent background</label></div>
+      </div>
+      <div class="dlrow">
+        <button class="btn" type="button" id="dl-png">Download PNG</button>
+        <button class="btn ghost" type="button" id="dl-svg">SVG</button>
+      </div>
+      <div class="wa-card">
+        <div><b>Want a rocket, a burger or your own idea?</b><span>Our designers make custom QR art for you. Send the details on WhatsApp and get your design in chat.</span></div>
+        <a class="btn wa" id="wa-studio" data-wa href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20a%20custom%20QR%20design." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>Send this to us on WhatsApp</a>
+      </div>
+      <p class="payload" id="payload" title="What the QR contains"></p>
+      <p class="meta" id="meta"></p>
+    </aside>
+  </div>
+
+  <div class="card bulk" id="bulk">
+    <div class="step"><b>+</b><h3>Bulk table QRs</h3></div>
+    <p class="note">One design, many links. Perfect for restaurant tables, rooms or product SKUs. Uses the design you made above and downloads one ZIP.</p>
+    <div class="tabs" id="bulk-mode" style="max-width:420px"><button type="button" data-v="range">Numbered set</button><button type="button" data-v="list">My own list</button></div>
+    <div id="bulk-range" class="bulk-grid">
+      <div class="field"><label for="b-base">Base link</label><input id="b-base" type="url" value="https://menu.nairamenus.in/your-cafe/" spellcheck="false"></div>
+      <div class="field"><label for="b-prefix">Prefix</label><input id="b-prefix" type="text" value="T" maxlength="12"></div>
+      <div class="field"><label for="b-count">How many</label><input id="b-count" type="number" min="1" max="200" value="12"></div>
+      <div class="field full"><label class="checkrow"><input id="b-caption" type="checkbox" checked>Add the table name as caption (e.g. "Table T4")</label></div>
+    </div>
+    <div id="bulk-list" class="field" hidden>
+      <label for="b-lines">One per line: name | link</label>
+      <textarea id="b-lines" spellcheck="false">window-seat | https://menu.nairamenus.in/your-cafe/W1
+rooftop-1 | https://menu.nairamenus.in/your-cafe/R1</textarea>
+    </div>
+    <div class="dlrow" style="max-width:420px"><button class="btn" type="button" id="bulk-go">Make ZIP</button></div>
+    <div class="results" id="bulk-results"></div>
+  </div>
+</div></section>
+
+<section id="how" class="band gut" style="background:var(--tint)"><div class="wrap">
+  <span class="eyebrow">How it works</span>
+  <h2>Three steps. Zero design skills needed.</h2>
+  <div class="how">
+    <div><b>Step 1</b><h3>Pick what it opens</h3><p>Menu link, Wi-Fi, UPI, WhatsApp, Google Review, contact card and 8 more.</p></div>
+    <div><b>Step 2</b><h3>Make it look like you</h3><p>Your colours, your logo, a giraffe, a coffee cup, or the whole code hidden inside your logo.</p></div>
+    <div><b>Step 3</b><h3>Test and download</h3><p>Every design gets a scan test before you download. PNG for print, SVG for your designer.</p></div>
+  </div>
+  <div class="compare">
+    <table>
+      <thead><tr><th>What you get</th><th>Naira QR Studio</th><th>Many "free" generators</th></tr></thead>
+      <tbody>
+        <tr><td>Price</td><td>₹0, always</td><td>Free trial, then monthly plan</td></tr>
+        <tr><td>Does the QR stop working?</td><td>Never. The link lives inside the code</td><td>Often stops after the trial ends</td></tr>
+        <tr><td>Watermark</td><td>None</td><td>Sometimes on the free plan</td></tr>
+        <tr><td>Logo and shapes</td><td>Included</td><td>Usually a paid feature</td></tr>
+        <tr><td>SVG for print</td><td>Included</td><td>Usually a paid feature</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<section class="band gut" id="for-business"><div class="wrap">
+  <div class="plug">
+    <div class="plug-copy">
+      <span class="eyebrow" style="color:var(--pink)">For restaurants and stores</span>
+      <h2>Your QR is free. The <em>peeling sticker</em> on table 4 isn't.</h2>
+      <p>Paper QRs fade, tear and end up under the ketchup bottle. Guests squint, give up, and ask the waiter for a menu anyway.</p>
+      <ul class="vs">
+        <li class="old"><i>✕</i><div><b>Paper sticker</b>Fades, curls at the corner, reprint every time the menu changes.</div></li>
+        <li class="new"><i>✓</i><div><b>Naira NFC + QR standee</b>Wipe-clean, looks premium. Guests tap or scan. Update your menu anytime, no reprint.</div></li>
+      </ul>
+      <div class="plug-cta">
+        <a class="btn wa" href="https://wa.me/919225344169?text=Hi%20Naira!%20I%20made%20a%20QR%20on%20QR%20Studio%20and%20want%20a%20premium%20NFC%20standee%20for%20my%20place." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>Get a standee on WhatsApp</a>
+        <a class="btn line" href="/quick-solutions">See all products</a>
+        <small>Replies within working hours. Pune team, Aundh.</small>
+      </div>
+    </div>
+
+    <div class="scene" aria-hidden="true">
+      <div class="sticker"><div id="plug-paper"></div><span>SCAN FOR MENU</span></div>
+      <span class="tag before">Paper sticker</span>
+      <div class="standee">
+        <div class="standee-face">
+          <div class="standee-top">Tap or scan<span class="nfc"><svg viewBox="0 0 24 24"><path d="M8 7a7 7 0 0 1 0 10M11.5 4.5a11 11 0 0 1 0 15M4.5 9.5a3.5 3.5 0 0 1 0 5"/></svg></span></div>
+          <div class="standee-qr" id="plug-standee"></div>
+          <div class="standee-foot"><span>Menu · Wi-Fi · Review</span><b>T4</b></div>
+        </div>
+        <div class="standee-base"></div>
+      </div>
+      <span class="tag after">Naira standee</span>
+    </div>
+
+    <div class="plug-products" role="list" aria-label="Naira products">
+      <a class="prod" role="listitem" href="/tap"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="15" rx="2"/><path d="M4 21h16M10 8.5a3 3 0 0 1 0 4M13 7a5.5 5.5 0 0 1 0 7"/></svg></span><span><b>Naira Tap</b><span>NFC table units. One tap opens your live menu.</span></span><span class="go">→</span></a>
+      <a class="prod" role="listitem" href="/quick-solutions"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 11a5 5 0 0 1 6 0M8.5 13.5a2.5 2.5 0 0 1 3 0M16 10.5l.7 1.4 1.5.2-1.1 1 .3 1.5-1.4-.7-1.4.7.3-1.5-1.1-1 1.5-.2z"/></svg></span><span><b>Wi-Fi and Review cards</b><span>Tap to join Wi-Fi. Tap to leave a review.</span></span><span class="go">→</span></a>
+      <a class="prod" role="listitem" href="/growth"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><path d="M9.5 10.5l2 2 3.5-4"/></svg></span><span><b>Naira Growth</b><span>Get found on Google Maps when people search nearby.</span></span><span class="go">→</span></a>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq" class="band gut" style="padding-top:0"><div class="wrap">
+  <span class="eyebrow">FAQ</span>
+  <h2>Questions people ask before they trust a free tool</h2>
+  <div class="faq">
+    <details><summary>Can you make a design that isn't in the studio?</summary><p>Yes. Burger, rocket, your mascot, your logo, anything. Send your idea, logo or a photo you like on WhatsApp at +91 92253 44169. We share the design and any cost in chat before we start.</p></details>
+    <details><summary>Do these QR codes expire?</summary><p>No. These are static QR codes. The link is written into the code itself, so it keeps working forever, even if you never visit this page again. Just make sure the link it opens stays live.</p></details>
+    <details><summary>Is it really free? What's the catch?</summary><p>No watermark, no trial, no scan limits. We ask for your email once to unlock downloads, and we may send you the occasional tip for growing your business. That's the whole catch.</p></details>
+    <details><summary>Do you store my logo or Wi-Fi password?</summary><p>No. The studio runs entirely in your browser. Your logo, links and passwords are never uploaded to our servers. Only your email is saved when you sign up.</p></details>
+    <details><summary>Will an animal or Logo Art QR really scan?</summary><p>Yes, if the scan test shows green. We test every design 4 ways, including small and blurry, before you download. For Logo Art, slide towards "Easy to scan" or press "Make it scan better" if the meter is low. Always test one print with your phone before printing hundreds.</p></details>
+    <details><summary>What size should I print it?</summary><p>At least 2.5 cm wide for a table or card. For posters, about one tenth of the scanning distance, so 10 cm for someone scanning from 1 metre. Print animal and Logo Art designs a bit bigger, around 5 to 8 cm.</p></details>
+    <details><summary>Can I change the link after printing?</summary><p>Not with a static QR, the link is fixed. Tip: point the QR to a page you control, like your own website or Naira menu link, then update that page whenever you want.</p></details>
+    <details><summary>Can I use these commercially?</summary><p>Yes. Menus, packaging, posters, cards, ads. The design and the code are yours.</p></details>
+  </div>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+<div><a class="brand" href="/" style="margin-bottom:12px"><img src="/site/img/naira-logo-light.png" alt="Naira Menus" width="730" height="238"></a>
+<p>Smart menus, billing and Google growth for Indian businesses. Made in Pune.</p></div>
+<div><h4>Products</h4><a href="/tap">Naira Tap</a><a href="/billing">Naira Billing</a><a href="/growth">Naira Growth</a><a href="/quick-solutions">Quick Solutions</a><a href="/qr-studio" aria-current="page">Free QR Generator</a></div>
+<div><h4>Talk to us</h4><a href="https://wa.me/919225344169?text=Hi%20Naira%21" target="_blank" rel="noopener">WhatsApp +91 92253 44169</a><a href="mailto:support@nairamenus.in">support@nairamenus.in</a><a href="https://www.instagram.com/naira.menus/" target="_blank" rel="noopener">@naira.menus</a></div>
+<div><h4>Company</h4><a href="/about">About Us</a><a href="/blog">Blog</a><a href="/nfc">NFC Check</a><p>Rajhans Residency, Aundh, Pune, Maharashtra 411067</p></div>
+<p class="legal">© <span id="yr">2026</span> Naira Menus Pvt Ltd · CIN U62011PN2026PTC258171 · QR codes are generated in your browser. Your logo, links and Wi-Fi passwords never leave your device.</p>
+</div></footer>
+
+<div class="modal" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <form class="modal-box" id="gate-form" novalidate>
+    <h3 id="gate-title">One email, unlimited QRs</h3>
+    <p>Drop your email once and download as many QR codes as you like. Free, no watermark, no expiry.</p>
+    <div class="field"><label for="g-name">Your name or business (optional)</label><input id="g-name" type="text" autocomplete="organization" placeholder="CeeCee's Cafe"></div>
+    <div class="field"><label for="g-email">Email</label><input id="g-email" type="email" autocomplete="email" required placeholder="you@business.com"></div>
+    <p class="err" id="g-err" hidden></p>
+    <button class="btn" type="submit" id="g-submit">Unlock downloads</button>
+    <button class="btn ghost" type="button" id="g-cancel">Not now</button>
+    <p class="fine">We'll send you QR tips and the occasional Naira update. Unsubscribe anytime. Your logo and QR content are never uploaded.</p>
+  </form>
+</div>
+<input id="logo-file" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
+<a class="wa-fab" id="wa-fab" data-wa href="https://wa.me/919225344169?text=Hi%20Naira%21%20I%20want%20a%20custom%20QR%20design.%0AWhat%20it%20should%20look%20like%3A%20%0AMy%20link%3A%20%0ABusiness%20name%3A%20" target="_blank" rel="noopener" aria-label="Get a custom QR on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg><span>Custom QR on WhatsApp</span></a>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/zxing-wasm@3.1.5/dist/iife/reader/index.js"></script>
+<script>
+"use strict";
+/* =========================================================
+   SETTINGS. Paste your Google Apps Script web app URL below
+   to save signups into a Google Sheet (see README.md).
+   ========================================================= */
+const CONFIG = {
+  signupEndpoint: "",            // e.g. "https://script.google.com/macros/s/XXXX/exec"
+  source: "qr-studio",
+};
+
+qrcode.stringToBytes = qrcode.stringToBytesFuncs['UTF-8'];
+const $ = id => document.getElementById(id);
+const f = n => +n.toFixed(3);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ---------------- QR content types ---------------- */
+const ICONS = {
+  url:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+  wifi:'<path d="M2 9a15 15 0 0 1 20 0"/><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".8"/>',
+  whatsapp:'<path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/>',
+  review:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',
+  upi:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+  social:'<rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.8" cy="7.2" r=".6"/>',
+  vcard:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.5a3.6 3.6 0 0 1 7 0M14 10h4M14 13.5h4"/>',
+  phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+  sms:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>',
+  email:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  location:'<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+  event:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  text:'<path d="M5 6h14M12 6v13M9 19h6"/>',
+  app:'<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/>',
+};
+const digits = s => String(s||'').replace(/[^\d]/g,'');
+const intl = s => { let d = digits(s); if (d.length === 10) d = '91' + d; return d; };
+const wifiEsc = s => String(s||'').replace(/([\\;,:"])/g,'\\$1');
+const vEsc = s => String(s||'').replace(/([\\;,])/g,'\\$1').replace(/\n/g,'\\n');
+const withProto = u => { u = String(u||'').trim(); if (!u) return ''; return /^[a-z][a-z0-9+.-]*:/i.test(u) ? u : 'https://' + u; };
+const icsDate = v => v ? v.replace(/[-:]/g,'').slice(0,13) + '00' : '';
+const SOCIAL = {instagram:'https://instagram.com/', facebook:'https://facebook.com/', youtube:'https://youtube.com/@', linkedin:'https://linkedin.com/in/', x:'https://x.com/', zomato:'', swiggy:''};
+
+const TYPES = [
+  {k:'url', label:'Website / Menu', fields:[{id:'url',label:'Link',type:'url',ph:'https://nairamenus.in',full:1,val:'https://nairamenus.in'}],
+    build:v => v.url ? {text:withProto(v.url)} : {err:'Add a link'}},
+  {k:'wifi', label:'Wi-Fi login', fields:[{id:'ssid',label:'Network name',ph:'CafeGuest',val:'CafeGuest'},{id:'pass',label:'Password',ph:'chai1234',val:''},
+      {id:'sec',label:'Security',type:'select',opts:[['WPA','WPA / WPA2 / WPA3'],['WEP','WEP'],['nopass','No password']]},{id:'hidden',label:'Hidden network',type:'check'}],
+    build:v => v.ssid ? {text:`WIFI:T:${v.sec||'WPA'};S:${wifiEsc(v.ssid)};${v.sec==='nopass'?'':`P:${wifiEsc(v.pass)};`}${v.hidden?'H:true;':''};`} : {err:'Add the Wi-Fi name'}},
+  {k:'whatsapp', label:'WhatsApp', fields:[{id:'num',label:'WhatsApp number',type:'tel',ph:'98765 43210',hint:'10 digits get +91 added'},{id:'msg',label:'Pre-filled message',ph:'Hi! I want to book a table',full:1}],
+    build:v => digits(v.num).length >= 10 ? {text:`https://wa.me/${intl(v.num)}${v.msg?`?text=${encodeURIComponent(v.msg)}`:''}`} : {err:'Add a WhatsApp number'}},
+  {k:'review', label:'Google Review', fields:[{id:'pid',label:'Place ID or review link',ph:'ChIJ… or https://g.page/r/…/review',full:1,
+      hint:'Find your Place ID with <a href="https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder" target="_blank" rel="noopener">Google\'s Place ID finder</a>, or copy "Ask for reviews" link from your Google Business Profile.'}],
+    build:v => { const p = String(v.pid||'').trim(); if (!p) return {err:'Add your Place ID or review link'};
+      return {text: /^[A-Za-z0-9_-]{20,}$/.test(p) && !p.includes('.') ? `https://search.google.com/local/writereview?placeid=${p}` : withProto(p)}; }},
+  {k:'upi', label:'UPI payment', fields:[{id:'pa',label:'UPI ID',ph:'cafe@okhdfcbank'},{id:'pn',label:'Payee name',ph:"CeeCee's Cafe"},{id:'am',label:'Amount (optional)',type:'number',ph:'250'},{id:'tn',label:'Note (optional)',ph:'Table 4'}],
+    build:v => /.+@.+/.test(v.pa||'') ? {text:'upi://pay?' + [['pa',v.pa.trim()],['pn',v.pn],['am',v.am && (+v.am).toFixed(2)],['cu','INR'],['tn',v.tn]].filter(x=>x[1]).map(([a,b])=>a+'='+encodeURIComponent(b).replace(/%40/g,'@')).join('&')} : {err:'Add a valid UPI ID like name@bank'}},
+  {k:'social', label:'Social profile', fields:[{id:'net',label:'Platform',type:'select',opts:[['instagram','Instagram'],['facebook','Facebook'],['youtube','YouTube'],['linkedin','LinkedIn'],['x','X (Twitter)'],['zomato','Zomato / Swiggy link']]},
+      {id:'handle',label:'Username or link',ph:'nairamenus',val:'nairamenus'}],
+    build:v => { const h = String(v.handle||'').trim().replace(/^@/,''); if (!h) return {err:'Add a username or link'};
+      if (/[./]/.test(h)) return {text:withProto(h)}; const base = SOCIAL[v.net||'instagram']; return base ? {text: base + h} : {err:'Paste the full Zomato / Swiggy link'}; }},
+  {k:'vcard', label:'Contact card', fields:[{id:'fn',label:'Full name',ph:'Ashay Gohad'},{id:'org',label:'Company',ph:'Naira Menus'},{id:'tel',label:'Phone',type:'tel',ph:'+91 92253 44169'},
+      {id:'em',label:'Email',type:'email',ph:'hello@business.com'},{id:'title',label:'Job title',ph:'Founder'},{id:'web',label:'Website',ph:'nairamenus.in'},{id:'adr',label:'Address',ph:'Aundh, Pune',full:1}],
+    build:v => v.fn ? {text:['BEGIN:VCARD','VERSION:3.0',`N:${vEsc(v.fn.split(' ').slice(1).join(' '))};${vEsc(v.fn.split(' ')[0])};;;`,`FN:${vEsc(v.fn)}`,
+      v.org&&`ORG:${vEsc(v.org)}`,v.title&&`TITLE:${vEsc(v.title)}`,v.tel&&`TEL;TYPE=CELL:${v.tel.replace(/\s/g,'')}`,v.em&&`EMAIL:${v.em}`,v.web&&`URL:${withProto(v.web)}`,v.adr&&`ADR:;;${vEsc(v.adr)};;;;`,'END:VCARD'].filter(Boolean).join('\n')} : {err:'Add a name'}},
+  {k:'phone', label:'Phone call', fields:[{id:'num',label:'Phone number',type:'tel',ph:'+91 92253 44169',full:1}],
+    build:v => digits(v.num).length >= 3 ? {text:'tel:' + (String(v.num).trim().startsWith('+') ? '+' : (digits(v.num).length===10 ? '+91' : '')) + digits(v.num)} : {err:'Add a phone number'}},
+  {k:'sms', label:'SMS', fields:[{id:'num',label:'Phone number',type:'tel',ph:'98765 43210'},{id:'msg',label:'Message',ph:'BOOK 2 people 8pm'}],
+    build:v => digits(v.num).length >= 3 ? {text:`SMSTO:${digits(v.num).length===10?'+91':''}${digits(v.num)}:${v.msg||''}`} : {err:'Add a phone number'}},
+  {k:'email', label:'Email', fields:[{id:'to',label:'Send to',type:'email',ph:'hello@business.com'},{id:'sub',label:'Subject',ph:'Party booking'},{id:'body',label:'Message',type:'area',full:1}],
+    build:v => /.+@.+/.test(v.to||'') ? {text:`mailto:${v.to.trim()}` + ((v.sub||v.body) ? '?' + [v.sub&&'subject='+encodeURIComponent(v.sub), v.body&&'body='+encodeURIComponent(v.body)].filter(Boolean).join('&') : '')} : {err:'Add an email address'}},
+  {k:'location', label:'Location', fields:[{id:'q',label:'Address, place name or Maps link',ph:'Rajhans Residency, Aundh, Pune',full:1}],
+    build:v => { const q = String(v.q||'').trim(); if (!q) return {err:'Add an address or Maps link'};
+      return {text: /^https?:\/\//.test(q) ? q : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`}; }},
+  {k:'event', label:'Event', fields:[{id:'sum',label:'Event name',ph:'Live music night',full:1},{id:'st',label:'Starts',type:'datetime-local'},{id:'en',label:'Ends',type:'datetime-local'},{id:'loc',label:'Venue',ph:'Baner, Pune'},{id:'desc',label:'Details',ph:'Entry free'}],
+    build:v => (v.sum && v.st) ? {text:['BEGIN:VEVENT',`SUMMARY:${vEsc(v.sum)}`,`DTSTART:${icsDate(v.st)}`,v.en&&`DTEND:${icsDate(v.en)}`,v.loc&&`LOCATION:${vEsc(v.loc)}`,v.desc&&`DESCRIPTION:${vEsc(v.desc)}`,'END:VEVENT'].filter(Boolean).join('\n')} : {err:'Add an event name and start time'}},
+  {k:'app', label:'App / file link', fields:[{id:'url',label:'Play Store, App Store, PDF or Drive link',type:'url',ph:'https://drive.google.com/…',full:1}],
+    build:v => v.url ? {text:withProto(v.url)} : {err:'Add a link'}},
+  {k:'text', label:'Plain text', fields:[{id:'t',label:'Text',type:'area',ph:'Today\'s special: Filter coffee + bun maska ₹120',full:1}],
+    build:v => v.t ? {text:v.t} : {err:'Add some text'}},
+];
+
+/* ---------------- shapes (viewBox 0..100) ---------------- */
+const C=(cx,cy,r,role)=>({d:`M${f(cx-r)} ${f(cy)}a${f(r)} ${f(r)} 0 1 0 ${f(2*r)} 0a${f(r)} ${f(r)} 0 1 0 ${f(-2*r)} 0Z`,role});
+const E=(cx,cy,rx,ry,role)=>({d:`M${f(cx-rx)} ${f(cy)}a${f(rx)} ${f(ry)} 0 1 0 ${f(2*rx)} 0a${f(rx)} ${f(ry)} 0 1 0 ${f(-2*rx)} 0Z`,role});
+const R=(x,y,w,h,r,role)=>({d:`M${f(x+r)} ${f(y)}H${f(x+w-r)}A${f(r)} ${f(r)} 0 0 1 ${f(x+w)} ${f(y+r)}V${f(y+h-r)}A${f(r)} ${f(r)} 0 0 1 ${f(x+w-r)} ${f(y+h)}H${f(x+r)}A${f(r)} ${f(r)} 0 0 1 ${f(x)} ${f(y+h-r)}V${f(y+r)}A${f(r)} ${f(r)} 0 0 1 ${f(x+r)} ${f(y)}Z`,role});
+const P=(pts,role)=>({d:'M'+pts.map(p=>p.join(' ')).join('L')+'Z',role});
+const L=(d,role,w)=>({d,role,stroke:w});
+const SHAPES = {
+  frame:{name:'Frame', parts:[R(1,1,98,98,12)], details:[], qr:[7,7,86]},
+  giraffe:{name:'Giraffe',
+    parts:[R(4,36,64,50,10),R(12,78,9,20,4.5),R(25,78,9,20,4.5),R(46,78,9,20,4.5),R(58,78,9,20,4.5),
+      P([[52,46],[60,12],[73,14],[67,50]]),E(73,13,13,8),E(85,16,5,4.5),
+      R(62,2,3.4,9,1.7),C(63.7,3.4,2.6),R(69,2,3.4,9,1.7),C(70.7,3.4,2.6),E(59,10,5,2.4),
+      P([[6,46],[0,62],[2.5,63],[8,51]]),C(1.4,64,2.4)],
+    details:[C(76,11,1.7,'ink'),C(87.5,15,0.9,'ink'),C(62,22,2.6,'accent'),C(64.5,31,2.3,'accent'),C(61,39,2,'accent'),C(66,40,1.6,'accent'),
+      C(57,54,3,'accent'),C(63,64,2.4,'accent'),C(56,73,2.2,'accent'),C(64,80,1.6,'accent'),
+      R(12,94,9,4,2,'accent'),R(25,94,9,4,2,'accent'),R(46,94,9,4,2,'accent'),R(58,94,9,4,2,'accent')],
+    qr:[8,40,42]},
+  elephant:{name:'Elephant',
+    parts:[R(40,22,58,60,12),C(28,40,19),P([[11,44],[22,50],[17,78],[9,88],[3,84],[8,74]]),R(42,72,11,25,4.5),R(56,72,11,25,4.5),R(72,72,11,25,4.5),R(85,70,10,27,4.5),P([[96,48],[99.5,60],[97.5,61],[94,52]])],
+    details:[E(41,44,10,16,'accent'),C(22,35,1.8,'ink'),P([[16,52],[23,55],[13,60]],'bg')], qr:[54,28,40]},
+  cat:{name:'Cat',
+    parts:[C(50,24,19),P([[33,17],[33,0],[47,8]]),P([[67,17],[67,0],[53,8]]),R(18,40,64,58,22),P([[79,88],[94,74],[97,56],[92,55],[89,71],[77,82]])],
+    details:[P([[36,14],[36,5],[43.5,9.5]],'accent'),P([[64,14],[64,5],[56.5,9.5]],'accent'),E(43,22,2,2.8,'ink'),E(57,22,2,2.8,'ink'),P([[47.6,29],[52.4,29],[50,32]],'accent'),
+      L('M28 28L41 30M28 34L41 32.5M72 28L59 30M72 34L59 32.5','ink',0.7)], qr:[29,47,42]},
+  owl:{name:'Owl', parts:[E(50,56,40,42),P([[18,26],[14,4],[36,17]]),P([[82,26],[86,4],[64,17]])],
+    details:[C(34,30,11,'bg'),C(66,30,11,'bg'),C(34,30,5,'ink'),C(66,30,5,'ink'),C(35.6,28.4,1.4,'bg'),C(67.6,28.4,1.4,'bg'),P([[46,38],[54,38],[50,45.5]],'accent'),E(40,97.5,5,2.5,'accent'),E(60,97.5,5,2.5,'accent')], qr:[29,48,42]},
+  panda:{name:'Panda', parts:[C(29,9,8),C(71,9,8),C(50,27,21),R(14,42,72,56,24)],
+    details:[C(29,9,8,'accent'),C(71,9,8,'accent'),E(41,26,5.5,7,'accent'),E(59,26,5.5,7,'accent'),C(41.5,25,2,'bg'),C(58.5,25,2,'bg'),E(50,37,3.2,2.2,'accent')], qr:[29,50,42]},
+  bear:{name:'Teddy', parts:[C(20,25,11),C(80,25,11),E(50,58,40,38)], details:[C(20,25,6,'accent'),C(80,25,6,'accent'),C(38,32,2.4,'ink'),C(62,32,2.4,'ink')], qr:[28,42,44]},
+  rabbit:{name:'Bunny', parts:[E(36,20,8,19),E(64,20,8,19),E(50,62,38,34)],
+    details:[E(36,20,4,14,'accent'),E(64,20,4,14,'accent'),C(40,37,2.2,'ink'),C(60,37,2.2,'ink'),L('M13 60L26 62M13 67L26 66M87 60L74 62M87 67L74 66','ink',0.7)], qr:[29,44,42]},
+  turtle:{name:'Turtle', parts:[C(50,52,31),C(50,13,9),C(25,30,8),C(75,30,8),C(25,76,8),C(75,76,8),P([[46,80],[54,80],[50,93]])],
+    details:[C(46.5,10,1.5,'ink'),C(53.5,10,1.5,'ink'),L(C(50,52,30.5).d,'accent',1.1)], qr:[29,31,42]},
+  fish:{name:'Fish', parts:[E(44,50,38,28),P([[74,50],[98,26],[93,50],[98,74]]),P([[30,26],[52,10],[60,25]]),P([[36,76],[50,90],[54,77]])],
+    details:[C(16,44,3.4,'bg'),C(16,44,1.7,'ink'),L('M22 36Q27 50 22 64','accent',1.6)], qr:[25,31,38]},
+  cup:{name:'Coffee', parts:[R(12,24,62,64,12),C(78,52,13),E(43,92,40,6)], details:[C(78,52,6,'bg'),L('M30 18Q26 12 30 6M43 18Q39 12 43 6M56 18Q52 12 56 6','shape',2.2)], qr:[20,30,46]},
+  heart:{name:'Heart', parts:[C(30,34,22),C(70,34,22),P([[9.5,40],[50,94],[90.5,40],[50,24]])], details:[], qr:[31,28,38]},
+  circle:{name:'Circle', parts:[C(50,50,48)], details:[], qr:[20,20,60]},
+  square:{name:'Square', parts:[R(2,2,96,96,18)], details:[], qr:[16,16,68]},
+};
+const ANIMALS = Object.keys(SHAPES).filter(k => k !== 'frame');
+const PRESETS = [
+  {name:'Naira pink', shape:'#ff2ba3', ink:'#1b1420', eye:'#ff2ba3', accent:'#b5126f', card:'#ffffff'},
+  {name:'Classic black', shape:'#111111', ink:'#111111', eye:'#111111', accent:'#555555', card:'#ffffff'},
+  {name:'Midnight', shape:'#1f2a44', ink:'#1f2a44', eye:'#1f2a44', accent:'#f2b84b', card:'#ffffff'},
+  {name:'Safari', shape:'#e8a33d', ink:'#3b2412', eye:'#3b2412', accent:'#8a4b1c', card:'#fffaf0'},
+  {name:'Forest', shape:'#2f7d4f', ink:'#173a26', eye:'#2f7d4f', accent:'#174a2c', card:'#ffffff'},
+  {name:'Chai', shape:'#8a5a3b', ink:'#3a2417', eye:'#8a5a3b', accent:'#d9a066', card:'#fff8ef'},
+];
+
+/* ---------------- state ---------------- */
+const DEFAULTS = {type:'url', values:{}, mode:'shapes', shapeKey:'giraffe', style:'solid', module:'rounded', eye:'rounded',
+  caption:'Scan for menu', capColor:'#ff2ba3', ec:'auto', density:50, outline:true, seed:7, size:2400, transparent:false,
+  shapeColor:'#ff2ba3', ink:'#1b1420', eyeColor:'#ff2ba3', accent:'#b5126f', card:'#ffffff',
+  art:{shape:'circle', fit:'cover', dots:60, qr:71, bg:'#ffffff', rot:1}, bulkMode:'range'};
+let S = structuredClone(DEFAULTS);
+const saved = store.get('nqs-state2'); if (saved) { S = {...S, ...saved, art:{...S.art, ...(saved.art||{})}}; }
+if (!SHAPES[S.shapeKey]) S.shapeKey = 'giraffe';
+let LOGO = null;   // {url, img}
+const persist = () => store.set('nqs-state2', {...S});
+
+/* ---------------- geometry ---------------- */
+const hitCtx = document.createElement('canvas').getContext('2d');
+const pathCache = new Map();
+const p2d = d => { let p = pathCache.get(d); if (!p) { p = new Path2D(d); pathCache.set(d, p); } return p; };
+const inside = (sh, x, y) => sh.parts.some(pt => hitCtx.isPointInPath(p2d(pt.d), x, y));
+function rand(i, j, seed){ let h = (i*374761393 + j*668265263 + seed*2246822519) | 0; h = Math.imul(h ^ (h>>>13), 1274126177); h ^= h>>>16; return ((h>>>0) % 10000) / 10000; }
+function moduleD(style, x, y, m){
+  if (style === 'dots') { const r = m*0.43, cx = x+m/2, cy = y+m/2; return `M${f(cx-r)} ${f(cy)}a${f(r)} ${f(r)} 0 1 0 ${f(2*r)} 0a${f(r)} ${f(r)} 0 1 0 ${f(-2*r)} 0Z`; }
+  if (style === 'rounded') { const s = m*0.9, o = (m-s)/2; return R(x+o, y+o, s, s, m*0.3).d; }
+  return `M${f(x)} ${f(y)}h${f(m+0.02)}v${f(m+0.02)}h${f(-m-0.02)}Z`;
+}
+function finderD(style, x, y, m){
+  if (style === 'circle') return {ring: C(x+3.5*m, y+3.5*m, 3.5*m).d + C(x+3.5*m, y+3.5*m, 2.5*m).d, dot: C(x+3.5*m, y+3.5*m, 1.5*m).d};
+  if (style === 'rounded') return {ring: R(x, y, 7*m, 7*m, 2.2*m).d + R(x+m, y+m, 5*m, 5*m, 1.4*m).d, dot: R(x+2*m, y+2*m, 3*m, 3*m, 0.9*m).d};
+  return {ring: R(x, y, 7*m, 7*m, 0.001).d + R(x+m, y+m, 5*m, 5*m, 0.001).d, dot: R(x+2*m, y+2*m, 3*m, 3*m, 0.001).d};
+}
+function makeQR(text, ec){ const q = qrcode(0, ec); q.addData(text, 'Byte'); q.make(); return q; }
+
+/* ---------------- renderer: classic + shapes ---------------- */
+function renderStd(o){
+  const sh = SHAPES[o.shapeKey];
+  const qr = makeQR(o.text, o.ec), n = qr.getModuleCount(), qz = o.shapeKey === 'frame' ? 3 : 2;
+  const [qx, qy, qs] = sh.qr, m = qs / (n + 2*qz), x0 = qx + qz*m, y0 = qy + qz*m;
+  const capH = o.caption ? 15 : 0, pad = 4, W = 100 + 2*pad, H = 100 + capH + 2*pad;
+  const col = {shape:o.shapeColor, ink:o.ink, accent:o.accent, bg:o.card};
+  const out = [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${-pad} ${-pad} ${W} ${H}" width="${W*10}" height="${H*10}">`];
+  if (!o.transparent) out.push(`<rect x="${-pad}" y="${-pad}" width="${W}" height="${H}" fill="#ffffff"/>`);
+  if (o.style === 'dots' && o.shapeKey !== 'frame') {
+    if (o.outline) out.push(`<g fill="none" stroke="${col.shape}" stroke-width="${f(m*1.6)}" stroke-linejoin="round">${sh.parts.map(p=>`<path d="${p.d}"/>`).join('')}</g>`);
+    out.push(`<g fill="${col.bg}">${sh.parts.map(p=>`<path d="${p.d}"/>`).join('')}</g>`);
+    let deco = ''; const e = m*0.42, dens = o.density/100;
+    const k0 = Math.floor(-x0/m)-1, k1 = Math.ceil((100-x0)/m)+1, j0 = Math.floor(-y0/m)-1, j1 = Math.ceil((100-y0)/m)+1;
+    for (let j = j0; j <= j1; j++) for (let k = k0; k <= k1; k++) {
+      const x = x0 + k*m, y = y0 + j*m, cx = x + m/2, cy = y + m/2;
+      if (cx > qx-m && cx < qx+qs+m && cy > qy-m && cy < qy+qs+m) continue;
+      if (rand(k, j, o.seed) >= dens) continue;
+      if (!(inside(sh,cx,cy) && inside(sh,cx-e,cy-e) && inside(sh,cx+e,cy-e) && inside(sh,cx-e,cy+e) && inside(sh,cx+e,cy+e))) continue;
+      deco += moduleD(o.module, x, y, m);
+    }
+    out.push(`<path fill="${col.shape}" d="${deco}"/>`);
+  } else out.push(`<g fill="${col.shape}">${sh.parts.map(p=>`<path d="${p.d}"/>`).join('')}</g>`);
+  for (const d of sh.details) out.push(d.stroke ? `<path d="${d.d}" fill="none" stroke="${col[d.role]}" stroke-width="${d.stroke}" stroke-linecap="round"/>` : `<path d="${d.d}" fill="${col[d.role]}"/>`);
+  out.push(`<rect x="${f(qx)}" y="${f(qy)}" width="${f(qs)}" height="${f(qs)}" rx="${f(o.shapeKey==='frame'?m*3:m*1.6)}" fill="${col.bg}"/>`);
+  let lo = null;
+  if (o.logo) { const ls = Math.max(5, Math.round(n*0.22)) | 1, st = (n-ls)/2; lo = {st, en:st+ls}; }
+  const fin = (r,c) => (r<7&&c<7)||(r<7&&c>=n-7)||(r>=n-7&&c<7);
+  let data = '';
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+    if (fin(r,c) || !qr.isDark(r,c)) continue;
+    if (lo && r >= lo.st-0.5 && r < lo.en-0.5 && c >= lo.st-0.5 && c < lo.en-0.5) continue;
+    data += moduleD(o.module, x0 + c*m, y0 + r*m, m);
+  }
+  out.push(`<path fill="${o.ink}" d="${data}"/>`);
+  let ring = '', dot = '';
+  for (const [r,c] of [[0,0],[0,n-7],[n-7,0]]) { const fd = finderD(o.eye, x0+c*m, y0+r*m, m); ring += fd.ring; dot += fd.dot; }
+  out.push(`<path fill="${o.eyeColor}" fill-rule="evenodd" d="${ring}"/><path fill="${o.eyeColor}" d="${dot}"/>`);
+  if (lo) {
+    const a = Math.floor(lo.st), bs = (Math.ceil(lo.en) - a)*m, bx = x0 + a*m, by = y0 + a*m;
+    out.push(`<rect x="${f(bx)}" y="${f(by)}" width="${f(bs)}" height="${f(bs)}" rx="${f(m)}" fill="${col.bg}"/>`);
+    out.push(`<image href="${o.logo}" x="${f(bx+m*0.6)}" y="${f(by+m*0.6)}" width="${f(bs-m*1.2)}" height="${f(bs-m*1.2)}" preserveAspectRatio="xMidYMid meet"/>`);
+  }
+  if (o.caption) out.push(`<text x="50" y="110.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="8" fill="${o.capColor}">${esc(o.caption)}</text>`);
+  out.push('</svg>');
+  return {svg: out.join(''), n};
+}
+
+/* ---------------- renderer: Logo Art ---------------- */
+function rgb2hsl(r,g,b){ r/=255; g/=255; b/=255; const mx = Math.max(r,g,b), mn = Math.min(r,g,b); let h = 0, s = 0, l = (mx+mn)/2;
+  if (mx !== mn) { const d = mx-mn; s = l > .5 ? d/(2-mx-mn) : d/(mx+mn); h = mx===r ? (g-b)/d+(g<b?6:0) : mx===g ? (b-r)/d+2 : (r-g)/d+4; h /= 6; } return [h,s,l]; }
+function hsl2rgb(h,s,l){ if (!s) { const v = Math.round(l*255); return [v,v,v]; } const q = l < .5 ? l*(1+s) : l+s-l*s, p = 2*l-q;
+  const t = x => { x = (x+1)%1; return x < 1/6 ? p+(q-p)*6*x : x < .5 ? q : x < 2/3 ? p+(q-p)*(2/3-x)*6 : p; }; return [t(h+1/3),t(h),t(h-1/3)].map(v => Math.round(v*255)); }
+const hex = ([r,g,b]) => '#' + [r,g,b].map(v => v.toString(16).padStart(2,'0')).join('');
+const lumRGB = (r,g,b) => (0.299*r + 0.587*g + 0.114*b) / 255;
+let artCache = {key:null};
+function artBase(o){
+  const key = [LOGO && LOGO.url.length, LOGO && LOGO.url.slice(-40), o.art.fit, o.art.bg].join('|');
+  if (artCache.key === key) return artCache;
+  const B = 1600, cv = document.createElement('canvas'); cv.width = cv.height = B; const cx = cv.getContext('2d', {willReadFrequently:true});
+  cx.fillStyle = o.art.bg; cx.fillRect(0, 0, B, B);
+  const im = LOGO.img, iw = im.naturalWidth || im.width || B, ih = im.naturalHeight || im.height || B;
+  const sc = (o.art.fit === 'cover' ? Math.max(B/iw, B/ih) : Math.min(B/iw, B/ih) * 0.92);
+  cx.imageSmoothingQuality = 'high'; cx.drawImage(im, (B - iw*sc)/2, (B - ih*sc)/2, iw*sc, ih*sc);
+  const px = cx.getImageData(0, 0, B, B).data;
+  // dominant brand colour: saturation-weighted mean
+  let wr = 0, wg = 0, wb = 0, ws = 0;
+  for (let y = 0; y < B; y += 16) for (let x = 0; x < B; x += 16) { const i = (y*B+x)*4, [h,s,l] = rgb2hsl(px[i],px[i+1],px[i+2]); const w = s*(1-Math.abs(2*l-1)); wr += px[i]*w; wg += px[i+1]*w; wb += px[i+2]*w; ws += w; }
+  const dom = ws > 20 ? [wr/ws, wg/ws, wb/ws] : [40,40,40];
+  const [dh, ds] = rgb2hsl(...dom);
+  artCache = {key, B, url: cv.toDataURL('image/png'), px, deep: hex(hsl2rgb(dh, Math.min(1, ds*0.9+0.1), 0.19)), lite: hex(hsl2rgb(dh, Math.min(1, ds*0.9+0.1), 0.91)), hue: dh, sat: ds};
+  return artCache;
+}
+function renderArt(o){
+  const base = artBase(o), W = 1000, k = base.B / W;
+  const qr = makeQR(o.text, o.ec), n = qr.getModuleCount(), rot = ((o.art.rot % 4) + 4) % 4;
+  const dark = (r, c) => { let rr = r, cc = c; for (let i = 0; i < rot; i++) { const t = rr; rr = cc; cc = n-1-t; } return qr.isDark(rr, cc); };
+  // finder positions after rotation (counter-clockwise turns)
+  const corners = [[0,0],[0,n-7],[n-7,0],[n-7,n-7]], missing = [3, 1, 0, 2][rot];
+  const FP = corners.filter((_, i) => i !== missing);
+  const side = o.art.qr/100 * W, m = side / n, x0 = (W - side)/2, kd = o.art.dots/100, kl = Math.min(0.92, kd + 0.1);
+  const shp = o.art.shape, rr = shp === 'rounded' ? W*0.14 : 0;
+  const inMask = (x, y, mg) => {
+    if (shp === 'circle') return (x-W/2)**2 + (y-W/2)**2 <= (W/2 - mg)**2;
+    if (x < mg || y < mg || x > W-mg || y > W-mg) return false;
+    if (!rr) return true; const cx = Math.min(Math.max(x, rr), W-rr), cy = Math.min(Math.max(y, rr), W-rr); return (x-cx)**2 + (y-cy)**2 <= (rr-mg)**2;
+  };
+  const sample = (x, y) => { let r = 0, g = 0, b = 0, c = 0; const s = m*0.22;
+    for (const [dx, dy] of [[0,0],[-s,-s],[s,-s],[-s,s],[s,s]]) { const X = Math.min(base.B-1, Math.max(0, Math.round((x+dx)*k))), Y = Math.min(base.B-1, Math.max(0, Math.round((y+dy)*k))), i = (Y*base.B + X)*4; r += base.px[i]; g += base.px[i+1]; b += base.px[i+2]; c++; }
+    return [r/c, g/c, b/c]; };
+  const isFinder = (r, c) => FP.some(([R0, C0]) => r >= R0 && r < R0+7 && c >= C0 && c < C0+7);
+  const nearFinder = (r, c) => FP.some(([R0, C0]) => r >= R0-1 && r < R0+8 && c >= C0-1 && c < C0+8);
+  const dots = new Map(); const add = (col, d) => dots.set(col, (dots.get(col) || '') + d);
+  const circ = (cx, cy, r) => `M${f(cx-r)} ${f(cy)}a${f(r)} ${f(r)} 0 1 0 ${f(2*r)} 0a${f(r)} ${f(r)} 0 1 0 ${f(-2*r)} 0Z`;
+  const kk0 = Math.floor(-x0/m) - 1, kk1 = Math.ceil((W-x0)/m) + 1;
+  for (let j = kk0; j < kk1; j++) for (let i = kk0; i < kk1; i++) {
+    const cx = x0 + (i+.5)*m, cy = x0 + (j+.5)*m;
+    if (!inMask(cx, cy, m*0.6)) continue;
+    const inQ = j >= 0 && j < n && i >= 0 && i < n;
+    let dk;
+    if (inQ) { if (isFinder(j, i)) continue; dk = dark(j, i); }
+    else { if (nearFinder(j, i)) continue; dk = rand(i, j, o.seed) < 0.5; }
+    const [r, g, b] = sample(cx, cy), L = lumRGB(r, g, b), [h, s] = rgb2hsl(r, g, b);
+    if (dk) { if (L < 0.16) continue; const col = hex(hsl2rgb(s > 0.12 ? h : base.hue, s > 0.12 ? Math.min(1, s*0.95+0.05) : base.sat*0.6, Math.min(0.2, L*0.42))); add(col, circ(cx, cy, kd*m/2)); }
+    else { if (L > 0.86) continue; const col = hex(hsl2rgb(s > 0.12 ? h : base.hue, s > 0.12 ? Math.min(1, s*0.95+0.05) : base.sat*0.6, 0.9)); add(col, circ(cx, cy, kl*m/2)); }
+  }
+  const clip = shp === 'circle' ? `<circle cx="${W/2}" cy="${W/2}" r="${W/2}"/>` : `<rect width="${W}" height="${W}" rx="${rr}"/>`;
+  const capH = o.caption ? 130 : 0, pad = 40;
+  const out = [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${-pad} ${-pad} ${W+2*pad} ${W+capH+2*pad}" width="${W+2*pad}" height="${W+capH+2*pad}">`];
+  if (!o.transparent) out.push(`<rect x="${-pad}" y="${-pad}" width="${W+2*pad}" height="${W+capH+2*pad}" fill="#ffffff"/>`);
+  out.push(`<defs><clipPath id="nqs-clip">${clip}</clipPath></defs><g clip-path="url(#nqs-clip)"><image href="${base.url}" width="${W}" height="${W}"/>`);
+  for (const [col, d] of dots) out.push(`<path fill="${col}" d="${d}"/>`);
+  for (const [r0, c0] of FP) {
+    const X = x0 + c0*m, Y = x0 + r0*m;
+    out.push(`<rect x="${f(X-m)}" y="${f(Y-m)}" width="${f(9*m)}" height="${f(9*m)}" rx="${f(3.2*m)}" fill="${base.lite}"/>`,
+      `<rect x="${f(X)}" y="${f(Y)}" width="${f(7*m)}" height="${f(7*m)}" rx="${f(2.2*m)}" fill="${base.deep}"/>`,
+      `<rect x="${f(X+m)}" y="${f(Y+m)}" width="${f(5*m)}" height="${f(5*m)}" rx="${f(1.5*m)}" fill="${base.lite}"/>`,
+      `<rect x="${f(X+2*m)}" y="${f(Y+2*m)}" width="${f(3*m)}" height="${f(3*m)}" rx="${f(m)}" fill="${base.deep}"/>`);
+  }
+  out.push('</g>');
+  if (o.caption) out.push(`<text x="${W/2}" y="${W+95}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="80" fill="${o.capColor}">${esc(o.caption)}</text>`);
+  out.push('</svg>');
+  return {svg: out.join(''), n};
+}
+
+function design(over = {}){
+  const t = TYPES.find(x => x.k === S.type), built = t.build(S.values[S.type] || {});
+  const o = {...S, text: built.text, err: built.err, logo: LOGO && LOGO.url, ...over};
+  if (o.mode === 'classic') o.shapeKey = 'frame';
+  // Auto error correction: High only when a logo covers the centre; Medium keeps dots big and scans best
+  if (!o.ec || o.ec === 'auto') o.ec = (o.mode !== 'art' && o.logo) ? 'H' : 'M';
+  return o;
+}
+function render(o){ return o.mode === 'art' ? renderArt(o) : renderStd(o); }
+
+/* ---------------- raster + scan strength ---------------- */
+function svgToCanvas(svg, px){
+  return new Promise((res, rej) => { const img = new Image(), url = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
+    img.onload = () => { const c = document.createElement('canvas'); c.width = px; c.height = Math.round(px * img.height / img.width);
+      const x = c.getContext('2d'); x.drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url); res(c); };
+    img.onerror = e => { URL.revokeObjectURL(url); rej(e); }; img.src = url; });
+}
+function scaled(src, px, blur){ const c = document.createElement('canvas'); c.width = px; c.height = Math.round(px * src.height / src.width);
+  const x = c.getContext('2d', {willReadFrequently:true}); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); if (blur) x.filter = `blur(${blur}px)`; x.drawImage(src, 0, 0, c.width, c.height); return x.getImageData(0, 0, c.width, c.height); }
+// Scan engine: use the copy in vendor/ (works offline and inside Claude previews), else the CDN.
+const zxReady = (async () => {
+  if (typeof ZXingWASM === 'undefined') throw new Error('no zxing');
+  try { const r = await fetch('/qr-studio/vendor/zxing_reader.wasm'); if (r.ok) ZXingWASM.setZXingModuleOverrides({wasmBinary: await r.arrayBuffer()}); } catch(e) {}
+  return ZXingWASM;
+})();
+zxReady.catch(() => {});
+async function strength(o){
+  const zx = await zxReady;
+  const big = await svgToCanvas(render({...o, transparent:false}).svg, 1000);
+  const tests = [[600,0],[420,1.0],[320,1.5],[260,1.8]]; let pass = 0;  // clear, slightly soft, small, small + blurry
+  for (const [px, bl] of tests) {
+    try { const r = await zx.readBarcodes(scaled(big, px, bl), {formats:['QRCode'], tryHarder:false, maxNumberOfSymbols:1});
+      if (r.some(x => x.isValid && x.text === o.text)) pass++; } catch(e) {}
+  }
+  return pass;
+}
+const canvasBlob = c => new Promise(r => c.toBlob(r, 'image/png'));
+
+/* ---------------- email gate ---------------- */
+let unlocked = !!store.get('nqs-email'), sessionUnlocked = false, gateResolve = null;
+function requireEmail(){
+  if (unlocked || sessionUnlocked) return Promise.resolve(true);
+  $('gate').hidden = false; $('g-err').hidden = true; setTimeout(() => $('g-email').focus(), 30);
+  return new Promise(res => { gateResolve = res; });
+}
+$('gate-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = $('g-email').value.trim(), name = $('g-name').value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { $('g-err').textContent = 'That email looks off. Check it once?'; $('g-err').hidden = false; return; }
+  $('g-submit').disabled = true; $('g-submit').textContent = 'Unlocking…';
+  if (CONFIG.signupEndpoint) {
+    try { await fetch(CONFIG.signupEndpoint, {method:'POST', mode:'no-cors', body: new URLSearchParams({email, name, source:CONFIG.source, qrType:S.type, mode:S.mode, page:location.href, ts:new Date().toISOString()})}); } catch(err) {}
+  }
+  store.set('nqs-email', email); unlocked = true; sessionUnlocked = true;
+  $('g-submit').disabled = false; $('g-submit').textContent = 'Unlock downloads';
+  $('gate').hidden = true; toast('Unlocked. Download away!'); if (gateResolve) { gateResolve(true); gateResolve = null; }
+});
+$('g-cancel').addEventListener('click', () => { $('gate').hidden = true; if (gateResolve) { gateResolve(false); gateResolve = null; } });
+$('gate').addEventListener('click', e => { if (e.target === $('gate')) $('g-cancel').click(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('gate').hidden) $('g-cancel').click(); });
+
+/* ---------------- downloads ---------------- */
+let dlCap = null; try { if (window.claude && typeof window.claude.use === 'function') dlCap = window.claude.use('downloads').catch(() => null); } catch(e) {}
+async function saveFile(name, blob){
+  if (dlCap) { const d = await dlCap; if (d) { try { await d.save({filename:name, data:blob}); } catch(e) {} return; } }
+  saveFileDirect(name, blob);
+}
+function saveFileDirect(name, blob){ const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000); }
+let toastT; function toast(msg){ const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2800); }
+const slug = s => String(s).toLowerCase().replace(/^[a-z]+:\/\//,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40) || 'qr';
+const fileBase = o => `naira-qr-${o.type}-${o.mode === 'art' ? 'logo-art' : o.mode === 'classic' ? 'classic' : o.shapeKey}-${slug(o.text)}`;
+
+/* ---------------- UI build ---------------- */
+$('types').innerHTML = TYPES.map(t => `<button type="button" class="type" data-k="${t.k}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[t.k]}</svg>${t.label}</button>`).join('');
+function buildFields(){
+  const t = TYPES.find(x => x.k === S.type), v = S.values[S.type] = S.values[S.type] || {};
+  $('fields').innerHTML = t.fields.map(fl => {
+    if (v[fl.id] === undefined && fl.val !== undefined) v[fl.id] = fl.val;
+    const id = `f-${t.k}-${fl.id}`, val = v[fl.id] ?? '', cls = 'field' + (fl.full ? ' full' : ''), hint = fl.hint ? `<span class="hint">${fl.hint}</span>` : '';
+    if (fl.type === 'select') return `<div class="${cls}"><label for="${id}">${fl.label}</label><select id="${id}" data-f="${fl.id}">${fl.opts.map(([a,b]) => `<option value="${a}"${val===a?' selected':''}>${b}</option>`).join('')}</select>${hint}</div>`;
+    if (fl.type === 'check') return `<div class="${cls}" style="align-content:end"><label class="checkrow"><input type="checkbox" id="${id}" data-f="${fl.id}"${val?' checked':''}>${fl.label}</label></div>`;
+    if (fl.type === 'area') return `<div class="${cls}"><label for="${id}">${fl.label}</label><textarea id="${id}" data-f="${fl.id}" placeholder="${esc(fl.ph||'')}">${esc(val)}</textarea>${hint}</div>`;
+    return `<div class="${cls}"><label for="${id}">${fl.label}</label><input id="${id}" data-f="${fl.id}" type="${fl.type||'text'}" placeholder="${esc(fl.ph||'')}" value="${esc(val)}" spellcheck="false" autocomplete="off">${hint}</div>`;
+  }).join('');
+}
+$('fields').addEventListener('input', e => { const el = e.target.closest('[data-f]'); if (!el) return; S.values[S.type][el.dataset.f] = el.type === 'checkbox' ? el.checked : el.value; update(); });
+$('types').addEventListener('click', e => { const b = e.target.closest('.type'); if (!b) return; S.type = b.dataset.k; buildFields(); update(); });
+
+const thumb = k => { const sh = SHAPES[k]; return `<svg viewBox="-2 -2 104 104" aria-hidden="true"><g fill="#ff2ba3">${sh.parts.map(p=>`<path d="${p.d}"/>`).join('')}</g><rect x="${sh.qr[0]}" y="${sh.qr[1]}" width="${sh.qr[2]}" height="${sh.qr[2]}" rx="4" fill="#fff"/></svg>`; };
+$('shapes').innerHTML = ANIMALS.map(k => `<button type="button" class="shape-btn" data-k="${k}" aria-pressed="false">${thumb(k)}${SHAPES[k].name}</button>`).join('') + `<a class="shape-btn custom" data-wa target="_blank" rel="noopener" id="wa-shape" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>Custom</a>`;
+$('presets').innerHTML = PRESETS.map((p,i) => `<button type="button" class="chip" data-i="${i}"><i style="background:linear-gradient(135deg,${p.shape} 50%,${p.ink} 50%)"></i>${p.name}</button>`).join('');
+
+function syncUI(){
+  document.querySelectorAll('.type').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === S.type)));
+  document.querySelectorAll('#modes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === S.mode)));
+  document.querySelectorAll('.shape-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === S.shapeKey)));
+  for (const [id, key, obj] of [['seg-style','style',S],['seg-module','module',S],['seg-eye','eye',S],['seg-artshape','shape',S.art],['seg-artfit','fit',S.art],['bulk-mode','bulkMode',S]])
+    $(id).querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === obj[key])));
+  $('std-opts').hidden = S.mode === 'art'; $('art-opts').hidden = S.mode !== 'art';
+  $('shape-group').hidden = S.mode !== 'shapes'; $('fill-group').hidden = S.mode !== 'shapes';
+  $('dots-opts').hidden = !(S.mode === 'shapes' && S.style === 'dots');
+  $('c-shape-lbl').textContent = S.mode === 'classic' ? 'Frame' : 'Shape';
+  $('c-shape').value = S.shapeColor; $('c-ink').value = S.ink; $('c-eye').value = S.eyeColor; $('c-accent').value = S.accent; $('c-card').value = S.card;
+  $('caption').value = S.caption; $('cap-color').value = S.capColor; $('ec').value = S.ec; $('density').value = S.density; $('outline').checked = S.outline;
+  $('size').value = String(S.size); $('transparent').checked = S.transparent;
+  $('art-dots').value = S.art.dots; $('art-qr').value = S.art.qr; $('art-bg').value = S.art.bg;
+  $('bulk-range').hidden = S.bulkMode !== 'range'; $('bulk-list').hidden = S.bulkMode !== 'list';
+  for (const [t, m] of [['logo-thumb','logo-msg'],['art-thumb','art-msg']]) { $(t).hidden = !LOGO; if (LOGO) $(t).style.backgroundImage = `url("${LOGO.url}")`; }
+  $('logo-clear').hidden = !LOGO;
+  if (LOGO) { $('logo-msg').textContent = LOGO.name; $('art-msg').textContent = LOGO.name + ' · drag the sliders to balance hidden vs scannable'; }
+}
+function lum(hx){ const v = hx.replace('#',''); const c = [0,2,4].map(i => parseInt(v.substr(i,2),16)/255).map(x => x <= .03928 ? x/12.92 : Math.pow((x+.055)/1.055, 2.4)); return .2126*c[0]+.7152*c[1]+.0722*c[2]; }
+const contrast = (a,b) => { const x = lum(a), y = lum(b); return (Math.max(x,y)+.05)/(Math.min(x,y)+.05); };
+
+let tok = 0, debT;
+function setStrength(kind, label, hint, on){ const s = $('strength'); s.className = 'strength ' + kind; $('st-label').textContent = label; $('st-hint').textContent = hint;
+  [...$('st-meter').children].forEach((i, k) => i.classList.toggle('on', k < on)); }
+function update(){
+  persist(); syncUI(); refreshWa(); const ws = $('wa-shape'); if (ws) ws.href = waUrl(studioWaMessage().replace('Hi Naira! I want a custom QR design.', 'Hi Naira! I want a custom QR shape that is not in the studio.'));
+  const o = design();
+  $('payload').textContent = o.text || '';
+  $('payload').hidden = !o.text;
+  if (o.err) { $('stage').innerHTML = `<p class="empty">${esc(o.err)} and your QR appears here.</p>`; setStrength('wait', 'Waiting for details', 'Fill step 1 to see your QR.', 0); $('meta').textContent = ''; return; }
+  if (o.mode === 'art' && !LOGO) { $('stage').innerHTML = `<p class="empty">Upload your logo and we'll hide the QR inside it.</p>`; setStrength('wait', 'Waiting for logo', 'Logo Art needs a logo.', 0); $('meta').textContent = ''; return; }
+  let res;
+  try { res = render(o); } catch(e) { $('stage').innerHTML = `<p class="empty">This is too much content for one QR. Shorten it a bit.</p>`; setStrength('bad', 'Too long', 'QR codes hold about 1,000 characters at most with a logo.', 0); return; }
+  $('stage').innerHTML = res.svg;
+  $('meta').textContent = `${res.n}×${res.n} grid · error correction ${o.ec}${S.ec === 'auto' ? ' (auto)' : ''}`;
+  if (o.mode !== 'art') { const cr = Math.min(contrast(o.ink, o.card), contrast(o.eyeColor, o.card));
+    $('contrast').hidden = cr >= 3; $('contrast').textContent = `Low contrast (${cr.toFixed(1)}:1). Pick darker QR colours or a lighter background.`; }
+  setStrength('wait', 'Testing scan…', 'We scan your design 4 ways: sharp, soft, small and blurry.', 0);
+  const my = ++tok; clearTimeout(debT);
+  debT = setTimeout(async () => {
+    let p; try { p = await strength(o); } catch(e) { if (my === tok) setStrength('wait', 'Scan test unavailable', 'Test it with your phone camera before printing.', 0); return; }
+    if (my !== tok) return;
+    if (p === 4) setStrength('ok', 'Strong scan', 'Reads even when small and blurry. Good to print.', 4);
+    else if (p === 3) setStrength('ok', 'Good scan', 'Reads well. Print it at least 4 cm wide.', 3);
+    else if (p >= 1) setStrength('warn', 'Weak scan', o.mode === 'art' ? 'Slide towards "Easy to scan" or press "Make it scan better".' : (o.text && o.text.length > 60 ? 'Long content makes the dots tiny in this shape. Try Classic, Circle or Square, or a shorter link.' : 'Try square dots, more contrast or a bigger shape like Circle or Square.'), p);
+    else setStrength('bad', 'Does not scan', o.mode === 'art' ? 'Press "Make it scan better" or try a bolder logo.' : 'Try Solid style, darker colours or remove the logo.', 0);
+    lastScore = p;
+  }, 280);
+}
+let lastScore = null;
+
+/* ---------------- events ---------------- */
+$('modes').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; S.mode = b.dataset.v;
+ update(); });
+$('shapes').addEventListener('click', e => { const b = e.target.closest('.shape-btn[data-k]'); if (b) { S.shapeKey = b.dataset.k; update(); } });
+$('presets').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const p = PRESETS[+b.dataset.i];
+  Object.assign(S, {shapeColor:p.shape, ink:p.ink, eyeColor:p.eye, accent:p.accent, card:p.card, capColor: lum(p.shape) > .6 ? p.ink : p.shape}); update(); });
+for (const [id, key, obj] of [['seg-style','style',S],['seg-module','module',S],['seg-eye','eye',S],['seg-artshape','shape','art'],['seg-artfit','fit','art'],['bulk-mode','bulkMode',S]])
+  $(id).addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; (obj === 'art' ? S.art : S)[key] = b.dataset.v; if (id === 'seg-artshape') S.art.qr = b.dataset.v === 'circle' ? 71 : 84; update(); });
+for (const [id, key] of [['c-shape','shapeColor'],['c-ink','ink'],['c-eye','eyeColor'],['c-accent','accent'],['c-card','card'],['cap-color','capColor']])
+  $(id).addEventListener('input', e => { S[key] = e.target.value; update(); });
+$('caption').addEventListener('input', e => { S.caption = e.target.value; update(); });
+$('ec').addEventListener('change', e => { S.ec = e.target.value; update(); });
+$('density').addEventListener('input', e => { S.density = +e.target.value; update(); });
+$('outline').addEventListener('change', e => { S.outline = e.target.checked; update(); });
+$('size').addEventListener('change', e => { S.size = +e.target.value; persist(); });
+$('transparent').addEventListener('change', e => { S.transparent = e.target.checked; persist(); });
+$('art-dots').addEventListener('input', e => { S.art.dots = +e.target.value; update(); });
+$('art-qr').addEventListener('input', e => { S.art.qr = +e.target.value; update(); });
+$('art-bg').addEventListener('input', e => { S.art.bg = e.target.value; update(); });
+$('art-rotate').addEventListener('click', () => { S.art.rot = (S.art.rot + 1) % 4; update(); });
+$('art-fix').addEventListener('click', async () => {
+  const btn = $('art-fix'); btn.disabled = true; btn.textContent = 'Testing…';
+  let best = null;
+  for (const [dots, ec] of [[S.art.dots, S.ec],[S.art.dots+5,'M'],[S.art.dots+10,'M'],[S.art.dots+5,'L'],[S.art.dots+15,'M'],[S.art.dots+10,'L'],[80,'L']]) {
+    const d = Math.min(80, dots), o = design({art:{...S.art, dots:d}, ec});
+    let p = 0; try { p = await strength(o); } catch(e) { break; }
+    if (!best || p > best.p) best = {p, d, ec};
+    if (p === 4) break;
+  }
+  btn.disabled = false; btn.textContent = 'Make it scan better';
+  if (best) { S.art.dots = best.d; S.ec = best.ec; update(); toast(best.p === 4 ? 'Fixed. Strong scan now.' : 'Best we could do. Try "Fit whole logo" or a bolder logo.'); }
+});
+$('logo-file').addEventListener('change', e => {
+  const file = e.target.files[0]; e.target.value = ''; if (!file) return;
+  if (file.size > 8*1024*1024) { toast('That file is over 8 MB. Try a smaller one.'); return; }
+  const rd = new FileReader();
+  rd.onload = () => { const img = new Image(); img.onload = () => {
+      // normalise to a PNG data URL (SVG logos included) so it renders everywhere
+      const mx = 1600, sc = Math.min(1, mx / Math.max(img.naturalWidth || mx, img.naturalHeight || mx)), c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round((img.naturalWidth || mx) * sc)); c.height = Math.max(1, Math.round((img.naturalHeight || mx) * sc));
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      const url = c.toDataURL('image/png'), im2 = new Image(); im2.onload = () => { LOGO = {url, img:im2, name:file.name}; artCache.key = null; update(); }; im2.src = url; };
+    img.onerror = () => toast('Could not read that image. Try a PNG or JPG.'); img.src = rd.result; };
+  rd.readAsDataURL(file);
+});
+$('logo-clear').addEventListener('click', () => { LOGO = null; update(); });
+
+$('dl-png').addEventListener('click', async () => {
+  const o = design({transparent:S.transparent}); if (o.err || (o.mode === 'art' && !LOGO)) { toast('Finish step 1 first'); return; }
+  if (!(await requireEmail())) return;
+  const c = await svgToCanvas(render(o).svg, S.size); saveFile(fileBase(o) + '.png', await canvasBlob(c)); toast('Downloaded PNG');
+});
+$('dl-svg').addEventListener('click', async () => {
+  const o = design({transparent:S.transparent}); if (o.err || (o.mode === 'art' && !LOGO)) { toast('Finish step 1 first'); return; }
+  if (!(await requireEmail())) return;
+  saveFile(fileBase(o) + '.svg', new Blob([render(o).svg], {type:'image/svg+xml'})); toast('Downloaded SVG');
+});
+
+$('bulk-go').addEventListener('click', async () => {
+  let items = [];
+  if (S.bulkMode === 'range') {
+    const base = withProto($('b-base').value.trim()), pre = $('b-prefix').value.trim(), cnt = Math.min(200, Math.max(1, +$('b-count').value || 1));
+    if (!base) { toast('Add a base link'); return; }
+    for (let i = 1; i <= cnt; i++) items.push({name: `${pre}${i}`, link: base + pre + i, caption: $('b-caption').checked ? `Table ${pre}${i}` : S.caption});
+  } else {
+    items = $('b-lines').value.split('\n').map(l => l.trim()).filter(Boolean).map((l, i) => { const p = l.split('|').map(s => s.trim()); return p.length > 1 ? {name:p[0], link:withProto(p[1]), caption:S.caption} : {name:'qr-'+(i+1), link:withProto(p[0]), caption:S.caption}; });
+  }
+  if (!items.length) { toast('Add at least one line'); return; }
+  if (S.mode === 'art' && !LOGO) { toast('Upload a logo for Logo Art first'); return; }
+  if (!(await requireEmail())) return;
+  const btn = $('bulk-go'), box = $('bulk-results'); btn.disabled = true; box.innerHTML = '';
+  const zip = new JSZip(), report = ['file,link,scan']; let ok = 0; const used = new Set();
+  for (const [i, it] of items.entries()) {
+    btn.textContent = `Making ${i+1} of ${items.length}…`;
+    let base = slug(it.name) || 'qr'; while (used.has(base)) base += '-2'; used.add(base);
+    const o = {...design({transparent:S.transparent}), text: it.link, err: null, caption: it.caption};
+    let p = null; try { p = await strength(o); } catch(e) {}
+    const c = await svgToCanvas(render(o).svg, S.size);
+    zip.file(base + '.png', await canvasBlob(c)); zip.file(base + '.svg', render(o).svg);
+    const tag = p === null ? ['warn','Not tested'] : p >= 3 ? ['ok','Scans'] : p >= 1 ? ['warn','Weak'] : ['bad','Fails'];
+    if (p >= 3) ok++;
+    report.push([base, '"' + it.link.replace(/"/g,'""') + '"', tag[1]].join(','));
+    const row = document.createElement('div'); row.innerHTML = `<span class="pill ${tag[0]}">${tag[1]}</span><b>${esc(base)}</b><span class="meta">${esc(it.link)}</span>`; box.appendChild(row);
+  }
+  zip.file('scan-report.csv', report.join('\n'));
+  saveFile('naira-qr-bulk.zip', await zip.generateAsync({type:'blob'}));
+  btn.disabled = false; btn.textContent = 'Make ZIP'; toast(`ZIP ready. ${ok} of ${items.length} passed the scan test.`);
+});
+
+/* ---------------- hero samples ---------------- */
+function heroArt(){
+  const base = {...DEFAULTS, text:'https://nairamenus.in', logo:null, transparent:true, caption:'', mode:'shapes'};
+
+  try {
+    const mini = {...base, shapeKey:'frame', mode:'classic', ec:'M'};
+    $('plug-paper').innerHTML = renderStd({...mini, module:'square', eye:'square', shapeColor:'#efe6d6', ink:'#3d3a35', eyeColor:'#3d3a35', card:'#efe6d6'}).svg;
+    $('plug-standee').innerHTML = renderStd({...mini, module:'rounded', eye:'rounded', shapeColor:'#ffffff', ink:'#1b1420', eyeColor:'#ff2ba3', card:'#ffffff'}).svg;
+  } catch(e) {}
+}
+
+
+/* ---------- WhatsApp-first helpers ---------- */
+const WA_NUM = '919225344169';
+const waUrl = msg => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
+const SAFE_TYPES = ['url','whatsapp','review','social','location','app','phone'];
+function studioWaMessage(){
+  const o = design(), t = TYPES.find(x => x.k === S.type);
+  const style = S.mode === 'art' ? 'Logo Art (QR hidden in my logo)' : S.mode === 'classic' ? 'Classic' : (SHAPES[S.shapeKey] ? SHAPES[S.shapeKey].name + ' shape' : 'Custom shape');
+  const lines = ['Hi Naira! I want a custom QR design.', `QR type: ${t.label}`];
+  if (o.text && SAFE_TYPES.includes(S.type)) lines.push(`Opens: ${o.text}`);
+  if (S.type === 'wifi' && S.values.wifi && S.values.wifi.ssid) lines.push(`Wi-Fi name: ${S.values.wifi.ssid} (I'll share the password in chat)`);
+  lines.push(`Style I started with: ${style}`, 'What I want it to look like: ', 'Business name: ');
+  return lines.join('\n');
+}
+function refreshWa(){ const a = $('wa-studio'); if (a) a.href = waUrl(studioWaMessage()); }
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-online]'); if (!a) return;
+  e.preventDefault(); const v = a.dataset.online;
+  if (v === 'art') { S.mode = 'art'; } else { S.mode = 'shapes'; S.shapeKey = v; }
+  update(); document.getElementById('studio').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth'});
+  toast(v === 'art' ? 'Logo Art selected. Upload your logo.' : `${SHAPES[v].name} selected. Add your link in step 1.`);
+});
+/* hero parallax: tiles drift with the pointer (desktop, motion allowed) */
+(() => {
+  const el = $('collage'); if (!el || !matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  let raf = 0;
+  window.addEventListener('pointermove', e => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0;
+    const r = el.getBoundingClientRect(); if (r.bottom < 0) return;
+    el.style.setProperty('--mx', ((e.clientX - (r.left + r.width/2)) / innerWidth * 18).toFixed(2));
+    el.style.setProperty('--my', ((e.clientY - (r.top + r.height/2)) / innerHeight * 18).toFixed(2)); }); }, {passive:true});
+})();
+$('yr').textContent = new Date().getFullYear();
+heroArt(); buildFields(); update();
+</script>
+<script>(function(){var b=document.getElementById('menuBtn'),m=document.getElementById('mnav');if(b&&m)b.addEventListener('click',function(){var o=m.hidden;m.hidden=!o;b.setAttribute('aria-expanded',String(o));});})();</script>
+</body>
+</html>
